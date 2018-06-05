@@ -21,7 +21,7 @@ class Main {
 
         CalculatorExample calculatorExample = new CalculatorExample();
         System.out.println(calculatorExample.sum(3, 5));
-
+         new MainMenu();   
         
     }
 

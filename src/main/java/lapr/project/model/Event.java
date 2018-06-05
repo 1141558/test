@@ -18,17 +18,19 @@ public class Event {
     private Date startDate;
     private Date endDate;
     private String place;
+    private OrganiserRegister organisersList; 
     
-    public Event(String Title, String description, Date startDate, Date endDate, String place) {
+    public Event(String Title, String description, Date startDate, Date endDate, String place, OrganiserRegister organisersList) {
         this.title = Title;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.place = place;
+        this.organisersList= organisersList;
     }
 
     public Event() {
-        
+       this.organisersList= new OrganiserRegister(); 
     }
 
     /**
@@ -99,6 +101,20 @@ public class Event {
      */
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    /**
+     * @return the organisersList
+     */
+    public OrganiserRegister getOrganisersList() {
+        return organisersList;
+    }
+
+    /**
+     * @param organisersList the organisersList to set
+     */
+    public void setOrganisersList(OrganiserRegister organisersList) {
+        this.organisersList = organisersList;
     }
     
 }
