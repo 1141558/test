@@ -6,6 +6,7 @@
 package lapr.project.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,27 +14,27 @@ import java.util.ArrayList;
  */
 public class UserRegister {
     
-     private ArrayList<User> userList;
+     private List<User> userList;
 
-    public UserRegister(ArrayList<User> userList) {
+    public UserRegister(List<User> userList) {
         this.userList = userList;
     }
 
     public UserRegister() {
-        this.userList= new ArrayList<User>();
+        this.userList= new ArrayList<>();
     }
 
     /**
      * @return the userList
      */
-    public ArrayList<User> getUserList() {
+    public List<User> getUserList() {
         return userList;
     }
 
     /**
      * @param userList the userList to set
      */
-    public void setUserList(ArrayList<User> userList) {
+    public void setUserList(List<User> userList) {
         this.userList = userList;
     }
 

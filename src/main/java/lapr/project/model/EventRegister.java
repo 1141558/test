@@ -6,6 +6,7 @@
 package lapr.project.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -13,27 +14,27 @@ import java.util.ArrayList;
  * @author MariaJoão
  */
 public class EventRegister {
-    private ArrayList<Event> eventList;
+    private List<Event> eventList;
 
-    public EventRegister(ArrayList<Event> eventList) {
+    public EventRegister(List<Event> eventList) {
         this.eventList = eventList;
     }
 
     public EventRegister() {
-        this.eventList= new ArrayList<Event>();
+        this.eventList= new ArrayList<>();
     }
 
     /**
      * @return the eventList
      */
-    public ArrayList<Event> getEventList() {
+    public List<Event> getEventList() {
         return eventList;
     }
 
     /**
      * @param eventList the eventList to set
      */
-    public void setEventList(ArrayList<Event> eventList) {
+    public void setEventList(List<Event> eventList) {
         this.eventList = eventList;
     }
 

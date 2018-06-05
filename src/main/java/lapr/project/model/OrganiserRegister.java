@@ -6,34 +6,35 @@
 package lapr.project.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author MariaJoão
  */
 public class OrganiserRegister {
-        private ArrayList<Organiser> organiserList;
+        private List<Organiser> organiserList;
 
-    public OrganiserRegister(ArrayList<Organiser> organiserList) {
+    public OrganiserRegister(List<Organiser> organiserList) {
         this.organiserList = organiserList;
     }
 
     public OrganiserRegister() {
         
-        this.organiserList= new ArrayList<Organiser>();
+        this.organiserList= new ArrayList<>();
     }
 
     /**
      * @return the organiserList
      */
-    public ArrayList<Organiser> getOrganiserList() {
+    public List<Organiser> getOrganiserList() {
         return organiserList;
     }
 
     /**
      * @param organiserList the organiserList to set
      */
-    public void setOrganiserList(ArrayList<Organiser> organiserList) {
+    public void setOrganiserList(List<Organiser> organiserList) {
         this.organiserList = organiserList;
     }
 
