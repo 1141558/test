@@ -66,8 +66,8 @@ public class Staff implements Comparable<Staff>, Serializable{
     }
 
     @Override
-    public int compareTo(Staff o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int compareTo(Staff otherStaff) {
+        return this.staff.getName().compareTo(otherStaff.staff.getName());
     }
     
 }
