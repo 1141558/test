@@ -5,11 +5,14 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author MariaJoão
  */
-public class Organiser {
+public class Organiser implements Serializable{
  
     private User organiser;
 
@@ -33,6 +36,35 @@ public class Organiser {
      */
     public void setOrganiser(User organiser) {
         this.organiser = organiser;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("UserName:%s Nome:%s", organiser.getUsername(), organiser.getName());
+    }
+
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Organiser otherOrganiser = (Organiser) otherObject;
+        
+        return organiser == otherOrganiser.organiser;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.organiser);
+        return hash;
+    }
+    
+    public int compareTo(Organiser otherOrganiser) {
+        return this.organiser.getUsername().compareTo(otherOrganiser.organiser.getUsername());
     }
     
 }

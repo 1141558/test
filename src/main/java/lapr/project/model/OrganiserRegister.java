@@ -5,14 +5,16 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  *
  * @author MariaJoão
  */
-public class OrganiserRegister {
+public class OrganiserRegister implements Serializable{
         private List<Organiser> organiserList;
 
     public OrganiserRegister(List<Organiser> organiserList) {
@@ -46,8 +48,13 @@ public class OrganiserRegister {
         this.organiserList = organiserList;
     }
     
-    public boolean isEmpty() {
-        return organiserList.isEmpty();
+    public boolean registerOrganiser(User user){
+        if(!isExist(user)){               
+            organiserList.add(new Organiser(user));
+            return true;
+        } else
+            return false;
+        
     }
     
     public boolean isExist(User user){
@@ -59,5 +66,38 @@ public class OrganiserRegister {
         return  valida;
     }
     
+    public boolean isEmpty() {
+        return organiserList.isEmpty();
+    }
+
+//    @Override
+//    public String toString() {
+//        List<Organiser> copy = new ArrayList<>(organiserList);
+//        Collections.sort(copy);
+//
+//        StringBuilder s = new StringBuilder();
+//        for (Organiser organiser : copy) {
+//            s.append(organiser);
+//            s.append("\n");
+//        }
+//        
+//        return s.toString().trim();
+//    }
+    
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass()) {
+            return false;
+        }
+        OrganiserRegister otherOrganiserRegister = (OrganiserRegister) otherObject;
+
+        List<Organiser> copyThis = new ArrayList<>(organiserList);
+        List<Organiser> copyOther = new ArrayList<>( otherOrganiserRegister.organiserList);
+
+        return copyThis.equals(copyOther);
+    }
 
 }
