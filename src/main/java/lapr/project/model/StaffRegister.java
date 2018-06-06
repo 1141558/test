@@ -65,14 +65,13 @@ public class StaffRegister implements Serializable{
         return s.toString().trim();
     }
     
-    
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.staffList);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.staffList);
         return hash;
     }
-
+    
     @Override
     public boolean equals(Object otherObject) {
         if (this == otherObject) {
@@ -87,8 +86,6 @@ public class StaffRegister implements Serializable{
         List<Staff> copyOther = new ArrayList<>( otherStaffRegister.staffList);
 
         return copyThis.equals(copyOther);
-    }
-    
-    
+    }    
     
 }
