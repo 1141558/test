@@ -23,7 +23,15 @@ public class OrganiserRegister {
         
         this.organiserList= new ArrayList<>();
     }
-
+    
+    public boolean addOrganiser(Organiser o){
+        for (Organiser organiser : organiserList) {
+            if(organiser.getOrganiser().getUsername().equals(o.getOrganiser().getUsername())){
+                return false;
+            }
+        }       
+        return organiserList.add(o);
+    }
     /**
      * @return the organiserList
      */

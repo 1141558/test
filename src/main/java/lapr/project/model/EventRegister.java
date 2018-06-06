@@ -23,7 +23,11 @@ public class EventRegister {
     public EventRegister() {
         this.eventList= new ArrayList<>();
     }
-
+    public boolean registerEvent(Event e){
+        return eventList.contains(e)
+               ? false
+               :eventList.add(e);
+    }
     /**
      * @return the eventList
      */
