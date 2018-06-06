@@ -13,14 +13,14 @@ public class User {
     
     private String name;
     private String email;
-    private double password;
     private String username;
-
-    public User(String name, String email, double password, String username) {
+    private double password;
+    
+    public User(String name, String email, String username, double password) {
         this.name = name;
         this.email = email;
-        this.password = password;
         this.username = username;
+        this.password = password;
     }
 
     public User() {
@@ -54,6 +54,20 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     /**
      * @return the password
@@ -67,20 +81,6 @@ public class User {
      */
     public void setPassword(double password) {
         this.password = password;
-    }
-
-    /**
-     * @return the username
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username) {
-        this.username = username;
     }
     
 }

@@ -27,8 +27,8 @@ class Main {
         ExhibitionCentre centre= new ExhibitionCentre();
         
         /*dados de teste (APAGAR FUTURAMENTE)*/
-        User u1= new User("nome1", "email1",0.0,"username1");       
-        User u2= new User("nome2", "email2",0.0,"username2");
+        User u1= new User("nome1", "email1","username1",0.0);       
+        User u2= new User("nome2", "email2","username2",0.0);
         UserRegister ur= new UserRegister();
         ur.addUser(u1);
         ur.addUser(u2);
