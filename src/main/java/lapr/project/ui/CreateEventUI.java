@@ -74,7 +74,7 @@ public class CreateEventUI {
                 System.out.println("Invalid Date, Please try again.");
                 startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");               
                
-            }else if(!controller.validateDateGap(today,startDate)){
+            }else if(!controller.compareDates(today,startDate)){
                 System.out.println("Date Expired, Please try again.");
                 startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");                
 
@@ -99,7 +99,7 @@ public class CreateEventUI {
                 System.out.println("Invalid Date, Please try again.");
                 endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
                 
-            }else if(!controller.validateDateGap(startDate, endDate)){
+            }else if(!controller.compareDates(startDate, endDate)){
                 
                 System.out.println("End Date must be after start date, Please try again.");
                 endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");                

@@ -8,6 +8,7 @@ package lapr.project.controller;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -45,10 +46,16 @@ public class CreateEventController {
             }    
     }
 
-    public boolean validateDateGap(Date date1, Date date2) {
-        date1.setMinutes(0);
-        date1.setHours(0);
-        date1.setSeconds(0);
+    public boolean compareDates(Date date1, Date date2) {
+
+        int hours = 0, minutes=0, seconds=0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set( Calendar.HOUR_OF_DAY, hours );
+        calendar.set( Calendar.MINUTE, minutes );
+        calendar.set( Calendar.SECOND, seconds );
+
+        date1= calendar.getTime();
+        System.out.println(date1);
         if(date1.after(date2)){
             return false;
         }
