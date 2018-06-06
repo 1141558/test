@@ -9,13 +9,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
  * @author MariaJoão
  */
 public class OrganiserRegister implements Serializable{
-        private List<Organiser> organiserList;
+    
+    private static final long serialVersionUID = 1L;
+    
+    private List<Organiser> organiserList;
 
     public OrganiserRegister(List<Organiser> organiserList) {
         this.organiserList = organiserList;
@@ -98,6 +102,13 @@ public class OrganiserRegister implements Serializable{
         List<Organiser> copyOther = new ArrayList<>( otherOrganiserRegister.organiserList);
 
         return copyThis.equals(copyOther);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.organiserList);
+        return hash;
     }
 
 }

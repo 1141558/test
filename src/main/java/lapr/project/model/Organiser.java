@@ -13,6 +13,8 @@ import java.util.Objects;
  * @author MariaJoão
  */
 public class Organiser implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
  
     private User organiser;
 
