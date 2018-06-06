@@ -16,6 +16,9 @@ import java.util.Objects;
  * @author André Silva
  */
 public class StaffRegister implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private List<Staff> staffList;
     
     public StaffRegister(){
@@ -65,13 +68,7 @@ public class StaffRegister implements Serializable{
         return s.toString().trim();
     }
     
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.staffList);
-        return hash;
-    }
-    
+ 
     @Override
     public boolean equals(Object otherObject) {
         if (this == otherObject) {
@@ -87,5 +84,12 @@ public class StaffRegister implements Serializable{
 
         return copyThis.equals(copyOther);
     }    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.staffList);
+        return hash;
+    }
     
 }
