@@ -20,13 +20,13 @@ public class MainMenu {
      
         String opt;
         this.centre=centre;
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
         System.out.println("             MAIN MENU            ");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
         System.out.println("          1.CREATE EVENT          ");
         System.out.println("       2.ASSIGN STAFF MEMBER      ");
         System.out.println("             3.LOGOUT             ");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
       
         opt = Utils.readLineFromConsole("INSERT OPTION: ");
         switch(Integer.parseInt(opt)){
