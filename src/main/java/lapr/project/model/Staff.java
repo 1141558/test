@@ -6,12 +6,15 @@
 package lapr.project.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
  * @author André Silva
  */
 public class Staff implements Comparable<Staff>, Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     private User staff;
 
@@ -53,6 +56,13 @@ public class Staff implements Comparable<Staff>, Serializable{
         Staff otherStaff = (Staff) otherObject;
         
         return staff == otherStaff.staff;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.staff);
+        return hash;
     }
 
     @Override
