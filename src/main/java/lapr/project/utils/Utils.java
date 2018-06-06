@@ -17,7 +17,7 @@ public class Utils {
    {
        try
        {
-           System.out.println(strPrompt);
+           System.out.print(strPrompt);
 
            InputStreamReader converter = new InputStreamReader(System.in);
            BufferedReader in = new BufferedReader(converter);

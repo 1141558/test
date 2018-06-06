@@ -5,6 +5,7 @@
  */
 package lapr.project.ui;
 
+import lapr.project.model.ExhibitionCentre;
 import lapr.project.utils.Utils;
 
 
@@ -13,19 +14,25 @@ import lapr.project.utils.Utils;
  * @author MariaJoão
  */
 public class MainMenu {
- 
-    public MainMenu(){
+    private ExhibitionCentre centre;
+    
+    public MainMenu(ExhibitionCentre centre){
      
         String opt;
-        System.out.println("            MAIN MENU             ");
+        this.centre=centre;
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("             MAIN MENU            ");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("          1.CREATE EVENT          ");
         System.out.println("       2.ASSIGN STAFF MEMBER      ");
-        opt = Utils.readLineFromConsole("Introduza opção\n");
+        System.out.println("             3.LOGOUT             ");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      
+        opt = Utils.readLineFromConsole("INSERT OPTION: ");
         switch(Integer.parseInt(opt)){
          
             case 1:
-                System.out.println("111111");    
+                new CreateEventUI(centre);    
             break;  
         }
     }

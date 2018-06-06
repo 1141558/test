@@ -37,5 +37,8 @@ public class UserRegister {
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
-
+    
+    public boolean addUser(User user){
+        return this.userList.add(user);
+    }
 }
