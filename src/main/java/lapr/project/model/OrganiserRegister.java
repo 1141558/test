@@ -45,5 +45,9 @@ public class OrganiserRegister {
     public void setOrganiserList(List<Organiser> organiserList) {
         this.organiserList = organiserList;
     }
+    
+    public boolean isEmpty() {
+        return organiserList.isEmpty();
+    }
 
 }
