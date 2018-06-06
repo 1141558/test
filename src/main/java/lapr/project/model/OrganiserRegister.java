@@ -49,5 +49,15 @@ public class OrganiserRegister {
     public boolean isEmpty() {
         return organiserList.isEmpty();
     }
+    
+    public boolean isExist(User user){
+        boolean valida = false;
+        for(Organiser organiser : organiserList){
+            if(organiser.getOrganiser().equals(user))
+                valida = true;
+        }
+        return  valida;
+    }
+    
 
 }

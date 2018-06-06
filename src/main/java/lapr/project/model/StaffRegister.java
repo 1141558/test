@@ -48,10 +48,23 @@ public class StaffRegister implements Serializable{
      * @return true or false
      * Valida se já existe o staff passado por parametro, caso não exista adiciona à List
      */
-    public boolean registerStaff(StaffMember staff){
-        return staffList.contains(staff)
-               ? false
-               :staffList.add(staff);
+    
+    public boolean registerStaff(User user){
+        if(!isExist(user)){               
+            staffList.add(new StaffMember(user));
+            return true;
+        } else
+            return false;
+        
+    }
+    
+    public boolean isExist(User user){
+        boolean valida = false;
+        for(StaffMember staff : staffList){
+            if(staff.getStaffUser().equals(user))
+                valida = true;
+        }
+        return  valida;
     }
     
     public boolean isEmpty() {
@@ -72,7 +85,6 @@ public class StaffRegister implements Serializable{
         return s.toString().trim();
     }
     
- 
     @Override
     public boolean equals(Object otherObject) {
         if (this == otherObject) {
