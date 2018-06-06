@@ -19,7 +19,7 @@ public class StaffRegister implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
-    private List<Staff> staffList;
+    private List<StaffMember> staffList;
     
     public StaffRegister(){
         this.staffList = new ArrayList<>();
@@ -29,7 +29,7 @@ public class StaffRegister implements Serializable{
         this.staffList = new ArrayList<>(staffList.getListStaff());
     }
     
-    public List<Staff> getListStaff(){
+    public List<StaffMember> getListStaff(){
         return new ArrayList<>(staffList);
     }
     
@@ -38,7 +38,7 @@ public class StaffRegister implements Serializable{
      * @param indice
      * @return staff
      */
-    public Staff getStaff(int indice){
+    public StaffMember getStaff(int indice){
         return staffList.get(indice);
     }
     
@@ -48,19 +48,23 @@ public class StaffRegister implements Serializable{
      * @return true or false
      * Valida se já existe o staff passado por parametro, caso não exista adiciona à List
      */
-    public boolean registerStaff(Staff staff){
+    public boolean registerStaff(StaffMember staff){
         return staffList.contains(staff)
                ? false
                :staffList.add(staff);
     }
     
+    public boolean isEmpty() {
+        return staffList.isEmpty();
+    }
+    
     @Override
     public String toString() {
-        List<Staff> copy = new ArrayList<>(staffList);
+        List<StaffMember> copy = new ArrayList<>(staffList);
         Collections.sort(copy);
 
         StringBuilder s = new StringBuilder();
-        for (Staff staff : copy) {
+        for (StaffMember staff : copy) {
             s.append(staff);
             s.append("\n");
         }
@@ -79,8 +83,8 @@ public class StaffRegister implements Serializable{
         }
         StaffRegister otherStaffRegister = (StaffRegister) otherObject;
 
-        List<Staff> copyThis = new ArrayList<>(staffList);
-        List<Staff> copyOther = new ArrayList<>( otherStaffRegister.staffList);
+        List<StaffMember> copyThis = new ArrayList<>(staffList);
+        List<StaffMember> copyOther = new ArrayList<>( otherStaffRegister.staffList);
 
         return copyThis.equals(copyOther);
     }    
