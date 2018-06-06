@@ -11,7 +11,12 @@ import java.util.Date;
  *
  * @author MariaJoão
  */
+
+
+
 public class Event {
+    
+    private static final int CORDAYS_APPLICATION_OMISSION = 0;
 
     private String title;
     private String description;
@@ -21,6 +26,7 @@ public class Event {
     private OrganiserRegister organisersList;
     private StaffRegister staffRegister;
     private EventState eventState;
+    private int daysApplication = CORDAYS_APPLICATION_OMISSION;
     
     public Event(String Title, String description, Date startDate, Date endDate, String place, OrganiserRegister organisersList) {
         this.title = Title;
@@ -33,9 +39,16 @@ public class Event {
     }
 
     public Event() {
-       this.organisersList= new OrganiserRegister(); 
+       this.organisersList = new OrganiserRegister(); 
     }
     
+    public boolean changeToReadyForApplication(){
+        if((!staffRegister.isEmpty()) && (!organisersList.isEmpty()) && daysApplication != 0 && eventState == EventState.CREATED){
+            this.eventState = EventState.READY_FOR_APPLICATION;
+            return true;
+        }else
+            return false;
+    }
        
 
     public boolean isCreated(){
