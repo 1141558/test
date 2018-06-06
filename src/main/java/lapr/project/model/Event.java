@@ -29,7 +29,7 @@ public class Event {
         this.endDate = endDate;
         this.place = place;
         this.organisersList= organisersList;
-        this.eventState = eventState.CREATED;        
+        this.eventState = EventState.CREATED;        
     }
 
     public Event() {
