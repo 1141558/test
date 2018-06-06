@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author André Silva
  */
-public class Staff implements Comparable<Staff>, Serializable{
+public class StaffMember implements Comparable<StaffMember>, Serializable{
     
     private static final long serialVersionUID = 1L;
     
@@ -25,11 +25,11 @@ public class Staff implements Comparable<Staff>, Serializable{
         return staff;
     }
 
-    public Staff() {
+    public StaffMember() {
         this.staff = new User();
     }
 
-    public Staff(User staff) {
+    public StaffMember(User staff) {
         this.staff = staff;
     }
 
@@ -53,7 +53,7 @@ public class Staff implements Comparable<Staff>, Serializable{
         if (otherObject == null || getClass() != otherObject.getClass()) {
             return false;
         }
-        Staff otherStaff = (Staff) otherObject;
+        StaffMember otherStaff = (StaffMember) otherObject;
         
         return staff == otherStaff.staff;
     }
@@ -66,8 +66,8 @@ public class Staff implements Comparable<Staff>, Serializable{
     }
 
     @Override
-    public int compareTo(Staff otherStaff) {
-        return this.staff.getName().compareTo(otherStaff.staff.getName());
+    public int compareTo(StaffMember otherStaff) {
+        return this.staff.getUsername().compareTo(otherStaff.staff.getUsername());
     }
     
 }
