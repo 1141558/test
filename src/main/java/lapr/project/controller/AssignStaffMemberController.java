@@ -26,7 +26,7 @@ public class AssignStaffMemberController {
     private StaffRegister staffRegister;
     private Organiser organiser;
     
-    DummyData dummy = new DummyData();
+    //DummyData dummy = new DummyData();
     
 List<Event> organiserValidatedList = new ArrayList<>();
 

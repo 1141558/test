@@ -10,6 +10,7 @@ import java.util.List;
 import lapr.project.model.Event;
 import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
+import lapr.project.model.Organiser;
 import lapr.project.model.User;
 
 /**
@@ -28,8 +29,12 @@ public class StartSubmissionPeriodController {
         List<Event> listEvent =  new ArrayList<>();
         
         for(Event e : this.exhibitionCentre.getEventRegister().getEventList()){
-           if((e.getOrganisersList().getOrganiser().getOrganiser().getUsername().equals(user.getUsername())) && e.isReadyForApplication())
-               listEvent.add(e);
+            for (Organiser o : e.getOrganiserRegister().getOrganiserList()) {
+                if(o.getOrganiser().getUsername().equals(user.getUsername()) && e.isReadyForApplication()){
+                    listEvent.add(e);
+                }
+            }
+           
         }        
         return listEvent;
     }

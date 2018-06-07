@@ -17,7 +17,6 @@ public class Organiser extends User implements  Serializable{
     private static final long serialVersionUID = 1L;
  
     private User organiser = new User();
-    private User orUser = new User();
 
     /**
      * @return the organiser
