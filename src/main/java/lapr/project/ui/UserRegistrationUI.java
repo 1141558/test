@@ -49,27 +49,27 @@ public class UserRegistrationUI {
         
         
         while(!isName(name)){
-            printError("The name inserted is not valid!\nPlease try again.");
+            Utils.printError("The name inserted is not valid!\nPlease try again.");
 //            System.out.println("The name inserted is not valid!\nPlease try again.\n");
             name = Utils.readLineFromConsole("NAME: ");
             
         }
         
         while(!isEmail(email)){
-            printError("The email inserted is not valid!\nPlease try again.");
+            Utils.printError("The email inserted is not valid!\nPlease try again.");
             
 //            System.out.println("The email inserted is not valid!\nPlease try again.\n");
             email = Utils.readLineFromConsole("EMAIL: ");            
         }
         
         while(!isUsername(username)){
-            printError("The username inserted is not valid!\nPlease try again.");
+            Utils.printError("The username inserted is not valid!\nPlease try again.");
 //            System.out.println("The username inserted is not valid!\nPlease try again.\n");
             username = Utils.readLineFromConsole("USERNAME: ");
         }
         
         while(!isPassword(passwordString)){
-            printError("The password inserted is not valid!\nPlease try again.");
+            Utils.printError("The password inserted is not valid!\nPlease try again.");
 //            System.out.println("The password inserted is not valid!\nPlease try again.\n");
             passwordString = Utils.readLineFromConsole("PASSWORD: ");
 //            if(isPassword(passwordString)) password=Integer.parseInt(passwordString);
@@ -79,9 +79,9 @@ public class UserRegistrationUI {
        
         if (controller.setData(name, email, username, password)) {
             //confirma sucesso
-            printConfirmation("User registered!");
+            Utils.printConfirmation("User registered!");
         } else {
-            printError("User registration failed!");
+            Utils.printError("User registration failed!");
         }
 
         
@@ -93,23 +93,6 @@ public class UserRegistrationUI {
     
     
 }
-    
-    private void printError(String message){
-        
-        System.out.println((char)27 + "[31m\n-----------------------ERROR-----------------------" + (char)27 + "[0m");
-        System.out.println((char)27 + "[31m"+message+(char)27 + "[0m");
-        System.out.println((char)27 + "[31m---------------------------------------------------\n"+ (char)27 + "[0m");
-    } 
-    
-    
-    private void printConfirmation(String message){
-        
-        System.out.println((char)27 + "[32m\n----------------------SUCCESS----------------------" + (char)27 + "[0m");
-        System.out.println((char)27 + "[32m"+message+(char)27 + "[0m");
-        System.out.println((char)27 + "[32m---------------------------------------------------\n"+ (char)27 + "[0m");
-    }     
-    
-    
     
     
     /**
