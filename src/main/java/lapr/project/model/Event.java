@@ -63,14 +63,18 @@ public class Event {
     public boolean isOpenApplication(){
          return this.eventState == EventState.OPEN_APPLICATION;
     }
+    
     public boolean isReadyForOpening(){
         return this.eventState == EventState.READY_FOR_OPENING;
-    }    
+    }
+
+    public boolean isInEvaluations(){
+        return this.eventState == EventState.IN_EVALUATIONS;
+    }
 
     public boolean isOpen(){
         return this.eventState == EventState.OPEN;
     }
-
     
     public boolean isClose(){
         return this.eventState == EventState.CLOSE;
@@ -167,6 +171,10 @@ public class Event {
     public void addOrganiserRegister(OrganiserRegister organiserRegister) {
         this.organiserRegister = organiserRegister;
         
+    }
+    
+    public void setEventState(EventState eventState){
+        this.eventState = eventState;        
     }
  
  
