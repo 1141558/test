@@ -37,6 +37,8 @@ public class MainMenu {
              case 2:
                 new AssignStaffMemberUI(centre);    
             break; 
+             case 5:
+                 new UserRegistrationUI(centre);
         }
     }
     
