@@ -17,7 +17,7 @@ import lapr.project.utils.Utils;
  */
 public class AssignStaffMemberUI {
     
-    private AssignStaffMemberController assignStaffMemberController;
+    private AssignStaffMemberController assignStaffMemberController = new AssignStaffMemberController()  ;
     
     AssignStaffMemberUI(ExhibitionCentre centre) {
         
@@ -45,8 +45,8 @@ public class AssignStaffMemberUI {
        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
        
        
-        organiserValidated.setName(name)
-                ;
+        organiserValidated.setName(name);
+                
         organiserValidated.setEmail(email);
         organiserValidated.setUsername(userName);
         organiserValidated.setPassword(password);
