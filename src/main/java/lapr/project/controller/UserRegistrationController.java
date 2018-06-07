@@ -14,10 +14,10 @@ import lapr.project.model.User;
  */
 public class UserRegistrationController {
     
-    private User user=new User();
+    private User user;
     
     public UserRegistrationController(){
-        
+        this.user=new User();
     }
     
     
@@ -56,8 +56,10 @@ public class UserRegistrationController {
         
         //Calcula as probabilidades
         double [] probArray=new double [10];
-        for(int i=0;i<probArray.length;i++){
-            probArray[i]=(double)((double)numCount[i]/password.length());
+        
+        probArray[0]=((double)numCount[0]/password.length());
+        for(int i=1;i<probArray.length;i++){
+            probArray[i]=((double)numCount[i]/password.length())+probArray[i-1];
         }
         
         
@@ -71,14 +73,14 @@ public class UserRegistrationController {
             
             //I+delta*probC(digit-1)
             
-            x=(digit==0)? (double)I:(double)I+(((double)F-(double)I)*probArray[digit-1]);
-            y=(double)I+(((double)F-(double)I)*probArray[digit]);
+            x=(digit==0)? I:I+((F-I)*probArray[digit-1]);
+            y=I+((F-I)*probArray[digit]);
             
-            I=(double)x;
-            F=(double)y;
+            I=x;
+            F=y;
             
         }
-        encrypted=(double)I;
+        encrypted=I;
         return encrypted;
     }
     
