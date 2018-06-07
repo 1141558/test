@@ -75,9 +75,9 @@ public class UserRegistrationUI {
 //            if(isPassword(passwordString)) password=Integer.parseInt(passwordString);
         }
         
-        password=Integer.parseInt(passwordString);
+//        password=Integer.parseInt(passwordString);
        
-        if (controller.setData(name, email, username, password)) {
+        if (controller.setData(name, email, username, passwordString)) {
             //confirma sucesso
             Utils.printConfirmation("User registered!");
         } else {
@@ -156,7 +156,7 @@ public class UserRegistrationUI {
                 return false;
             }
         }
-        if(n<8) return false;
+        if(n!=8) return false;
                 
         return true;
     }
