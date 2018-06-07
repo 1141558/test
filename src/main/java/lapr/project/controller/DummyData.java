@@ -20,7 +20,7 @@ import lapr.project.model.User;
  */
 class DummyData {
     
-    Organiser org1 = new Organiser("manuel", "mjdg111@hotmail.com","garnel",123);
+   // Organiser org1 = new Organiser("manuel", "mjdg111@hotmail.com","garnel",123);
     Organiser org3323 = new Organiser();
     OrganiserRegister organiserRegister = new OrganiserRegister();
     List<Organiser> organiserList = new ArrayList<>();
@@ -42,6 +42,10 @@ class DummyData {
     }
 
     public DummyData() {
+           User us1 = new User("manuel", "mjdg111@hotmail.com","garnel",123);
+          Organiser org1= new Organiser(us1);
+          
+          
         organiserList.add(org1);
         System.out.println(org1);
         System.err.println(organiserList);

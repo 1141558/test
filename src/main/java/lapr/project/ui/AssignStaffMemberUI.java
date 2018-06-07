@@ -15,23 +15,23 @@ import lapr.project.utils.Utils;
  *
  * @author Altran
  */
-public class AssignStaffMemberUI {
+public final class AssignStaffMemberUI {
     
-    private AssignStaffMemberController assignStaffMemberController = new AssignStaffMemberController()  ;
+    private AssignStaffMemberController assignStaffMemberController  ;
     
     AssignStaffMemberUI(ExhibitionCentre centre) {
         
-     
-     
+        this.assignStaffMemberController = new AssignStaffMemberController(centre);
+         
          assignStaffMemberController.assignStaffMemberToEvent(inputOrganiserData());  
       
        
         
     }
     
- public Organiser inputOrganiserData() {
+ public User inputOrganiserData() {
         
-        Organiser organiserValidated = new Organiser();
+        User organiserValidated = new User();
         
         System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
         System.out.println("           Input organiser Data           ");

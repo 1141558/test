@@ -88,35 +88,35 @@ public class OrganiserRegister implements  Serializable{
         return organiserList.size();
     }
 
-//    @Override
-//    public String toString() {
-//        List<Organiser> copy = new ArrayList<>(organiserList);
-//        Collections.sort(copy);
-//
-//        StringBuilder s = new StringBuilder();
-//        for (Organiser o: copy) {
-//            s.append(o);
-//            s.append("\n");
-//        }
-//        
-//        return s.toString().trim();
-//    }
-    
     @Override
-    public boolean equals(Object otherObject) {
-        if (this == otherObject) {
-            return true;
-        }
-        if (otherObject == null || getClass() != otherObject.getClass()) {
-            return false;
-        }
-        OrganiserRegister otherOrganiserRegister = (OrganiserRegister) otherObject;
+    public String toString() {
+        List<Organiser> copy = new ArrayList<>(organiserList);
+       // Collections.sort(copy);
 
-        List<Organiser> copyThis = new ArrayList<>(organiserList);
-        List<Organiser> copyOther = new ArrayList<>( otherOrganiserRegister.organiserList);
-
-        return copyThis.equals(copyOther);
+        StringBuilder s = new StringBuilder();
+        for (Organiser o: copy) {
+            s.append(o);
+            s.append("\n");
+        }
+        
+        return s.toString().trim();
     }
+    
+//    @Override
+//    public boolean equals(Object otherObject) {
+//        if (this == otherObject) {
+//            return true;
+//        }
+//        if (otherObject == null || getClass() != otherObject.getClass()) {
+//            return false;
+//        }
+//        OrganiserRegister otherOrganiserRegister = (OrganiserRegister) otherObject;
+//
+//        List<Organiser> copyThis = new ArrayList<>(organiserList);
+//        List<Organiser> copyOther = new ArrayList<>( otherOrganiserRegister.organiserList);
+//
+//        return copyThis.equals(copyOther);
+//    }
 
     @Override
     public int hashCode() {
