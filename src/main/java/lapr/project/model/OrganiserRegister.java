@@ -20,6 +20,15 @@ public class OrganiserRegister implements Serializable{
     private static final long serialVersionUID = 1L;
     
     private List<Organiser> organiserList;
+    Organiser organiser;
+
+    public Organiser getOrganiser() {
+        return organiser;
+    }
+
+    public void setOrganiser(Organiser organiser) {
+        this.organiser = organiser;
+    }
 
     public OrganiserRegister(List<Organiser> organiserList) {
         this.organiserList = organiserList;

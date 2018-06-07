@@ -42,4 +42,8 @@ public class EventRegister {
         this.eventList = eventList;
     }
 
+    public void setEvent(Event event1) {
+         eventList.add(event1);
+    }
+
 }

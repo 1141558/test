@@ -6,6 +6,7 @@
 package lapr.project.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Event {
     private Date startDate;
     private Date endDate;
     private String place;
-    private OrganiserRegister organisersList;
+    private OrganiserRegister organiserRegister;
     private StaffRegister staffRegister;
     private EventState eventState;
     private int daysApplication = CORDAYS_APPLICATION_OMISSION;
@@ -34,16 +35,16 @@ public class Event {
         this.startDate = startDate;
         this.endDate = endDate;
         this.place = place;
-        this.organisersList= organisersList;
+        this.organiserRegister= organisersList;
         this.eventState = EventState.CREATED;        
     }
 
     public Event() {
-       this.organisersList = new OrganiserRegister(); 
+       this.organiserRegister = new OrganiserRegister(); 
     }
     
     public boolean changeToReadyForApplication(){
-        if((!staffRegister.isEmpty()) && (!organisersList.isEmpty()) && daysApplication != 0 && eventState == EventState.CREATED){
+        if((!staffRegister.isEmpty()) && (!organiserRegister.isEmpty()) && daysApplication != 0 && eventState == EventState.CREATED){
             this.eventState = EventState.READY_FOR_APPLICATION;
             return true;
         }else
@@ -149,14 +150,24 @@ public class Event {
      * @return the organisersList
      */
     public OrganiserRegister getOrganisersList() {
-        return organisersList;
+        return organiserRegister;
     }
 
     /**
      * @param organisersList the organisersList to set
      */
     public void setOrganisersList(OrganiserRegister organisersList) {
-        this.organisersList = organisersList;
+        this.organiserRegister = organisersList;
     }
+
+    public OrganiserRegister getOrganiserRegister() {
+       return this.getOrganisersList();
+    }
+
+    public void addOrganiserRegister(OrganiserRegister organiserRegister) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+ 
     
 }

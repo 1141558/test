@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author MariaJoão
  */
-public class Organiser implements Serializable{
+public class Organiser extends User implements Serializable{
     
     private static final long serialVersionUID = 1L;
  
