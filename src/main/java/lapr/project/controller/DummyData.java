@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Event;
 import lapr.project.model.EventRegister;
+import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
 
@@ -22,21 +23,21 @@ class DummyData {
     Organiser org2 = new Organiser();
     OrganiserRegister organiserRegister = new OrganiserRegister();
     List<Organiser> organiserList = new ArrayList<>();
-    
+    ExhibitionCentre exhibitionCentre = new ExhibitionCentre();
     
      Event event1;
     Event event2 = new Event();
     Event event3= new Event();
     
     
-    EventRegister eventRegsiter = new EventRegister();
+    EventRegister eventRegister = new EventRegister();
 
     public EventRegister getEventRegsiter() {
-        return eventRegsiter;
+        return eventRegister;
     }
 
     public void setEventRegsiter(EventRegister eventRegsiter) {
-        this.eventRegsiter = eventRegsiter;
+        this.eventRegister = eventRegsiter;
     }
 
     public DummyData() {
@@ -46,7 +47,8 @@ class DummyData {
        
         this.event1 = new Event();
         event1.addOrganiserRegister(organiserRegister);
-        eventRegsiter.setEvent(event1);
+        eventRegister.setEvent(event1);
+        exhibitionCentre.setEventRegister(eventRegister);
         
     }
 

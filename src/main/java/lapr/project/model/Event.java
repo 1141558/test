@@ -165,9 +165,10 @@ public class Event {
     }
 
     public void addOrganiserRegister(OrganiserRegister organiserRegister) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.organiserRegister = organiserRegister;
+        
     }
-
+ 
  
     
 }

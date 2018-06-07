@@ -29,15 +29,15 @@ public class AssignStaffMemberController {
     
     DummyData dummy = new DummyData();
     
-
+List<Event> organiserValidatedList = new ArrayList<>();
     public List<Event> assignStaffMemberToEvent(Organiser m_organiser) {
         Organiser organiserValidated = m_organiser;
         boolean checked = false;
         List<Organiser> organisersList = new ArrayList<>();
-        List<Event> organiserValidatedList = new ArrayList<Event>();
-//List<Event> organiserValidatedList = (List<Event>) dummy.eventRegsiter;
+        //List<Event> organiserValidatedList = new ArrayList<Event>();
+List<Event> organiserValidatedList = (new ArrayList<>());
 
-        eventRegister = exhibitionCentre.getEventRegister();
+       // eventRegister = exhibitionCentre.getEventRegister();
         eventRegister = dummy.getEventRegsiter();
         
         List<Event> eventList = eventRegister.getEventList();
