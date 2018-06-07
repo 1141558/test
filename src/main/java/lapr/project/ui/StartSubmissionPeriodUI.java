@@ -32,30 +32,33 @@ public class StartSubmissionPeriodUI {
         System.out.println("           START EVENT'S APPLICATION SUBMISSION PERIOD           ");
         System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         while(!right){
-        System.out.println("--------------------------");
-        System.out.println("          EVENTS          ");
-        System.out.println("--------------------------");
-        System.out.println("EVENTS OF "+exhibitionCentre.getUserOnline().getName());
-        
-        
-        for (Event event : controller.findEventByOrganiserAndState(exhibitionCentre.getUserOnline())) {
-            System.out.println(n + " - "+event.toString2());
-            n++;
-        }
-                
-        System.out.println("--------------------------");
-        event_selected_string=Utils.readLineFromConsole("PICK EVENNT: ");
+                System.out.println("--------------------------");
+                System.out.println("          EVENTS          ");
+                System.out.println("--------------------------");
+                System.out.println("EVENTS OF "+exhibitionCentre.getUserOnline().getName());
 
-        try{
-            event_selected= Integer.parseInt(event_selected_string);
-            if(event_selected>n || event_selected<1){
-             //printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
 
-            }
-        }catch(NumberFormatException e){{
-            
-        }
-        }
+                for (Event event : controller.findEventByOrganiserAndState(exhibitionCentre.getUserOnline())) {
+                    System.out.println(n + " - "+event.toString2());
+                    n++;
+                }
+
+                System.out.println("--------------------------");
+                event_selected_string=Utils.readLineFromConsole("PICK EVENNT: ");
+
+                try{
+                    event_selected= Integer.parseInt(event_selected_string);
+                    if(event_selected>n || event_selected<1){
+                        Utils.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
+                     n=1;   
+                    }else{
+                        right=true;
+                    }
+                }catch(NumberFormatException e){{
+                  Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                  n=1;  
+                }
+                }
     }
     
     

@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author MariaJoão
  */
-public class Organiser extends User implements  Serializable{
+public class Organiser  implements Comparable<Organiser> ,  Serializable{
     
     private static final long serialVersionUID = 1L;
  
@@ -29,9 +29,9 @@ public class Organiser extends User implements  Serializable{
         this.organiser = new User();
     }
 
-    public Organiser(String nome, String email, String userName, double pass){
-        super(nome,email,userName,pass);
-    }
+//    public Organiser(String nome, String email, String userName, double pass){
+//        super(nome,email,userName,pass);
+//    }
     public Organiser(User organiser) {
         this.organiser = organiser;
     }
@@ -68,9 +68,9 @@ public class Organiser extends User implements  Serializable{
         return hash;
     }
     
-//    @Override
-//    public int compareTo(Organiser otherOrganiser) {
-//        return this.organiser.getUsername().compareTo(otherOrganiser.organiser.getUsername());
-//    }
+    @Override
+    public int compareTo(Organiser otherOrganiser) {
+        return this.organiser.getUsername().compareTo(otherOrganiser.organiser.getUsername());
+    }
     
 }

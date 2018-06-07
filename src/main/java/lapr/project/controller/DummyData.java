@@ -22,6 +22,7 @@ import lapr.project.model.User;
 public class DummyData {
     
     Organiser org1 ;
+
     OrganiserRegister organiserRegister = new OrganiserRegister();
     List<Organiser> organiserList = new ArrayList<>();
     ExhibitionCentre exhibitionCentre = new ExhibitionCentre();
@@ -44,8 +45,13 @@ public class DummyData {
     public DummyData(ExhibitionCentre exhibitionCentre) {
         org1= new Organiser();
         org1.setOrganiser(u1);
+           User us1 = new User("manuel", "mjdg111@hotmail.com","garnel",123);
+          Organiser org1= new Organiser(us1);
+          
+          
         organiserList.add(org1);
         organiserRegister.setOrganiserList(organiserList);      
+       
         this.event1 = new Event(organiserRegister);
         event1.setEventState(EventState.READY_FOR_APPLICATION);
         event1.addOrganiserRegister(organiserRegister);
