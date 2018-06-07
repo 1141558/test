@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author MariaJoão
  */
-public class Organiser extends User implements Serializable{
+public class Organiser extends User implements Comparable<Organiser>,Serializable{
     
     private static final long serialVersionUID = 1L;
  
@@ -65,6 +65,7 @@ public class Organiser extends User implements Serializable{
         return hash;
     }
     
+    @Override
     public int compareTo(Organiser otherOrganiser) {
         return this.organiser.getUsername().compareTo(otherOrganiser.organiser.getUsername());
     }

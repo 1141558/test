@@ -72,8 +72,8 @@ public class OrganiserRegister implements Serializable{
     
     public boolean isExist(User user){
         boolean valida = false;
-        for(Organiser organiser : organiserList){
-            if(organiser.getOrganiser().equals(user))
+        for(Organiser o : organiserList){
+            if(o.getOrganiser().equals(user))
                 valida = true;
         }
         return  valida;
@@ -82,20 +82,24 @@ public class OrganiserRegister implements Serializable{
     public boolean isEmpty() {
         return organiserList.isEmpty();
     }
+    
+     public int sizeOrganiserList() {
+        return organiserList.size();
+    }
 
-//    @Override
-//    public String toString() {
-//        List<Organiser> copy = new ArrayList<>(organiserList);
-//        Collections.sort(copy);
-//
-//        StringBuilder s = new StringBuilder();
-//        for (Organiser organiser : copy) {
-//            s.append(organiser);
-//            s.append("\n");
-//        }
-//        
-//        return s.toString().trim();
-//    }
+    @Override
+    public String toString() {
+        List<Organiser> copy = new ArrayList<>(organiserList);
+        Collections.sort(copy);
+
+        StringBuilder s = new StringBuilder();
+        for (Organiser o: copy) {
+            s.append(o);
+            s.append("\n");
+        }
+        
+        return s.toString().trim();
+    }
     
     @Override
     public boolean equals(Object otherObject) {

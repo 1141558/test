@@ -35,18 +35,9 @@ public class StaffRegister implements Serializable{
     
     /**
      *
-     * @param indice
-     * @return staff
-     */
-    public StaffMember getStaff(int indice){
-        return staffList.get(indice);
-    }
-    
-    /**
-     *
-     * @param staff
+     * @param user
      * @return true or false
-     * Valida se já existe o staff passado por parametro, caso não exista adiciona à List
+     * Valida se já existe o user passado por parametro, caso não exista adiciona à List
      */
     
     public boolean registerStaff(User user){
@@ -55,9 +46,14 @@ public class StaffRegister implements Serializable{
             return true;
         } else
             return false;
-        
     }
     
+    /**
+     *
+     * @param user
+     * @return boolean
+     * verifica se já existe um utilizador igual na lista
+     */
     public boolean isExist(User user){
         boolean valida = false;
         for(StaffMember staff : staffList){
@@ -67,8 +63,22 @@ public class StaffRegister implements Serializable{
         return  valida;
     }
     
+    /**
+     *
+     * @return boolean
+     * verifica se a lista está vazia
+     */
     public boolean isEmpty() {
         return staffList.isEmpty();
+    }
+    
+    /**
+     *
+     * @return int
+     * devolve a tamanho da lista
+     */
+    public int sizeStaffList() {
+        return staffList.size();
     }
     
     @Override
