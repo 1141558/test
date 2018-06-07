@@ -26,9 +26,9 @@ class DummyData {
     List<Organiser> organiserList = new ArrayList<>();
     ExhibitionCentre exhibitionCentre = new ExhibitionCentre();
     
-     Event event1;
-    Event event2 = new Event();
-    Event event3= new Event();
+     Event event1 = new Event(organiserRegister);
+    Event event2 = new Event(organiserRegister);
+    Event event3= new Event(organiserRegister);
     
     
     EventRegister eventRegister = new EventRegister();
@@ -43,13 +43,16 @@ class DummyData {
 
     public DummyData() {
         organiserList.add(org1);
+        System.out.println(org1);
+        System.err.println(organiserList);
         organiserList.add(org2);
         organiserRegister.setOrganiserList(organiserList);
        
-        this.event1 = new Event();
+        this.event1 = new Event(organiserRegister);
         event1.addOrganiserRegister(organiserRegister);
         eventRegister.setEvent(event1);
         exhibitionCentre.setEventRegister(eventRegister);
+         System.out.print(exhibitionCentre);
         
     }
 

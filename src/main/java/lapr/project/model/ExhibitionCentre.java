@@ -51,6 +51,7 @@ public class ExhibitionCentre {
         this.userRegister = userRegister;
     }
 
+ 
     /**
      * @return the userOnline
      */
@@ -63,6 +64,11 @@ public class ExhibitionCentre {
      */
     public void setUserOnline(User userOnline) {
         this.userOnline = userOnline;
+    }
+    @Override
+    public String toString() {
+        return "ExhibitionCentre{" + "eventRegister=" + eventRegister + ", userRegister=" + userRegister + '}';
+
     }
     
 }

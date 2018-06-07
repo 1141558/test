@@ -21,9 +21,11 @@ public class AssignStaffMemberUI {
     
     AssignStaffMemberUI(ExhibitionCentre centre) {
         
-         
+     
+     
+         assignStaffMemberController.assignStaffMemberToEvent(inputOrganiserData());  
       
-        assignStaffMemberController.assignStaffMemberToEvent(inputOrganiserData());
+       
         
     }
     

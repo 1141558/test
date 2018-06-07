@@ -76,4 +76,9 @@ public class EventRegister {
          eventList.add(event1);
     }
 
+    @Override
+    public String toString() {
+        return "EventRegister{" + "eventList=" + eventList + '}';
+    }
+
 }

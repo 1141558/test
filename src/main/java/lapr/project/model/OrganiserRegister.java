@@ -7,6 +7,7 @@ package lapr.project.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +16,7 @@ import java.util.Objects;
  *
  * @author MariaJoão
  */
-public class OrganiserRegister implements Serializable{
+public class OrganiserRegister implements  Serializable{
     
     private static final long serialVersionUID = 1L;
     
@@ -87,19 +88,19 @@ public class OrganiserRegister implements Serializable{
         return organiserList.size();
     }
 
-    @Override
-    public String toString() {
-        List<Organiser> copy = new ArrayList<>(organiserList);
-        Collections.sort(copy);
-
-        StringBuilder s = new StringBuilder();
-        for (Organiser o: copy) {
-            s.append(o);
-            s.append("\n");
-        }
-        
-        return s.toString().trim();
-    }
+//    @Override
+//    public String toString() {
+//        List<Organiser> copy = new ArrayList<>(organiserList);
+//        Collections.sort(copy);
+//
+//        StringBuilder s = new StringBuilder();
+//        for (Organiser o: copy) {
+//            s.append(o);
+//            s.append("\n");
+//        }
+//        
+//        return s.toString().trim();
+//    }
     
     @Override
     public boolean equals(Object otherObject) {

@@ -82,5 +82,10 @@ public class User {
     public void setPassword(double password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "name=" + name + ", email=" + email + ", username=" + username + ", password=" + password + '}';
+    }
     
 }
