@@ -29,6 +29,9 @@ public class Organiser extends User implements Comparable<Organiser>,Serializabl
         this.organiser = new User();
     }
 
+    public Organiser(String nome, String email, String userName, double pass){
+        super(nome,email,userName,pass);
+    }
     public Organiser(User organiser) {
         this.organiser = organiser;
     }

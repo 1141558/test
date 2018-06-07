@@ -12,6 +12,7 @@ import lapr.project.model.EventRegister;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
+import lapr.project.model.User;
 
 /**
  *
@@ -19,7 +20,7 @@ import lapr.project.model.OrganiserRegister;
  */
 class DummyData {
     
-    Organiser org1 = new Organiser();
+    Organiser org1 = new Organiser("manuel", "mjdg111@hotmail.com","garnel",123);
     Organiser org2 = new Organiser();
     OrganiserRegister organiserRegister = new OrganiserRegister();
     List<Organiser> organiserList = new ArrayList<>();
