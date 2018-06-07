@@ -16,6 +16,13 @@ import java.util.List;
 
 
 public class Event {
+
+    /**
+     * @return the staffRegister
+     */
+    public StaffRegister getStaffRegister() {
+        return staffRegister;
+    }
     
     private static final int CORDAYS_APPLICATION_OMISSION = 0;
 
@@ -27,22 +34,29 @@ public class Event {
     private OrganiserRegister organiserRegister;
     private StaffRegister staffRegister;
     private EventState eventState;
+    private EventManager eventManager;
     private int daysApplication = CORDAYS_APPLICATION_OMISSION;
     
-    public Event(String Title, String description, Date startDate, Date endDate, String place, OrganiserRegister organisersList) {
+    
+    public Event(String Title, String description, Date startDate, Date endDate, String place, OrganiserRegister organiserRegister) {
         this.title = Title;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.place = place;
-        this.organiserRegister= organisersList;
+        this.organiserRegister= organiserRegister;
         this.eventState = EventState.CREATED;        
     }
 
-    public Event() {
+    public Event(OrganiserRegister organiserRegister) {
        this.organiserRegister = new OrganiserRegister(); 
     }
-    
+
+    public Event() {
+        
+    }
+
+ 
     public boolean changeToReadyForApplication(){
         if((!staffRegister.isEmpty()) && (!organiserRegister.isEmpty()) && daysApplication != 0 && eventState == EventState.CREATED){
             this.eventState = EventState.READY_FOR_APPLICATION;
@@ -172,9 +186,50 @@ public class Event {
         this.organiserRegister = organiserRegister;
         
     }
+
     
     public void setEventState(EventState eventState){
         this.eventState = eventState;        
+    }
+
+    /**
+     * @return the eventManager
+     */
+    public EventManager getEventManager() {
+        return eventManager;
+    }
+
+    /**
+     * @param eventManager the eventManager to set
+     */
+    public void setEventManager(EventManager eventManager) {
+        this.eventManager = eventManager;
+    }
+
+
+
+    public void setStaffRegister(StaffRegister staffRegister) {
+        this.staffRegister = staffRegister;
+    }
+
+    public EventState getEventState() {
+        return eventState;
+    }
+
+   
+
+    public int getDaysApplication() {
+        return daysApplication;
+    }
+
+    public void setDaysApplication(int daysApplication) {
+        this.daysApplication = daysApplication;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" + "title=" + title + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", place=" + place + ", organiserRegister=" + organiserRegister + ", staffRegister=" + staffRegister + ", eventState=" + eventState + ", daysApplication=" + daysApplication + '}';
+
     }
  
  

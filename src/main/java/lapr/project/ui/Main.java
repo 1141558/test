@@ -36,7 +36,7 @@ class Main {
         /*fim dados de teste*/
         
         
-        new MainMenu(centre);   
+        new LoginUI(centre);   
         
     }
 

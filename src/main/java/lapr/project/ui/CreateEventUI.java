@@ -36,7 +36,7 @@ public class CreateEventUI {
         String title, description, startDateString, endDateString, place, user1="";
         Date startDate = new Date(), endDate= new Date();
         List<Organiser> organisersToPrint = new ArrayList<>();
-        int userPos=0;
+        int userPos=0, nDays=0;
        
         System.out.println("");        
         System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
@@ -49,7 +49,19 @@ public class CreateEventUI {
         endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
         endDate=validateEndDateFormat(endDateString, startDate);        
         place = Utils.readLineFromConsole("PLACE: ");
-        
+        while(nDays<1){
+            try{
+                nDays = Integer.parseInt(Utils.readLineFromConsole("NUMBER OF DAYS FOR OPEN APPLICATIONS: "));
+                if(nDays<1){
+                 printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
+
+                }    
+                }catch(NumberFormatException e){
+
+                printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+
+            }           
+        }
         while(!user1.equalsIgnoreCase("X")){
             
             int n=1;
@@ -70,7 +82,7 @@ public class CreateEventUI {
             
         }        
         controller.setData(title, description, startDate, endDate, place);
-        printEvent(title, description, startDate, endDate, place,organisersToPrint);
+        printEvent(title, description, startDate, endDate, place,organisersToPrint, nDays);
         String resposta="";
         while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
             resposta=Utils.readLineFromConsole("DO YOU CONFIRM THIS EVENT? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
@@ -148,18 +160,18 @@ public class CreateEventUI {
     private void printWarning(String message){
         
         System.out.println((char)27 + "[33m\n----------------------WARNING----------------------" + (char)27 + "[0m");
-        System.out.println((char)27 + "[33m"+message+(char)27 + "[0m");
+        System.out.println((char)27 + "[33m                    "+message+(char)27 + "[0m");
         System.out.println((char)27 + "[33m---------------------------------------------------\n"+ (char)27 + "[0m");
     } 
     
     private void printConfirmation(String message){
         
         System.out.println((char)27 + "[32m\n----------------------SUCCESS----------------------" + (char)27 + "[0m");
-        System.out.println((char)27 + "[32m"+message+(char)27 + "[0m");
+        System.out.println((char)27 + "[32m                    "+message+(char)27 + "[0m");
         System.out.println((char)27 + "[32m---------------------------------------------------\n"+ (char)27 + "[0m");
     }     
     
-    private void printEvent(String title, String description, Date startDate, Date endDate, String place, List<Organiser> list){
+    private void printEvent(String title, String description, Date startDate, Date endDate, String place, List<Organiser> list, int nDays){
         System.out.println("");        
         System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         System.out.println("           CREATED EVENT          ");
@@ -169,6 +181,7 @@ public class CreateEventUI {
         System.out.println("START DATE : "+startDate.toString());
         System.out.println("END DATE : "+endDate.toString());
         System.out.println("PLACE: "+place);
+        System.out.println("NUMBER OF DAYS FOR OPEN APPLICATIONS: "+nDays);
         System.out.println("--------------------------");
         System.out.println("        ORGANISERS        ");
         System.out.println("--------------------------");

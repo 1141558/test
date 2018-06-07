@@ -13,7 +13,8 @@ public class ExhibitionCentre {
     
     private EventRegister eventRegister;
     private UserRegister userRegister;
-
+    private User userOnline;
+    
     public ExhibitionCentre(){
         this.eventRegister=new EventRegister();
         this.userRegister= new UserRegister(); 
@@ -48,6 +49,26 @@ public class ExhibitionCentre {
      */
     public void setUserRegister(UserRegister userRegister) {
         this.userRegister = userRegister;
+    }
+
+ 
+    /**
+     * @return the userOnline
+     */
+    public User getUserOnline() {
+        return userOnline;
+    }
+
+    /**
+     * @param userOnline the userOnline to set
+     */
+    public void setUserOnline(User userOnline) {
+        this.userOnline = userOnline;
+    }
+    @Override
+    public String toString() {
+        return "ExhibitionCentre{" + "eventRegister=" + eventRegister + ", userRegister=" + userRegister + '}';
+
     }
     
 }
