@@ -26,7 +26,11 @@ public class StaffRegister implements Serializable{
     }
 
     public StaffRegister(StaffRegister staffList) {
-        this.staffList = new ArrayList<>(staffList.getListStaff());
+        this.staffList = staffList.getListStaff();
+    }
+    
+    public StaffRegister(List<StaffMember> staffList) {
+        this.staffList = staffList;
     }
     
     public List<StaffMember> getListStaff(){
@@ -57,7 +61,7 @@ public class StaffRegister implements Serializable{
     public boolean isExist(User user){
         boolean valida = false;
         for(StaffMember staff : staffList){
-            if(staff.getStaffUser().equals(user))
+            if(staff.getStaffUser().getUsername().equals(user.getUsername()))
                 valida = true;
         }
         return  valida;

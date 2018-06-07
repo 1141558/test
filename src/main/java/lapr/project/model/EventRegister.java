@@ -5,6 +5,7 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +15,10 @@ import java.util.List;
  *
  * @author MariaJoão
  */
-public class EventRegister {
+public class EventRegister implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private List<Event> eventList;
 
     public EventRegister(List<Event> eventList) {
@@ -80,6 +84,10 @@ public class EventRegister {
     @Override
     public String toString() {
         return "EventRegister{" + "eventList=" + eventList + '}';
+    }
+    
+    public Event getEvent(int indice) {
+        return eventList.get(indice);
     }
 
 }

@@ -74,7 +74,7 @@ public class OrganiserRegister implements  Serializable{
     public boolean isExist(User user){
         boolean valida = false;
         for(Organiser o : organiserList){
-            if(o.getOrganiser().equals(user))
+            if(o.getOrganiser().getUsername().equals(user.getUsername()))
                 valida = true;
         }
         return  valida;

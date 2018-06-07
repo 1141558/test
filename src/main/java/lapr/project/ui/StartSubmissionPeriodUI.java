@@ -52,13 +52,15 @@ public class StartSubmissionPeriodUI {
                     }else{
                         right=true;
                     }
-                }catch(NumberFormatException e){{
+                }catch(NumberFormatException e){
                   Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
                   n=1;  
                 }
-                }
+        }
+        if(controller.changeStateEventToSubmission(event_selected-1))
+            Utils.printConfirmation("SUBMISSION PERIOD OPEN");
+        else
+            Utils.printError("IT WAS NOT POSSIBLE TO OPEN SUBMISSIN PERIOD");
+    
     }
-    
-    
-}
 }
