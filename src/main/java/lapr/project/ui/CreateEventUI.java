@@ -53,12 +53,12 @@ public class CreateEventUI {
             try{
                 nDays = Integer.parseInt(Utils.readLineFromConsole("NUMBER OF DAYS FOR OPEN APPLICATIONS: "));
                 if(nDays<1){
-                 printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
+                 Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
 
                 }    
                 }catch(NumberFormatException e){
 
-                printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
 
             }           
         }
@@ -87,15 +87,15 @@ public class CreateEventUI {
         while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
             resposta=Utils.readLineFromConsole("DO YOU CONFIRM THIS EVENT? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
             if(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
-                printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
         }
         if(resposta.equalsIgnoreCase("c")){
-            printWarning("EVENT CANCELED");
+            Utils.printWarning("EVENT CANCELED");
             new MainMenu(exhibitionCentre);
         }else if(resposta.equalsIgnoreCase("y")){
             controller.registerEvent();          
-            printConfirmation("EVENT SAVED");
+            Utils.printConfirmation("EVENT SAVED");
             new MainMenu(exhibitionCentre);        
 
         }
@@ -110,11 +110,11 @@ public class CreateEventUI {
             startDate=controller.checkFormat(startDate,startDateString);
             if(controller.checkFormat(startDate,startDateString)==null){
 
-                printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
+                Utils.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
                 startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");               
                
             }else if(!controller.compareDates(today,startDate)){
-                printError("DATE EXPIRED, PLEASE TRY AGAIN.");
+                Utils.printError("DATE EXPIRED, PLEASE TRY AGAIN.");
                 startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");                
 
             }else{
@@ -135,12 +135,12 @@ public class CreateEventUI {
         while(!validate){
             endDate=controller.checkFormat(endDate,endDateString);
             if(controller.checkFormat(endDate,endDateString)==null){
-                printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
+                Utils.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
                 endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
                 
             }else if(!controller.compareDates(startDate, endDate)){
                 
-                printError("END DATE MUST BE AFTER START DATE. PLEASE TRY AGAIN.");
+                Utils.printError("END DATE MUST BE AFTER START DATE. PLEASE TRY AGAIN.");
                 endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");                
 
             }else{
@@ -150,27 +150,7 @@ public class CreateEventUI {
         return endDate;
     }
     
-    private void printError(String message){
-        
-        System.out.println((char)27 + "[31m\n-----------------------ERROR-----------------------" + (char)27 + "[0m");
-        System.out.println((char)27 + "[31m"+message+(char)27 + "[0m");
-        System.out.println((char)27 + "[31m---------------------------------------------------\n"+ (char)27 + "[0m");
-    } 
-    
-    private void printWarning(String message){
-        
-        System.out.println((char)27 + "[33m\n----------------------WARNING----------------------" + (char)27 + "[0m");
-        System.out.println((char)27 + "[33m                    "+message+(char)27 + "[0m");
-        System.out.println((char)27 + "[33m---------------------------------------------------\n"+ (char)27 + "[0m");
-    } 
-    
-    private void printConfirmation(String message){
-        
-        System.out.println((char)27 + "[32m\n----------------------SUCCESS----------------------" + (char)27 + "[0m");
-        System.out.println((char)27 + "[32m                    "+message+(char)27 + "[0m");
-        System.out.println((char)27 + "[32m---------------------------------------------------\n"+ (char)27 + "[0m");
-    }     
-    
+
     private void printEvent(String title, String description, Date startDate, Date endDate, String place, List<Organiser> list, int nDays){
         System.out.println("");        
         System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
@@ -200,17 +180,17 @@ public class CreateEventUI {
                     Organiser o = controller.createOrganiser(controller.getUsersAvailable(), userPos);
                     boolean answer = controller.addOrganiser(o);
                     if(!answer){
-                        printError("USER ALLREADY ADDED. PLEASE TRY AGAIN.");
+                        Utils.printError("USER ALLREADY ADDED. PLEASE TRY AGAIN.");
                     }else{
                         organisersToPrint.add(o);
                     }
                 }else{
-                    printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
+                    Utils.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
 
                 }
             }catch(NumberFormatException e){
-                if(!user1.equals("X")){
-                    printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                if(!user1.equalsIgnoreCase("X")){
+                    Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
 
                 }
             }           
