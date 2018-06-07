@@ -13,7 +13,6 @@ import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
 import lapr.project.model.StaffRegister;
-import lapr.project.model.User;
 
 /**
  *
@@ -22,7 +21,7 @@ import lapr.project.model.User;
 public class AssignStaffMemberController {
 
     private ExhibitionCentre exhibitionCentre = new ExhibitionCentre();
-    private EventRegister eventRegister1 =  new EventRegister();
+    private EventRegister eventRegister =  new EventRegister();
     private OrganiserRegister organiserRegister;
     private StaffRegister staffRegister;
     private Organiser organiser;
@@ -39,10 +38,10 @@ List<Event> organiserValidatedList = new ArrayList<>();
         //List<Event> organiserValidatedList = new ArrayList<Event>();
 List<Event> organiserValidatedList = (new ArrayList<>());
 
-       eventRegister1 = exhibitionCentre.getEventRegister();
+       eventRegister = exhibitionCentre.getEventRegister();
        // eventRegister = dummy.getEventRegsiter();
-        System.out.println(eventRegister1);
-        List<Event> eventList = eventRegister1.getEventList();
+        System.out.println(eventRegister);
+        List<Event> eventList = eventRegister.getEventList();
         for (Event item1 : eventList) {
             organisersList = item1.getOrganiserRegister().getOrganiserList();
             for (Organiser item : organisersList) {
