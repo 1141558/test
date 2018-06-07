@@ -36,6 +36,7 @@ public class LoginUI {
                 new MainMenu(centre);    
             break;  
              case 2:
+                 new UserRegistrationUI(centre);
             break; 
         }
     }
