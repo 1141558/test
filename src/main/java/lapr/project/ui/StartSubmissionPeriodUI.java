@@ -5,12 +5,10 @@
  */
 package lapr.project.ui;
 
-import com.oracle.xmlns.internal.webservices.jaxws_databinding.ExistingAnnotationsType;
 import lapr.project.controller.DummyData;
 import lapr.project.controller.StartSubmissionPeriodController;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.model.User;
 import lapr.project.utils.Utils;
 
 /**

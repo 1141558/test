@@ -17,7 +17,9 @@ import java.util.List;
 
 
 public class Event implements Comparable<Event>, Serializable {
-
+    
+    private static final long serialVersionUID = 1L;
+    
     /**
      * @return the staffRegister
      */
