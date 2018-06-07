@@ -36,7 +36,7 @@ public class CreateEventUI {
         String title, description, startDateString, endDateString, place, user1="";
         Date startDate = new Date(), endDate= new Date();
         List<Organiser> organisersToPrint = new ArrayList<>();
-        int userPos=0;
+        int userPos=0, nDays=0;
        
         System.out.println("");        
         System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
@@ -49,7 +49,19 @@ public class CreateEventUI {
         endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
         endDate=validateEndDateFormat(endDateString, startDate);        
         place = Utils.readLineFromConsole("PLACE: ");
-        
+        while(nDays<1){
+            try{
+                nDays = Integer.parseInt(Utils.readLineFromConsole("NUMBER OF DAYS FOR OPEN APPLICATIONS: "));
+                if(nDays<1){
+                 printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
+
+                }    
+                }catch(NumberFormatException e){
+
+                printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+
+            }           
+        }
         while(!user1.equalsIgnoreCase("X")){
             
             int n=1;

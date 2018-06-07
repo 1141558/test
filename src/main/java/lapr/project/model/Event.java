@@ -16,6 +16,13 @@ import java.util.List;
 
 
 public class Event {
+
+    /**
+     * @return the staffRegister
+     */
+    public StaffRegister getStaffRegister() {
+        return staffRegister;
+    }
     
     private static final int CORDAYS_APPLICATION_OMISSION = 0;
 
@@ -27,6 +34,7 @@ public class Event {
     private OrganiserRegister organiserRegister;
     private StaffRegister staffRegister;
     private EventState eventState;
+    private EventManager eventManager;
     private int daysApplication = CORDAYS_APPLICATION_OMISSION;
     
     public Event(String Title, String description, Date startDate, Date endDate, String place, OrganiserRegister organisersList) {
@@ -175,6 +183,20 @@ public class Event {
     
     public void setEventState(EventState eventState){
         this.eventState = eventState;        
+    }
+
+    /**
+     * @return the eventManager
+     */
+    public EventManager getEventManager() {
+        return eventManager;
+    }
+
+    /**
+     * @param eventManager the eventManager to set
+     */
+    public void setEventManager(EventManager eventManager) {
+        this.eventManager = eventManager;
     }
  
  

@@ -23,9 +23,28 @@ public class MainMenu {
         System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
         System.out.println("             MAIN MENU            ");
         System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
-        System.out.println("          1.CREATE EVENT          ");
-        System.out.println("       2.ASSIGN STAFF MEMBER      ");
-        System.out.println("             3.LOGOUT             ");
+        
+        /*
+        * Não apagar, comentado temporariamente
+        */
+        
+        /*
+        if(centre.getEventRegister().userIsStaffMember(centre.getUserOnline())){
+         //caso ele seja staff member, no futuro estarão aqui as premissões   
+        }
+        if(centre.getEventRegister().userIsOrganiser(centre.getUserOnline())){
+         //caso ele seja Organiser, no futuro estarão aqui as premissões   
+        }
+        if(centre.getEventRegister().userIsEventManager(centre.getUserOnline())){
+         //caso ele seja Event Manager, no futuro estarão aqui as premissões   
+        }
+        */        
+        
+        System.out.println("                    1.CREATE EVENT                       ");
+        System.out.println("                  2.ASSIGN STAFF MEMBER                  ");
+        System.out.println("       3.START EVENT'S APPLICATION SUBMISSION PERIOD     ");
+        System.out.println("                4.SUBMIT APPLICATION TO EVENT            ");       
+        System.out.println("                       3.LOGOUT                          ");
         System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
       
         opt = Utils.readLineFromConsole("INSERT OPTION: ");

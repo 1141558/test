@@ -34,7 +34,37 @@ public class EventRegister {
     public List<Event> getEventList() {
         return eventList;
     }
-
+    /*
+    * Este metodo verifica se o utilizador recebido por parametro é organizador de algum evento
+    */
+    public boolean userIsOrganiser(User u){
+        for (Event event : this.eventList) {
+            for (Organiser o : event.getOrganiserRegister().getOrganiserList()) {
+                if(o.getOrganiser().getUsername().equals(u.getUsername())){
+                    return true;
+                }
+            }
+        }
+     return false;   
+    }
+    public boolean userIsStaffMember(User u){
+        for (Event event : this.eventList) {
+            for (StaffMember sm : event.getStaffRegister().getListStaff()) {
+                if(u.getUsername().equals(sm.getStaffUser().getUsername())){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean userIsEventManager(User u){
+        for (Event event : this.eventList) {
+            if(event.getEventManager().getEventManager().getUsername().equals(u.getUsername())){
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * @param eventList the eventList to set
      */
