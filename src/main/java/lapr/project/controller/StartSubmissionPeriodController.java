@@ -11,7 +11,7 @@ import lapr.project.model.Event;
 import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
-import lapr.project.model.OrganiserRegister;
+import lapr.project.model.User;
 
 /**
  *
@@ -21,24 +21,28 @@ public class StartSubmissionPeriodController {
     
     private ExhibitionCentre exhibitionCentre;
 
-    public StartSubmissionPeriodController() {
+    public StartSubmissionPeriodController(ExhibitionCentre exhibitionCentre) {
+        this.exhibitionCentre=exhibitionCentre;
     }
     
-    public List<Event> findEventByOrganiserAndState(Organiser organiser){
+    public List<Event> findEventByOrganiserAndState(User user){
         List<Event> listEvent =  new ArrayList<>();
         
         for(Event e : this.exhibitionCentre.getEventRegister().getEventList()){
-           if((e.getOrganisersList().getOrganiser().equals(organiser)) && e.isReadyForApplication())
-               listEvent.add(e);
+            for (Organiser o : e.getOrganiserRegister().getOrganiserList()) {
+                if(o.getOrganiser().getUsername().equals(user.getUsername()) && e.isReadyForApplication()){
+                    listEvent.add(e);
+                }
+            }
+           
         }        
         return listEvent;
     }
     
     public boolean changeStateEventToSubmission(Event event){
-       if(event.isReadyForApplication())
-           event.setEventState(EventState.OPEN_APPLICATION);
+        event.setEventState(EventState.OPEN_APPLICATION);
            
-       return event.isOpenApplication();
+        return event.isOpenApplication();
     }
     
 }

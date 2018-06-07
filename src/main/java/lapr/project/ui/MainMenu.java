@@ -55,6 +55,9 @@ public class MainMenu {
             break;  
              case 2:
                 new AssignStaffMemberUI(centre);    
+            break;
+            case 3:
+                new StartSubmissionPeriodUI(centre);    
             break; 
              case 5:
                  new UserRegistrationUI(centre);

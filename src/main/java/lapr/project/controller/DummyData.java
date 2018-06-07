@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Event;
 import lapr.project.model.EventRegister;
+import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
@@ -18,18 +19,18 @@ import lapr.project.model.User;
  *
  * @author Altran
  */
-class DummyData {
+public class DummyData {
     
-   // Organiser org1 = new Organiser("manuel", "mjdg111@hotmail.com","garnel",123);
-    Organiser org3323 = new Organiser();
+    Organiser org1 ;
+
     OrganiserRegister organiserRegister = new OrganiserRegister();
     List<Organiser> organiserList = new ArrayList<>();
     ExhibitionCentre exhibitionCentre = new ExhibitionCentre();
+    User u1 = new User("manuel", "mjdg111@hotmail.com","garnel",123);
     
-     Event event1 = new Event(organiserRegister);
+    Event event1 = new Event(organiserRegister);
     Event event2 = new Event(organiserRegister);
     Event event3= new Event(organiserRegister);
-    
     
     EventRegister eventRegister = new EventRegister();
 
@@ -41,23 +42,23 @@ class DummyData {
         this.eventRegister = eventRegsiter;
     }
 
-    public DummyData() {
+    public DummyData(ExhibitionCentre exhibitionCentre) {
+        org1= new Organiser();
+        org1.setOrganiser(u1);
            User us1 = new User("manuel", "mjdg111@hotmail.com","garnel",123);
           Organiser org1= new Organiser(us1);
           
           
         organiserList.add(org1);
-        System.out.println(org1);
-        System.err.println(organiserList);
-        organiserList.add(org3323);
-        organiserRegister.setOrganiserList(organiserList);
+        organiserRegister.setOrganiserList(organiserList);      
        
         this.event1 = new Event(organiserRegister);
+        event1.setEventState(EventState.READY_FOR_APPLICATION);
         event1.addOrganiserRegister(organiserRegister);
         eventRegister.setEvent(event1);
         exhibitionCentre.setEventRegister(eventRegister);
-         System.out.print(exhibitionCentre);
-        
+        exhibitionCentre.setUserOnline(u1);
+        event1.getOrganiserRegister().addOrganiser(org1);
     }
 
     public OrganiserRegister getOrganiserRegister() {

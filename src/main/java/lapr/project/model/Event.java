@@ -5,6 +5,7 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +16,10 @@ import java.util.List;
 
 
 
-public class Event {
-
+public class Event implements Comparable<Event>, Serializable {
+    
+    private static final long serialVersionUID = 1L;
+    
     /**
      * @return the staffRegister
      */
@@ -230,6 +233,15 @@ public class Event {
     public String toString() {
         return "Event{" + "title=" + title + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", place=" + place + ", organiserRegister=" + organiserRegister + ", staffRegister=" + staffRegister + ", eventState=" + eventState + ", daysApplication=" + daysApplication + '}';
 
+    }
+    
+    public String toString2(){
+        return String.format("Titulo: %s", this.title);
+    }
+
+    @Override
+    public int compareTo(Event o) {
+        return this.startDate.compareTo(o.startDate);
     }
  
  

@@ -85,15 +85,32 @@ public class StaffRegister implements Serializable{
     public String toString() {
         List<StaffMember> copy = new ArrayList<>(staffList);
         Collections.sort(copy);
-
+        int i= 0;
+        
         StringBuilder s = new StringBuilder();
         for (StaffMember staff : copy) {
-            s.append(staff);
+            s.append("Indice ");
+            s.append(i);
+            s.append(staff.toString());
             s.append("\n");
         }
         
         return s.toString().trim();
     }
+    
+//    @Override
+//    public String toString() {
+//        List<StaffMember> copy = new ArrayList<>(staffList);
+//        Collections.sort(copy);
+//
+//        StringBuilder s = new StringBuilder();
+//        for (StaffMember staff : copy) {
+//            s.append(staff);
+//            s.append("\n");
+//        }
+//        
+//        return s.toString().trim();
+//    }
     
     @Override
     public boolean equals(Object otherObject) {

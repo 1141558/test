@@ -28,7 +28,7 @@ public class AssignStaffMemberController {
     private Organiser organiser;
     private User user;
     
-    DummyData dummy = new DummyData();
+    //DummyData dummy = new DummyData();
     
     List<Event> organiserValidatedList = new ArrayList<>();
     
@@ -42,7 +42,7 @@ public class AssignStaffMemberController {
         boolean checked = false;
         List<Organiser> organisersList = new ArrayList<>();
         List<Event> organiserValidatedList = (new ArrayList<>());
-        eventRegister = dummy.getEventRegsiter();
+        //eventRegister = dummy.getEventRegsiter();
         System.out.println("Passou1");
         System.out.println(eventRegister);
         List<Event> eventList = eventRegister.getEventList();
