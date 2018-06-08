@@ -45,4 +45,8 @@ public class UserRegistrationController {
         return this.exhibitionCentre.getUserRegister().addUser(this.user);
     }
     
+    public User getUser(){
+        return user;
+    }
+    
 }
