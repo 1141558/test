@@ -75,7 +75,7 @@ public class DummyData {
         this.event1 = new Event(organiserRegister);
         event1.setEventState(EventState.READY_FOR_APPLICATION);
         event1.addOrganiserRegister(organiserRegister);
-
+        
         eventRegister.setEvent(event1);
         
         /*
@@ -110,19 +110,10 @@ public class DummyData {
         event3.setEventState(EventState.READY_FOR_APPLICATION);
         event3.addOrganiserRegister(organiserRegister3);
         
-        
-        
-        eventRegister.setEvent(event3);              
-           
-               
-                
-        
-
         eventRegister.addEvent(event1);
-
+        eventRegister.addEvent(event2);
+        eventRegister.addEvent(event3);
         exhibitionCentre.setEventRegister(eventRegister);
-        
-        
         
         exhibitionCentre.setUserOnline(u1);
         

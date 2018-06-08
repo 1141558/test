@@ -2,7 +2,7 @@
 * To change this license header, choose License Headers in Project Properties.
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
-*/
+ */
 package lapr.project.controller;
 
 import java.util.ArrayList;
@@ -20,61 +20,38 @@ import lapr.project.model.User;
  * @author Garnel
  */
 public class AssignStaffMemberController {
-    
+
     private ExhibitionCentre exhibitionCentre;
     private EventRegister eventRegister;
     private OrganiserRegister organiserRegister;
     private StaffRegister staffRegister;
     private Organiser organiser;
     private User user;
-    
-    DummyData dummy ;
-    
-    List<Event> organiserValidatedList = new ArrayList<>();
-    
+    private Event event;
+
+    DummyData dummy;
+
+   // List<Event> organiserValidatedList = new ArrayList<>();
+
     public AssignStaffMemberController(ExhibitionCentre centre) {
         this.exhibitionCentre = centre;
         this.dummy = new DummyData(centre);
     }
-    
-    public List<Event> assignStaffMemberToEvent() {
+
+    public List<Event> getEventsListByOrganiser() {
+
         User organiserValidated = exhibitionCentre.getUserOnline();
-        
-        boolean checked = false;
         List<Organiser> organisersList = new ArrayList<>();
-        List<Event> organiserValidatedList = new ArrayList<>();
-        eventRegister = dummy.getEventRegister();
-        
-        List<Event> eventList = eventRegister.getEventList();
-        for (Event item1 : eventList) {
-            
-            organisersList = item1.getOrganiserRegister().getOrganiserList();
-            
-            for (Organiser item : organisersList) {
-                
-                if (item.getOrganiser().getUsername() == dummy.exhibitionCentre.getUserOnline().getUsername()) {
-                    
-                    organiserValidatedList.add(item1);
-                    
-                }
-            }
-            
-        }
-        //System.out.println(organiserValidatedList);
-        
-        return organiserValidatedList(organiserValidatedList);
-        
+//        List<Event> organiserValidatedList = new ArrayList<>();
+//eventRegister = dummy.getEventRegister();
+        eventRegister = exhibitionCentre.getEventRegister();
+
+        List<Event> eventList = eventRegister.getEventListByOrganiser(organiserValidated);
+
+        return eventList;
     }
-    
-    private List<Event> organiserValidatedList(List<Event> organiserValidatedList) {
-        for (Event event : organiserValidatedList) {
-            
-            System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-            System.out.println("                   EVENTOS ASSOCIADOS                      ");
-            System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-            System.out.println("EVENTO:" + event);
-        }
-        return null;
+
+    public void selectEvent(Event eventSelected) {
+        this.event = eventSelected;
     }
-    
 }

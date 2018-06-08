@@ -21,6 +21,7 @@ public class EventRegister implements Serializable{
     
     private List<Event> eventList;
     private Event event;
+         
 
     public void setEvent(Event event) {
         this.event = event;
@@ -101,6 +102,27 @@ public class EventRegister implements Serializable{
     
     public Event getEvent(int indice) {
         return eventList.get(indice);
+    }
+
+    public List<Event> getEventListByOrganiser(User organiserValidated) {
+         List<Event> organiserValidatedList = new ArrayList<>();
+          for (Event item1 : eventList) {
+            
+           List<Organiser> organisersList = item1.getOrganiserRegister().getOrganiserList();
+            
+            for (Organiser item : organisersList) {
+                
+                if (item.getOrganiser().getUsername() == organiserValidated.getUsername()) {
+                    
+                    organiserValidatedList.add(item1);
+                    
+                }
+            }
+            
+        }
+            
+        return organiserValidatedList;
+        
     }
 
 

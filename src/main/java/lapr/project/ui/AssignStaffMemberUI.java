@@ -5,7 +5,11 @@
 */
 package lapr.project.ui;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import lapr.project.controller.AssignStaffMemberController;
+import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.User;
@@ -17,43 +21,66 @@ import lapr.project.utils.Utils;
  */
 public final class AssignStaffMemberUI {
     
-    private AssignStaffMemberController assignStaffMemberController  ;
+    private AssignStaffMemberController assignStaffMemberController;
     
-    AssignStaffMemberUI(ExhibitionCentre centre) {
+    AssignStaffMemberUI(ExhibitionCentre centre) throws ParseException {
         
         this.assignStaffMemberController = new AssignStaffMemberController(centre);
-         
-         assignStaffMemberController.assignStaffMemberToEvent();  
-      
-       
+        List<Event> eventList = assignStaffMemberController.getEventsListByOrganiser();
+        // showOrganiserEventsList(eventList);
+        staffMemberAssign(eventList);
+    }
+    
+    private void showOrganiserEventsList(List<Event> organiserValidatedList) {
+        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        System.out.println("                   EVENTOS ASSOCIADOS                      ");
+        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        for (Event event : organiserValidatedList) {
+            
+            System.out.println("EVENTO:" + event);
+        }
         
     }
     
-// public User inputOrganiserData() {
-//        
-//        User organiserValidated = new User();
-//        
-//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-//        System.out.println("           Input organiser Data           ");
-//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-//     
-//        String name = Utils.readLineFromConsole("--Input organiser name--\n");
-//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-//        String email = Utils.readLineFromConsole("--Input organiser email--\n");
-//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-//        String userName = Utils.readLineFromConsole("--Input organiser user name--\n");
-//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-//       double password = Double.parseDouble(Utils.readLineFromConsole("--Input organiser password--\n"));
-//       System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-//       
-//       
-//        organiserValidated.setName(name);
-//                
-//        organiserValidated.setEmail(email);
-//        organiserValidated.setUsername(userName);
-//        organiserValidated.setPassword(password);
-//       
-//       return   organiserValidated;
-//    }
-//    
+    private void staffMemberAssign(List<Event> events) throws ParseException {
+        
+        String opcaoEq;
+        int option;
+        Event eventSelected;
+        
+        showOrganiserEventsList(events);
+        do {
+            opcaoEq = Utils.readLineFromConsole("\n Choose Event to assign to! (O - Exit)");
+            option = new Integer(opcaoEq);
+        } while (option < 0 || option > events.size());
+        
+        eventSelected = eventChoose(option, events);
+        
+        assignStaffMemberController.selectEvent(eventSelected);
+//                if (!opcao_eq.equalsIgnoreCase("0")) {
+//
+//                    System.out.println("\nIntroduza o periodo de autorizacao (O para sair)");
+//                    flag = introduzPeriodo();
+//
+//                    do {
+//                        maisPeriodos = Utils.readLineFromConsole("Deseja associar mais períodos a este equipamento?\n s-sim \n n-não");
+//                        if (maisPeriodos.equalsIgnoreCase("s")) {
+//                            while (flag2 == false) {
+//                                flag2 = introduzPeriodo();
+//                                maisPeriodos = Utils.readLineFromConsole("Deseja associar mais períodos a este equipamento?\n s-sim \n n-não");
+//                            }
+//                        }
+//
+//                    } while (maisPeriodos.equalsIgnoreCase("s"));
+//                }
+//
+
+    }
+    
+    private Event eventChoose(int option, List<Event> events) {
+        if (option == 0) {
+            return null;
+        }
+        return events.get(option - 1);
+    }
 }
