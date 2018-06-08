@@ -23,7 +23,7 @@ public final class AssignStaffMemberUI {
     
     private AssignStaffMemberController assignStaffMemberController;
     
-    AssignStaffMemberUI(ExhibitionCentre centre) throws ParseException {
+    AssignStaffMemberUI(ExhibitionCentre centre) {
         
         this.assignStaffMemberController = new AssignStaffMemberController(centre);
         List<Event> eventList = assignStaffMemberController.getEventsListByOrganiser();
@@ -42,7 +42,7 @@ public final class AssignStaffMemberUI {
         
     }
     
-    private void staffMemberAssign(List<Event> events) throws ParseException {
+    private void staffMemberAssign(List<Event> events){
         
         String opcaoEq;
         int option;

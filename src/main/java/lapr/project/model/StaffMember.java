@@ -19,10 +19,7 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
     
     private User staff;
    
-    /*
-    *Registo de atribuições a eventos do elemento de staff 
-    */
-    private StaffMemberAssigneeRegister staffMemberAssigneeRegister;
+   
 
     /**
      * @return the staff
@@ -76,13 +73,5 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
         return this.staff.getUsername().compareTo(otherStaff.staff.getUsername());
     }
 
-    public StaffMemberAssigneeRegister getStaffMemberAssigneeRegister() {
-        return staffMemberAssigneeRegister;
-    }
-
-    public void setStaffMemberAssigneeRegister(StaffMemberAssigneeRegister staffMemberAssigneeRegister) {
-        this.staffMemberAssigneeRegister = staffMemberAssigneeRegister;
-    }
-    
     
 }
