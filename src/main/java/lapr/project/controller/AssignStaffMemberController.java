@@ -28,7 +28,7 @@ public class AssignStaffMemberController {
     private Organiser organiser;
     private User user;
     
-    DummyData dummy;
+    DummyData dummy ;
     
     List<Event> organiserValidatedList = new ArrayList<>();
     
@@ -60,9 +60,21 @@ public class AssignStaffMemberController {
             }
             
         }
+        //System.out.println(organiserValidatedList);
         
-        return organiserValidatedList;
+        return organiserValidatedList(organiserValidatedList);
         
+    }
+    
+    private List<Event> organiserValidatedList(List<Event> organiserValidatedList) {
+        for (Event event : organiserValidatedList) {
+            
+            System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+            System.out.println("                   EVENTOS ASSOCIADOS                      ");
+            System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+            System.out.println("EVENTO:" + event);
+        }
+        return null;
     }
     
 }
