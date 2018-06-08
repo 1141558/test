@@ -7,7 +7,7 @@ package lapr.project.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -234,5 +234,33 @@ public class Event implements Comparable<Event>, Serializable {
     public int compareTo(Event o) {
         return this.startDate.compareTo(o.startDate);
     }
+ 
+    
+    public boolean equals(Event e){
+            if ( e == null ){
+              return false;
+            }
+        if (this.getClass() != e.getClass()) {
+            return false;
+        }
+
+        if (!Objects.equals(this.title, e.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, e.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.place, e.place)) {
+            return false;
+        }
+        if (!Objects.equals(this.endDate, e.endDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.startDate, e.startDate)) {
+            return false;
+        }
+        return Objects.equals(this.daysApplication, this.daysApplication);
+    } 
+ 
     
 }

@@ -75,6 +75,7 @@ public class DummyData {
         this.event1 = new Event(organiserRegister);
         event1.setEventState(EventState.READY_FOR_APPLICATION);
         event1.addOrganiserRegister(organiserRegister);
+
         eventRegister.setEvent(event1);
         
         /*
@@ -116,6 +117,9 @@ public class DummyData {
                
                 
         
+
+        eventRegister.addEvent(event1);
+
         exhibitionCentre.setEventRegister(eventRegister);
         
         
