@@ -77,10 +77,18 @@ public class EventRegister implements Serializable{
         this.eventList = eventList;
     }
 
-    public void setEvent(Event event1) {
-         eventList.add(event1);
+    public void addEvent(Event event1) {
+         this.eventList.add(event1);
     }
-
+    public boolean exists(Event event1){
+        for (Event event : this.eventList) {
+            if(event.equals(event1)){
+                return true;
+            }
+                
+        }
+        return false;
+    }
     @Override
     public String toString() {
         return "EventRegister{" + "eventList=" + eventList + '}';
