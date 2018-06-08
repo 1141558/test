@@ -85,13 +85,14 @@ public class UserRegistrationUI {
         } else {
             Utils.printError("User registration failed!");
         }
+        
+        new LoginUI(exhibitionCentre);
 
         
     
         
         
         
-    
     
     
 }
