@@ -25,10 +25,10 @@ public class UserRegistrationUI {
     private UserRegistrationController controller;
 
     public UserRegistrationUI(ExhibitionCentre exhibitionCentre){
-        this.controller= new UserRegistrationController();
+        this.controller= new UserRegistrationController(exhibitionCentre);
         
         String name="", email="", username="", passwordString="";
-        int password=0;
+//        int password=0;
         
         //Request user data
         
@@ -77,7 +77,9 @@ public class UserRegistrationUI {
         
 //        password=Integer.parseInt(passwordString);
        
-        if (controller.setData(name, email, username, passwordString)) {
+        controller.setData(name, email, username, passwordString);
+        
+        if (controller.addUser()) {
             //confirma sucesso
             Utils.printConfirmation("User registered!");
         } else {
