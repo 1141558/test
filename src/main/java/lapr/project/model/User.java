@@ -15,6 +15,7 @@ public class User {
     private String email;
     private String username;
     private double password;
+ 
     
     public User(String name, String email, String username, double password) {
         this.name = name;
@@ -24,6 +25,7 @@ public class User {
     }
 
     public User() {
+    
     }
 
     

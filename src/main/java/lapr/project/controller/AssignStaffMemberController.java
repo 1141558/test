@@ -21,47 +21,46 @@ import lapr.project.model.User;
  */
 public class AssignStaffMemberController {
     
-    private ExhibitionCentre exhibitionCentre = new ExhibitionCentre();
-    private EventRegister eventRegister = new EventRegister();
+    private ExhibitionCentre exhibitionCentre;
+    private EventRegister eventRegister;
     private OrganiserRegister organiserRegister;
     private StaffRegister staffRegister;
     private Organiser organiser;
     private User user;
     
-    //DummyData dummy = new DummyData();
+    DummyData dummy;
     
     List<Event> organiserValidatedList = new ArrayList<>();
     
     public AssignStaffMemberController(ExhibitionCentre centre) {
         this.exhibitionCentre = centre;
+        this.dummy = new DummyData(centre);
     }
     
-    public List<Event> assignStaffMemberToEvent(User m_user) {
-        User organiserValidated = m_user;
- 
+    public List<Event> assignStaffMemberToEvent() {
+        User organiserValidated = exhibitionCentre.getUserOnline();
+        
         boolean checked = false;
         List<Organiser> organisersList = new ArrayList<>();
-        List<Event> organiserValidatedList = (new ArrayList<>());
-        //eventRegister = dummy.getEventRegsiter();
-        System.out.println("Passou1");
-        System.out.println(eventRegister);
+        List<Event> organiserValidatedList = new ArrayList<>();
+        eventRegister = dummy.getEventRegister();
+        
         List<Event> eventList = eventRegister.getEventList();
         for (Event item1 : eventList) {
+            
             organisersList = item1.getOrganiserRegister().getOrganiserList();
+            
             for (Organiser item : organisersList) {
-                if (item.getOrganiser() == organiserValidated) {
-                    checked = true;
+                
+                if (item.getOrganiser().getUsername() == dummy.exhibitionCentre.getUserOnline().getUsername()) {
+                    
+                    organiserValidatedList.add(item1);
                     
                 }
             }
-            if (checked) {
-                organiserValidatedList.add(item1);
-                System.out.println("Lista1");
-                System.out.println(organiserValidatedList);
-            }
-            checked = false;
+            
         }
-        System.out.println(organiserValidatedList);
+        
         return organiserValidatedList;
         
     }

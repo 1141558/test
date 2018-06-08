@@ -23,37 +23,37 @@ public final class AssignStaffMemberUI {
         
         this.assignStaffMemberController = new AssignStaffMemberController(centre);
          
-         assignStaffMemberController.assignStaffMemberToEvent(inputOrganiserData());  
+         assignStaffMemberController.assignStaffMemberToEvent();  
       
        
         
     }
     
- public User inputOrganiserData() {
-        
-        User organiserValidated = new User();
-        
-        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-        System.out.println("           Input organiser Data           ");
-        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-     
-        String name = Utils.readLineFromConsole("--Input organiser name--\n");
-        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-        String email = Utils.readLineFromConsole("--Input organiser email--\n");
-        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-        String userName = Utils.readLineFromConsole("--Input organiser user name--\n");
-        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-       double password = Double.parseDouble(Utils.readLineFromConsole("--Input organiser password--\n"));
-       System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-       
-       
-        organiserValidated.setName(name);
-                
-        organiserValidated.setEmail(email);
-        organiserValidated.setUsername(userName);
-        organiserValidated.setPassword(password);
-       
-       return   organiserValidated;
-    }
-    
+// public User inputOrganiserData() {
+//        
+//        User organiserValidated = new User();
+//        
+//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+//        System.out.println("           Input organiser Data           ");
+//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+//     
+//        String name = Utils.readLineFromConsole("--Input organiser name--\n");
+//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+//        String email = Utils.readLineFromConsole("--Input organiser email--\n");
+//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+//        String userName = Utils.readLineFromConsole("--Input organiser user name--\n");
+//        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+//       double password = Double.parseDouble(Utils.readLineFromConsole("--Input organiser password--\n"));
+//       System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+//       
+//       
+//        organiserValidated.setName(name);
+//                
+//        organiserValidated.setEmail(email);
+//        organiserValidated.setUsername(userName);
+//        organiserValidated.setPassword(password);
+//       
+//       return   organiserValidated;
+//    }
+//    
 }
