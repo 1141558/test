@@ -67,30 +67,61 @@ public class AssignStaffMemberController {
     }
     
     public List<User> filterUserRegisterByNoOrganiserEventSelected(Event eventSelected, User userOnline) {
-       
-        int pos =0;
         
-        List<User> usersExhibitionCentreCopy = new ArrayList<>();
+        int pos = 0;
+        
+        List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
         usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();
-        usersExhibitionCentreCopy = Utils.getCopia(exhibitionCentre.getUserRegister().getUserList());
-       
-       List<Organiser> organiserByEvent = eventSelected.getOrganisersRegister().getOrganiserList();
-        System.out.println("organiser by event" + organiserByEvent);
+        usersExhibitionCentreCopyWithoutOrganisers = Utils.getCopia(exhibitionCentre.getUserRegister().getUserList());
         
-    //   List<Organiser> organiserFromFilteringUserListAndOrganiserList = new ArrayList<>();
+        List<Organiser> organiserByEvent = eventSelected.getOrganisersRegister().getOrganiserList();
+        //System.out.println("organiser by event" + organiserByEvent);
+        
+        //   List<Organiser> organiserFromFilteringUserListAndOrganiserList = new ArrayList<>();
+        for (Organiser organiser : organiserByEvent) {
+            for (User user : usersExhibitionCentre) {
+                
+                if (user.getName().equals(organiser.getOrganiser().getName())) {
+                    
+                    usersExhibitionCentreCopyWithoutOrganisers.remove(pos);
+                    pos++;
+                }
+            }
             
-       for(Organiser organiser: organiserByEvent){
-           for(User user: usersExhibitionCentre){
-         
-               if(user.getName().equals(organiser.getOrganiser().getName())){
-                   
-                   usersExhibitionCentreCopy.remove(pos);
-                   pos++;
-           }
-       }
-     
+        }
+        System.out.println("usersfiltrados 1" + usersExhibitionCentreCopyWithoutOrganisers);
+        return usersExhibitionCentreCopyWithoutOrganisers;
     }
-        System.out.println("usersfiltrados 1"+usersExhibitionCentreCopy );
-      return usersExhibitionCentreCopy;
-}
+    
+    public List<User> showAvailableUsers(Event eventSelected, User userOnline) {
+        int pos2 = 0;
+        
+        List<User> filterUserRegisterByNoOrganiserEventSelectedCopy = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected(eventSelected, userOnline));
+        List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected(eventSelected, userOnline));
+        //  System.out.println("lista antes do filtro do staff do vento" + filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff);
+        List<StaffMember> eventStaffList = eventSelected.getStaffRegister().getStaffList();
+        
+        System.out.println("event staff list" + eventStaffList);
+        
+        System.out.println("staff com um filtro" + filterUserRegisterByNoOrganiserEventSelectedCopy);
+        
+        //System.out.println("staff com um filtro" + filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff);
+        // System.out.println("filterUserRegisterByNoOrganiserEventSelectedCopy" + filterUserRegisterByNoOrganiserEventSelectedCopy);
+        for (StaffMember staffMember : eventStaffList) {
+            for (User user : filterUserRegisterByNoOrganiserEventSelectedCopy) {
+                // System.out.println("filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaffRegister" + eventStaffList);
+                
+                if (user.getName().equals(staffMember.getStaff().getName())) {
+                    System.out.println("element user: " + user + "\n");
+                    System.out.println("element user2: " + staffMember + "\n");
+                    filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff.remove(pos2 + 1);//não entendo.......
+                    pos2++;
+                }
+            }
+        }
+        System.out.println("staff com um filtro" + filterUserRegisterByNoOrganiserEventSelectedCopy);
+        System.out.println("staff com dois filtros" + filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff);
+        return filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff;
+    }
+    
 }

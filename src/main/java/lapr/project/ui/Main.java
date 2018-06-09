@@ -6,6 +6,8 @@ import lapr.project.model.CalculatorExample;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
+import lapr.project.model.StaffMember;
+import lapr.project.model.StaffRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
 
@@ -34,6 +36,7 @@ class Main {
         User u1 = new User("nome1", "email1", "username1", 0.0);
         User u2 = new User("nome2", "email2", "username2", 0.0);
         UserRegister ur = new UserRegister();
+        StaffRegister staffRegs = new StaffRegister();
         ur.addUser(u1);
         ur.addUser(u2);
         
@@ -59,21 +62,33 @@ class Main {
         ur.addUser(u6);
         ur.addUser(uloged);
         
-                 User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123);
-    User user2 = new User("jose", "mail2@hotmail.com", "jo", 123);
-       Organiser  org1 = new Organiser();
+        User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123);
+        User user2 = new User("jose", "mail2@hotmail.com", "jo", 123);
+        Organiser org1 = new Organiser();
         org1.setOrganiser(user1);
         Organiser org2 = new Organiser();
         org2.setOrganiser(user2);
-        OrganiserRegister organiserRegister1= new OrganiserRegister();
+        OrganiserRegister organiserRegister1 = new OrganiserRegister();
         organiserRegister1.addOrganiser(org1);
         organiserRegister1.addOrganiser(org2);
-             
+        
+        StaffMember staffMember1= new StaffMember();
+        staffMember1.setStaff(u1);
+        List<StaffMember> staffList = new ArrayList<StaffMember>();
+        staffList.add(staffMember1);
+                
+        StaffRegister staffRegister = new StaffRegister();
+        staffRegister.add(staffList);
+        centre.setStaffRegister(staffRegister);
         //*********************************************************************************************
         centre.setUserRegister(ur);
         centre.setOrganiserRegister(organiserRegister1);
         
         /*fim dados de teste*/
+        
+        
+        
+        
         new LoginUI(centre);
         
     }

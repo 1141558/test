@@ -20,6 +20,23 @@ public class StaffRegister implements Serializable{
     private static final long serialVersionUID = 1L;
     
     private List<StaffMember> staffList;
+    private StaffMember staffMember;
+
+    public List<StaffMember> getStaffList() {
+        return staffList;
+    }
+
+    public void setStaffList(List<StaffMember> staffList) {
+        this.staffList = staffList;
+    }
+
+    public StaffMember getStaffMember() {
+        return staffMember;
+    }
+
+    public void setStaffMember(StaffMember staffMember) {
+        this.staffMember = staffMember;
+    }
     
     public StaffRegister(){
         this.staffList = new ArrayList<>();
@@ -143,5 +160,7 @@ public class StaffRegister implements Serializable{
     public void add(List<StaffMember> staffMemberListEvent1) {
         this.staffList=staffMemberListEvent1;
     }
+
+    
     
 }

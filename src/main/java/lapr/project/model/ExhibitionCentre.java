@@ -18,6 +18,7 @@ public class ExhibitionCentre {
     private UserRegister userRegister;
     private User userOnline;
     private OrganiserRegister organiserRegister;
+    private StaffRegister staffRegister;
 
     
     public ExhibitionCentre(){
@@ -83,6 +84,10 @@ public class ExhibitionCentre {
 
     public void setOrganiserRegister(OrganiserRegister organiserRegister1) {
        this.organiserRegister = organiserRegister1;
+    }
+
+    public void setStaffRegister(StaffRegister staffRegister) {
+        this.staffRegister = staffRegister;
     }
     
  

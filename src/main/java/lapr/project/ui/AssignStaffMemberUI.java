@@ -58,8 +58,11 @@ public final class AssignStaffMemberUI {
         eventSelected = eventChoose(option, events);
         
         assignStaffMemberController.selectEvent(eventSelected);
-        assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected(eventSelected,exhibitionCentre.getUserOnline());
+       
+        System.out.println("Antes 1 filtro"+assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected(eventSelected,exhibitionCentre.getUserOnline()));
         
+        
+     assignStaffMemberController.showAvailableUsers(eventSelected,exhibitionCentre.getUserOnline());
         //showStaffListByEvent(eventSelected);
   
 //                if (!opcao_eq.equalsIgnoreCase("0")) {
