@@ -32,12 +32,11 @@ public class StartSubmissionPeriodControllerTest {
     public void testFindEventByOrganiserAndState() {
         System.out.println("findEventByOrganiserAndState");
         User user = data.u1;
-        StartSubmissionPeriodController instance = null;
+        StartSubmissionPeriodController controller = new StartSubmissionPeriodController(centre);
         List<Event> expResult = null;
-        List<Event> result = instance.findEventByOrganiserAndState(user);
+        List<Event> result = controller.findEventByOrganiserAndState(user);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-
     }
 
     /**
@@ -47,12 +46,11 @@ public class StartSubmissionPeriodControllerTest {
     public void testChangeStateEventToSubmission() {
         System.out.println("changeStateEventToSubmission");
         int indice = 0;
-        StartSubmissionPeriodController instance = null;
+        StartSubmissionPeriodController controller = new StartSubmissionPeriodController(centre);
         boolean expResult = false;
-        boolean result = instance.changeStateEventToSubmission(indice);
+        boolean result = controller.changeStateEventToSubmission(indice);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
