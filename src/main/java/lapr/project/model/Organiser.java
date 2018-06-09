@@ -17,6 +17,8 @@ public class Organiser  implements Comparable<Organiser> ,  Serializable{
     private static final long serialVersionUID = 1L;
  
     private User organiser;
+    
+    
 
     /**
      * @return the organiser

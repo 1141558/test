@@ -61,7 +61,7 @@ public class MainMenu implements Serializable{
             case 3:
                 new StartSubmissionPeriodUI(centre);    
             break; 
-             case 5:
+             case 4:
                  new UserRegistrationUI(centre);
         }
     }

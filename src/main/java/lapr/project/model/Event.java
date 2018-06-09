@@ -7,6 +7,7 @@ package lapr.project.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,6 +29,9 @@ public class Event implements Comparable<Event>, Serializable {
     private StaffRegister staffRegister;
     private EventState eventState;
     private EventManager eventManager;
+    
+    
+    
     
     private int daysApplication = CORDAYS_APPLICATION_OMISSION;
     
@@ -159,19 +163,19 @@ public class Event implements Comparable<Event>, Serializable {
     /**
      * @return the organisersList
      */
-    public OrganiserRegister getOrganisersList() {
+    public OrganiserRegister getOrganisersRegister() {
         return organiserRegister;
     }
     
     /**
      * @param organisersList the organisersList to set
      */
-    public void setOrganisersList(OrganiserRegister organisersList) {
+    public void setOrganisersRegister(OrganiserRegister organisersList) {
         this.organiserRegister = organisersList;
     }
     
     public OrganiserRegister getOrganiserRegister() {
-        return this.getOrganisersList();
+        return this.getOrganisersRegister();
     }
     
     public void addOrganiserRegister(OrganiserRegister organiserRegister) {
@@ -222,7 +226,7 @@ public class Event implements Comparable<Event>, Serializable {
     
     @Override
     public String toString() {
-        return "Event{" + "title=" + title + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", place=" + place + ", organiserRegister=" + organiserRegister + ", staffRegister=" + staffRegister + ", eventState=" + eventState + ", daysApplication=" + daysApplication + '}';
+        return "Event{" + "title = "  + title + ", description = " + description + ", startDate=" + startDate + ", endDate= " + endDate + ", place= " + place + ", organiserRegister=" + organiserRegister + ", staffRegister= " + staffRegister + "\n eventState=" + eventState + "\n daysApplication=" + daysApplication + "}\n";
         
     }
     
@@ -261,6 +265,10 @@ public class Event implements Comparable<Event>, Serializable {
         }
         return Objects.equals(this.daysApplication, this.daysApplication);
     } 
+
+    public List<User> getCopia(List<User> userList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
  
     
 }

@@ -165,7 +165,7 @@ public class CreateEventControllerTest {
         expResult.setDescription(description);
         expResult.setTitle(title);
         expResult.setPlace(place);
-        expResult.setOrganisersList(new OrganiserRegister());
+        expResult.setOrganisersRegister(new OrganiserRegister());
         instance.setData(title, description, null, null, place);
         Event result= instance.getEvent();
         boolean result2 = result.equals(expResult);

@@ -5,6 +5,9 @@
  */
 package lapr.project.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author MariaJoão
@@ -14,6 +17,8 @@ public class ExhibitionCentre {
     private EventRegister eventRegister;
     private UserRegister userRegister;
     private User userOnline;
+    private OrganiserRegister organiserRegister;
+
     
     public ExhibitionCentre(){
         this.eventRegister=new EventRegister();
@@ -70,5 +75,16 @@ public class ExhibitionCentre {
         return "ExhibitionCentre{" + "eventRegister=" + eventRegister + ", userRegister=" + userRegister + '}';
 
     }
+
+   
+    public OrganiserRegister getOrganiserRegister() {
+        return organiserRegister;
+    }
+
+    public void setOrganiserRegister(OrganiserRegister organiserRegister1) {
+       this.organiserRegister = organiserRegister1;
+    }
+    
+ 
     
 }

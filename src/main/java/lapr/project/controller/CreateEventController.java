@@ -86,7 +86,7 @@ public class CreateEventController {
         e.setTitle(title);
         e.setEndDate(endDate);
         e.setStartDate(startDate);
-        e.setOrganisersList(this.or);
+        e.setOrganisersRegister(this.or);
         e.setPlace(place);
 
         this.event=e;

@@ -16,6 +16,15 @@ public class UserRegister {
     
      private List<User> userList;
 
+     private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     public UserRegister(List<User> userList) {
         this.userList = userList;
     }

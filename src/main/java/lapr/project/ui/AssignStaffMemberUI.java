@@ -12,6 +12,7 @@ import lapr.project.controller.AssignStaffMemberController;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
+import lapr.project.model.StaffMember;
 import lapr.project.model.User;
 import lapr.project.utils.Utils;
 
@@ -28,7 +29,7 @@ public final class AssignStaffMemberUI {
         this.assignStaffMemberController = new AssignStaffMemberController(centre);
         List<Event> eventList = assignStaffMemberController.getEventsListByOrganiser();
         // showOrganiserEventsList(eventList);
-        staffMemberAssign(eventList);
+        staffMemberAssign(eventList,centre);
     }
     
     private void showOrganiserEventsList(List<Event> organiserValidatedList) {
@@ -42,7 +43,7 @@ public final class AssignStaffMemberUI {
         
     }
     
-    private void staffMemberAssign(List<Event> events){
+    private void staffMemberAssign(List<Event> events, ExhibitionCentre exhibitionCentre){
         
         String opcaoEq;
         int option;
@@ -50,13 +51,17 @@ public final class AssignStaffMemberUI {
         
         showOrganiserEventsList(events);
         do {
-            opcaoEq = Utils.readLineFromConsole("\n Choose Event to assign to! (O - Exit)");
+            opcaoEq = Utils.readLineFromConsole("\n Choose Event to assign to! (O - Exit)\n");
             option = new Integer(opcaoEq);
         } while (option < 0 || option > events.size());
         
         eventSelected = eventChoose(option, events);
         
         assignStaffMemberController.selectEvent(eventSelected);
+        assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected(eventSelected,exhibitionCentre.getUserOnline());
+        
+        //showStaffListByEvent(eventSelected);
+  
 //                if (!opcao_eq.equalsIgnoreCase("0")) {
 //
 //                    System.out.println("\nIntroduza o periodo de autorizacao (O para sair)");
@@ -83,4 +88,18 @@ public final class AssignStaffMemberUI {
         }
         return events.get(option - 1);
     }
+
+    private void showStaffListByEvent(Event eventSelected) {
+  
+      
+       List<StaffMember> staff = eventSelected.getStaffRegister().getListStaff();
+        for (StaffMember staffMember : staff) {
+            System.out.println("Staff member´s event: "+ staffMember +eventSelected.toString2()) ;
+            
+        }
+    }
+    
+    
+    
+    
 }

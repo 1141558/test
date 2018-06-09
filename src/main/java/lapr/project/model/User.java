@@ -28,6 +28,13 @@ public class User {
     
     }
 
+    public User(User otherUser) {
+       this.email = otherUser.email;
+       this.name = otherUser.name;
+       this.password = otherUser.password;
+       this.username = otherUser.username;
+    }
+
     
     /**
      * @return the name
@@ -85,9 +92,14 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" + "name=" + name + ", email=" + email + ", username=" + username + ", password=" + password + '}';
+    public User clone(){
+        return new User(this);
     }
     
+    @Override
+    public String toString() {
+        return "User:{" + "name=" + name + ", email=" + email + ", username=" + username + ", password=" + password + '}';
+    }
+    
+ 
 }

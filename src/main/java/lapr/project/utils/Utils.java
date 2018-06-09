@@ -7,6 +7,11 @@ package lapr.project.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import lapr.project.model.ExhibitionCentre;
+import lapr.project.model.User;
+import lapr.project.model.UserRegister;
 
 /**
  *
@@ -50,5 +55,33 @@ public class Utils {
         System.out.println((char)27 + "[32m"+message+(char)27 + "[0m");
         System.out.println((char)27 + "[32m---------------------------------------------------\n"+ (char)27 + "[0m");
     }     
+
+     
     
-}
+     
+    public static void showUsersExhibitionCentre(ExhibitionCentre exhibitionCentre) {
+       List<User> users = new ArrayList<>();
+        UserRegister userRegisterCentre = exhibitionCentre.getUserRegister();
+       users = userRegisterCentre.getUserList();
+        for (User item : users) {
+            System.out.println("\n User do centro de exibiçoes: "+ item );
+        }
+    }
+
+       /*
+    * Método que copia a lista de Users
+    * @param
+    */
+    public static List<User> getCopia(List<User> userList) {
+        List<User> copia = new ArrayList<>();
+        
+        userList.forEach((User user) -> {
+           
+            copia.add(user.clone());
+        });
+      
+        return copia;
+    }
+    }
+    
+

@@ -97,6 +97,7 @@ public class StaffRegister implements Serializable{
             s.append(i);
             s.append(staff.toString());
             s.append("\n");
+            i++;
         }
         
         return s.toString().trim();
@@ -137,6 +138,10 @@ public class StaffRegister implements Serializable{
         int hash = 5;
         hash = 37 * hash + Objects.hashCode(this.staffList);
         return hash;
+    }
+
+    public void add(List<StaffMember> staffMemberListEvent1) {
+        this.staffList=staffMemberListEvent1;
     }
     
 }
