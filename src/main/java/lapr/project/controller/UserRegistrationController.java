@@ -6,6 +6,7 @@
 package lapr.project.controller;
 
 import java.util.Arrays;
+import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.User;
 import static lapr.project.model.PasswordEncryption.encryptPassword;
 
@@ -15,28 +16,37 @@ import static lapr.project.model.PasswordEncryption.encryptPassword;
  */
 public class UserRegistrationController {
     
+    private ExhibitionCentre exhibitionCentre;
     private User user;
     
-    public UserRegistrationController(){
+    public UserRegistrationController(ExhibitionCentre exhibitionCentre){
+        this.exhibitionCentre=exhibitionCentre;
         this.user=new User();
     }
     
     
     
     
-    public boolean setData(String name, String email, String username, String password){
+    public void setData(String name, String email, String username, String password){
         
-        user.setName(name);
-        user.setEmail(email);
-        user.setUsername(username);
+        this.user.setName(name);
+        this.user.setEmail(email);
+        this.user.setUsername(username);
         
         System.out.println(encryptPassword(password));
-        user.setPassword(encryptPassword(password));
+        this.user.setPassword(encryptPassword(password));
         
      
         
-        return true;
     }
     
+    
+    public boolean addUser() {
+        return this.exhibitionCentre.getUserRegister().addUser(this.user);
+    }
+    
+    public User getUser(){
+        return user;
+    }
     
 }

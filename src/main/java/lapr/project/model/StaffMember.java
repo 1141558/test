@@ -16,7 +16,10 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
     
     private static final long serialVersionUID = 1L;
     
+    
     private User staff;
+   
+   
 
     /**
      * @return the staff
@@ -69,5 +72,6 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
     public int compareTo(StaffMember otherStaff) {
         return this.staff.getUsername().compareTo(otherStaff.staff.getUsername());
     }
+
     
 }

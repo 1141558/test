@@ -5,6 +5,7 @@
  */
 package lapr.project.ui;
 
+import java.io.Serializable;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.utils.Utils;
 
@@ -13,10 +14,11 @@ import lapr.project.utils.Utils;
  *
  * @author MariaJoão
  */
-public class MainMenu {
+public class MainMenu implements Serializable{
     private ExhibitionCentre centre;
-    
-    public MainMenu(ExhibitionCentre centre){
+     private static final long serialVersionUID = 1L;
+     
+    public MainMenu(ExhibitionCentre centre) {
      
         String opt;
         this.centre=centre;

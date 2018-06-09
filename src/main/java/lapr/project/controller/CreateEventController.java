@@ -41,9 +41,10 @@ public class CreateEventController {
     public Date checkFormat(Date startDate, String startDateString) {
         
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-
+        
             try {
                 startDate = format.parse(startDateString);
+
                 return startDate;
                 
             } catch (ParseException ex) {
@@ -57,10 +58,10 @@ public class CreateEventController {
 
         int hours = 0, minutes=0, seconds=0;
         Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date1);
         calendar.set( Calendar.HOUR_OF_DAY, hours );
         calendar.set( Calendar.MINUTE, minutes );
         calendar.set( Calendar.SECOND, seconds );
-
         date1= calendar.getTime();
         if(date1.after(date2)){
             return false;

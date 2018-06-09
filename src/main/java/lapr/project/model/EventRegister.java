@@ -20,6 +20,12 @@ public class EventRegister implements Serializable{
     private static final long serialVersionUID = 1L;
     
     private List<Event> eventList;
+    private Event event;
+         
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
 
     public EventRegister(List<Event> eventList) {
         this.eventList = eventList;
@@ -77,10 +83,18 @@ public class EventRegister implements Serializable{
         this.eventList = eventList;
     }
 
-    public void setEvent(Event event1) {
-         eventList.add(event1);
+    public void addEvent(Event event1) {
+         this.eventList.add(event1);
     }
-
+    public boolean exists(Event event1){
+        for (Event event : this.eventList) {
+            if(event.equals(event1)){
+                return true;
+            }
+                
+        }
+        return false;
+    }
     @Override
     public String toString() {
         return "EventRegister{" + "eventList=" + eventList + '}';
@@ -89,5 +103,27 @@ public class EventRegister implements Serializable{
     public Event getEvent(int indice) {
         return eventList.get(indice);
     }
+
+    public List<Event> getEventListByOrganiser(User organiserValidated) {
+         List<Event> organiserValidatedList = new ArrayList<>();
+          for (Event item1 : eventList) {
+            
+           List<Organiser> organisersList = item1.getOrganiserRegister().getOrganiserList();
+            
+            for (Organiser item : organisersList) {
+                
+                if (item.getOrganiser().getUsername() == organiserValidated.getUsername()) {
+                    
+                    organiserValidatedList.add(item1);
+                    
+                }
+            }
+            
+        }
+            
+        return organiserValidatedList;
+        
+    }
+
 
 }
