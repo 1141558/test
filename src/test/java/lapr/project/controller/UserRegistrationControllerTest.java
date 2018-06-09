@@ -34,7 +34,7 @@ public class UserRegistrationControllerTest {
         assertEquals(user.getName(), instance.getUser().getName());
         assertEquals(user.getEmail(), instance.getUser().getEmail());
         assertEquals(user.getUsername(), instance.getUser().getUsername());
-        assertEquals(user.getPassword(), instance.getUser().getPassword(),0);
+        assertEquals(user.getPassword(), instance.getUser().getPassword(),0.0);
         
     }
 
