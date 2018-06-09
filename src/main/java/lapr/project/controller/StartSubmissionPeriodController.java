@@ -23,8 +23,8 @@ public class StartSubmissionPeriodController {
     List<Event> listEvent;
 
     public StartSubmissionPeriodController(ExhibitionCentre exhibitionCentre) {
-        this.exhibitionCentre=exhibitionCentre;
-        this.listEvent  =  new ArrayList<>();
+        this.exhibitionCentre = exhibitionCentre;
+        this.listEvent = new ArrayList<>();
     }
     
     public List<Event> findEventByOrganiserAndState(User user){
