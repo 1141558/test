@@ -23,7 +23,16 @@ public class UserRegistrationUI {
     
     
     private UserRegistrationController controller;
+    
+    /**
+     * Empty constructor for test purposes
+     */
+    public UserRegistrationUI(){
+        ExhibitionCentre testCentre = new ExhibitionCentre();
+    }
 
+    
+    
     public UserRegistrationUI(ExhibitionCentre exhibitionCentre){
         this.controller= new UserRegistrationController(exhibitionCentre);
         
