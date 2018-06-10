@@ -10,13 +10,20 @@ package lapr.project.model;
  * @author MariaJoão
  */
 public class User {
-    
+
     private String name;
     private String email;
     private String username;
     private double password;
- 
-    
+
+    /**
+     * Constructor
+     *
+     * @param name Name to be stored in the User
+     * @param email Email to be stored in the User
+     * @param username Username to be stored in the User
+     * @param password Pssword to be stored in the User
+     */
     public User(String name, String email, String username, double password) {
         this.name = name;
         this.email = email;
@@ -24,18 +31,25 @@ public class User {
         this.password = password;
     }
 
+    /**
+     * Empty constructor
+     */
     public User() {
-    
+
     }
 
+    /**
+     * Copy constructor
+     *
+     * @param otherUser User to be copied
+     */
     public User(User otherUser) {
-       this.email = otherUser.email;
-       this.name = otherUser.name;
-       this.password = otherUser.password;
-       this.username = otherUser.username;
+        this.email = otherUser.email;
+        this.name = otherUser.name;
+        this.password = otherUser.password;
+        this.username = otherUser.username;
     }
 
-    
     /**
      * @return the name
      */
@@ -63,7 +77,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     /**
      * @return the username
      */
@@ -92,14 +106,9 @@ public class User {
         this.password = password;
     }
 
-    public User clone(){
-        return new User(this);
-    }
-    
     @Override
     public String toString() {
         return "User:{" + "name=" + name + ", email=" + email + ", username=" + username + ", password=" + password + '}';
     }
-    
- 
+
 }
