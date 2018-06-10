@@ -26,6 +26,7 @@ public class DummyData {
     
     Organiser org1;
     Organiser org2;
+    Organiser org3;
     
     OrganiserRegister organiserRegister = new OrganiserRegister();
     OrganiserRegister organiserRegister2 = new OrganiserRegister();
@@ -71,7 +72,7 @@ public class DummyData {
         
         usersCentre.add(staffElement3);
         userRegister.setUserList(usersCentre);
-        System.out.println("user do centro" + usersCentre );
+        System.out.println("user do centro" + usersCentre);
         exhibitionCentre.setUserRegister(userRegister);
         
         return userRegister;
@@ -100,15 +101,19 @@ public class DummyData {
         Event 1
         
         */
-        User u1 = new User("Organiser1", "mjdg111@hotmail.com", "orga1", 123);
+        User u1 = new User("jose", "mail2@hotmail.com", "jo", 123);
         User u2 = new User("Organiser2", "mail2@hotmail.com", "orga2", 123);
+        User userOrganiser3 = new User("Maria", "mariamail@hotmail.com", "mar", 123);
+        org3 = new Organiser();
+        org3.setOrganiser(userOrganiser3);
         org1 = new Organiser();
         org1.setOrganiser(u1);
         Organiser org2 = new Organiser();
-        org2.setOrganiser(u2);
+        org2.setOrganiser(userOrganiser3);
         
         organiserList.add(org2);
         organiserList.add(org1);
+        organiserList.add(org3);
         organiserRegister.setOrganiserList(organiserList);
         
         StaffMember staff11 = new StaffMember();
@@ -121,7 +126,6 @@ public class DummyData {
         staffMemberListEvent1.add(staff11);
         staffMemberListEvent1.add(staff12);
         staffMemberListEvent1.add(staff13);
-        
         
         staffRegister1.add(staffMemberListEvent1);
         

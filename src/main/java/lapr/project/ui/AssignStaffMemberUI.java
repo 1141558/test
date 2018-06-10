@@ -59,12 +59,13 @@ public final class AssignStaffMemberUI {
         
         assignStaffMemberController.selectEvent(eventSelected);
        
-       System.out.println("Antes 1 filtro"+assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected(eventSelected,exhibitionCentre.getUserOnline()));
-        System.out.println("elemento do centro de exibiçoes" + exhibitionCentre.getUserRegister().getUserList());
+        List<User> availableUserToAssignToEventBeforFilterStaff = assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected(eventSelected,exhibitionCentre.getUserOnline());
+        List<User> availableUserToAssignToEvent = assignStaffMemberController.showAvailableUsers(eventSelected, exhibitionCentre.getUserOnline());
         
-    // assignStaffMemberController.showAvailableUsers(eventSelected,exhibitionCentre.getUserOnline());
+        showAvalableUsersForEvent(exhibitionCentre,availableUserToAssignToEvent,eventSelected);
+        
+        // assignStaffMemberController.showAvailableUsers(eventSelected,exhibitionCentre.getUserOnline());
         //showStaffListByEvent(eventSelected);
-  
 //                if (!opcao_eq.equalsIgnoreCase("0")) {
 //
 //                    System.out.println("\nIntroduza o periodo de autorizacao (O para sair)");
@@ -101,8 +102,53 @@ public final class AssignStaffMemberUI {
             
         }
     }
+
+    private void showAvalableUsersForEvent(ExhibitionCentre exhibitionCentre, List<User> availableUserToAssignToEvent, Event eventSelected) {
+        String user1="";
+        int userPos = 0;
+        int n = 1;
+        while(!user1.equalsIgnoreCase("X")){
+        
+        
+        System.out.println("--------------------------");
+        System.out.println(" List of Available Users  ");
+        System.out.println("--------------------------");
+        for (User user : availableUserToAssignToEvent) {
+            
+            System.out.println("User: " + user);
+            n++;
+                    }
+          System.out.println("--------------------------");
+   
+      user1=Utils.readLineFromConsole("PICK USER (WRITE X WHEN YOU ARE DONE): ");
+            readOrganiser(user1, userPos, n, availableUserToAssignToEvent, eventSelected,exhibitionCentre, availableUserToAssignToEvent);   
+       }  
+    }
     
-    
-    
+        private void readOrganiser(String user1, int userPos, int n, List<User> usersToPrint, Event eventSelected, ExhibitionCentre exhibitionCentre, List<User> availableUserToAssignToEvent) {
+        try{
+                userPos= Integer.parseInt(user1);
+                List<StaffMember> staffMembers = new ArrayList<>();
+                if(userPos<n){
+                    
+                    StaffMember o = assignStaffMemberController.assignUser(availableUserToAssignToEvent ,eventSelected,userPos);
+                   
+                    boolean answer = assignStaffMemberController.addStaffMemberToEvent(o, eventSelected);
+                    if(!answer){
+                        Utils.printError("USER ALLREADY ADDED. PLEASE TRY AGAIN.");
+                    }else{
+                        staffMembers.add(o);
+                    }
+                }else{
+                    Utils.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
+
+                }
+            }catch(NumberFormatException e){
+                if(!user1.equalsIgnoreCase("X")){
+                    Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+
+                }
+            }           
+    }
     
 }
