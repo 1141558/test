@@ -25,7 +25,7 @@ import lapr.project.model.UserRegister;
 public class DummyData {
     
     Organiser org1;
-
+    Organiser org2;
     
     OrganiserRegister organiserRegister = new OrganiserRegister();
     OrganiserRegister organiserRegister2 = new OrganiserRegister();
@@ -35,57 +35,49 @@ public class DummyData {
     List<Organiser> organiserList2 = new ArrayList<>();
     List<Organiser> organiserList3 = new ArrayList<>();
     
-    
     StaffRegister staffRegister1 = new StaffRegister();
     List<StaffMember> staffMemberListEvent1 = new ArrayList<>();
     
-    
     ExhibitionCentre exhibitionCentre;
-    User u1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123);
+    User staffElement3 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123);
     User u2 = new User("jose", "mail2@hotmail.com", "jo", 123);
     User u12 = new User("manuel2", "mjdg111@hotmail.com", "garnel2", 123);
-    User u123 = new User("manuel23", "mjdg111@hotmail.com", "garnel23", 123);
-    User u1234 = new User("Josel234", "Jose@hotmail.com", "Jose1234", 123);
-       User u22 = new User("jo", "mail2@hotmail.com", "jo", 123);
-
-       
+    User staffElement1 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123);
+    User staffElement2 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123);
+    User u123 = new User("jo", "mail2@hotmail.com", "jo", 123);
+    
     User u3 = new User("Andre", "mailu3", "andr", 133);
     User u4 = new User("Maria", "mariamail@hotmail.com", "mar", 123);
     
     User u5 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133);
     User u6 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123);
     
-   
-   //*****************************************************************************************
+    //*****************************************************************************************
     //************************Criar registo de utilizadores***********************************
-  
-     
-    public UserRegister getUserCentre(){
-          UserRegister userRegister = new UserRegister() ;
-          
-     List<User> usersCentre = new ArrayList<>();
-     
-      usersCentre.add(u2);
-      usersCentre.add(u12);
-      usersCentre.add(u123);
-      usersCentre.add(u1234);
-      usersCentre.add(u22);
-      usersCentre.add(u3);
-      usersCentre.add(u4);
-      usersCentre.add(u5);
-      usersCentre.add(u6);
-              
-      usersCentre.add(u1);
-      userRegister.setUserList(usersCentre);
-       exhibitionCentre.setUserRegister(userRegister);
-       
-      return userRegister;       
+    public UserRegister getUserCentre() {
+        UserRegister userRegister = new UserRegister();
+        
+        List<User> usersCentre = new ArrayList<>();
+        
+        usersCentre.add(u2);
+        usersCentre.add(u12);
+        usersCentre.add(staffElement1);
+        usersCentre.add(staffElement2);
+        usersCentre.add(u123);
+        usersCentre.add(u3);
+        usersCentre.add(u4);
+        usersCentre.add(u5);
+        usersCentre.add(u6);
+        
+        usersCentre.add(staffElement3);
+        userRegister.setUserList(usersCentre);
+        System.out.println("user do centro" + usersCentre );
+        exhibitionCentre.setUserRegister(userRegister);
+        
+        return userRegister;
     }
     
-    
-    
     //*********************************************************************************************
-    
     Event event1;
     Event event2;
     Event event3;
@@ -108,8 +100,8 @@ public class DummyData {
         Event 1
         
         */
-           User u1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123);
-    User u2 = new User("jose", "mail2@hotmail.com", "jo", 123);
+        User u1 = new User("Organiser1", "mjdg111@hotmail.com", "orga1", 123);
+        User u2 = new User("Organiser2", "mail2@hotmail.com", "orga2", 123);
         org1 = new Organiser();
         org1.setOrganiser(u1);
         Organiser org2 = new Organiser();
@@ -120,24 +112,25 @@ public class DummyData {
         organiserRegister.setOrganiserList(organiserList);
         
         StaffMember staff11 = new StaffMember();
-          StaffMember staff12 = new StaffMember();
-            StaffMember staff13 = new StaffMember();
-            
-        staff11.setStaff(u12);
-        staff12.setStaff(u123);
-         staff13.setStaff(u1234);
-       staffMemberListEvent1.add(staff11);
+        StaffMember staff12 = new StaffMember();
+        StaffMember staff13 = new StaffMember();
+        
+        staff11.setStaff(staffElement3);
+        staff12.setStaff(staffElement1);
+        staff13.setStaff(staffElement2);
+        staffMemberListEvent1.add(staff11);
         staffMemberListEvent1.add(staff12);
-         staffMemberListEvent1.add(staff13);
-       
-       staffRegister1.add(staffMemberListEvent1);
-       
+        staffMemberListEvent1.add(staff13);
+        
+        
+        staffRegister1.add(staffMemberListEvent1);
+        
         this.event1 = new Event(organiserRegister);
         
         this.event1.setTitle("EVENTO UM");
         event1.setEventState(EventState.READY_FOR_APPLICATION);
         event1.addOrganiserRegister(organiserRegister);
-       event1.setStaffRegister(staffRegister1);
+        event1.setStaffRegister(staffRegister1);
         eventRegister.setEvent(event1);
         
         /*

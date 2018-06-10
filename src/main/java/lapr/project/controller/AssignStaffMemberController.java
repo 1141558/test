@@ -40,7 +40,13 @@ public class AssignStaffMemberController {
         this.dummy = new DummyData(centre);
         System.out.println("Controller" + dummy.toString() + "depois dummy data");
     }
-    
+
+    AssignStaffMemberController(ExhibitionCentre exhibitionCentre, User userOnline) {
+      this.exhibitionCentre = exhibitionCentre;
+      this.user =userOnline;
+    }
+
+   
     public List<Event> getEventsListByOrganiser() {
         
         User organiserValidated = exhibitionCentre.getUserOnline();
@@ -61,13 +67,13 @@ public class AssignStaffMemberController {
     public List<User> showUsersExhibitionCentre() {
         
         usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();
-        
+       
         return usersExhibitionCentre;
         
     }
     
     public List<User> filterUserRegisterByNoOrganiserEventSelected(Event eventSelected, User userOnline) {
-        
+        showUsersExhibitionCentre();
         int pos = 0;
         
         List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
@@ -94,8 +100,8 @@ public class AssignStaffMemberController {
     }
     
     public List<User> showAvailableUsers(Event eventSelected, User userOnline) {
-        int pos2 = 0;
         
+        int pos2 = 0;
         List<User> filterUserRegisterByNoOrganiserEventSelectedCopy = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected(eventSelected, userOnline));
         List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected(eventSelected, userOnline));
         //  System.out.println("lista antes do filtro do staff do vento" + filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff);
@@ -114,7 +120,7 @@ public class AssignStaffMemberController {
                 if (user.getName().equals(staffMember.getStaff().getName())) {
                     System.out.println("element user: " + user + "\n");
                     System.out.println("element user2: " + staffMember + "\n");
-                    filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff.remove(pos2 + 1);//não entendo.......
+                    filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff.remove(pos2);//não entendo.......
                     pos2++;
                 }
             }

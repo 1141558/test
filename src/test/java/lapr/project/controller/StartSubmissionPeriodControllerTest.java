@@ -31,7 +31,7 @@ public class StartSubmissionPeriodControllerTest {
     @Test
     public void testFindEventByOrganiserAndState() {
         System.out.println("findEventByOrganiserAndState");
-        User user = data.u1;
+        User user = data.staffElement3;
         StartSubmissionPeriodController controller = new StartSubmissionPeriodController(centre);
         List<Event> expResult = null;
         List<Event> result = controller.findEventByOrganiserAndState(user);

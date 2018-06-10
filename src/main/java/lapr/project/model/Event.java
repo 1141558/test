@@ -35,8 +35,8 @@ public class Event implements Comparable<Event>, Serializable {
     
     private int daysApplication = CORDAYS_APPLICATION_OMISSION;
     
-    public Event(String Title, String description, Date startDate, Date endDate, String place, OrganiserRegister organiserRegister) {
-        this.title = Title;
+    public Event(String title, String description, Date startDate, Date endDate, String place, OrganiserRegister organiserRegister) {
+        this.title = title;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -266,9 +266,7 @@ public class Event implements Comparable<Event>, Serializable {
         return Objects.equals(this.daysApplication, this.daysApplication);
     } 
 
-    public List<User> getCopia(List<User> userList) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
  
     
 }
