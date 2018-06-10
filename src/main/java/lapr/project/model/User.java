@@ -96,6 +96,13 @@ public class User {
         return new User(this);
     }
     
+    public boolean equals(User obj) {
+    if (obj == null) return false;
+    if (obj.email == this.email && obj.name==this.name && obj.password==this.password && obj.username==this.username) return true;
+        return false;
+}
+    
+    
     @Override
     public String toString() {
         return "User:{" + "name=" + name + ", email=" + email + ", username=" + username + ", password=" + password + '}';

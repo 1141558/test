@@ -40,42 +40,40 @@ public class DummyData {
     List<StaffMember> staffMemberListEvent1 = new ArrayList<>();
     
     ExhibitionCentre exhibitionCentre;
-    User staffElement3 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123);
-    User u2 = new User("jose", "mail2@hotmail.com", "jo", 123);
-    User u12 = new User("manuel2", "mjdg111@hotmail.com", "garnel2", 123);
-    User staffElement1 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123);
-    User staffElement2 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123);
-    User u123 = new User("jo", "mail2@hotmail.com", "jo", 123);
-    
-    User u3 = new User("Andre", "mailu3", "andr", 133);
-    User u4 = new User("Maria", "mariamail@hotmail.com", "mar", 123);
-    
-    User u5 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133);
-    User u6 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123);
+    User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123);
+    User user2 = new User("jose", "mail2@hotmail.com", "jo", 123);
+    User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123);
+    User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123);
+    User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123);
+    User user6 = new User("Organiser2", "mail2@hotmail.com", "orga2", 123);    
+    User user7 = new User("Andre", "mailu3", "andr", 133);
+    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123);   
+    User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133);
+    User user10 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123);
     
     //*****************************************************************************************
     //************************Criar registo de utilizadores***********************************
-    public UserRegister getUserCentre() {
+    public void createUsers() {
         UserRegister userRegister = new UserRegister();
         
         List<User> usersCentre = new ArrayList<>();
         
-        usersCentre.add(u2);
-        usersCentre.add(u12);
-        usersCentre.add(staffElement1);
-        usersCentre.add(staffElement2);
-        usersCentre.add(u123);
-        usersCentre.add(u3);
-        usersCentre.add(u4);
-        usersCentre.add(u5);
-        usersCentre.add(u6);
-        
-        usersCentre.add(staffElement3);
+        usersCentre.add(user1);
+        usersCentre.add(user2);
+        usersCentre.add(user3);
+        usersCentre.add(user4);
+        usersCentre.add(user5);
+        usersCentre.add(user6);
+    
+        usersCentre.add(user7);
+        usersCentre.add(user8);
+        usersCentre.add(user9);       
+        usersCentre.add(user10);
+       
         userRegister.setUserList(usersCentre);
         System.out.println("user do centro" + usersCentre);
         exhibitionCentre.setUserRegister(userRegister);
-        
-        return userRegister;
+
     }
     
     //*********************************************************************************************
@@ -97,19 +95,18 @@ public class DummyData {
         
         this.exhibitionCentre = exhibitionCentre;
         
+        createUsers();
         /*
         Event 1
         
         */
-        User u1 = new User("jose", "mail2@hotmail.com", "jo", 123);
-        User u2 = new User("Organiser2", "mail2@hotmail.com", "orga2", 123);
-        User userOrganiser3 = new User("Maria", "mariamail@hotmail.com", "mar", 123);
-        org3 = new Organiser();
-        org3.setOrganiser(userOrganiser3);
+        
         org1 = new Organiser();
-        org1.setOrganiser(u1);
-        Organiser org2 = new Organiser();
-        org2.setOrganiser(userOrganiser3);
+        org1.setOrganiser(user1);
+        org2 = new Organiser();
+        org2.setOrganiser(user2);
+        org3 = new Organiser();
+        org3.setOrganiser(user3);
         
         organiserList.add(org2);
         organiserList.add(org1);
@@ -118,14 +115,11 @@ public class DummyData {
         
         StaffMember staff11 = new StaffMember();
         StaffMember staff12 = new StaffMember();
-        StaffMember staff13 = new StaffMember();
         
-        staff11.setStaff(staffElement3);
-        staff12.setStaff(staffElement1);
-        staff13.setStaff(staffElement2);
+        staff11.setStaff(user4);
+        staff12.setStaff(user5);
         staffMemberListEvent1.add(staff11);
         staffMemberListEvent1.add(staff12);
-        staffMemberListEvent1.add(staff13);
         
         staffRegister1.add(staffMemberListEvent1);
         
@@ -141,9 +135,9 @@ public class DummyData {
         Event 2
         */
         Organiser org22 = new Organiser();
-        org22.setOrganiser(u3);
+        org22.setOrganiser(user7);
         Organiser org222 = new Organiser();
-        org222.setOrganiser(u4);
+        org222.setOrganiser(user8);
         organiserList2.add(org22);
         organiserList2.add(org222);
         organiserRegister2.setOrganiserList(organiserList2);
@@ -156,12 +150,12 @@ public class DummyData {
         /*
         Event 3
         */
-        Organiser org3_1 = new Organiser();
-        org3_1.setOrganiser(u1);
-        Organiser org3_2 = new Organiser();
-        org3_2.setOrganiser(u6);
-        organiserList3.add(org3_1);
-        organiserList3.add(org3_2);
+        Organiser org31 = new Organiser();
+        org31.setOrganiser(user9);
+        Organiser org32 = new Organiser();
+        org32.setOrganiser(user10);
+        organiserList3.add(org31);
+        organiserList3.add(org32);
         
         organiserRegister3.setOrganiserList(organiserList3);
         this.event3 = new Event(organiserRegister3);
@@ -174,9 +168,8 @@ public class DummyData {
         eventRegister.addEvent(event3);
         exhibitionCentre.setEventRegister(eventRegister);
         
-        exhibitionCentre.setUserOnline(u1);
+        exhibitionCentre.setUserOnline(user1);
         
-        // event1.getOrganiserRegister().addOrganiser(org1);
     }
     
     public OrganiserRegister getOrganiserRegister() {

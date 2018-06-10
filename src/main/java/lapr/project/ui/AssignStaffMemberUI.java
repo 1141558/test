@@ -59,10 +59,9 @@ public final class AssignStaffMemberUI {
         
         assignStaffMemberController.selectEvent(eventSelected);
        
-        List<User> availableUserToAssignToEventBeforFilterStaff = assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected(eventSelected,exhibitionCentre.getUserOnline());
-        List<User> availableUserToAssignToEvent = assignStaffMemberController.showAvailableUsers(eventSelected, exhibitionCentre.getUserOnline());
+        List<User> availableUserToAssignToEvent = assignStaffMemberController.getAvailableUsers(eventSelected, exhibitionCentre.getUserOnline());
         
-        showAvalableUsersForEvent(exhibitionCentre,availableUserToAssignToEvent,eventSelected);
+        showAvaiableUsersForEvent(exhibitionCentre,availableUserToAssignToEvent,eventSelected);
         
         // assignStaffMemberController.showAvailableUsers(eventSelected,exhibitionCentre.getUserOnline());
         //showStaffListByEvent(eventSelected);
@@ -103,7 +102,7 @@ public final class AssignStaffMemberUI {
         }
     }
 
-    private void showAvalableUsersForEvent(ExhibitionCentre exhibitionCentre, List<User> availableUserToAssignToEvent, Event eventSelected) {
+    private void showAvaiableUsersForEvent(ExhibitionCentre exhibitionCentre, List<User> availableUserToAssignToEvent, Event eventSelected) {
         String user1="";
         int userPos = 0;
         int n = 1;

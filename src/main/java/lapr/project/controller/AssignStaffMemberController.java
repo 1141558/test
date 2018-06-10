@@ -37,7 +37,7 @@ public class AssignStaffMemberController {
     public AssignStaffMemberController(ExhibitionCentre centre) {
         this.exhibitionCentre = centre;
         this.dummy = new DummyData(centre);
-
+        
     }
     
     AssignStaffMemberController(ExhibitionCentre exhibitionCentre, User userOnline) {
@@ -72,65 +72,67 @@ public class AssignStaffMemberController {
     
     public List<User> filterUserRegisterByNoOrganiserEventSelected(Event eventSelected, User userOnline) {
         
-        int pos = 0;
         List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
         usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();
         usersExhibitionCentreCopyWithoutOrganisers = Utils.getCopia(exhibitionCentre.getUserRegister().getUserList());
         List<Organiser> organiserByEvent = eventSelected.getOrganisersRegister().getOrganiserList();
+        List<User> usersToRemove = new ArrayList<>();
         
         for (Organiser organiser : organiserByEvent) {
-            for (User user : usersExhibitionCentre) {
-                
-                if (user.getName().equals(organiser.getOrganiser().getName())) {
-                    
-                    usersExhibitionCentreCopyWithoutOrganisers.remove(pos);
-                    pos++;
+            System.out.println("tenho este organizador: " + organiser);
+            
+            for (User user : usersExhibitionCentreCopyWithoutOrganisers) {
+                if (user.equals(organiser.getOrganiser())) {
+                    usersToRemove.add(user);
+                    System.out.println("Removeu este user: " + user);
                 }
+                
             }
             
         }
-    
+        
+        usersExhibitionCentreCopyWithoutOrganisers.removeAll(usersToRemove);
+        
         return usersExhibitionCentreCopyWithoutOrganisers;
     }
     
-    public List<User> showAvailableUsers(Event eventSelected, User userOnline) {
-        
-        int pos2 = 0;
+    public List<User> getAvailableUsers(Event eventSelected, User userOnline) {
         
         List<User> filterUserRegisterByNoOrganiserEventSelectedCopy = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected(eventSelected, userOnline));
-        List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected(eventSelected, userOnline));
+        List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = new ArrayList<>();
         
         List<StaffMember> eventStaffList = eventSelected.getStaffRegister().getStaffList();
-    
+        
         for (StaffMember staffMember : eventStaffList) {
+            System.out.println("tenho este staff Member: " + staffMember);
+            System.out.println(eventStaffList.size());
             for (User user : filterUserRegisterByNoOrganiserEventSelectedCopy) {
-               
-                if (user.getName().equals(staffMember.getStaff().getName())) {
- 
-                    filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff.remove(pos2);
+                
+                if (user.equals(staffMember.getStaff())) {
                     
-                    pos2++;
+                    filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff.add(user);
+                    System.out.println("Removeu este user: " + user);
                 }
+                
             }
         }
-
-        return filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff;
+        System.out.println(filterUserRegisterByNoOrganiserEventSelectedCopy.size());
+        filterUserRegisterByNoOrganiserEventSelectedCopy.removeAll(filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff);
+        System.out.println(filterUserRegisterByNoOrganiserEventSelectedCopy.size());
+        return filterUserRegisterByNoOrganiserEventSelectedCopy;
     }
-
-  
+    
     public StaffMember assignUser(List<User> availableUserToAssignToEvent, Event eventSelected, int userPos) {
-       StaffMember staffMember = new StaffMember();
-        User user = availableUserToAssignToEvent.get(userPos-1);
+        StaffMember staffMember = new StaffMember();
+        User user = availableUserToAssignToEvent.get(userPos - 1);
         staffMember.setStaff(user);
-       List<StaffMember> staffMemberList =  eventSelected.getStaffRegister().getStaffList();
-       staffMemberList.add(staffMember);
+        List<StaffMember> staffMemberList = eventSelected.getStaffRegister().getStaffList();
+        staffMemberList.add(staffMember);
         return staffMember;
     }
-
     
-
     public boolean addStaffMemberToEvent(StaffMember o, Event eventSelected) {
-         return eventSelected.getStaffRegister().getStaffList().add(o);
+        return eventSelected.getStaffRegister().getStaffList().add(o);
     }
     
 }
