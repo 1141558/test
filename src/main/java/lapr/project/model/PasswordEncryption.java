@@ -12,53 +12,48 @@ import java.util.Arrays;
  * @author JM
  */
 public class PasswordEncryption {
-    
-    
-    
-    public static double encryptPassword(String password){
-        double encrypted=0.0;
-        
-        int [] numCount=new int [10];
-        Arrays.fill(numCount,0);
-        
+
+    /**
+     * Method to encrypt a String password (Arithmetic coding)
+     *
+     * @param password String ith the password to be encrypted
+     * @return Double with the encrypted password
+     */
+    public static double encryptPassword(String password) {
+        double encrypted = 0.0;
+        int[] numCount = new int[10];
+        Arrays.fill(numCount, 0);
+
         //conta as repetições de cada algarismo
-        for(int i=0;i<password.length();i++){
-            char c=password.charAt(i);
-            int digit=Character.getNumericValue(c);
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            int digit = Character.getNumericValue(c);
             numCount[digit]++;
-            
         }
-        
+
         //Calcula as probabilidades
-        double [] probArray=new double [10];
-        
-        probArray[0]=((double)numCount[0]/password.length());
-        for(int i=1;i<probArray.length;i++){
-            probArray[i]=((double)numCount[i]/password.length())+probArray[i-1];
+        double[] probArray = new double[10];
+
+        probArray[0] = ((double) numCount[0] / password.length());
+        for (int i = 1; i < probArray.length; i++) {
+            probArray[i] = ((double) numCount[i] / password.length()) + probArray[i - 1];
         }
-        
-        
-        double I=0.0, F=1.0;
-        double x=0.0,y=1.0;
-        
+
+        double I = 0.0, F = 1.0;
+        double x = 0.0, y = 1.0;
+
         //Codifica
-        for(int i=0;i<password.length();i++){
-            char c=password.charAt(i);
-            int digit=Character.getNumericValue(c);
-            
-            //I+delta*probC(digit-1)
-            
-            x=(digit==0)? I:I+((F-I)*probArray[digit-1]);
-            y=I+((F-I)*probArray[digit]);
-            
-            I=x;
-            F=y;
-            
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            int digit = Character.getNumericValue(c);
+
+            x = (digit == 0) ? I : I + ((F - I) * probArray[digit - 1]);
+            y = I + ((F - I) * probArray[digit]);
+
+            I = x;
+            F = y;
         }
-        encrypted=I;
+        encrypted = I;
         return encrypted;
     }
-    
-    
-    
 }

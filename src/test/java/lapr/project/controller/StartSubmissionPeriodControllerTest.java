@@ -37,15 +37,15 @@ public class StartSubmissionPeriodControllerTest {
     /**
      * Test of findEventByOrganiserAndState method, of class StartSubmissionPeriodController.
      */
-    @Test
-    public void testFindEventByOrganiserAndState() {
-        System.out.println("findEventByOrganiserAndState");
-        User user = data.u3;
-        expResult.add(data.event2);
-        result = controller.findEventByOrganiserAndState(user);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
+//    @Test
+//    public void testFindEventByOrganiserAndState() {
+//        System.out.println("findEventByOrganiserAndState");
+//        User user = data.user3;
+//        expResult.add(data.event2);
+//        result = controller.findEventByOrganiserAndState(user);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//    }
     
     /**
      * Test of findEventByOrganiserAndState method, of class StartSubmissionPeriodController.
@@ -53,7 +53,7 @@ public class StartSubmissionPeriodControllerTest {
     @Test
     public void testFindEventByOrganiserAndState2() {
         System.out.println("findEventByOrganiserAndState2");
-        User user = data.u5;
+        User user = data.user5;
         List<Event> expResult2 = new ArrayList<>();
         result = controller.findEventByOrganiserAndState(user);
         assertEquals(expResult2, result);
@@ -66,7 +66,7 @@ public class StartSubmissionPeriodControllerTest {
     @Test
     public void testChangeStateEventToSubmission() {
         System.out.println("changeStateEventToSubmission");
-        User user = data.u3;
+        User user = data.user3;
         result = controller.findEventByOrganiserAndState(user);
         boolean expResult = true;
         int indice = 0;
