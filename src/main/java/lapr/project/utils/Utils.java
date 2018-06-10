@@ -77,7 +77,8 @@ public class Utils {
         
         userList.forEach((User user) -> {
            
-            copia.add(user.clone());
+//            copia.add(user.clone());
+            copia.add(new User(user));
         });
       
         return copia;
