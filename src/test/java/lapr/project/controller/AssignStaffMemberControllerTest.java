@@ -8,6 +8,7 @@ package lapr.project.controller;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Event;
+import lapr.project.model.EventRegister;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
@@ -22,9 +23,11 @@ import org.junit.jupiter.api.Test;
  */
 public class AssignStaffMemberControllerTest {
     
-   
-    
-    private User online = new User("userOnline1", "online1@hotmail.com", "online", 555555);
+    /**
+     * Data to be used on the tests
+     *
+     */
+    private User userOnline = new User("userOnline1", "online1@hotmail.com", "online", 555555);
     private User u1 = new User("manuel", "manuel@hotmail.com", "garnel", 555555);
     private User u2 = new User("jose", "manuel@hotmail.com", "jo", 123321);
     private User u3 = new User("garnel", "garnel@hotmail.com", "garne", 321123);
@@ -40,10 +43,13 @@ public class AssignStaffMemberControllerTest {
     private User u6 = new User("Joaquim", "mailgdfgdgfdgu3@portugal.pt", "jq", 133);
     private User u7 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123);
     private List<User> userList = new ArrayList<>();
+    private List<User> userList2 = new ArrayList<>();
     private UserRegister userRegister = new UserRegister();
+    private UserRegister userRegister2 = new UserRegister();
     
     private Event event = new Event();
     private ExhibitionCentre exhibitionCentre = new ExhibitionCentre();
+    private ExhibitionCentre exhibitionCentre2 = new ExhibitionCentre();
     
     /**
      * Test of filterUserRegisterByNoOrganiserEventSelected of class
@@ -58,10 +64,8 @@ public class AssignStaffMemberControllerTest {
         userList.add(u3);
         userList.add(u4);
         userList.add(u5);
-         userList.add(u6);
-          userList.add(u7);
-         
-       
+        userList.add(u6);
+        userList.add(u7);
         
         organiserList.add(organiserU1);
         organiserList.add(organiserU2);
@@ -72,16 +76,60 @@ public class AssignStaffMemberControllerTest {
         System.out.println("userRegister: " + userRegister.toString());
         event.addOrganiserRegister(organiserRegister);
         exhibitionCentre.setUserRegister(userRegister);
-      
- AssignStaffMemberController assignStaffMemberController = new AssignStaffMemberController( exhibitionCentre,online);
-       
+        
+        AssignStaffMemberController assignStaffMemberController = new AssignStaffMemberController(exhibitionCentre, userOnline);
         
         //Act
-        List<User> users = assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected(event, online);
+        List<User> users = assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected(event, userOnline);
         
         //Assert
-          Assert .assertNotNull(users.get(0));
-            Assert .assertNotNull(users.get(1));
+        Assert.assertNotNull(users.get(0));
+        Assert.assertNotNull(users.get(1));
         
+    }
+    
+    @Test
+    public void showUsersExhibitionCentreTest() {
+        
+        //Arrange
+        userList2.add(u1);
+        userList2.add(u2);
+        userRegister2.setUserList(userList2);
+        exhibitionCentre2.setUserRegister(userRegister2);
+        List<User> usersReturn = new ArrayList<>();
+        
+        //Act
+        AssignStaffMemberController assignStaffMemberController2 = new AssignStaffMemberController(exhibitionCentre2);
+        usersReturn = assignStaffMemberController2.showUsersExhibitionCentre();
+        
+        //Assert
+        Assert.assertEquals("manuel", usersReturn.get(0).getName());
+        Assert.assertEquals("garnel", usersReturn.get(0).getUsername());
+        Assert.assertEquals("jose", usersReturn.get(1).getName());
+        Assert.assertEquals("jo", usersReturn.get(1).getUsername());
+        
+    }
+    
+    @Test
+    public void getEventsLisByOrganiserTest() {
+        //Arrange
+        Event event3 = new Event();
+        OrganiserRegister organiserRegister3 = new OrganiserRegister();
+        
+        exhibitionCentre.setUserOnline(userOnline);
+        organiserList.add(organiserU1);
+        organiserList.add(organiserU2);
+        organiserRegister3.setOrganiserList(organiserList);
+        event3.setOrganisersRegister(organiserRegister3);
+        EventRegister eventRegister3 = new EventRegister();
+        eventRegister3.addEvent(event3);
+        exhibitionCentre.setEventRegister(eventRegister3);
+        
+         //Act
+      AssignStaffMemberController assignStaffMemberController3 = new AssignStaffMemberController(exhibitionCentre2);
+        List <Event> eventListByOrganiser = assignStaffMemberController3.getEventsListByOrganiser();
+        
+         //Assert
+         Assert.assertEquals(eventListByOrganiser.get(0).getTitle(),"EVENTO UM");
     }
 }
