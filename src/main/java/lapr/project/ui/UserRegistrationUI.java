@@ -36,7 +36,11 @@ public class UserRegistrationUI {
     public UserRegistrationUI(ExhibitionCentre exhibitionCentre){
         this.controller= new UserRegistrationController(exhibitionCentre);
         
-        String name="", email="", username="", passwordString="";
+        String name="";
+        String email="";
+        String username="";
+//        String passwordString="";
+        String passwordString=new String();
 //        int password=0;
         
         //Request user data
