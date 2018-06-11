@@ -56,7 +56,7 @@ public class EventRegister implements Serializable{
     public boolean userIsStaffMember(User u){
         for (Event event : this.eventList) {
             for (StaffMember sm : event.getStaffRegister().getStaffList()) {
-                if(u.getUsername().equals(sm.getStaffUser().getUsername())){
+                if(u.getUsername().equals(sm.getStaff().getUsername())){
                     return true;
                 }
             }

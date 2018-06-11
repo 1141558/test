@@ -34,7 +34,10 @@ class Main {
         CalculatorExample calculatorExample = new CalculatorExample();
         System.out.println(calculatorExample.sum(3, 5));
         ExhibitionCentre centre = new ExhibitionCentre();
-        XMLDecoder.readExhibitionCentreFile("C:\\Users\\MariaJoão\\Desktop\\ISEP\\LAPR2\\lapr2-2017-g001\\exhibition1_v0.1.xml", centre);
+        /*
+         * descomentem esta linha se quiserem testar a leitura, mudem o path para o path do vosso PC
+        */
+        //XMLDecoder.readExhibitionCentreFile("C:\\Users\\MariaJoão\\Desktop\\ISEP\\LAPR2\\lapr2-2017-g001\\exhibition1_v0.1.xml", centre);
         
         /*dados de teste (APAGAR FUTURAMENTE)*/
         User u1 = new User("nome1", "email1", "username1", 0.0);

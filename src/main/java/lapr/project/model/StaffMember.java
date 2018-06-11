@@ -29,12 +29,6 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
    
    
 
-    /**
-     * @return the staff
-     */
-    public User getStaffUser() {
-        return staff;
-    }
 
     public StaffMember() {
         this.staff = new User();

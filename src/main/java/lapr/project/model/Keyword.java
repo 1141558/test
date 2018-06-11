@@ -18,6 +18,13 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 public class Keyword implements Exportable, Importable<Keyword> {
 
+    /**
+     * @param value the value to set
+     */
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     private static final String ROOT_ELEMENT_NAME = "keyword";
     private static final String VALUE_ELEMENT_NAME = "value";
 
@@ -47,7 +54,7 @@ public class Keyword implements Exportable, Importable<Keyword> {
      *
      * @return Keyword Value
      */
-    private String getValue() {
+    public String getValue() {
         return this.value;
     }
 
@@ -99,7 +106,7 @@ public class Keyword implements Exportable, Importable<Keyword> {
         Node elementKeyword = elementsKeyword.item(0);
 
         //Get value
-        this.value = elementKeyword.getFirstChild().getNodeValue();
+        this.setValue(elementKeyword.getFirstChild().getNodeValue());
 
         return this;
     }
