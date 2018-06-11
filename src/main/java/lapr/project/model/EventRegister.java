@@ -20,12 +20,7 @@ public class EventRegister implements Serializable{
     private static final long serialVersionUID = 1L;
     
     private List<Event> eventList;
-    private Event event;
-         
 
-    public void setEvent(Event event) {
-        this.event = event;
-    }
 
     public EventRegister(List<Event> eventList) {
         this.eventList = eventList;

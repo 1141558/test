@@ -124,6 +124,7 @@ public class AssignStaffMemberController {
         StaffMember staffMember = new StaffMember();
         StaffMember staffMemberToCopy = new StaffMember();
         User user = availableUserToAssignToEvent.get(userPos - 1);
+
         
         List<StaffMember> staffMemberList = eventSelected.getStaffRegister().getStaffList();
         List<StaffMember> staffMemberListCopy = copy(eventSelected.getStaffRegister().getStaffList());
@@ -137,7 +138,7 @@ public class AssignStaffMemberController {
                 System.out.println("Erro: Utilizador já foi atribuido à lista de staff");
             }
         }
-        
+ 
         return staffMember;
     }
     
