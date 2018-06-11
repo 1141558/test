@@ -128,12 +128,14 @@ public class UserTest {
     @Test
     public void testEqualsUser() {
         System.out.println("equalsUser");
+        User userNull = null;
         User user1 = new User("Nome Nome", "email@server.com", "user1", 0.1234);
         User user1a = new User("Nome Nome", "email@server.com", "user1", 0.1234);
-        User user2 = new User("Nomes", "emails@server.com", "user2", 0.1234);
+        User user2 = new User("Nomes", "emails@server.com", "user2", 0.4321);
         boolean expResult = true;
         boolean result = user1.equalsUser(user1a);
         boolean result2 = user1.equalsUser(user2);
+        assertEquals(false, user1.equalsUser(userNull));
         assertEquals(expResult, result);
         assertNotEquals(expResult, result2);
     }
