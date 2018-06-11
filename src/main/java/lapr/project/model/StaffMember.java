@@ -19,6 +19,10 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
     
     private User staff;
 
+    
+
+   
+
     public User getStaff() {
         return staff;
     }

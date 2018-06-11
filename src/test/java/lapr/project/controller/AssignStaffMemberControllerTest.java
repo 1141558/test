@@ -15,6 +15,7 @@ import lapr.project.model.OrganiserRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -50,7 +51,8 @@ public class AssignStaffMemberControllerTest {
     private Event event = new Event();
     private ExhibitionCentre exhibitionCentre = new ExhibitionCentre();
     private ExhibitionCentre exhibitionCentre2 = new ExhibitionCentre();
-    
+     
+   
     /**
      * Test of filterUserRegisterByNoOrganiserEventSelected of class
      * AssignStaffMemberController
@@ -132,4 +134,38 @@ public class AssignStaffMemberControllerTest {
          //Assert
          Assert.assertEquals(eventListByOrganiser.get(0).getTitle(),"EVENTO UM");
     }
+//     @Test
+//    public void getAvailableUsers() {
+//        
+//          //Arrange
+//              User userOnline = new User("userOnline1", "online1@hotmail.com", "online", 555555);
+//             User u10 = new User("Andre", "mailu3@portugal.pt", "andr", 133);
+//            User u11 = new User("Maria", "mariamail@hotmail.com", "mar", 123);
+//              List<User> userList = new ArrayList<>();
+//              userList.add(u10);
+//              userList.add(u11);
+//              
+//              UserRegister userRegister4 = new UserRegister();
+//              userRegister4.setUserList(userList);
+//              
+//              Event event = new Event();
+//             
+//        
+//       
+//        exhibitionCentre2.setUserRegister(userRegister4);
+//      
+//        List<User> usersReturn = new ArrayList<>();
+//        AssignStaffMemberController assignStaffMemberController3 = new AssignStaffMemberController(exhibitionCentre2,userOnline);
+//        //Act
+//       
+//         System.err.println("teste teste"+
+//                assignStaffMemberController3.getAvailableUsers(event, userOnline));
+//        
+//        //Assert
+////        Assert.assertEquals("manuel", usersReturn.get(0).getName());
+////        Assert.assertEquals("garnel", usersReturn.get(0).getUsername());
+////        Assert.assertEquals("jose", usersReturn.get(1).getName());
+////        Assert.assertEquals("jo", usersReturn.get(1).getUsername());
+//         System.out.println("users"+ usersReturn);
+//    }
 }

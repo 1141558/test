@@ -95,7 +95,7 @@ public final class AssignStaffMemberUI {
     private void showStaffListByEvent(Event eventSelected) {
   
       
-       List<StaffMember> staff = eventSelected.getStaffRegister().getListStaff();
+       List<StaffMember> staff = eventSelected.getStaffRegister().getStaffList();
         for (StaffMember staffMember : staff) {
             System.out.println("Staff member´s event: "+ staffMember +eventSelected.toString2()) ;
             
@@ -120,11 +120,11 @@ public final class AssignStaffMemberUI {
           System.out.println("--------------------------");
    
       user1=Utils.readLineFromConsole("PICK USER (WRITE X WHEN YOU ARE DONE): ");
-            readOrganiser(user1, userPos, n, availableUserToAssignToEvent, eventSelected,exhibitionCentre, availableUserToAssignToEvent);   
+            readOrganiser(user1, userPos, n, availableUserToAssignToEvent, eventSelected,exhibitionCentre );   
        }  
     }
     
-        private void readOrganiser(String user1, int userPos, int n, List<User> usersToPrint, Event eventSelected, ExhibitionCentre exhibitionCentre, List<User> availableUserToAssignToEvent) {
+        private void readOrganiser(String user1, int userPos, int n, List<User> availableUserToAssignToEvent, Event eventSelected, ExhibitionCentre exhibitionCentre ) {
         try{
                 userPos= Integer.parseInt(user1);
                 List<StaffMember> staffMembers = new ArrayList<>();

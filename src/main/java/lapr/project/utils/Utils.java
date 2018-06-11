@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.ExhibitionCentre;
+import lapr.project.model.StaffMember;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
 
@@ -83,6 +84,21 @@ public class Utils {
       
         return copia;
     }
+//     /*
+//    * Método que copia a lista de Users
+//    * @param
+//    */
+//    public static List<StaffMember> getCopyStaffList(List<StaffMember> staffList) {
+//        List<StaffMember> copy = new ArrayList<>();
+//        
+//        staffList.forEach((StaffMember staffMember) -> {
+//           
+////            copia.add(user.clone());
+//            copy.add(new StaffMember(staffMember));
+//        });
+//      
+//        return copy;
+//    }
     }
     
 

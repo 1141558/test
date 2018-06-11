@@ -79,12 +79,11 @@ public class AssignStaffMemberController {
         List<User> usersToRemove = new ArrayList<>();
         
         for (Organiser organiser : organiserByEvent) {
-            System.out.println("tenho este organizador: " + organiser);
             
             for (User user : usersExhibitionCentreCopyWithoutOrganisers) {
                 if (user.equals(organiser.getOrganiser())) {
                     usersToRemove.add(user);
-                    System.out.println("Removeu este user: " + user);
+                    
                 }
                 
             }
@@ -104,35 +103,56 @@ public class AssignStaffMemberController {
         List<StaffMember> eventStaffList = eventSelected.getStaffRegister().getStaffList();
         
         for (StaffMember staffMember : eventStaffList) {
-            System.out.println("tenho este staff Member: " + staffMember);
-            System.out.println(eventStaffList.size());
+            
             for (User user : filterUserRegisterByNoOrganiserEventSelectedCopy) {
                 
                 if (user.equals(staffMember.getStaff())) {
                     
                     filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff.add(user);
-                    System.out.println("Removeu este user: " + user);
+                    
                 }
                 
             }
         }
-        System.out.println(filterUserRegisterByNoOrganiserEventSelectedCopy.size());
+        
         filterUserRegisterByNoOrganiserEventSelectedCopy.removeAll(filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff);
-        System.out.println(filterUserRegisterByNoOrganiserEventSelectedCopy.size());
+        
         return filterUserRegisterByNoOrganiserEventSelectedCopy;
     }
     
     public StaffMember assignUser(List<User> availableUserToAssignToEvent, Event eventSelected, int userPos) {
         StaffMember staffMember = new StaffMember();
+        StaffMember staffMemberToCopy = new StaffMember();
         User user = availableUserToAssignToEvent.get(userPos - 1);
-        staffMember.setStaff(user);
+        
         List<StaffMember> staffMemberList = eventSelected.getStaffRegister().getStaffList();
-        staffMemberList.add(staffMember);
+        List<StaffMember> staffMemberListCopy = copy(eventSelected.getStaffRegister().getStaffList());
+        
+        for (StaffMember staffMember1 : staffMemberList) {
+            if (staffMember1.getStaff().getName() != user.getName()) {
+                
+                staffMemberToCopy.setStaff(user);
+                staffMemberListCopy.add(staffMemberToCopy);
+            } else {
+                System.out.println("Erro: Utilizador já foi atribuido à lista de staff");
+            }
+        }
+        
         return staffMember;
     }
     
     public boolean addStaffMemberToEvent(StaffMember o, Event eventSelected) {
         return eventSelected.getStaffRegister().getStaffList().add(o);
+    }
+    
+    private List<StaffMember> copy(List<StaffMember> staffList) {
+        StaffMember staffMemberCopy = new StaffMember();
+        List<StaffMember> staffMembers = new ArrayList<>();
+        for (StaffMember staffMember : staffList) {
+            staffMemberCopy = staffMember;
+            staffMembers.add(staffMemberCopy);
+        }
+        return staffMembers;
     }
     
 }

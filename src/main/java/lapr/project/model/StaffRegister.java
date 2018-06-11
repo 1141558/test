@@ -42,17 +42,17 @@ public class StaffRegister implements Serializable{
         this.staffList = new ArrayList<>();
     }
 
-    public StaffRegister(StaffRegister staffList) {
-        this.staffList = staffList.getListStaff();
-    }
+//    public StaffRegister(StaffRegister staffList) {
+//        this.staffList = staffList.getListStaff();
+//    }
     
     public StaffRegister(List<StaffMember> staffList) {
         this.staffList = staffList;
     }
     
-    public List<StaffMember> getListStaff(){
-        return new ArrayList<>(staffList);
-    }
+//    public List<StaffMember> getListStaff(){
+//        return new ArrayList<>(staffList);
+//    }
     
     /**
      *
