@@ -101,7 +101,7 @@ public class AssignStaffMemberController {
         List<User> filterUserRegisterByNoOrganiserEventSelectedCopy = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected(eventSelected, userOnline));
         List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = new ArrayList<>();
         
-        List<StaffMember> eventStaffList = eventSelected.getStaffRegister().getStaffList();
+        List<StaffMember> eventStaffList = eventSelected.getStaffRegister().getListStaff();
         
         for (StaffMember staffMember : eventStaffList) {
             System.out.println("tenho este staff Member: " + staffMember);
@@ -126,13 +126,13 @@ public class AssignStaffMemberController {
         StaffMember staffMember = new StaffMember();
         User user = availableUserToAssignToEvent.get(userPos - 1);
         staffMember.setStaff(user);
-        List<StaffMember> staffMemberList = eventSelected.getStaffRegister().getStaffList();
+        List<StaffMember> staffMemberList = eventSelected.getStaffRegister().getListStaff();
         staffMemberList.add(staffMember);
         return staffMember;
     }
     
     public boolean addStaffMemberToEvent(StaffMember o, Event eventSelected) {
-        return eventSelected.getStaffRegister().getStaffList().add(o);
+        return eventSelected.getStaffRegister().getListStaff().add(o);
     }
     
 }

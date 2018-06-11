@@ -29,7 +29,7 @@ public class Event implements Comparable<Event>, Serializable {
     private StaffRegister staffRegister;
     private EventState eventState;
     private EventManager eventManager;
-    
+    private StandRegister standRegister;
     
     
     
@@ -265,6 +265,20 @@ public class Event implements Comparable<Event>, Serializable {
         }
         return Objects.equals(this.daysApplication, this.daysApplication);
     } 
+
+    /**
+     * @return the standRegister
+     */
+    public StandRegister getStandRegister() {
+        return standRegister;
+    }
+
+    /**
+     * @param standRegister the standRegister to set
+     */
+    public void setStandRegister(StandRegister standRegister) {
+        this.standRegister = standRegister;
+    }
 
  
  

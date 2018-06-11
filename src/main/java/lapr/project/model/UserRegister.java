@@ -16,7 +16,6 @@ public class UserRegister {
 
     private List<User> userList;
 
-    private User user;
 
     /**
      * Constructor
@@ -34,22 +33,6 @@ public class UserRegister {
         this.userList = new ArrayList<>();
     }
 
-    /**
-     *
-     * @return the user
-     */
-    public User getUser() {
-        return user;
-    }
-
-    /**
-     * Set the user
-     *
-     * @param user to be set
-     */
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     /**
      * @return the userList

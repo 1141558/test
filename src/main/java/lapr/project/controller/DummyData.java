@@ -129,7 +129,7 @@ public class DummyData {
         event1.setEventState(EventState.READY_FOR_APPLICATION);
         event1.addOrganiserRegister(organiserRegister);
         event1.setStaffRegister(staffRegister1);
-        eventRegister.setEvent(event1);
+        eventRegister.addEvent(event1);
         
         /*
         Event 2
@@ -145,7 +145,7 @@ public class DummyData {
         event2.setTitle("Evento 2");
         event2.setEventState(EventState.READY_FOR_APPLICATION);
         event2.addOrganiserRegister(organiserRegister2);
-        eventRegister.setEvent(event2);
+        eventRegister.addEvent(event2);
         
         /*
         Event 3

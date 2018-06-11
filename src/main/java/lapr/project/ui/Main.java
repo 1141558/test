@@ -1,7 +1,9 @@
 package lapr.project.ui;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.parsers.ParserConfigurationException;
 import lapr.project.model.CalculatorExample;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
@@ -10,6 +12,8 @@ import lapr.project.model.StaffMember;
 import lapr.project.model.StaffRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
+import lapr.project.utils.XMLDecoder;
+import org.xml.sax.SAXException;
 
 /**
  * @author Nuno Bettencourt <nmb@isep.ipp.pt> on 24/05/16.
@@ -26,11 +30,11 @@ class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
         CalculatorExample calculatorExample = new CalculatorExample();
         System.out.println(calculatorExample.sum(3, 5));
         ExhibitionCentre centre = new ExhibitionCentre();
+        //XMLDecoder.readExhibitionCentreFile("C:\\Users\\MariaJoão\\Desktop\\ISEP\\LAPR2\\lapr2-2017-g001\\exhibition1_v0.1.xml", centre);
         
         /*dados de teste (APAGAR FUTURAMENTE)*/
         User u1 = new User("nome1", "email1", "username1", 0.0);
