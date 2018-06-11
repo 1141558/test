@@ -37,8 +37,10 @@ public class CreateEventControllerTest {
         u1.setUsername("maria");        
         User u2= new User();
         u2.setUsername("tiago");
-        centre.getUserRegister().addUser(u1);
-        centre.getUserRegister().addUser(u2);
+//        centre.getUserRegister().addUser(u1);
+        instance.getUsersAvailable().add(u1);
+//        centre.getUserRegister().addUser(u2);
+        instance.getUsersAvailable().add(u2);
         List<User> expResult = new ArrayList<>();
         expResult.add(u1);
         expResult.add(u2);

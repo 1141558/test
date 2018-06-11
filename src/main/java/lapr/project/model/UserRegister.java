@@ -71,8 +71,14 @@ public class UserRegister {
      * @return boolean value according to the user add
      */
     public boolean addUser(User user) {
+        if(userExists(user)){
+            return false;
+        }else{
+            this.userList.add(user);
+            return true;
+        }
 //        return this.userList.add(user);
-        return ((userExists(user) ? false : this.userList.add(user)));
+//        return ((userExists(user) ? false : this.userList.add(user)));
     }
 
     /**
