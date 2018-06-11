@@ -24,7 +24,9 @@ public class ApplicationRegister {
         this.ApplicationList = ApplicationList;
     }
 
-        
+    public boolean addApplication(Application a){
+        return this.ApplicationList.add(a);
+    }    
     /**
      * @return the ApplicationList
      */

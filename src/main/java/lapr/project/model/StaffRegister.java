@@ -68,10 +68,19 @@ public class StaffRegister implements Serializable{
     public boolean isExist(User user){
         boolean valida = false;
         for(StaffMember staff : staffList){
-            if(staff.getStaffUser().getUsername().equals(user.getUsername()))
+            if(staff.getStaff().getUsername().equals(user.getUsername()))
                 valida = true;
         }
         return  valida;
+    }
+    
+    public StaffMember getStaffMemberByUsername(String username){
+        for (StaffMember staffMember : staffList) {
+            if(staffMember.getStaff().getUsername().equals(username)){
+                return staffMember;
+            }
+        }
+        return null;
     }
     
     /**
