@@ -106,14 +106,20 @@ public class User {
         this.password = password;
     }
 
-    
+    /**
+     * Method to compare 2 Users using the attributes
+     *
+     * @param obj User to be compared to
+     * @return boolean value indicating if the users match
+     */
     public boolean equalsUser(User obj) {
-    if (obj == null) return false;
-    if (obj.email == this.email && obj.name==this.name && obj.password==this.password && obj.username==this.username) return true;
-        return false;
-}
-    
+        if (obj == null) {
+            return false;
+        }
+        return (obj.email.equals(this.email) && obj.name.equals(this.name) && obj.password == this.password && obj.username.equals(this.username));
+    }
 
+    
     @Override
     public String toString() {
         return "User:{" + "name=" + name + ", email=" + email + ", username=" + username + ", password=" + password + '}';
