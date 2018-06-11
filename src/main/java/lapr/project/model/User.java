@@ -106,9 +106,6 @@ public class User {
         this.password = password;
     }
 
-    public User clone(){
-        return new User(this);
-    }
     
     public boolean equals(User obj) {
     if (obj == null) return false;
