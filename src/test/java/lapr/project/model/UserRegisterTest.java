@@ -5,55 +5,30 @@
  */
 package lapr.project.model;
 
+import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *
  * @author JM
  */
 public class UserRegisterTest {
-    
-    /**
-     * Test of getUser method, of class UserRegister.
-     */
-    @Test
-    public void testGetUser() {
-//        System.out.println("getUser");
-//        UserRegister instance = new UserRegister();
-//        User expResult = null;
-//        User result = instance.getUser();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setUser method, of class UserRegister.
-     */
-    @Test
-    public void testSetUser() {
-//        System.out.println("setUser");
-//        User user = null;
-//        UserRegister instance = new UserRegister();
-//        instance.setUser(user);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getUserList method, of class UserRegister.
      */
     @Test
     public void testGetUserList() {
-//        System.out.println("getUserList");
-//        UserRegister instance = new UserRegister();
-//        List<User> expResult = null;
-//        List<User> result = instance.getUserList();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        System.out.println("getUserList");
+        UserRegister instance = new UserRegister();
+        User user1 = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        instance.addUser(user1);
+        List<User> expResult = new ArrayList<>();
+        expResult.add(user1);
+        List<User> result = instance.getUserList();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -61,12 +36,13 @@ public class UserRegisterTest {
      */
     @Test
     public void testSetUserList() {
-//        System.out.println("setUserList");
-//        List<User> userList = null;
-//        UserRegister instance = new UserRegister();
-//        instance.setUserList(userList);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        System.out.println("setUserList");
+        List<User> userList = new ArrayList<>();
+        User user1 = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        userList.add(user1);
+        UserRegister instance = new UserRegister();
+        instance.setUserList(userList);
+        assertEquals(userList, instance.getUserList());
     }
 
     /**
@@ -74,14 +50,11 @@ public class UserRegisterTest {
      */
     @Test
     public void testAddUser() {
-//        System.out.println("addUser");
-//        User user = null;
-//        UserRegister instance = new UserRegister();
-//        boolean expResult = false;
-//        boolean result = instance.addUser(user);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        System.out.println("addUser");
+        User user1 = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        UserRegister instance = new UserRegister();
+        instance.addUser(user1);
+        assertEquals(user1, instance.getUserList().get(0));
     }
 
     /**
@@ -89,14 +62,14 @@ public class UserRegisterTest {
      */
     @Test
     public void testUserExists() {
-//        System.out.println("userExists");
-//        User user = null;
-//        UserRegister instance = new UserRegister();
-//        boolean expResult = false;
-//        boolean result = instance.userExists(user);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        System.out.println("userExists");
+        User user1 = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        User user2 = new User("Nomes Nomes", "emails@server.com", "user2", 0.4321);
+        UserRegister instance = new UserRegister();
+        instance.addUser(user1);
+        boolean expResult = true;
+        boolean result = instance.userExists(user1);
+        assertEquals(expResult, result);
+        assertEquals(false, instance.userExists(user2));
     }
-    
 }
