@@ -121,4 +121,20 @@ public class UserTest {
         String result = instance.toString();
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of equalsUser method, of class User.
+     */
+    @Test
+    public void testEqualsUser() {
+        System.out.println("equalsUser");
+        User user1 = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        User user1a = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        User user2 = new User("Nomes", "emails@server.com", "user2", 0.1234);
+        boolean expResult = true;
+        boolean result = user1.equalsUser(user1a);
+        boolean result2 = user1.equalsUser(user2);
+        assertEquals(expResult, result);
+        assertNotEquals(expResult, result2);
+    }
 }
