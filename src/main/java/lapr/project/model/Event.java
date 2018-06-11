@@ -30,7 +30,7 @@ public class Event implements Comparable<Event>, Serializable {
     private EventState eventState;
     private EventManager eventManager;
     private StandRegister standRegister;
-    
+    private ApplicationRegister applicationRegister;
     
     
     private int daysApplication = CORDAYS_APPLICATION_OMISSION;
@@ -278,6 +278,20 @@ public class Event implements Comparable<Event>, Serializable {
      */
     public void setStandRegister(StandRegister standRegister) {
         this.standRegister = standRegister;
+    }
+
+    /**
+     * @return the applicationRegister
+     */
+    public ApplicationRegister getApplicationRegister() {
+        return applicationRegister;
+    }
+
+    /**
+     * @param applicationRegister the applicationRegister to set
+     */
+    public void setApplicationRegister(ApplicationRegister applicationRegister) {
+        this.applicationRegister = applicationRegister;
     }
 
  

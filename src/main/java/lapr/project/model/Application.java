@@ -22,8 +22,12 @@ public class Application implements Importable<Application>, Exportable {
     private static final String ROOT_ELEMENT_NAME = "application";
     private static final String DESCRIPTION_ELEMENT_NAME = "description";
     private static final String KEYWORDS_ELEMENT_NAME = "keywords";
-    private final List<Keyword> keywordList = new ArrayList<>();
-    private String description = "";
+    private final List<Keyword> keywordList;
+    private List<Review> listReview;
+    private String description;
+    private boolean accepted;
+    private double boothArea;
+    private int numberInvites;
 
     /**
      * Constructor for Application
@@ -31,16 +35,21 @@ public class Application implements Importable<Application>, Exportable {
      * @param description CandidaturaDescription
      * @param keywordList Keyword List
      */
+    public Application(String description, List<Keyword> keywordList, List<Review> listReview) {
+        this.description = description;
+        this.keywordList= keywordList;
+        this.listReview=  listReview;
+    }
     public Application(String description, List<Keyword> keywordList) {
         this.description = description;
-        this.keywordList.addAll(keywordList);
+        this.keywordList= keywordList;
     }
-
     /**
      * Default public constructor.
      */
     public Application() {
-
+        this.keywordList= new ArrayList<>();
+        this.listReview= new ArrayList<>();
     }
 
     /**
@@ -171,5 +180,47 @@ public class Application implements Importable<Application>, Exportable {
         }
         return getKeywordList().equals(that.getKeywordList());
 
+    }
+
+    /**
+     * @return the accepted
+     */
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    /**
+     * @param accepted the accepted to set
+     */
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    /**
+     * @return the boothArea
+     */
+    public double getBoothArea() {
+        return boothArea;
+    }
+
+    /**
+     * @param boothArea the boothArea to set
+     */
+    public void setBoothArea(double boothArea) {
+        this.boothArea = boothArea;
+    }
+
+    /**
+     * @return the numberInvites
+     */
+    public int getNumberInvites() {
+        return numberInvites;
+    }
+
+    /**
+     * @param numberInvites the numberInvites to set
+     */
+    public void setNumberInvites(int numberInvites) {
+        this.numberInvites = numberInvites;
     }
 }

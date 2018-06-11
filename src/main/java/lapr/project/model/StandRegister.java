@@ -14,28 +14,30 @@ import java.util.List;
  */
 public class StandRegister {
     
-        private List<Stand> organiserList;
+    private List<Stand> standList;
 
     public StandRegister(List<Stand> organiserList) {
-        this.organiserList = organiserList;
+        this.standList = organiserList;
     }
 
     public StandRegister() {
-        this.organiserList= new ArrayList<>();
+        this.standList= new ArrayList<>();
     }
 
     /**
-     * @return the organiserList
+     * @return the standList
      */
-    public List<Stand> getOrganiserList() {
-        return organiserList;
+    public List<Stand> getStandList() {
+        return standList;
     }
 
     /**
-     * @param organiserList the organiserList to set
+     * @param standList the standList to set
      */
-    public void setOrganiserList(List<Stand> organiserList) {
-        this.organiserList = organiserList;
+    public void setStandList(List<Stand> standList) {
+        this.standList = standList;
     }
-
+    public boolean addStand(Stand s){
+        return this.standList.add(s);
+    }
 }

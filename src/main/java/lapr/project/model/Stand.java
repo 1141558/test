@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Stand {
    
-    private String title;
+    private String description;
     private double area;
     private List<Distance> distanceList;
     
@@ -23,24 +23,24 @@ public class Stand {
 
     }
 
-    public Stand(String title, double area) {
-        this.title = title;
+    public Stand(String description, double area) {
+        this.description = description;
         this.area = area;
         this.distanceList= new ArrayList<>();
     }
 
     /**
-     * @return the title
+     * @return the description
      */
-    public String getTitle() {
-        return title;
+    public String getDescription() {
+        return description;
     }
 
     /**
-     * @param title the title to set
+     * @param description the description to set
      */
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**
@@ -70,5 +70,7 @@ public class Stand {
     public void setDistanceList(List<Distance> distanceList) {
         this.distanceList = distanceList;
     }
-    
+    public boolean addDistance(Distance d){
+        return this.distanceList.add(d);
+    }
 }

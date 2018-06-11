@@ -41,7 +41,9 @@ public class StaffRegister implements Serializable{
 //    public List<StaffMember> getListStaff(){
 //        return new ArrayList<>(staffList);
 //    }
-    
+    public boolean addStaffMember(StaffMember sm){
+        return this.staffList.add(sm);
+    }
     /**
      *
      * @param user
