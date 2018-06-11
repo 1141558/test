@@ -116,7 +116,6 @@ public class User {
         if (obj == null) {
             return false;
         }
-//        return (obj.email.equals(this.email) && obj.name.equals(this.name) && obj.password == this.password && obj.username.equals(this.username));
         return (obj.email.equals(this.email) && obj.name.equals(this.name) && Double.compare(obj.password, this.password)==0 && obj.username.equals(this.username));
     }
 
