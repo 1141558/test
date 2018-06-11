@@ -59,7 +59,8 @@ public class AssignStaffMemberController {
     }
     
     public void selectEvent(Event eventSelected) {
-        this.event = eventSelected;
+       this.event = eventSelected;
+       this.staffRegister =  this.event.createStaffMemberRegister();
     }
     
     public List<User> showUsersExhibitionCentre() {
@@ -123,35 +124,19 @@ public class AssignStaffMemberController {
     public StaffMember assignUser(List<User> availableUserToAssignToEvent, int userPos) {
         
         StaffMember staffMember = new StaffMember();
-             
         User user = availableUserToAssignToEvent.get(userPos - 1);
-        
         staffMember.setStaff(user);
-
-        
-//        List<StaffMember> staffMemberList = event.getStaffRegister().getStaffList();
-//        List<StaffMember> staffMemberListCopy = copy(event.getStaffRegister().getStaffList());
-//        
-//        for (StaffMember staffMember1 : staffMemberList) {
-//            if (staffMember1.getStaff().getName() != user.getName()) {
-//                
-//                staffMemberToCopy.setStaff(user);
-//                staffMemberListCopy.add(staffMemberToCopy);
-//            } else {
-//                System.out.println("Erro: Utilizador já foi atribuido à lista de staff");
-//            }
-//        }
-// 
         return staffMember;
     }
     
     public boolean addStaffMemberToEvent(StaffMember staffMember) {
-        staffRegister = event.getStaffRegister();
+             
         return staffRegister.addStaffMember(staffMember);
          
     }
     
     private List<StaffMember> copy(List<StaffMember> staffList) {
+        
         StaffMember staffMemberCopy = new StaffMember();
         List<StaffMember> staffMembers = new ArrayList<>();
         for (StaffMember staffMember : staffList) {
@@ -159,6 +144,18 @@ public class AssignStaffMemberController {
             staffMembers.add(staffMemberCopy);
         }
         return staffMembers;
+    }
+
+    public List<StaffMember> getStaffMemberList() {
+        return staffRegister.getStaffList();
+    }
+
+    public void saveStaffMemberList() {
+       event.saveStaffRegister(staffRegister);
+    }
+
+    public List<StaffMember> getStaffMemberList2() {
+        return event.getStaffRegister().getStaffList();
     }
     
 }

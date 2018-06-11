@@ -63,25 +63,28 @@ public final class AssignStaffMemberUI {
         
         showAvaiableUsersForEvent(exhibitionCentre, availableUserToAssignToEvent, eventSelected);
         
-        // assignStaffMemberController.showAvailableUsers(eventSelected,exhibitionCentre.getUserOnline());
-        //showStaffListByEvent(eventSelected);
-//                if (!opcao_eq.equalsIgnoreCase("0")) {
-//
-//                    System.out.println("\nIntroduza o periodo de autorizacao (O para sair)");
-//                    flag = introduzPeriodo();
-//
-//                    do {
-//                        maisPeriodos = Utils.readLineFromConsole("Deseja associar mais períodos a este equipamento?\n s-sim \n n-não");
-//                        if (maisPeriodos.equalsIgnoreCase("s")) {
-//                            while (flag2 == false) {
-//                                flag2 = introduzPeriodo();
-//                                maisPeriodos = Utils.readLineFromConsole("Deseja associar mais períodos a este equipamento?\n s-sim \n n-não");
-//                            }
-//                        }
-//
-//                    } while (maisPeriodos.equalsIgnoreCase("s"));
-//                }
-//
+        printStaffMemberList(assignStaffMemberController.getStaffMemberList());
+        String resposta = "";
+        while (!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")) {
+            resposta = Utils.readLineFromConsole("DO YOU CONFIRM ATRIBUITION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
+            if (!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")) {
+                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+            }
+        }
+        if (resposta.equalsIgnoreCase("c")) {
+            Utils.printWarning("Staff Member Atribuition Cancelled");
+            new MainMenu(exhibitionCentre);
+        } else if (resposta.equalsIgnoreCase("y")) {
+            assignStaffMemberController.saveStaffMemberList();
+            
+            
+            Utils.printConfirmation("STAFF MEMBER ATRIBUITION SAVED");
+              printStaffMemberList(assignStaffMemberController.getStaffMemberList2());
+            
+            new MainMenu(exhibitionCentre);
+            
+        }
+        
     }
     
     private Event eventChoose(int option, List<Event> events) {
@@ -102,7 +105,6 @@ public final class AssignStaffMemberUI {
     
     private void showAvaiableUsersForEvent(ExhibitionCentre exhibitionCentre, List<User> availableUserToAssignToEvent, Event eventSelected) {
         String user1 = "";
-        
         
         while (!user1.equalsIgnoreCase("X")) {
             int userPos = 0;
@@ -148,6 +150,18 @@ public final class AssignStaffMemberUI {
                 
             }
         }
+    }
+    
+    private void printStaffMemberList(List<StaffMember> staffMembers) {
+        System.out.println("--------------------------");
+        System.out.println("       StaffMembers       ");
+        System.out.println("--------------------------");
+        int n = 1;
+        for (StaffMember staffMember : staffMembers) {
+            System.out.println(n + " - " + staffMember.getStaff());
+            n++;
+        }
+        System.out.println("--------------------------");
     }
     
 }

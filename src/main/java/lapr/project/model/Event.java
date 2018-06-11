@@ -32,7 +32,6 @@ public class Event implements Comparable<Event>, Serializable {
     private StandRegister standRegister;
     private ApplicationRegister applicationRegister;
     
-    
     private int daysApplication = CORDAYS_APPLICATION_OMISSION;
     
     public Event(String title, String description, Date startDate, Date endDate, String place, OrganiserRegister organiserRegister) {
@@ -47,10 +46,12 @@ public class Event implements Comparable<Event>, Serializable {
     
     public Event(OrganiserRegister organiserRegister) {
         this.organiserRegister = new OrganiserRegister();
+      
     }
     
     public Event() {
-        
+        this.organiserRegister = new OrganiserRegister();
+        this.staffRegister=new StaffRegister();
     }
     
     public boolean changeToReadyForApplication() {
@@ -201,6 +202,13 @@ public class Event implements Comparable<Event>, Serializable {
         this.eventManager = eventManager;
     }
     
+    /**
+     * @return the staffRegister
+     */
+    public StaffRegister getStaffRegister() {
+        return staffRegister;
+    }
+    
     public void setStaffRegister(StaffRegister staffRegister) {
         this.staffRegister = staffRegister;
     }
@@ -217,16 +225,9 @@ public class Event implements Comparable<Event>, Serializable {
         this.daysApplication = daysApplication;
     }
     
-    /**
-     * @return the staffRegister
-     */
-    public StaffRegister getStaffRegister() {
-        return staffRegister;
-    }
-    
     @Override
     public String toString() {
-        return "Event{" + "title = "  + title + ", description = " + description + ", startDate=" + startDate + ", endDate= " + endDate + ", place= " + place + ", organiserRegister=" + organiserRegister + ", staffRegister= " + staffRegister + "\n eventState=" + eventState + "\n daysApplication=" + daysApplication + "}\n";
+        return "Event{" + "title = " + title + ", description = " + description + ", startDate=" + startDate + ", endDate= " + endDate + ", place= " + place + ", organiserRegister=" + organiserRegister + ", staffRegister= " + staffRegister + "\n eventState=" + eventState + "\n daysApplication=" + daysApplication + "}\n";
         
     }
     
@@ -238,16 +239,15 @@ public class Event implements Comparable<Event>, Serializable {
     public int compareTo(Event o) {
         return this.startDate.compareTo(o.startDate);
     }
- 
     
-    public boolean equals(Event e){
-            if ( e == null ){
-              return false;
-            }
+    public boolean equals(Event e) {
+        if (e == null) {
+            return false;
+        }
         if (this.getClass() != e.getClass()) {
             return false;
         }
-
+        
         if (!Objects.equals(this.title, e.title)) {
             return false;
         }
@@ -264,37 +264,42 @@ public class Event implements Comparable<Event>, Serializable {
             return false;
         }
         return Objects.equals(this.daysApplication, this.daysApplication);
-    } 
-
+    }
+    
     /**
      * @return the standRegister
      */
     public StandRegister getStandRegister() {
         return standRegister;
     }
-
+    
     /**
      * @param standRegister the standRegister to set
      */
     public void setStandRegister(StandRegister standRegister) {
         this.standRegister = standRegister;
     }
-
+    
     /**
      * @return the applicationRegister
      */
     public ApplicationRegister getApplicationRegister() {
         return applicationRegister;
     }
-
+    
     /**
      * @param applicationRegister the applicationRegister to set
      */
     public void setApplicationRegister(ApplicationRegister applicationRegister) {
         this.applicationRegister = applicationRegister;
     }
+    
+    public StaffRegister createStaffMemberRegister() {
+        return new StaffRegister();
+    }
 
- 
- 
+    public void saveStaffRegister(StaffRegister staffRegister) {
+        this.staffRegister.getStaffList().addAll(staffRegister.getStaffList());
+    }
     
 }
