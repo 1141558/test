@@ -107,7 +107,7 @@ public class User {
     }
 
     
-    public boolean equals(User obj) {
+    public boolean equalsUser(User obj) {
     if (obj == null) return false;
     if (obj.email == this.email && obj.name==this.name && obj.password==this.password && obj.username==this.username) return true;
         return false;

@@ -42,6 +42,12 @@ public class StaffRegister implements Serializable{
 //        return new ArrayList<>(staffList);
 //    }
     public boolean addStaffMember(StaffMember sm){
+        for (StaffMember staffMember : staffList) {
+            if(staffMember.getStaff().equalsUser(sm.getStaff())){
+                return false;
+            }
+            
+        }
         return this.staffList.add(sm);
     }
     /**
