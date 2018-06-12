@@ -1,22 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lapr.project.utils.Utils;
 
 /**
  *
  * @author MariaJoão
  */
 public class UserRegister {
-
+    
     private List<User> userList;
-
-
+    
     /**
      * Constructor
      *
@@ -25,45 +25,44 @@ public class UserRegister {
     public UserRegister(List<User> userList) {
         this.userList = userList;
     }
-
+    
     /**
      * Constructor
      */
     public UserRegister() {
         this.userList = new ArrayList<>();
     }
-
-
+    
     /**
      * @return the userList
      */
     public List<User> getUserList() {
         return userList;
     }
-
+    
     /**
      * @param userList the userList to set
      */
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
-
+    
     /**
      *
      * @param user to be added
      * @return boolean value according to the user add
      */
     public boolean addUser(User user) {
-        if(userExists(user)){
+        if (userExists(user)) {
             return false;
-        }else{
+        } else {
             this.userList.add(user);
             return true;
         }
 //        return this.userList.add(user);
 //        return ((userExists(user) ? false : this.userList.add(user)));
     }
-
+    
     /**
      * Method to check if the user already exists
      *
@@ -81,5 +80,27 @@ public class UserRegister {
             }
         }
         return false;
+    }
+    
+    public List<User> getAvailableUsersWithoutOrganisers(List<Organiser> organisers, User userOnline) {
+        List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
+       usersExhibitionCentreCopyWithoutOrganisers = Utils.getCopia( this.userList);//ver isto
+      
+        List<User> usersToRemove = new ArrayList<>();
+        
+        for (Organiser org : organisers) {
+            
+            for (User user : usersExhibitionCentreCopyWithoutOrganisers) {
+                if (user.equalsUser(org.getOrganiser())) {
+                    usersToRemove.add(user);
+                    
+                }
+                
+            }
+            
+        }
+        
+        usersExhibitionCentreCopyWithoutOrganisers.removeAll(usersToRemove);
+        return usersExhibitionCentreCopyWithoutOrganisers;
     }
 }

@@ -15,6 +15,7 @@ import lapr.project.model.OrganiserRegister;
 import lapr.project.model.StaffMember;
 import lapr.project.model.StaffRegister;
 import lapr.project.model.User;
+import lapr.project.model.UserRegister;
 import lapr.project.utils.Utils;
 
 /**
@@ -27,7 +28,7 @@ public class AssignStaffMemberController {
     private EventRegister eventRegister;
     private OrganiserRegister organiserRegister;
     private StaffRegister staffRegister;
-//    private Organiser organiser;
+    private UserRegister usersRegister;
     private User user;
     private Event event;
     
@@ -40,18 +41,15 @@ public class AssignStaffMemberController {
         
     }
     
-    AssignStaffMemberController(ExhibitionCentre exhibitionCentre, User userOnline) {
+    public AssignStaffMemberController(ExhibitionCentre exhibitionCentre, User userOnline) {
         this.exhibitionCentre = exhibitionCentre;
         this.user = userOnline;
     }
     
     public List<Event> getEventsListByOrganiser() {
         
-        User organiserValidated = exhibitionCentre.getUserOnline();
-        List<Organiser> organisersList = new ArrayList<>();
-        
-        eventRegister = exhibitionCentre.getEventRegister();
-        
+        User organiserValidated = exhibitionCentre.getUserOnline();        
+        eventRegister = exhibitionCentre.getEventRegister();        
         List<Event> eventList = eventRegister.getEventListByOrganiser(organiserValidated);
         
         return eventList;
@@ -63,45 +61,28 @@ public class AssignStaffMemberController {
        this.staffRegister =  this.event.createStaffMemberRegister();
     }
     
-    public List<User> showUsersExhibitionCentre() {
+    public List<User> getUsersExhibitionCentre() {
         
-        usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();
-        
+        usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();        
         return usersExhibitionCentre;
         
     }
     
-    public List<User> filterUserRegisterByNoOrganiserEventSelected(Event eventSelected, User userOnline) {
+    public List<User> filterUserRegisterByNoOrganiserEventSelected() {
         
         List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
-        usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();
-        usersExhibitionCentreCopyWithoutOrganisers = Utils.getCopia(exhibitionCentre.getUserRegister().getUserList());
-        List<Organiser> organiserByEvent = eventSelected.getOrganisersRegister().getOrganiserList();
-        List<User> usersToRemove = new ArrayList<>();
-        
-        for (Organiser organiser : organiserByEvent) {
-            
-            for (User user : usersExhibitionCentreCopyWithoutOrganisers) {
-                if (user.equalsUser(organiser.getOrganiser())) {
-                    usersToRemove.add(user);
-                    
-                }
-                
-            }
-            
-        }
-        
-        usersExhibitionCentreCopyWithoutOrganisers.removeAll(usersToRemove);
-        
+        usersRegister = exhibitionCentre.getUserRegister();
+        usersExhibitionCentreCopyWithoutOrganisers = usersRegister.getAvailableUsersWithoutOrganisers(event.getOrganisersRegister().getOrganiserList(),user);
         return usersExhibitionCentreCopyWithoutOrganisers;
     }
     
-    public List<User> getAvailableUsers(Event eventSelected, User userOnline) {
+    public List<User> getAvailableUsers() {
         
-        List<User> filterUserRegisterByNoOrganiserEventSelectedCopy = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected(eventSelected, userOnline));
+        List<User> filterUserRegisterByNoOrganiserEventSelectedCopy = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected());
+   
         List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = new ArrayList<>();
         
-        List<StaffMember> eventStaffList = eventSelected.getStaffRegister().getStaffList();
+        List<StaffMember> eventStaffList = event.getStaffRegister().getStaffList();
         
         for (StaffMember staffMember : eventStaffList) {
             

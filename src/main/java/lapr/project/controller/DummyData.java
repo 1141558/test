@@ -45,7 +45,7 @@ public class DummyData {
     User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123);
     User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123);
     User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123);
-    User user6 = new User("Organiser2", "mail2@hotmail.com", "orga2", 123);    
+    User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123);    
     User user7 = new User("Andre", "mailu3", "andr", 133);
     User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123);   
     User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133);

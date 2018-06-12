@@ -59,7 +59,7 @@ public final class AssignStaffMemberUI {
         
         assignStaffMemberController.selectEvent(eventSelected);
         
-        List<User> availableUserToAssignToEvent = assignStaffMemberController.getAvailableUsers(eventSelected, exhibitionCentre.getUserOnline());
+        List<User> availableUserToAssignToEvent = assignStaffMemberController.getAvailableUsers();
         
         showAvaiableUsersForEvent(exhibitionCentre, availableUserToAssignToEvent, eventSelected);
         
