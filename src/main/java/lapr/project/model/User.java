@@ -23,6 +23,7 @@ public class User {
      * @param email Email to be stored in the User
      * @param username Username to be stored in the User
      * @param password Password to be stored in the User
+     * @param role
      */
     public User(String name, String email, String username, double password, Role role) {
         this.name = name;
@@ -55,6 +56,7 @@ public class User {
         this.name = otherUser.name;
         this.password = otherUser.password;
         this.username = otherUser.username;
+        this.role=otherUser.role;
     }
 
     /**

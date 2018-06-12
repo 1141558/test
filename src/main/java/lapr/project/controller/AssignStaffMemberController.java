@@ -29,7 +29,6 @@ public class AssignStaffMemberController {
     private OrganiserRegister organiserRegister;
     private StaffRegister staffRegister;
     private UserRegister usersRegister;
-    private User user;
     private Event event;
     
     DummyData dummy;
@@ -38,13 +37,8 @@ public class AssignStaffMemberController {
     public AssignStaffMemberController(ExhibitionCentre centre) {
         this.exhibitionCentre = centre;
         this.dummy = new DummyData(centre);
-        
     }
     
-    public AssignStaffMemberController(ExhibitionCentre exhibitionCentre, User userOnline) {
-        this.exhibitionCentre = exhibitionCentre;
-        this.user = userOnline;
-    }
     
     public List<Event> getEventsListByOrganiser() {
         

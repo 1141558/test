@@ -48,7 +48,7 @@ public class DummyData {
     User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123, Role.ATENDEE);
     User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);    
     User user7 = new User("Andre", "mailu3", "andr", 133 , Role.ATENDEE);
-    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.ATENDEE);   
+    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.EMPLOYEE);   
     User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133, Role.ATENDEE);
     User user10 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123, Role.ATENDEE);
     

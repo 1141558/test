@@ -115,7 +115,7 @@ public class UserRegister {
             
             for (User user : filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff) {
                 
-                if (user.equalsUser(staffMember.getStaff())) {
+                if (user.equalsUser(staffMember.getStaff()) || !user.getRole().equals(Role.EMPLOYEE)) {
                     
                     usersToRemove.add(user);
                     
