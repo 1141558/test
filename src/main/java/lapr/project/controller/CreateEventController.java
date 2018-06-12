@@ -8,6 +8,7 @@ package lapr.project.controller;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,7 @@ import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
+import lapr.project.model.Role;
 import lapr.project.model.User;
 import lapr.project.utils.Utils;
 
@@ -35,7 +37,14 @@ public class CreateEventController {
     }
         
     public List<User> getUsersAvailable(){
-        return this.exhibitionCentre.getUserRegister().getUserList();
+        List<User> ret= new ArrayList<>();
+        for (User u : this.exhibitionCentre.getUserRegister().getUserList()) {
+            if(u.getRole().equals(Role.EMPLOYEE)){
+                ret.add(u);
+                
+            }
+        }
+        return ret;
     }
     
     public Date checkFormat(Date startDate, String startDateString) {

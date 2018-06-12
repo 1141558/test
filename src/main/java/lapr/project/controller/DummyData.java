@@ -13,6 +13,7 @@ import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
+import lapr.project.model.Role;
 import lapr.project.model.StaffMember;
 import lapr.project.model.StaffRegister;
 import lapr.project.model.User;
@@ -40,16 +41,16 @@ public class DummyData {
     List<StaffMember> staffMemberListEvent1 = new ArrayList<>();
     
     ExhibitionCentre exhibitionCentre;
-    User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123);
-    User user2 = new User("jose", "mail2@hotmail.com", "jo", 123);
-    User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123);
-    User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123);
-    User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123);
-    User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123);    
-    User user7 = new User("Andre", "mailu3", "andr", 133);
-    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123);   
-    User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133);
-    User user10 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123);
+    User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123, Role.ATENDEE);
+    User user2 = new User("jose", "mail2@hotmail.com", "jo", 123 , Role.ATENDEE);
+    User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123 , Role.ATENDEE);
+    User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123 , Role.ATENDEE);
+    User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123, Role.ATENDEE);
+    User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);    
+    User user7 = new User("Andre", "mailu3", "andr", 133 , Role.ATENDEE);
+    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.ATENDEE);   
+    User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133, Role.ATENDEE);
+    User user10 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123, Role.ATENDEE);
     
     //*****************************************************************************************
     //************************Criar registo de utilizadores***********************************

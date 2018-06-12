@@ -22,6 +22,7 @@ import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
 import lapr.project.model.Review;
+import lapr.project.model.Role;
 import lapr.project.model.StaffMember;
 import lapr.project.model.StaffRegister;
 import lapr.project.model.Stand;
@@ -78,6 +79,7 @@ public class XMLDecoder {
                 System.out.println(sm.getStaff().getEmail());
                 System.out.println(sm.getStaff().getPassword());
                 System.out.println(sm.getStaff().getUsername());
+                System.out.println(sm.getStaff().getRole());
                 System.out.println("------------------------------------------");
 
             }
@@ -179,6 +181,7 @@ public class XMLDecoder {
             u.setName(name);
             u.setPassword(Double.parseDouble(password));
             u.setUsername(username);
+            u.setRole(Role.EMPLOYEE);
             sm.setStaff(u);
             ur.addUser(u);
             sr.addStaffMember(sm);

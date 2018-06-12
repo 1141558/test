@@ -15,7 +15,7 @@ public class User {
     private String email;
     private String username;
     private double password;
-
+    private Role role;
     /**
      * Constructor
      *
@@ -24,6 +24,13 @@ public class User {
      * @param username Username to be stored in the User
      * @param password Password to be stored in the User
      */
+    public User(String name, String email, String username, double password, Role role) {
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.role=role;
+    }
     public User(String name, String email, String username, double password) {
         this.name = name;
         this.email = email;
@@ -123,6 +130,20 @@ public class User {
     @Override
     public String toString() {
         return "User:{" + "name=" + name + ", email=" + email + ", username=" + username + ", password=" + password + '}';
+    }
+
+    /**
+     * @return the role
+     */
+    public Role getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(Role role) {
+        this.role = role;
     }
 
 }
