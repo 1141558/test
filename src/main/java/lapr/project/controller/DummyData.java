@@ -5,8 +5,15 @@
 */
 package lapr.project.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lapr.project.model.Event;
 import lapr.project.model.EventRegister;
 import lapr.project.model.EventState;
@@ -28,6 +35,8 @@ public class DummyData {
     Organiser org1;
     Organiser org2;
     Organiser org3;
+    
+    Date data1, data2, data3, data4;
     
     OrganiserRegister organiserRegister = new OrganiserRegister();
     OrganiserRegister organiserRegister2 = new OrganiserRegister();
@@ -96,6 +105,30 @@ public class DummyData {
         
         this.exhibitionCentre = exhibitionCentre;
         
+        try {
+            data1 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse("2018-06-12");
+        } catch (ParseException ex) {
+            Logger.getLogger(DummyData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            data2 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse("2018-06-17");
+        } catch (ParseException ex) {
+            Logger.getLogger(DummyData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            data3 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse("2018-06-19");
+        } catch (ParseException ex) {
+            Logger.getLogger(DummyData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            data4 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse("2018-06-22");
+        } catch (ParseException ex) {
+            Logger.getLogger(DummyData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         createUsers();
         /*
         Event 1
@@ -130,7 +163,9 @@ public class DummyData {
         event1.setEventState(EventState.READY_FOR_APPLICATION);
         event1.addOrganiserRegister(organiserRegister);
         event1.setStaffRegister(staffRegister1);
-        event1.setDaysApplication(4);
+         event1.setDaysApplication(4);
+        event1.setStartDate(data1);
+        event1.setEndDate(data2);
         eventRegister.addEvent(event1);
         
         /*
@@ -147,6 +182,9 @@ public class DummyData {
         event2.setTitle("Evento 2");
         event2.setEventState(EventState.READY_FOR_APPLICATION);
         event2.addOrganiserRegister(organiserRegister2);
+        event2.setDaysApplication(5);
+        event2.setStartDate(data3);
+        event2.setEndDate(data4);
         eventRegister.addEvent(event2);
         
         /*
@@ -172,6 +210,14 @@ public class DummyData {
         
         exhibitionCentre.setUserOnline(user1);
         
+    }
+    
+    public Date getDate1(){
+        return this.data1;
+    }
+    
+    public Date getDate2(){
+        return this.data2;
     }
     
     public OrganiserRegister getOrganiserRegister() {

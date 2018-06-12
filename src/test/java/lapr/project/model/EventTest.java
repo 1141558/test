@@ -5,6 +5,7 @@
  */
 package lapr.project.model;
 
+import java.text.ParseException;
 import lapr.project.controller.DummyData;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +19,7 @@ public class EventTest {
     private ExhibitionCentre centre = new ExhibitionCentre();
     DummyData data;
     
-    public EventTest() {
+    public EventTest() throws ParseException {
         data = new DummyData(centre);
     }
 
@@ -49,6 +50,18 @@ public class EventTest {
         boolean result = event.isCreated();
         assertEquals(expResult, result);
     }
+    
+    /**
+     * Test of isCreated method, of class Event.
+     */
+    @Test
+    public void testIsCreated2() {
+        System.out.println("isCreated2");
+        Event event = data.getEventRegister().getEvent(0);
+        boolean expResult = false;
+        boolean result = event.isCreated();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of isReadyForApplication method, of class Event.
@@ -59,6 +72,19 @@ public class EventTest {
         Event event = data.getEventRegister().getEvent(0);
         event.setEventState(EventState.READY_FOR_APPLICATION);
         boolean expResult = true;
+        boolean result = event.isReadyForApplication();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isReadyForApplication method, of class Event.
+     */
+    @Test
+    public void testIsReadyForApplication2() {
+        System.out.println("isReadyForApplication2");
+        Event event = data.getEventRegister().getEvent(0);
+        event.setEventState(EventState.CREATED);
+        boolean expResult = false;
         boolean result = event.isReadyForApplication();
         assertEquals(expResult, result);
     }
@@ -75,6 +101,18 @@ public class EventTest {
         boolean result = event.isOpenApplication();
         assertEquals(expResult, result);
     }
+    
+    /**
+     * Test of isOpenApplication method, of class Event.
+     */
+    @Test
+    public void testIsOpenApplication2() {
+        System.out.println("isOpenApplication2");
+        Event event = data.getEventRegister().getEvent(0);
+        boolean expResult = false;
+        boolean result = event.isOpenApplication();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of isInEvaluations method, of class Event.
@@ -85,6 +123,18 @@ public class EventTest {
         Event event = data.getEventRegister().getEvent(0);
         event.setEventState(EventState.IN_EVALUATIONS);
         boolean expResult = true;
+        boolean result = event.isInEvaluations();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isInEvaluations method, of class Event.
+     */
+    @Test
+    public void testIsInEvaluations2() {
+        System.out.println("isInEvaluations2");
+        Event event = data.getEventRegister().getEvent(0);
+        boolean expResult = false;
         boolean result = event.isInEvaluations();
         assertEquals(expResult, result);
     }
@@ -101,6 +151,18 @@ public class EventTest {
         boolean result = event.isReadyForOpening();
         assertEquals(expResult, result);
     }
+    
+    /**
+     * Test of isReadyForOpening method, of class Event.
+     */
+    @Test
+    public void testIsReadyForOpening2() {
+        System.out.println("isReadyForOpening2");
+        Event event = data.getEventRegister().getEvent(0);
+        boolean expResult = false;
+        boolean result = event.isReadyForOpening();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of isOpen method, of class Event.
@@ -111,6 +173,18 @@ public class EventTest {
         Event event = data.getEventRegister().getEvent(0);
         event.setEventState(EventState.OPEN);
         boolean expResult = true;
+        boolean result = event.isOpen();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isOpen method, of class Event.
+     */
+    @Test
+    public void testIsOpen2() {
+        System.out.println("isOpen2");
+        Event event = data.getEventRegister().getEvent(0);
+        boolean expResult = false;
         boolean result = event.isOpen();
         assertEquals(expResult, result);
     }
@@ -127,44 +201,61 @@ public class EventTest {
         boolean result = event.isClose();
         assertEquals(expResult, result);
     }
-
-//    /**
-//     * Test of toString method, of class Event.
-//     */
-//    @Test
-//    public void testToString() {
-//        System.out.println("toString");
-//        Event instance = new Event();
-//        String expResult = "";
-//        String result = instance.toString();
-//        assertEquals(expResult, result);
-//    }
-//
-//    /**
-//     * Test of toString2 method, of class Event.
-//     */
-//    @Test
-//    public void testToString2() {
-//        System.out.println("toString2");
-//        Event instance = new Event();
-//        String expResult = "";
-//        String result = instance.toString2();
-//        assertEquals(expResult, result);
-//    }
+    
+    /**
+     * Test of isClose method, of class Event.
+     */
+    @Test
+    public void testIsClose2() {
+        System.out.println("isClose2");
+        Event event = data.getEventRegister().getEvent(0);
+        boolean expResult = false;
+        boolean result = event.isClose();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of compareTo method, of class Event.
      */
-//    @Test
-//    public void testCompareTo() {
-//        System.out.println("compareTo");
-//        Event event = data.getEventRegister().getEvent(0);
-//        Event instance = data.getEventRegister().getEvent(1);
-//        int expResult = 0;
-//        int result;
-//        result = instance.compareTo(event);
-//        assertEquals(expResult, result);
-//    }
+
+    @Test
+    public void testCompareTo() {
+        System.out.println("compareTo");
+        Event event = data.getEventRegister().getEvent(1);
+        Event instance = data.getEventRegister().getEvent(0);
+        int expResult = -1;
+        int result;
+        result = instance.compareTo(event);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of compareTo method, of class Event.
+     */
+    @Test
+    public void testCompareTo2() {
+        System.out.println("compareTo2");
+        Event event = data.getEventRegister().getEvent(0);
+        Event instance = data.getEventRegister().getEvent(1);
+        int expResult = 1;
+        int result;
+        result = instance.compareTo(event);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of compareTo method, of class Event.
+     */
+    @Test
+    public void testCompareTo3() {
+        System.out.println("compareTo3");
+        Event event = data.getEventRegister().getEvent(1);
+        Event instance = data.getEventRegister().getEvent(1);
+        int expResult = 0;
+        int result;
+        result = instance.compareTo(event);
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of equals method, of class Event.
@@ -185,7 +276,7 @@ public class EventTest {
     @Test
     public void testEquals2() {
         System.out.println("equals2");
-        Event event = data.getEventRegister().getEvent(0);
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
         Event instance = data.getEventRegister().getEvent(1);
         boolean expResult = false;
         boolean result = instance.equals(event);
