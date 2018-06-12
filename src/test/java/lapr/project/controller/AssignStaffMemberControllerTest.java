@@ -89,29 +89,29 @@ public class AssignStaffMemberControllerTest {
 //        Assert.assertNotNull(users.get(1));
 //        
 //    }
-    
-    @Test
-    public void showUsersExhibitionCentreTest() {
-        
-        //Arrange
-        userList2.add(u1);
-        userList2.add(u2);
-        userRegister2.setUserList(userList2);
-        exhibitionCentre2.setUserRegister(userRegister2);
-        List<User> usersReturn = new ArrayList<>();
-        
-        //Act
-        AssignStaffMemberController assignStaffMemberController2 = new AssignStaffMemberController(exhibitionCentre2);
-        usersReturn = assignStaffMemberController2.getUsersExhibitionCentre();
-        
-        //Assert
-        Assert.assertEquals("manuel", usersReturn.get(0).getName());
-        Assert.assertEquals("garnel", usersReturn.get(0).getUsername());
-        Assert.assertEquals("jose", usersReturn.get(1).getName());
-        Assert.assertEquals("jo", usersReturn.get(1).getUsername());
-        
-    }
-    
+//    
+//    @Test
+//    public void showUsersExhibitionCentreTest() {
+//        
+//        //Arrange
+//        userList2.add(u1);
+//        userList2.add(u2);
+//        userRegister2.setUserList(userList2);
+//        exhibitionCentre2.setUserRegister(userRegister2);
+//        List<User> usersReturn = new ArrayList<>();
+//        
+//        //Act
+//        AssignStaffMemberController assignStaffMemberController2 = new AssignStaffMemberController(exhibitionCentre2);
+//        usersReturn = assignStaffMemberController2.getUsersExhibitionCentre();
+//        
+//        //Assert
+//        Assert.assertEquals("manuel", usersReturn.get(0).getName());
+//        Assert.assertEquals("garnel", usersReturn.get(0).getUsername());
+//        Assert.assertEquals("jose", usersReturn.get(1).getName());
+//        Assert.assertEquals("jo", usersReturn.get(1).getUsername());
+//        
+//    }
+//    
     @Test
     public void getEventsLisByOrganiserTest() {
         //Arrange

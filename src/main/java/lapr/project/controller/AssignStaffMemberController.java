@@ -55,12 +55,12 @@ public class AssignStaffMemberController {
         this.staffRegister = this.event.createStaffMemberRegister();
     }
     
-    public List<User> getUsersExhibitionCentre() {
-        
-        usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();
-        return usersExhibitionCentre;
-        
-    }
+//    public List<User> getUsersExhibitionCentre() {
+//        
+//        usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();
+//        return usersExhibitionCentre;
+//        
+//    }
     
     public List<User> filterUserRegisterByNoOrganiserEventSelected() {
         
