@@ -29,6 +29,7 @@ public class CreateEventControllerTest {
     /**
      * Test of getUsersAvailable method, of class CreateEventController.
      */
+ 
     @Test
     public void testGetUsersAvailable() {
         System.out.println("getUsersAvailable");
@@ -51,6 +52,8 @@ public class CreateEventControllerTest {
         List<User> result = instance.getUsersAvailable();
         assertEquals(result, expResult);
     }
+ 
+ 
 
     /**
      * Test of checkFormat method, of class CreateEventController.

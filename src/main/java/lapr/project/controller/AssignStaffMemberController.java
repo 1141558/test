@@ -54,14 +54,7 @@ public class AssignStaffMemberController {
         this.event = eventSelected;
         this.staffRegister = this.event.createStaffMemberRegister();
     }
-    
-//    public List<User> getUsersExhibitionCentre() {
-//        
-//        usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();
-//        return usersExhibitionCentre;
-//        
-//    }
-    
+
     public List<User> filterUserRegisterByNoOrganiserEventSelected() {
         
         List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
@@ -94,17 +87,7 @@ public class AssignStaffMemberController {
         return staffRegister.addStaffMember(staffMember);
         
     }
-    
-    private List<StaffMember> copy(List<StaffMember> staffList) {
-        
-        StaffMember staffMemberCopy = new StaffMember();
-        List<StaffMember> staffMembers = new ArrayList<>();
-        for (StaffMember staffMember : staffList) {
-            staffMemberCopy = staffMember;
-            staffMembers.add(staffMemberCopy);
-        }
-        return staffMembers;
-    }
+
     
     public List<StaffMember> getStaffMemberList() {
         return staffRegister.getStaffList();
