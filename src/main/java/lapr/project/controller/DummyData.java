@@ -129,6 +129,7 @@ public class DummyData {
         event1.setEventState(EventState.READY_FOR_APPLICATION);
         event1.addOrganiserRegister(organiserRegister);
         event1.setStaffRegister(staffRegister1);
+        event1.setDaysApplication(4);
         eventRegister.addEvent(event1);
         
         /*

@@ -55,12 +55,8 @@ public class Event implements Comparable<Event>, Serializable {
     }
     
     public void changeToReadyForApplication() {
-        if ((!staffRegister.isEmpty()) && (!organiserRegister.isEmpty()) && daysApplication != 0) //{
+        if ((!this.staffRegister.isEmpty()) && (!this.organiserRegister.isEmpty()) && this.daysApplication != 0) //{
             this.eventState = EventState.READY_FOR_APPLICATION;
-//            return true;
-//        } else {
-//            return false;
-//        }
     }
     
     public boolean isCreated() {
