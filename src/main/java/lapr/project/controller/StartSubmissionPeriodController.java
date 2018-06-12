@@ -28,7 +28,7 @@ public class StartSubmissionPeriodController {
     }
     
     public List<Event> findEventByOrganiserAndState(User user){
-        
+        changeEventStateCreated();
         for(Event e : this.exhibitionCentre.getEventRegister().getEventList()){
             for (Organiser o : e.getOrganiserRegister().getOrganiserList()) {
                 if(o.getOrganiser().getUsername().equals(user.getUsername()) && e.isReadyForApplication()){
@@ -44,6 +44,13 @@ public class StartSubmissionPeriodController {
         event.setEventState(EventState.OPEN_APPLICATION);
            
         return event.isOpenApplication();
+    }
+    
+    public void changeEventStateCreated(){
+        for(Event e : exhibitionCentre.getEventRegister().getEventList()){
+            if(e.isCreated())
+                e.changeToReadyForApplication();
+        }
     }
     
 }
