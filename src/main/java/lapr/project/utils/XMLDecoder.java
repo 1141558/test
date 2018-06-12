@@ -21,6 +21,7 @@ import lapr.project.model.Distance;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
+import lapr.project.model.PasswordEncryption;
 import lapr.project.model.Review;
 import lapr.project.model.Role;
 import lapr.project.model.StaffMember;
@@ -179,7 +180,7 @@ public class XMLDecoder {
             String password = staff_element.getElementsByTagName("password").item(0).getTextContent();
             u.setEmail(email);
             u.setName(name);
-            u.setPassword(Double.parseDouble(password));
+            u.setPassword(PasswordEncryption.encryptPassword(password));
             u.setUsername(username);
             u.setRole(Role.EMPLOYEE);
             sm.setStaff(u);

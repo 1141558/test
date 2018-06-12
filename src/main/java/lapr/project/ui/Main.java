@@ -94,7 +94,7 @@ class Main {
        fim dados de teste*/
         
         
-        new LoginUI(centre);
+        new InitialMenuUI(centre);
         
     }
     

@@ -31,7 +31,7 @@ public class Event implements Comparable<Event>, Serializable {
     private EventManager eventManager;
     private StandRegister standRegister;
     private ApplicationRegister applicationRegister;
-    
+    private Date dateEndApplications;
     private int daysApplication = CORDAYS_APPLICATION_OMISSION;
     
     public Event(String title, String description, Date startDate, Date endDate, String place, OrganiserRegister organiserRegister) {
@@ -296,6 +296,20 @@ public class Event implements Comparable<Event>, Serializable {
 
     public void saveStaffRegister(StaffRegister staffRegister) {
         this.staffRegister.getStaffList().addAll(staffRegister.getStaffList());
+    }
+
+    /**
+     * @return the dateEndApplications
+     */
+    public Date getDateEndApplications() {
+        return dateEndApplications;
+    }
+
+    /**
+     * @param dateEndApplications the dateEndApplications to set
+     */
+    public void setDateEndApplications(Date dateEndApplications) {
+        this.dateEndApplications = dateEndApplications;
     }
     
 }

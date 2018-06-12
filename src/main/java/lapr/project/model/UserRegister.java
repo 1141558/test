@@ -71,8 +71,8 @@ public class UserRegister {
      */
     public boolean userExists(User user) {
         //email e username são únicos no sistema
-        for (User temp : userList) {
-            if (temp.getName().equals(user.getName())) {
+        for (User temp : this.userList) {
+            if (temp.getUsername().equals(user.getUsername())) {
                 return true;
             }
             if (temp.getEmail().equals(user.getEmail())) {

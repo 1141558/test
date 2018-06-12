@@ -6,6 +6,8 @@
 package lapr.project.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import lapr.project.model.Event;
 import lapr.project.model.EventState;
@@ -42,7 +44,12 @@ public class StartSubmissionPeriodController {
     public boolean changeStateEventToSubmission(int indice){
         Event event = listEvent.get(indice);
         event.setEventState(EventState.OPEN_APPLICATION);
-           
+        Date dateEndApplications= new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateEndApplications);
+        calendar.add(Calendar.DATE, event.getDaysApplication());
+        dateEndApplications= calendar.getTime();
+        event.setDateEndApplications(dateEndApplications);
         return event.isOpenApplication();
     }
     

@@ -36,15 +36,18 @@ public class CreateEventControllerTest {
         CreateEventController instance = new CreateEventController(centre);
         User u1= new User();
         u1.setRole(Role.EMPLOYEE);
-        u1.setUsername("maria");        
-        User u2= new User();
-        u2.setRole(Role.EMPLOYEE);
-        u2.setUsername("tiago");
+        u1.setUsername("maria");   
+        u1.setEmail("email1");
+        User u3= new User();
+        u3.setRole(Role.EMPLOYEE);
+        u3.setUsername("tiago");
+        u1.setEmail("email2");
         centre.getUserRegister().addUser(u1);
-        centre.getUserRegister().addUser(u2);
+        System.out.println(u1.getUsername());
+        centre.getUserRegister().addUser(u3);
         List<User> expResult = new ArrayList<>();
         expResult.add(u1);
-        expResult.add(u2);
+        expResult.add(u3);        
         List<User> result = instance.getUsersAvailable();
         assertEquals(result, expResult);
     }

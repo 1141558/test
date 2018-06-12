@@ -76,7 +76,7 @@ public class UserRegistrationUI {
             Utils.printError("User registration failed!");
         }
 
-        new LoginUI(exhibitionCentre);
+        new InitialMenuUI(exhibitionCentre);
 
     }
 
