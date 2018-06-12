@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.model;
 
 import java.io.Serializable;
@@ -15,25 +15,23 @@ import java.util.Objects;
  *
  * @author André Silva
  */
-public class StaffRegister implements Serializable{
+public class StaffRegister implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     private List<StaffMember> staffList;
-
-
+    
     public void setStaffList(List<StaffMember> staffList) {
         this.staffList = staffList;
     }
     
-    public StaffRegister(){
+    public StaffRegister() {
         this.staffList = new ArrayList<>();
     }
-
+    
 //    public StaffRegister(StaffRegister staffList) {
 //        this.staffList = staffList.getListStaff();
 //    }
-    
     public StaffRegister(List<StaffMember> staffList) {
         this.staffList = staffList;
     }
@@ -41,48 +39,50 @@ public class StaffRegister implements Serializable{
 //    public List<StaffMember> getListStaff(){
 //        return new ArrayList<>(staffList);
 //    }
-    public boolean addStaffMember(StaffMember sm){
+    public boolean addStaffMember(StaffMember sm) {
         for (StaffMember staffMember : staffList) {
-            if(staffMember.getStaff().equalsUser(sm.getStaff())){
+            if (staffMember.getStaff().equalsUser(sm.getStaff())) {
                 return false;
             }
             
         }
         return this.staffList.add(sm);
     }
+    
     /**
      *
      * @param user
-     * @return true or false
-     * Valida se já existe o user passado por parametro, caso não exista adiciona à List
+     * @return true or false Valida se já existe o user passado por parametro,
+     * caso não exista adiciona à List
      */
     
-    public boolean registerStaff(User user){
-        if(!isExist(user)){               
+    public boolean registerStaff(User user) {
+        if (!isExist(user)) {
             staffList.add(new StaffMember(user));
             return true;
-        } else
+        } else {
             return false;
+        }
     }
     
     /**
      *
      * @param user
-     * @return boolean
-     * verifica se já existe um utilizador igual na lista
+     * @return boolean verifica se já existe um utilizador igual na lista
      */
-    public boolean isExist(User user){
+    public boolean isExist(User user) {
         boolean valida = false;
-        for(StaffMember staff : staffList){
-            if(staff.getStaff().getUsername().equals(user.getUsername()))
+        for (StaffMember staff : staffList) {
+            if (staff.getStaff().getUsername().equals(user.getUsername())) {
                 valida = true;
+            }
         }
-        return  valida;
+        return valida;
     }
     
-    public StaffMember getStaffMemberByUsername(String username){
+    public StaffMember getStaffMemberByUsername(String username) {
         for (StaffMember staffMember : staffList) {
-            if(staffMember.getStaff().getUsername().equals(username)){
+            if (staffMember.getStaff().getUsername().equals(username)) {
                 return staffMember;
             }
         }
@@ -91,8 +91,7 @@ public class StaffRegister implements Serializable{
     
     /**
      *
-     * @return boolean
-     * verifica se a lista está vazia
+     * @return boolean verifica se a lista está vazia
      */
     public boolean isEmpty() {
         return staffList.isEmpty();
@@ -100,8 +99,7 @@ public class StaffRegister implements Serializable{
     
     /**
      *
-     * @return int
-     * devolve a tamanho da lista
+     * @return int devolve a tamanho da lista
      */
     public int sizeStaffList() {
         return staffList.size();
@@ -111,7 +109,7 @@ public class StaffRegister implements Serializable{
     public String toString() {
         List<StaffMember> copy = new ArrayList<>(staffList);
         Collections.sort(copy);
-        int i= 0;
+        int i = 0;
         
         StringBuilder s = new StringBuilder();
         for (StaffMember staff : copy) {
@@ -135,10 +133,9 @@ public class StaffRegister implements Serializable{
 //            s.append(staff);
 //            s.append("\n");
 //        }
-//        
+//
 //        return s.toString().trim();
 //    }
-    
     @Override
     public boolean equals(Object otherObject) {
         if (this == otherObject) {
@@ -148,28 +145,26 @@ public class StaffRegister implements Serializable{
             return false;
         }
         StaffRegister otherStaffRegister = (StaffRegister) otherObject;
-
+        
         List<StaffMember> copyThis = new ArrayList<>(staffList);
-        List<StaffMember> copyOther = new ArrayList<>( otherStaffRegister.staffList);
-
+        List<StaffMember> copyOther = new ArrayList<>(otherStaffRegister.staffList);
+        
         return copyThis.equals(copyOther);
-    }    
-
+    }
+    
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 37 * hash + Objects.hashCode(this.staffList);
         return hash;
     }
-
-    public void add(List<StaffMember> staffMemberListEvent1) {
-        this.staffList=staffMemberListEvent1;
-    }
-
-    public List<StaffMember> getStaffList() {
-return this.staffList;
-    }
-
     
+    public void add(List<StaffMember> staffMemberListEvent1) {
+        this.staffList = staffMemberListEvent1;
+    }
+    
+    public List<StaffMember> getStaffList() {
+        return this.staffList;
+    }
     
 }
