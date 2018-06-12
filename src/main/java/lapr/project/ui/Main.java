@@ -37,9 +37,9 @@ class Main {
         /*
          * descomentem esta linha se quiserem testar a leitura, mudem o path para o path do vosso PC
         */
-        //XMLDecoder.readExhibitionCentreFile("C:\\Users\\MariaJoão\\Desktop\\ISEP\\LAPR2\\lapr2-2017-g001\\exhibition1_v0.1.xml", centre);
+        XMLDecoder.readExhibitionCentreFile("./exhibition1_v0.1.xml", centre);
         
-        /*dados de teste (APAGAR FUTURAMENTE)*/
+        /*dados de teste (APAGAR FUTURAMENTE)
         User u1 = new User("nome1", "email1", "username1", 0.0);
         User u2 = new User("nome2", "email2", "username2", 0.0);
         UserRegister ur = new UserRegister();
@@ -91,9 +91,7 @@ class Main {
         centre.setUserRegister(ur);
         centre.setOrganiserRegister(organiserRegister1);
         
-        /*fim dados de teste*/
-        
-        
+       fim dados de teste*/
         
         
         new LoginUI(centre);
