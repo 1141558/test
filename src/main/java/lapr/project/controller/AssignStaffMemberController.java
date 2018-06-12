@@ -48,8 +48,8 @@ public class AssignStaffMemberController {
     
     public List<Event> getEventsListByOrganiser() {
         
-        User organiserValidated = exhibitionCentre.getUserOnline();        
-        eventRegister = exhibitionCentre.getEventRegister();        
+        User organiserValidated = exhibitionCentre.getUserOnline();
+        eventRegister = exhibitionCentre.getEventRegister();
         List<Event> eventList = eventRegister.getEventListByOrganiser(organiserValidated);
         
         return eventList;
@@ -57,13 +57,13 @@ public class AssignStaffMemberController {
     }
     
     public void selectEvent(Event eventSelected) {
-       this.event = eventSelected;
-       this.staffRegister =  this.event.createStaffMemberRegister();
+        this.event = eventSelected;
+        this.staffRegister = this.event.createStaffMemberRegister();
     }
     
     public List<User> getUsersExhibitionCentre() {
         
-        usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();        
+        usersExhibitionCentre = exhibitionCentre.getUserRegister().getUserList();
         return usersExhibitionCentre;
         
     }
@@ -72,34 +72,19 @@ public class AssignStaffMemberController {
         
         List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
         usersRegister = exhibitionCentre.getUserRegister();
-        usersExhibitionCentreCopyWithoutOrganisers = usersRegister.getAvailableUsersWithoutOrganisers(event.getOrganisersRegister().getOrganiserList(),user);
+        usersExhibitionCentreCopyWithoutOrganisers = usersRegister.getAvailableUsersWithoutOrganisers(event.getOrganisersRegister().getOrganiserList());
         return usersExhibitionCentreCopyWithoutOrganisers;
     }
     
     public List<User> getAvailableUsers() {
         
         List<User> filterUserRegisterByNoOrganiserEventSelectedCopy = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected());
-   
+        
         List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = new ArrayList<>();
         
-        List<StaffMember> eventStaffList = event.getStaffRegister().getStaffList();
+        List<User> organiserWithoutOrganisersAndEventStaffList = usersRegister.getAvailableUsersWithoutStaffMember(event.getStaffRegister().getStaffList(), filterUserRegisterByNoOrganiserEventSelectedCopy);
         
-        for (StaffMember staffMember : eventStaffList) {
-            
-            for (User user : filterUserRegisterByNoOrganiserEventSelectedCopy) {
-                
-                if (user.equalsUser(staffMember.getStaff())) {
-                    
-                    filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff.add(user);
-                    
-                }
-                
-            }
-        }
-        
-        filterUserRegisterByNoOrganiserEventSelectedCopy.removeAll(filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff);
-        
-        return filterUserRegisterByNoOrganiserEventSelectedCopy;
+        return organiserWithoutOrganisersAndEventStaffList;
     }
     
     public StaffMember assignUser(List<User> availableUserToAssignToEvent, int userPos) {
@@ -111,9 +96,9 @@ public class AssignStaffMemberController {
     }
     
     public boolean addStaffMemberToEvent(StaffMember staffMember) {
-             
+        
         return staffRegister.addStaffMember(staffMember);
-         
+        
     }
     
     private List<StaffMember> copy(List<StaffMember> staffList) {
@@ -126,15 +111,15 @@ public class AssignStaffMemberController {
         }
         return staffMembers;
     }
-
+    
     public List<StaffMember> getStaffMemberList() {
         return staffRegister.getStaffList();
     }
-
+    
     public void saveStaffMemberList() {
-       event.saveStaffRegister(staffRegister);
+        event.saveStaffRegister(staffRegister);
     }
-
+    
     public List<StaffMember> getStaffMemberList2() {
         return event.getStaffRegister().getStaffList();
     }

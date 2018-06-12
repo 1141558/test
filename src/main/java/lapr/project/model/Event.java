@@ -54,17 +54,13 @@ public class Event implements Comparable<Event>, Serializable {
         this.staffRegister=new StaffRegister();
     }
     
-    public boolean changeToReadyForApplication() {
-        if ((!staffRegister.isEmpty()) && (!organiserRegister.isEmpty()) && daysApplication != 0 && eventState == EventState.CREATED) {
+    public void changeToReadyForApplication() {
+        if ((!this.staffRegister.isEmpty()) && (!this.organiserRegister.isEmpty()) && this.daysApplication != 0) //{
             this.eventState = EventState.READY_FOR_APPLICATION;
-            return true;
-        } else {
-            return false;
-        }
     }
     
     public boolean isCreated() {
-        return this.eventState == EventState.CLOSE;
+        return this.eventState == EventState.CREATED;
     }
     
     public boolean isReadyForApplication() {
@@ -75,12 +71,12 @@ public class Event implements Comparable<Event>, Serializable {
         return this.eventState == EventState.OPEN_APPLICATION;
     }
     
-    public boolean isReadyForOpening() {
-        return this.eventState == EventState.READY_FOR_OPENING;
-    }
-    
     public boolean isInEvaluations() {
         return this.eventState == EventState.IN_EVALUATIONS;
+    }
+    
+    public boolean isReadyForOpening() {
+        return this.eventState == EventState.READY_FOR_OPENING;
     }
     
     public boolean isOpen() {

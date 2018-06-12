@@ -82,10 +82,10 @@ public class UserRegister {
         return false;
     }
     
-    public List<User> getAvailableUsersWithoutOrganisers(List<Organiser> organisers, User userOnline) {
+    public List<User> getAvailableUsersWithoutOrganisers(List<Organiser> organisers) {
         List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
-       usersExhibitionCentreCopyWithoutOrganisers = Utils.getCopia( this.userList);//ver isto
-      
+        usersExhibitionCentreCopyWithoutOrganisers = Utils.getCopia(this.userList);
+        
         List<User> usersToRemove = new ArrayList<>();
         
         for (Organiser org : organisers) {
@@ -102,5 +102,30 @@ public class UserRegister {
         
         usersExhibitionCentreCopyWithoutOrganisers.removeAll(usersToRemove);
         return usersExhibitionCentreCopyWithoutOrganisers;
+    }
+    
+    public List<User> getAvailableUsersWithoutStaffMember(List<StaffMember> staffList, List<User> filterUserRegisterByNoOrganiserEventSelectedCopy) {
+        
+        List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = new ArrayList<>();
+        filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = filterUserRegisterByNoOrganiserEventSelectedCopy;
+        
+        List<User> usersToRemove = new ArrayList<>();
+        
+        for (StaffMember staffMember : staffList) {
+            
+            for (User user : filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff) {
+                
+                if (user.equalsUser(staffMember.getStaff())) {
+                    
+                    usersToRemove.add(user);
+                    
+                }
+                
+            }
+        }
+        
+        filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff.removeAll(usersToRemove);
+        return filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff;
+        
     }
 }
