@@ -53,6 +53,7 @@ public class AssignStaffMemberControllerTest {
     private StaffMember staffMember1 = new StaffMember();
     
     private List<User> userList = new ArrayList<>();
+    
     private List<User> userList2 = new ArrayList<>();
     private UserRegister userRegister = new UserRegister();
     
@@ -96,10 +97,14 @@ public class AssignStaffMemberControllerTest {
     public void filterUserRegisterByNoOrganiserEventSelectedTest() {
         
         //Arrange
-        fillData();
+      
         ExhibitionCentre ec = new ExhibitionCentre();
         AssignStaffMemberController assignStaffMemberController = new AssignStaffMemberController(ec);
+        StaffMember staffMemberOne = new StaffMember();
+        staffMemberOne.setStaff(u1);
         assignStaffMemberController.selectEvent(event3);
+        assignStaffMemberController.addStaffMemberToEvent(staffMemberOne);
+
         
         //Act
         List<User> users = assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected();
@@ -114,7 +119,7 @@ public class AssignStaffMemberControllerTest {
     public void getAvailableUsersTest() {
         
         //Arrange
-        //fillData();
+       
         Event event1 = new Event();
         DummyData data = new DummyData(exhibitionCentre);
         AssignStaffMemberController aStaffMembController = new AssignStaffMemberController(ec);
@@ -131,9 +136,21 @@ public class AssignStaffMemberControllerTest {
         
        
        Assert.assertEquals("manuel", users.get(0).getName());
-////        Assert.assertEquals("garnel", users.get(0).getUsername());
-////        Assert.assertEquals("mjdg111@hotmail.com", users.get(0).getEmail());
+
     }
+    
+    
+    
+    @Test
+    public void assignUserTest() {
+        AssignStaffMemberController asc = new AssignStaffMemberController(ec);
+        userList.add(u1);
+        userList.add(u2);
+        asc.assignUser(userList, 2);
+        System.err.println("assignuser" +  asc.assignUser(userList, 1));
+    }
+
+    
     
     private void fillData() {
         
