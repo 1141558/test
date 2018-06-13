@@ -129,8 +129,8 @@ public class AssignStaffMemberControllerTest {
         //Act
         List<User> users = aStaffMembController.getAvailableUsers();
         
-        System.out.println("users" + users);
-////        Assert.assertEquals("manuel", users.get(0).getName());
+       
+       Assert.assertEquals("manuel", users.get(0).getName());
 ////        Assert.assertEquals("garnel", users.get(0).getUsername());
 ////        Assert.assertEquals("mjdg111@hotmail.com", users.get(0).getEmail());
     }
