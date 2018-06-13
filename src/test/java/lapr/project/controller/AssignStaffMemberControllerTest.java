@@ -115,12 +115,13 @@ public class AssignStaffMemberControllerTest {
         
         //Arrange
         //fillData();
+        Event event1 = new Event();
         DummyData data = new DummyData(exhibitionCentre);
         AssignStaffMemberController aStaffMembController = new AssignStaffMemberController(ec);
         aStaffMembController.selectEvent(event3);
         UserRegister usReg = new UserRegister();
         exhibitionCentre.setUserRegister(usReg);
-        List<Event> eventList = new ArrayList();
+        List<Event> eventList = new ArrayList<>();
         eventList.add(event3);
         eventRegister3.setEventList(eventList);
         exhibitionCentre.setEventRegister(eventRegister3);
