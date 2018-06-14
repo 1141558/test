@@ -30,34 +30,37 @@ public class ReadFileStand {
     String line;
     String csvDivisor = ";";
     String list;
-//    String [] listDistance;
+    String [] listDistance;
+    int count = 0;
     try {
 
         br = new BufferedReader(new FileReader(file));
         while ((line = br.readLine()) != null) {
 
             String[] stand = line.split(csvDivisor);
-            
-            if(stand.length > 3){
-                list = stand[3];
-                list = list.replace("{", "");
-                list = list.replace("}", "");
-                list = list.replace(")", "");
-                list = list.replace("(", "");
-                String [] listDistance = list.split(",");
-//                System.out.println("[ list= " + list + "]" );
-                
-                for (String listDistance1 : listDistance) {
-                    System.out.println("[ list= " + listDistance1 + "]");
-                }
-                
-            }
-
-            System.out.println("Stand [event= " + stand[0] 
+            if(count != 0){
+                System.out.println("Stand [event= " + stand[0] 
                                  + " , Stand= " + stand[1] + "]"
                                  + " , area= " + stand[2] + "]"
-                                 + "");
+                                 + ""); 
+                
+                if(stand.length > 3){
+                    list = stand[3];
+                    list = list.replace("{", "");
+                    list = list.replace("}", "");
+                    list = list.replace(")", "");
+                    list = list.replace("(", "");
+                    listDistance = list.split(",");
+    //                System.out.println("[ list= " + list + "]" );
 
+                    for (String listDistance1 : listDistance) {
+                        System.out.println("[ listArray= " + listDistance1 + "]");
+                    }
+                }
+
+                         
+            }           
+            count++;        
         }
 
     } catch (FileNotFoundException e) {
