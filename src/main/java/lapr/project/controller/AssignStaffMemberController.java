@@ -26,13 +26,13 @@ public class AssignStaffMemberController {
     
     private ExhibitionCentre exhibitionCentre;
     private EventRegister eventRegister;
-    private OrganiserRegister organiserRegister;
+ 
     private StaffRegister staffRegister;
     private UserRegister usersRegister;
     private Event event;
     
     DummyData dummy;
-    List<User> usersExhibitionCentre = new ArrayList<>();
+   
     
     public AssignStaffMemberController(ExhibitionCentre centre) {
         this.exhibitionCentre = centre;
@@ -97,8 +97,5 @@ public class AssignStaffMemberController {
         event.saveStaffRegister(staffRegister);
     }
     
-    public List<StaffMember> getStaffMemberList2() {
-        return event.getStaffRegister().getStaffList();
-    }
-    
+
 }

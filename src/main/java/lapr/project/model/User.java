@@ -121,7 +121,7 @@ public class User {
      * @param obj User to be compared to
      * @return boolean value indicating if the users match
      */
-    public boolean equalsUser(User obj) {
+    public boolean equals(User obj) {
         if (obj == null) {
             return false;
         }

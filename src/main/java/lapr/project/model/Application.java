@@ -52,6 +52,10 @@ public class Application implements Importable<Application>, Exportable {
         this.listReview= new ArrayList<>();
     }
 
+    public Application(String description) {
+      this.description = description;
+    }
+
     /**
      * Obtain Candidatura's description.
      *
