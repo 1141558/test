@@ -65,8 +65,7 @@ public class XMLDecoder {
                 System.out.println(s.getArea());
                 for (Distance d : s.getDistanceList()) {
                     System.out.println("****Distances****");    
-                    System.out.println(d.getDescription());
-                    System.out.println(d.getValue());
+                    System.out.println(d.toString());
                 }
                 System.out.println("------------------------------------------");
 
