@@ -38,13 +38,16 @@ public class LoginUI {
         System.out.println((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
 
         username = Utils.readLineFromConsole("USERNAME: ");
-        if (console == null) {
-            System.out.println("Couldn't get Console instance");
-            System.exit(0);
-        }
+        if (console != null) {
         password = console.readPassword("PASSWORD: ");
         Arrays.fill(password, ' ');
         passwordString= new String(password);
+        
+        }else{
+        passwordString = Utils.readLineFromConsole("PASSWORD: ");
+            
+        }
+
         
         if(!controller.login(username, passwordString)){
             Utils.printError("USERNAME OR PASSOWORD ARE WRONG. PLEASE TRY AGAIN");

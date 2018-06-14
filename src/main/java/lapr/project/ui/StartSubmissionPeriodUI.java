@@ -21,7 +21,6 @@ public class StartSubmissionPeriodUI {
     int n = 1;
     
     public StartSubmissionPeriodUI(ExhibitionCentre exhibitionCentre){
-        DummyData data = new DummyData(exhibitionCentre);
         String event_selected_string=""; 
         int event_selected=0;
         boolean right=false;
