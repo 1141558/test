@@ -39,13 +39,18 @@ public class OrganiserTest {
         //Arrange
         User user = new User("Nome Nome", "email@server.com", "user1", 0.1234);
         User otherUser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+ 
        
+ 
+       
+ 
         Organiser organiser = new Organiser(user);
         Organiser otherOrganiser = new Organiser(otherUser);
         boolean expectedResult = true;
         boolean expectresultFalse = false;
         
         Object obj = new Organiser(otherUser);
+ 
          
         
         //Act
@@ -55,6 +60,14 @@ public class OrganiserTest {
         //Assert
         assertEquals(result, expectedResult);
         
+ 
+        
+        //Act
+          
+        //Assert
+        assertEquals(result, expectedResult);
+        
+ 
     }
     
 }
