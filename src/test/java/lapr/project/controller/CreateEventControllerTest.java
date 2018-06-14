@@ -110,35 +110,45 @@ public class CreateEventControllerTest {
         assertEquals(expResult, result);
     }
 
-//    /**
-//     * Test of createOrganiser method, of class CreateEventController.
-//     */
-//    @Test
-//    public void testCreateOrganiser() {
-//        System.out.println("createOrganiser");
-//        ExhibitionCentre centre= new  ExhibitionCentre();
-//        CreateEventController instance = new CreateEventController(centre);
-//        
-//        int userPos=3;
-//        
-//        User u1= new User();
-//        u1.setUsername("user1");
-//        User u2= new User();
-//        u2.setUsername("user2");
-//        User u3= new User();
-//        u3.setUsername("user3");
-//        
-//        Organiser expResult= new Organiser();
-//        expResult.setOrganiser(u3);
-//        
-//        List<User> usersAvailable = new ArrayList<>();
-//        usersAvailable.add(u1);
-//        usersAvailable.add(u2);
-//        usersAvailable.add(u3);
-//        
-//        Organiser result = instance.createOrganiser(usersAvailable, userPos);
-//        assertEquals(expResult, result);
-//    }
+    /**
+     * Test of createOrganiser method, of class CreateEventController.
+     */
+    @Test
+    public void testCreateOrganiser() {
+        System.out.println("createOrganiser");
+        ExhibitionCentre centre= new  ExhibitionCentre();
+        CreateEventController instance = new CreateEventController(centre);
+        
+        int userPos=3;
+        
+        User u1= new User();
+        u1.setUsername("user1");
+        u1.setEmail("email@email.pt");
+        u1.setPassword(0.1);
+        u1.setName("Joao");
+        User u2= new User();
+        u2.setUsername("user2");
+        u2.setEmail("email1@email.pt");
+        u2.setPassword(0.1);
+        u2.setName("Joao2");
+        User u3= new User();
+        u3.setUsername("user3");
+        u3.setEmail("email2@email.pt");
+        u3.setPassword(0.1);
+        u3.setName("Joao3");
+        
+        Organiser expResult= new Organiser();
+        expResult.setOrganiser(u3);
+        
+        List<User> usersAvailable = new ArrayList<>();
+        usersAvailable.add(u1);
+        usersAvailable.add(u2);
+        usersAvailable.add(u3);
+        
+        Organiser result = instance.createOrganiser(usersAvailable, userPos);
+        boolean x=result.equals(expResult);
+        assertTrue(result.equals(expResult));
+        }
 
     /**
      * Test of addOrganiser method, of class CreateEventController.

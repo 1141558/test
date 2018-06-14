@@ -60,7 +60,7 @@ public class Organiser  implements Comparable<Organiser> ,  Serializable{
         }
         Organiser otherOrganiser = (Organiser) otherObject;
         
-        return organiser.equals(otherOrganiser);
+        return this.getOrganiser().equals(otherOrganiser.getOrganiser());
         // return (this.organiser.getEmail().equals(otherOrganiser)) && obj.getName().equals(this.organiser.getName()) && Double.compare(obj.getPassword(), this.organiser.getPassword())==0 && obj.getUsername().equals(this.organiser.getUsername()));
     }
 
