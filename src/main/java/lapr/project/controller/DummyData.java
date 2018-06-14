@@ -81,7 +81,7 @@ public class DummyData {
         usersCentre.add(user10);
        
         userRegister.setUserList(usersCentre);
-        System.out.println("user do centro" + usersCentre);
+      
         exhibitionCentre.setUserRegister(userRegister);
 
     }

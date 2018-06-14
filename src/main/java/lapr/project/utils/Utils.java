@@ -6,11 +6,17 @@
 package lapr.project.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import lapr.project.model.Application;
+import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.StaffMember;
+import lapr.project.model.Stand;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
 
@@ -99,6 +105,47 @@ public class Utils {
 //      
 //        return copy;
 //    }
-    }
+ 
+        /**
+        *
+        * Permite ler um ficheiro com a extensão 
+//        */
+//        public void csvFileReading(String nameFile) throws FileNotFoundException {
+//
+//       
+//
+//        ArrayList<Event> eventsList = new ArrayList<>();
+//        ArrayList<Stand> standsList = new ArrayList<>();
+//        ArrayList<Application> applicationList = new ArrayList<>();
+//        
+//        Event event = null;
+//        Stand stand = null;
+//        Application application = null;
+//
+//       
+//
+//        Scanner reading = new Scanner(new File(nameFile));
+//        while (reading.hasNext()) {
+//            String[] aux = reading.nextLine().split(";");
+//            
+//            
+//            event = new Event((aux[0].toString()));
+//            stand = new Stand(aux[1].toString());
+//           
+//      application= new Application((aux[2].toString()));
+//            
+////            listaCartoes.add(cartao);
+////            listaEquipamentos.add(equipamento);
+////            listaColaboradores.add(colaborador);
+//        }
+//
+//        reading.close();
+////        m_Empresa.getRegistodeCartoes().setCartoes(listaCartoes);
+////        m_Empresa.getRegistoColaboradores().setColaboradores(listaColaboradores);
+////        m_Empresa.getRegistoDeEquipamentos().setEquipamentos(listaEquipamentos);
+//    }
+ 
+}
+    
     
 
