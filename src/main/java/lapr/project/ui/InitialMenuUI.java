@@ -33,7 +33,7 @@ public class InitialMenuUI {
         switch(Integer.parseInt(opt)){
          
             case 1:
-                new MainMenu(centre);    
+                new LoginUI(centre);    
             break;  
              case 2:
                  new UserRegistrationUI(centre);
