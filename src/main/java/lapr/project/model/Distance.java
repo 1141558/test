@@ -81,12 +81,9 @@ public class Distance implements Comparable<Distance>, Serializable{
         return Objects.equals(this.value, other.value);
     }
     
-    
-
-    
     @Override
     public String toString() {
-        return "description= " + description + ", value= " + value;
+        return "description= " + description + ", value= " + value + "\n";
     }    
 
     @Override
