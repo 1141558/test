@@ -5,14 +5,18 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
  * @author MariaJoão
  */
-public class StandRegister {
+public class StandRegister implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     private List<Stand> standList;
 
@@ -37,7 +41,48 @@ public class StandRegister {
     public void setStandList(List<Stand> standList) {
         this.standList = standList;
     }
+    
+    /**
+     *
+     * @param s
+     * @return
+     */
     public boolean addStand(Stand s){
         return this.standList.add(s);
+    }
+    
+    /**
+     *
+     * @return boolean verifica se a lista está vazia
+     */
+    public boolean isEmptyStandList() {
+        return standList.isEmpty();
+    }
+    
+    public int sizeStandList(){
+        return standList.size();
+    }
+    
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass()) {
+            return false;
+        }
+        StandRegister otherStandRegister = ( StandRegister) otherObject;
+        
+        List<Stand> copyThis = new ArrayList<>(this.standList);
+        List<Stand> copyOther = new ArrayList<>(otherStandRegister.standList);
+        
+        return copyThis.equals(copyOther);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.standList);
+        return hash;
     }
 }
