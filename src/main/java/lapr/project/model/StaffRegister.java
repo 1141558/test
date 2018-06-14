@@ -41,7 +41,7 @@ public class StaffRegister implements Serializable {
 //    }
     public boolean addStaffMember(StaffMember sm) {
         for (StaffMember staffMember : staffList) {
-            if (staffMember.getStaff().equalsUser(sm.getStaff())) {
+            if (staffMember.getStaff().equals(sm.getStaff())) {
                 return false;
             }
             

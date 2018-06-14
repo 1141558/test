@@ -91,7 +91,7 @@ public class UserRegister {
         for (Organiser org : organisers) {
             
             for (User user : usersExhibitionCentreCopyWithoutOrganisers) {
-                if (user.equalsUser(org.getOrganiser())) {
+                if (user.equals(org.getOrganiser())) {
                     usersToRemove.add(user);
                     
                 }
@@ -115,7 +115,7 @@ public class UserRegister {
             
             for (User user : filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff) {
                 
-                if (user.equalsUser(staffMember.getStaff()) || !user.getRole().equals(Role.EMPLOYEE)) {
+                if (user.equals(staffMember.getStaff()) || !user.getRole().equals(Role.EMPLOYEE)) {
                     
                     usersToRemove.add(user);
                     
