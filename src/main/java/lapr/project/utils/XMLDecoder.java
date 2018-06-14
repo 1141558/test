@@ -19,6 +19,7 @@ import lapr.project.model.ApplicationRegister;
 import lapr.project.model.Decision;
 import lapr.project.model.Distance;
 import lapr.project.model.Event;
+import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
 import lapr.project.model.PasswordEncryption;
@@ -114,7 +115,7 @@ public class XMLDecoder {
                 System.out.println("------------------------------------------");
                 
             }
-            
+            e.setEventState(EventState.CREATED);
             centre.getEventRegister().addEvent(e);
             
         } catch (ParserConfigurationException | IOException | SAXException e) {
