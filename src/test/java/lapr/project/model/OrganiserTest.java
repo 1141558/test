@@ -61,11 +61,7 @@ public class OrganiserTest {
         assertEquals(result, expectedResult);
         
  
-        
-        //Act
-          
-        //Assert
-        assertEquals(result, expectedResult);
+         
         
  
     }
