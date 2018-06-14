@@ -5,10 +5,21 @@
  */
 package lapr.project.ui;
 
+import lapr.project.controller.SubmitApplicationToEventController;
+import lapr.project.model.ExhibitionCentre;
+
 /**
  *
  * @author MariaJoão
  */
 public class SubmitApplicationToEventUI {
-    
+   
+       private SubmitApplicationToEventController controller;
+       
+       public SubmitApplicationToEventUI(ExhibitionCentre centre){
+           
+           this.controller= new SubmitApplicationToEventController(centre);
+           
+           
+       }
 }
