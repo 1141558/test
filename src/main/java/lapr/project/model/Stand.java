@@ -114,7 +114,24 @@ public Stand(String description) {
 
     @Override
     public String toString() {
-        return "Stand{" + "description=" + description + ", area=" + area + ", distanceList=" + distanceList.toString() + '}';
+        return "Stand{" + "description=" + description + ", area=" + area + ", distanceList=" + printListDistance() + '}'+"\n";
+    }
+    
+    private String printListDistance(){
+        List<Distance> copy = new ArrayList<>(distanceList);
+        Collections.sort(copy);
+        int i = 0;
+        
+        StringBuilder s = new StringBuilder();
+        for (Distance d : distanceList) {
+            s.append("Indice ");
+            s.append(i);
+            s.append(d.toString());
+            s.append("\n");
+            i++;
+        }
+        
+        return s.toString().trim();
     }
 
     @Override
@@ -144,6 +161,7 @@ public Stand(String description) {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        
         List<Distance> copyThis = new ArrayList<>(this.distanceList);
         List<Distance> copyOther = new ArrayList<>(other.distanceList);
         Collections.sort(copyThis);
