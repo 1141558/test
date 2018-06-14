@@ -5,6 +5,8 @@
  */
 package lapr.project.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author MariaJoão
@@ -118,14 +120,30 @@ public class User {
     /**
      * Method to compare 2 Users using the attributes
      *
-     * @param obj User to be compared to
+     * @param otherObject
      * @return boolean value indicating if the users match
      */
-    public boolean equals(User obj) {
-        if (obj == null) {
+    @Override
+    public boolean equals(Object otherObject) {
+        if(this == otherObject){
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass())  {
             return false;
         }
-        return (obj.email.equals(this.email) && obj.name.equals(this.name) && Double.compare(obj.password, this.password)==0 && obj.username.equals(this.username));
+        User user = (User) otherObject;
+        return (user.email.equals(this.email) && user.name.equals(this.name) && Double.compare(user.password, this.password)==0 && user.username.equals(this.username));
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.name);
+        hash = 83 * hash + Objects.hashCode(this.email);
+        hash = 83 * hash + Objects.hashCode(this.username);
+        hash = 83 * hash + (int) (Double.doubleToLongBits(this.password) ^ (Double.doubleToLongBits(this.password) >>> 32));
+        hash = 83 * hash + Objects.hashCode(this.role);
+        return hash;
     }
 
     

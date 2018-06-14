@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.model;
 
 import org.junit.Assert;
@@ -16,8 +16,9 @@ import org.junit.jupiter.api.Test;
  * @author Manuel Garnel
  */
 public class OrganiserTest {
-     /**
-     * Test of getName method, of class User.
+    
+    /**
+     * Test of getName method, of class Organiser.
      */
     @Test
     public void GetNameTest() {
@@ -28,18 +29,32 @@ public class OrganiserTest {
         assertEquals(expResult, result);
     }
     
-    
-    
-     @Test
+    /**
+     * Test of equalsUser method, of class Organiser.
+     */
+    @Test
     public void equalsTest() {
         System.out.println("toString");
+        
         //Arrange
-        User organiser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
-        User otherOrganiser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        User user = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        User otherUser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+       
+        Organiser organiser = new Organiser(user);
+        Organiser otherOrganiser = new Organiser(otherUser);
+        boolean expectedResult = true;
+        boolean expectresultFalse = false;
         
-        organiser.equals(otherOrganiser);
+        Object obj = new Organiser(otherUser);
+         
         
-         assertTrue(organiser.equals(otherOrganiser));
+        //Act
+        boolean result = organiser.equals(obj);
+       
+        
+        //Assert
+        assertEquals(result, expectedResult);
+        
     }
     
 }
