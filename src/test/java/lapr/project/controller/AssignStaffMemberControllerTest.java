@@ -147,7 +147,7 @@ public class AssignStaffMemberControllerTest {
         userList.add(u1);
         userList.add(u2);
         asc.assignUser(userList, 2);
-        System.err.println("assignuser" +  asc.assignUser(userList, 1));
+     
     }
 
     

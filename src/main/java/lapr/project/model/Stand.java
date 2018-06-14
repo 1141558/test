@@ -28,6 +28,10 @@ public class Stand {
         this.area = area;
         this.distanceList= new ArrayList<>();
     }
+    
+public Stand(String description) {
+    this.description =description;
+}
 
     /**
      * @return the description
