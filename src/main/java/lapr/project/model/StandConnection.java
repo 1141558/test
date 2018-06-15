@@ -54,7 +54,7 @@ public class StandConnection implements Comparable <StandConnection> {
         if(this.dist>o.getDist()){
             return 1;
         }
-        if(this.dist==o.getDist()){
+        if(Double.compare(this.dist,o.getDist())==0){
             return 0;
         }
         return 0;
