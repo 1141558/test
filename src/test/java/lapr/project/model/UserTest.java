@@ -133,9 +133,9 @@ public class UserTest {
         User user1a = new User("Nome Nome", "email@server.com", "user1", 0.1234);
         User user2 = new User("Nomes", "emails@server.com", "user2", 0.4321);
         boolean expResult = true;
-        boolean result = user1.equalsUser(user1a);
-        boolean result2 = user1.equalsUser(user2);
-        assertEquals(false, user1.equalsUser(userNull));
+        boolean result = user1.equals(user1a);
+        boolean result2 = user1.equals(user2);
+        assertEquals(false, user1.equals(userNull));
         assertEquals(expResult, result);
         assertNotEquals(expResult, result2);
     }

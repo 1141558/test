@@ -28,7 +28,7 @@ public class Application implements Importable<Application>, Exportable {
     private boolean accepted;
     private double boothArea;
     private int numberInvites;
-
+    private ApplicationState state;
     /**
      * Constructor for Application
      *
@@ -50,6 +50,10 @@ public class Application implements Importable<Application>, Exportable {
     public Application() {
         this.keywordList= new ArrayList<>();
         this.listReview= new ArrayList<>();
+    }
+
+    public Application(String description) {
+      this.description = description;
     }
 
     /**
@@ -250,5 +254,19 @@ public class Application implements Importable<Application>, Exportable {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * @return the state
+     */
+    public ApplicationState getState() {
+        return state;
+    }
+
+    /**
+     * @param state the state to set
+     */
+    public void setState(ApplicationState state) {
+        this.state = state;
     }
 }

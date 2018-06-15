@@ -46,7 +46,6 @@ public class MainMenu implements Serializable{
         System.out.println("                  2.ASSIGN STAFF MEMBER                  ");
         System.out.println("       3.START EVENT'S APPLICATION SUBMISSION PERIOD     ");
         System.out.println("                4.SUBMIT APPLICATION TO EVENT            ");       
-        System.out.println("                       3.LOGOUT                          ");
         System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
       
         opt = Utils.readLineFromConsole("INSERT OPTION: ");
@@ -62,7 +61,7 @@ public class MainMenu implements Serializable{
                 new StartSubmissionPeriodUI(centre);    
             break; 
              case 4:
-                 new UserRegistrationUI(centre);
+                 new SubmitApplicationToEventUI(centre);
         }
     }
     

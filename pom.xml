@@ -222,6 +222,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>lapr.project.ui.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

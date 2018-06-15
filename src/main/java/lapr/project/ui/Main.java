@@ -1,5 +1,7 @@
 package lapr.project.ui;
 
+import java.io.Console;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +34,19 @@ class Main {
      */
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
         CalculatorExample calculatorExample = new CalculatorExample();
-        System.out.println(calculatorExample.sum(3, 5));
         ExhibitionCentre centre = new ExhibitionCentre();
         /*
          * descomentem esta linha se quiserem testar a leitura, mudem o path para o path do vosso PC
         */
-        XMLDecoder.readExhibitionCentreFile("./exhibition1_v0.1.xml", centre);
+
+        Console c= System.console();
+        if(c==null){
+        XMLDecoder.readExhibitionCentreFile("./src/main/resources/exhibition1_v0.1.xml", centre);
+            
+        }else{
+        XMLDecoder.readExhibitionCentreFile("../src/main/resources/exhibition1_v0.1.xml", centre);
+           
+        }
         
         /*dados de teste (APAGAR FUTURAMENTE)
         User u1 = new User("nome1", "email1", "username1", 0.0);

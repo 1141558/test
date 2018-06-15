@@ -50,19 +50,26 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
         return String.format("UserName:%s Nome:%s", staff.getUsername(), staff.getName());
     }
 
-    @Override
-    public boolean equals(Object otherObject) {
-        if (this == otherObject) {
-            return true;
-        }
-        if (otherObject == null || getClass() != otherObject.getClass()) {
+//    @Override
+//    public boolean equals(Object otherObject) {
+//        if (this == otherObject) {
+//            return true;
+//        }
+//        if (otherObject == null || getClass() != otherObject.getClass()) {
+//            return false;
+//        }
+//        StaffMember otherStaff = (StaffMember) otherObject;
+//        
+//        return staff == otherStaff.staff;
+//    }
+ public boolean equalsUser(User obj) {
+        if (obj == null) {
             return false;
         }
-        StaffMember otherStaff = (StaffMember) otherObject;
-        
-        return staff == otherStaff.staff;
+        return (obj.getEmail().equals(this.staff.getEmail()) && obj.getName().equals(this.staff.getName()) && Double.compare(obj.getPassword(), this.staff.getPassword())==0 && obj.getUsername().equals(this.staff.getUsername()));
     }
 
+    
     @Override
     public int hashCode() {
         int hash = 7;
