@@ -80,9 +80,7 @@ public class StandConnection implements Comparable<StandConnection> {
         if (this.getDist() > o.getDist()) {
             return 1;
         }
-        if (Double.compare(this.getDist(), o.getDist()) == 0) {
-            return 0;
-        }
+        
         return 0;
     }
 
