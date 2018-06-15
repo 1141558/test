@@ -16,7 +16,7 @@ import java.util.List;
 public class CalculateElectricalCable {
 
     
-    public static ArrayList cablePath(List<Stand> stands) {
+    public static ArrayList<StandConnection> cablePath(List<Stand> stands) {
         int standConnectedCount = 0;
         int standCount = 0;
 
@@ -102,25 +102,25 @@ public class CalculateElectricalCable {
             }
 
             //Se árvore completa break (ramos=stands-1)
-            if (standConnectedCount >= (standCount - 1)) {
-//                System.out.println("Árvore completa");
-                break;
-            }
+//            if (standConnectedCount >= (standCount - 1)) {
+////                System.out.println("Árvore completa");
+//                break;
+//            }
 
         }
-        System.out.println("Árvore:");
-
-
-        System.out.println();
+//        System.out.println("Árvore:");
+//
+//
+//        System.out.println();
 
         //Ordena a final
         Collections.sort(tree.get(0));
 
-        for (StandConnection cc : tree.get(0)) {
-            System.out.println(cc.toString());
-        }
-
-        System.out.println("Total: " + cableLength + " metros");
+//        for (StandConnection cc : tree.get(0)) {
+//            System.out.println(cc.toString());
+//        }
+//
+//        System.out.println("Total: " + cableLength + " metros");
 
         
         return tree.get(0);
