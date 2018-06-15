@@ -32,6 +32,17 @@ public class StandConnection implements Comparable <StandConnection> {
     public double getDist(){
         return this.dist;
     }
+    public void setA(String a){
+        this.a=a;
+    }
+    
+    public void setB(String b){
+        this.b=b;
+    }
+    
+    public void setDist(double dist){
+        this.dist=dist;
+    }
     
 
 
@@ -42,6 +53,9 @@ public class StandConnection implements Comparable <StandConnection> {
         }
         if(this.dist>o.getDist()){
             return 1;
+        }
+        if(this.dist==o.getDist()){
+            return 0;
         }
         return 0;
     }
