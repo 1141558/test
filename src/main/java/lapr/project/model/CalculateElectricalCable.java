@@ -16,7 +16,7 @@ import java.util.List;
 public class CalculateElectricalCable {
 
     
-    public static void cableConnections(List<Stand> stands) {
+    public static ArrayList cablePath(List<Stand> stands) {
         int standConnectedCount = 0;
         int standCount = 0;
 
@@ -122,8 +122,20 @@ public class CalculateElectricalCable {
 
         System.out.println("Total: " + cableLength + " metros");
 
+        
+        return tree.get(0);
+    }
+    
+    
+    public static double cableLength(ArrayList<StandConnection> tree){
+        double length=0.0;
+        
+        for(StandConnection list:tree){
+            length+=list.getDist();
+        }
+        return length;
     }
 
 }
 
-//        CalculateElectricalCable.cableConnections(centre.getEventRegister().getEvent(0).getStandRegister().getStandList());
+//        CalculateElectricalCable.cablePath(centre.getEventRegister().getEvent(0).getStandRegister().getStandList());
