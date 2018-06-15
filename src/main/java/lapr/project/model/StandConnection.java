@@ -13,49 +13,74 @@ import java.util.Objects;
  */
 public class StandConnection implements Comparable<StandConnection> {
 
-    String a;
-    String b;
-    double dist;
+    private String a;
+    private String b;
+    private double dist;
 
+    /**
+     * Constructor
+     * @param a First Stand description of the connection
+     * @param b Second Stand description
+     * @param dist Distance betweenStands
+     */
     public StandConnection(String a, String b, double dist) {
         this.a = a;
         this.b = b;
         this.dist = dist;
     }
 
+    /**
+     * @return the a
+     */
     public String getA() {
-        return this.a;
+        return a;
     }
 
-    public String getB() {
-        return this.b;
-    }
-
-    public double getDist() {
-        return this.dist;
-    }
-
+    /**
+     * @param a the a to set
+     */
     public void setA(String a) {
         this.a = a;
     }
 
+    /**
+     * @return the b
+     */
+    public String getB() {
+        return b;
+    }
+
+    /**
+     * @param b the b to set
+     */
     public void setB(String b) {
         this.b = b;
     }
 
+    /**
+     * @return the dist
+     */
+    public double getDist() {
+        return dist;
+    }
+
+    /**
+     * @param dist the dist to set
+     */
     public void setDist(double dist) {
         this.dist = dist;
     }
 
+
     @Override
     public int compareTo(StandConnection o) {
-        if (this.dist < o.getDist()) {
+        if (this.getDist() < o.getDist()) {
             return -1;
         }
-        if (this.dist > o.getDist()) {
+        if (this.getDist() > o.getDist()) {
             return 1;
         }
-        if (Double.compare(this.dist, o.getDist()) == 0) {
+        if (Double.compare(this.getDist(), o.getDist()) == 0) {
             return 0;
         }
         return 0;
@@ -63,21 +88,27 @@ public class StandConnection implements Comparable<StandConnection> {
 
     @Override
     public String toString() {
-        return a + " --> " + b + "  (" + dist + " meters)";
+        return getA() + " --> " + getB() + "  (" + getDist() + " meters)";
     }
 
     @Override
     public boolean equals(Object obj) {
-        return (this.a.equals(((StandConnection) obj).getA())) && (this.b.equals(((StandConnection) obj).getB()))
-                && (Double.compare(this.dist, ((StandConnection) obj).getDist()) == 0);
+        if(obj==null){
+            return false;
+        }
+        if(this.getClass()!=obj.getClass()){
+            return false;
+        }
+        return (this.getA().equals(((StandConnection) obj).getA())) && (this.getB().equals(((StandConnection) obj).getB()))
+                && (Double.compare(this.getDist(), ((StandConnection) obj).getDist()) == 0);
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 43 * hash + Objects.hashCode(this.a);
-        hash = 43 * hash + Objects.hashCode(this.b);
-        hash = 43 * hash + (int) (Double.doubleToLongBits(this.dist) ^ (Double.doubleToLongBits(this.dist) >>> 32));
+        hash = 43 * hash + Objects.hashCode(this.getA());
+        hash = 43 * hash + Objects.hashCode(this.getB());
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.getDist()) ^ (Double.doubleToLongBits(this.getDist()) >>> 32));
         return hash;
     }
 }
