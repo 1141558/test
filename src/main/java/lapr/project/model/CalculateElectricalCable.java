@@ -15,16 +15,13 @@ import java.util.List;
  */
 public class CalculateElectricalCable {
 
-    
     public static ArrayList<StandConnection> cablePath(List<Stand> stands) {
-        int standConnectedCount = 0;
-        int standCount = 0;
+
 
         ArrayList<StandConnection> connections = new ArrayList<>();
 
         for (Stand temp : stands) {
             if (temp.getDistanceList() != null) {
-                standCount++;
                 List<Distance> distancias = temp.getDistanceList();
 
                 for (Distance temp2 : distancias) {
@@ -39,7 +36,6 @@ public class CalculateElectricalCable {
 
         ArrayList<ArrayList<StandConnection>> tree = new ArrayList<>();
 
-        double cableLength = 0.0;
 
         int indexA = 0, indexB = 0;
 
@@ -59,30 +55,20 @@ public class CalculateElectricalCable {
                     }
                 }
             }
-//            System.out.println("indexA= "+indexA+foundA);
-//            System.out.println("indexB= "+indexB+foundB);
+
             //Se não existir
             if (!foundA && !foundB) {
                 ArrayList<StandConnection> novo = new ArrayList<>();
                 novo.add(c);
                 tree.add(novo);
-                cableLength += c.getDist();
-                standConnectedCount++;
-//                System.out.println(c.getA()+"-->"+c.getB());
             }
 
             //Se existir
             if (foundA && !foundB) {
                 tree.get(indexA).add(c);
-                cableLength += c.getDist();
-                standConnectedCount++;
-//                System.out.println(c.getA()+"-->"+c.getB());
             }
             if (!foundA && foundB) {
                 tree.get(indexB).add(c);
-                cableLength += c.getDist();
-                standConnectedCount++;
-//                System.out.println(c.getA()+"-->"+c.getB());
             }
 
             if ((foundA && foundB) && (indexA != indexB)) {
@@ -96,42 +82,20 @@ public class CalculateElectricalCable {
                     tree.get(indexA).add(s);
                 }
                 tree.remove(indexB);
-                cableLength += c.getDist();
-                standConnectedCount++;
-//                System.out.println(c.getA()+"-->"+c.getB());
             }
-
-            //Se árvore completa break (ramos=stands-1)
-//            if (standConnectedCount >= (standCount - 1)) {
-////                System.out.println("Árvore completa");
-//                break;
-//            }
-
         }
-//        System.out.println("Árvore:");
-//
-//
-//        System.out.println();
 
         //Ordena a final
         Collections.sort(tree.get(0));
 
-//        for (StandConnection cc : tree.get(0)) {
-//            System.out.println(cc.toString());
-//        }
-//
-//        System.out.println("Total: " + cableLength + " metros");
-
-        
         return tree.get(0);
     }
-    
-    
-    public static double cableLength(ArrayList<StandConnection> tree){
-        double length=0.0;
-        
-        for(StandConnection list:tree){
-            length+=list.getDist();
+
+    public static double cableLength(ArrayList<StandConnection> tree) {
+        double length = 0.0;
+
+        for (StandConnection list : tree) {
+            length += list.getDist();
         }
         return length;
     }
