@@ -34,7 +34,7 @@ public class Stand implements Comparable<Stand>, Serializable{
     }
     
 public Stand(String description) {
-    this.description =description;
+    this.description = description;
 }
 
     /**

@@ -21,14 +21,26 @@ public class EventRegister implements Serializable{
     
     private List<Event> eventList;
 
-
+    /**
+     *
+     * @param eventList
+     */
     public EventRegister(List<Event> eventList) {
         this.eventList = eventList;
     }
 
+    /**
+     *
+     */
     public EventRegister() {
-        this.eventList= new ArrayList<>();
+        this.eventList = new ArrayList<>();
     }
+    
+    /**
+     *
+     * @param e
+     * @return
+     */
     public boolean registerEvent(Event e){
         return eventList.contains(e)
                ? false
@@ -40,6 +52,7 @@ public class EventRegister implements Serializable{
     public List<Event> getEventList() {
         return eventList;
     }
+    
     /*
     * Este metodo verifica se o utilizador recebido por parametro é organizador de algum evento
     */
@@ -53,6 +66,12 @@ public class EventRegister implements Serializable{
         }
      return false;   
     }
+    
+    /**
+     *
+     * @param u
+     * @return
+     */
     public boolean userIsStaffMember(User u){
         for (Event event : this.eventList) {
             for (StaffMember sm : event.getStaffRegister().getStaffList()) {
@@ -63,6 +82,12 @@ public class EventRegister implements Serializable{
         }
         return false;
     }
+    
+    /**
+     *
+     * @param u
+     * @return
+     */
     public boolean userIsEventManager(User u){
         for (Event event : this.eventList) {
             if(event.getEventManager().getEventManager().getUsername().equals(u.getUsername())){
@@ -71,6 +96,7 @@ public class EventRegister implements Serializable{
         }
         return false;
     }
+    
     /**
      * @param eventList the eventList to set
      */
@@ -78,9 +104,19 @@ public class EventRegister implements Serializable{
         this.eventList = eventList;
     }
 
+    /**
+     *
+     * @param event1
+     */
     public void addEvent(Event event1) {
          this.eventList.add(event1);
     }
+    
+    /**
+     *
+     * @param event1
+     * @return
+     */
     public boolean exists(Event event1){
         for (Event event : this.eventList) {
             if(event.equals(event1)){
@@ -90,6 +126,29 @@ public class EventRegister implements Serializable{
         }
         return false;
     }
+    
+    /**
+     *
+     * @param s
+     * @return
+     */
+    public Event existEventByDescription(String s){
+        for (Event event : this.eventList) {
+            if(event.getDescription().equals(s)){
+                return event;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     *
+     * @return true or false
+     */
+    public boolean isEmptyEvents(){
+        return this.eventList.isEmpty();
+    }
+    
     @Override
     public String toString() {
         return "EventRegister{" + "eventList=" + eventList + '}';
