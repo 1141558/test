@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.controller.AssignStaffMemberController;
+import lapr.project.controller.AssignStandToApplicationController;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
@@ -23,6 +24,7 @@ import lapr.project.utils.Utils;
 public final class AssignStaffMemberUI {
     
     private AssignStaffMemberController assignStaffMemberController;
+    
     
     AssignStaffMemberUI(ExhibitionCentre centre) {
         
@@ -40,6 +42,12 @@ public final class AssignStaffMemberUI {
             
             System.out.println("EVENTO:" + event);
         }
+        
+
+        
+        
+        
+        
         
     }
     

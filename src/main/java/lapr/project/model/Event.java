@@ -44,6 +44,8 @@ public class Event implements Comparable<Event>, Serializable {
         this.eventState = EventState.CREATED;
     }
     
+    
+    
     public Event(OrganiserRegister organiserRegister) {
         this.organiserRegister = new OrganiserRegister();
       
@@ -310,6 +312,10 @@ public class Event implements Comparable<Event>, Serializable {
      */
     public void setDateEndApplications(Date dateEndApplications) {
         this.dateEndApplications = dateEndApplications;
+    }
+
+    public List<Application> getEventApplicationByState(String accepted) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

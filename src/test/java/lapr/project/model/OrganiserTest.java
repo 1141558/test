@@ -5,6 +5,7 @@
 */
 package lapr.project.model;
 
+import lapr.project.utils.Utils;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Assertions;
@@ -53,5 +54,25 @@ public class OrganiserTest {
         assertEquals(result, expectedResult);
 
     }
-    
+        @Test
+    public void notEqualsTest() {
+        System.out.println("toString");
+        
+        //Arrange
+        User user = new User("Name name", "email@server.com", "user1", 0.1234);
+        User otherUser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+
+        Organiser organiser = new Organiser(user);
+        Organiser otherOrganiser = new Organiser(otherUser);
+        boolean expectedResult = true;
+
+        Object obj = new Organiser(otherUser);
+
+        //Act
+        boolean result = organiser.equals(obj);
+       
+        //Assert
+         Assert.assertNotEquals(result, expectedResult);
+
+    }
 }

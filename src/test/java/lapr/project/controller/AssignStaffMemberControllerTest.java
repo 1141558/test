@@ -69,9 +69,7 @@ public class AssignStaffMemberControllerTest {
     
     @Test
     public void getEventsLisByOrganiserTest() {
-        //Arrange
-        fillData();
-        
+       
         //Act
         AssignStaffMemberController assignStaffMemberController3 = new AssignStaffMemberController(ec);
         List<Event> eventListByOrganiser = assignStaffMemberController3.getEventsListByOrganiser();
@@ -82,10 +80,7 @@ public class AssignStaffMemberControllerTest {
     
     @Test
     public void selectEventTest() {
-        
-        //Arrange
-        fillData();
-        
+       
         //Act
         AssignStaffMemberController assignStaffMemberController = new AssignStaffMemberController(ec);
         assignStaffMemberController.selectEvent(event3);
@@ -133,53 +128,72 @@ public class AssignStaffMemberControllerTest {
         
         //Act
         List<User> users = aStaffMembController.getAvailableUsers();
-        
+        aStaffMembController.assignUser(users, 3);
+
        
        Assert.assertEquals("manuel", users.get(0).getName());
 
     }
     
     
-    
+//    
 //    @Test
 //    public void assignUserTest() {
-//        AssignStaffMemberController asc = new AssignStaffMemberController(ec);
-//        
-//        userList.add(u1);
+//    
+////   User userAssignTest = new User("garnel123", "gar12323nel@hotmail.com", "ga321rne", 321123123, Role.ATENDEE);
+////   
+////    StaffMember staffmember = new StaffMember(userAssignTest);
+////        AssignStaffMemberController asc = new AssignStaffMemberController(ec);
+////        List<User> userList = asc.getAvailableUsers();
+////        
+//         Event event1 = new Event();
+//        DummyData data = new DummyData(exhibitionCentre);
+//        AssignStaffMemberController aStaffMembController = new AssignStaffMemberController(ec);
+//        aStaffMembController.selectEvent(event3);
+//        UserRegister usReg = new UserRegister();
+//        exhibitionCentre.setUserRegister(usReg);
+//        List<Event> eventList = new ArrayList<>();
+//        eventList.add(event3);
+//        eventRegister3.setEventList(eventList);
+//        exhibitionCentre.setEventRegister(eventRegister3);
+//        List<User> users = aStaffMembController.getAvailableUsers();
+//        aStaffMembController.assignUser(users, 1);
+//        aStaffMembController.assignUser(users, 2);
+//     
 //       
-//        asc.assignUser(userList, 1);
+//        aStaffMembController.assignUser(userList,1);
 //     
 //    }
 
     
-    
-    private void fillData() {
-        
-        ExhibitionCentre exhibitionTeste = new ExhibitionCentre();
-        exhibitionTeste.setUserOnline(userOnline);
-        User u = new User("Andre", "mailu3@portugal.pt", "andr", 133);
-        User u2 = new User("Andre", "mailu3@portugal.pt", "andr", 133);
-        User u3 = new User("Andre", "mailu3@portugal.pt", "andr", 133);
-        User u4 = new User("Andre", "mailu3@portugal.pt", "andr", 133);
-        List<User> users = new ArrayList<>();
-        users.add(u);
-        users.add(u2);
-        users.add(u3);
-        users.add(u4);
-        users.add(u5);
-        userRegister.setUserList(users);
-        
-        staffMemberList.add(staffMember1);
-        
-        staffRegister.add(staffMemberList);
-        organiserList.add(organiserU1);
-        organiserList.add(organiserU2);
-        organiserRegister.setOrganiserList(organiserList);
-        event3.setOrganisersRegister(organiserRegister);
-        event3.setStaffRegister(staffRegister);
-        event3.setTitle("Evento3");
-        
-        exhibitionTeste.setEventRegister(eventRegister3);
-        exhibitionTeste.setUserRegister(userRegister);
-    }
+//    
+//    private void fillData() {
+//        
+//        ExhibitionCentre exhibitionTeste = new ExhibitionCentre();
+//        exhibitionTeste.setUserOnline(userOnline);
+//        User u = new User("Andre", "mailu3@portugal.pt", "andr", 133);
+//        User u2 = new User("Andre", "mailu3@portugal.pt", "andr", 133);
+//        User u3 = new User("Andre", "mailu3@portugal.pt", "andr", 133);
+//        User u4 = new User("Andre", "mailu3@portugal.pt", "andr", 133);
+//        List<User> users = new ArrayList<>();
+//        users.add(u);
+//        users.add(u2);
+//        users.add(u3);
+//        users.add(u4);
+//        users.add(u5);
+//        userRegister.setUserList(users);
+//        
+//        staffMemberList.add(staffMember1);
+//        
+//        staffRegister.add(staffMemberList);
+//        organiserList.add(organiserU1);
+//        organiserList.add(organiserU2);
+//        organiserRegister.setOrganiserList(organiserList);
+//        event3.setOrganisersRegister(organiserRegister);
+//        event3.setStaffRegister(staffRegister);
+//        event3.setTitle("Evento3");
+//        
+//        exhibitionTeste.setEventRegister(eventRegister3);
+//        exhibitionTeste.setUserRegister(userRegister);
+//    }
 }

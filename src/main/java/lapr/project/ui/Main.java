@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
+import lapr.project.controller.AssignStandToApplicationController;
 import lapr.project.model.CalculatorExample;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
@@ -34,6 +35,14 @@ class Main {
      */
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
         CalculatorExample calculatorExample = new CalculatorExample();
+        /***
+         * 
+         */
+        AssignStandToApplicationController nreAssignStaffToApplicationController = new AssignStandToApplicationController();
+        
+       //********************************************************************************************************************* 
+        
+        
         ExhibitionCentre centre = new ExhibitionCentre();
         /*
          * descomentem esta linha se quiserem testar a leitura, mudem o path para o path do vosso PC
@@ -102,7 +111,14 @@ class Main {
         
        fim dados de teste*/
         
+                //*****************************************************************************************************
+        /*Testar Assign event*/
         
+        System.out.println("Teste atribuir stands");
+        nreAssignStaffToApplicationController.matchsApplicationOnEventListByOrganiserWithStandList();
+        
+        
+       // ***************************************************/
         new InitialMenuUI(centre);
         
     }

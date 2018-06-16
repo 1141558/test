@@ -20,25 +20,23 @@ import lapr.project.utils.Utils;
 
 /**
  *
- * @author Garnel
+ * @author Manuel Garnel
  */
 public class AssignStaffMemberController {
     
     private ExhibitionCentre exhibitionCentre;
     private EventRegister eventRegister;
- 
+    
     private StaffRegister staffRegister;
     private UserRegister usersRegister;
     private Event event;
     
     DummyData dummy;
-   
     
     public AssignStaffMemberController(ExhibitionCentre centre) {
         this.exhibitionCentre = centre;
         this.dummy = new DummyData(centre);
     }
-    
     
     public List<Event> getEventsListByOrganiser() {
         
@@ -54,7 +52,7 @@ public class AssignStaffMemberController {
         this.event = eventSelected;
         this.staffRegister = this.event.createStaffMemberRegister();
     }
-
+    
     public List<User> filterUserRegisterByNoOrganiserEventSelected() {
         
         List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
@@ -76,9 +74,7 @@ public class AssignStaffMemberController {
     
     public StaffMember assignUser(List<User> availableUserToAssignToEvent, int userPos) {
         
-       // StaffMember staffMember = new StaffMember();
         StaffMember staffMember = staffRegister.createStaffMember();
-        
         User user = availableUserToAssignToEvent.get(userPos - 1);
         staffMember.setUser(user);
         return staffMember;
@@ -89,7 +85,6 @@ public class AssignStaffMemberController {
         return staffRegister.addStaffMember(staffMember);
         
     }
-
     
     public List<StaffMember> getStaffMemberList() {
         return staffRegister.getStaffList();
@@ -99,5 +94,4 @@ public class AssignStaffMemberController {
         event.saveStaffRegister(staffRegister);
     }
     
-
 }
