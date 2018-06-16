@@ -55,7 +55,6 @@ public class StaffRegister implements Serializable {
      * @return true or false Valida se já existe o user passado por parametro,
      * caso não exista adiciona à List
      */
-    
     public boolean registerStaff(User user) {
         if (!isExist(user)) {
             staffList.add(new StaffMember(user));
@@ -165,6 +164,10 @@ public class StaffRegister implements Serializable {
     
     public List<StaffMember> getStaffList() {
         return this.staffList;
+    }
+    
+    public StaffMember createStaffMember() {
+        return new StaffMember();
     }
     
 }

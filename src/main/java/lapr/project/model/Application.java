@@ -29,6 +29,9 @@ public class Application implements Importable<Application>, Exportable {
     private double boothArea;
     private int numberInvites;
     private ApplicationState state;
+    
+    private List<Organiser> organisers ;
+    
     /**
      * Constructor for Application
      *

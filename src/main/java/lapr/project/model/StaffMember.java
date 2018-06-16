@@ -41,7 +41,7 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
     /**
      * @param staff the staff to set
      */
-    public void setStaff(User staff) {
+    public void setUser(User staff) {
         this.staff = staff;
     }
     

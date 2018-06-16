@@ -101,7 +101,7 @@ public class AssignStaffMemberControllerTest {
         ExhibitionCentre ec = new ExhibitionCentre();
         AssignStaffMemberController assignStaffMemberController = new AssignStaffMemberController(ec);
         StaffMember staffMemberOne = new StaffMember();
-        staffMemberOne.setStaff(u1);
+        staffMemberOne.setUser(u1);
         assignStaffMemberController.selectEvent(event3);
         assignStaffMemberController.addStaffMemberToEvent(staffMemberOne);
 

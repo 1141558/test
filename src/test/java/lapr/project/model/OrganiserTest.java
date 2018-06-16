@@ -43,22 +43,14 @@ public class OrganiserTest {
         Organiser organiser = new Organiser(user);
         Organiser otherOrganiser = new Organiser(otherUser);
         boolean expectedResult = true;
-         
-        
+
         Object obj = new Organiser(otherUser);
 
- 
-         
-        
         //Act
         boolean result = organiser.equals(obj);
        
-        
         //Assert
         assertEquals(result, expectedResult);
-  
-     
-      
 
     }
     

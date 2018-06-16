@@ -6,15 +6,20 @@
 package lapr.project.controller;
 
  
+import java.util.List;
 import lapr.project.model.Application;
+import lapr.project.model.ApplicationRegister;
 import lapr.project.model.Event;
+import lapr.project.model.EventRegister;
 import lapr.project.model.ExhibitionCentre;
+import lapr.project.model.Organiser;
 import lapr.project.model.Stand;
+import lapr.project.model.User;
 import lapr.project.utils.Utils;
 
 /**
  *
- * @author Altran
+ * @author Manuel Garnel
  */
 public class AssignStandToApplicationController {
     
@@ -22,38 +27,35 @@ public class AssignStandToApplicationController {
    Stand stand;
    Application application;
     ExhibitionCentre exhibitionCentre;
+    Organiser organiser;
 
-    public AssignStandToApplicationController(Event event, Stand stand, Application application) {
+    ApplicationRegister appRegister = new ApplicationRegister();
+
+    public AssignStandToApplicationController(Event event, Stand stand) {
         this.event = event;
         this.stand = stand;
-        this.application = application;
+      
     }
 
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
-    public Stand getStand() {
-        return stand;
-    }
-
-    public void setStand(Stand stand) {
-        this.stand = stand;
-    }
-
-    public Application getApplication() {
-        return application;
-    }
-
-    public void setApplication(Application application) {
-        this.application = application;
-    }
+ 
     
-   
+    
+    public List<Application> getApplicationsByEventAndByOrganiser(){
+        User organiser = exhibitionCentre.getUserOnline();
+       EventRegister eventRegister = exhibitionCentre. getEventRegister();
+      List<Event> eventList = eventRegister.getEventListByOrganiser(organiser);
+      
+      return filteringList(eventList, organiser);
+    }
+
+    private List<Application> filteringList(List<Event> event, User organiser) {
+         for (Event event1 : event) {
+           // if(event1.getOrganiserRegister().getOrganiserList())
+          
+        }
+          return null;
+    }
+  
  
    
     

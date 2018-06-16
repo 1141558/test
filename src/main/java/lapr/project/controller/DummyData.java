@@ -150,8 +150,8 @@ public class DummyData {
         StaffMember staff11 = new StaffMember();
         StaffMember staff12 = new StaffMember();
         
-        staff11.setStaff(user4);
-        staff12.setStaff(user5);
+        staff11.setUser(user4);
+        staff12.setUser(user5);
         staffMemberListEvent1.add(staff11);
         staffMemberListEvent1.add(staff12);
         

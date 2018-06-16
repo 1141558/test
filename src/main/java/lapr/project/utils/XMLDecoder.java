@@ -183,7 +183,7 @@ public class XMLDecoder {
             u.setPassword(PasswordEncryption.encryptPassword(password));
             u.setUsername(username);
             u.setRole(Role.EMPLOYEE);
-            sm.setStaff(u);
+            sm.setUser(u);
             ur.addUser(u);
             sr.addStaffMember(sm);
         }

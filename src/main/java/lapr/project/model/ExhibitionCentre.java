@@ -24,6 +24,7 @@ public class ExhibitionCentre {
     public ExhibitionCentre(){
         this.eventRegister=new EventRegister();
         this.userRegister= new UserRegister(); 
+        
     }
     public ExhibitionCentre(EventRegister eventRegister, UserRegister userRegister){
         this.eventRegister=eventRegister;
@@ -88,6 +89,10 @@ public class ExhibitionCentre {
 
     public void setStaffRegister(StaffRegister staffRegister) {
         this.staffRegister = staffRegister;
+    }
+
+    public ApplicationRegister getApplicationRegisterByOrganiser(Organiser organiser) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
  

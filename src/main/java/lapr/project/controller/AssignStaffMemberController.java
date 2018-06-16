@@ -69,16 +69,18 @@ public class AssignStaffMemberController {
         
         List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = new ArrayList<>();
         
-        List<User> organiserWithoutOrganisersAndEventStaffList = usersRegister.getAvailableUsersWithoutStaffMember(event.getStaffRegister().getStaffList(), filterUserRegisterByNoOrganiserEventSelectedCopy);
+        List<User> usersrWithoutOrganisersAndEventStaffList = usersRegister.getAvailableUsersWithoutStaffMember(event.getStaffRegister().getStaffList(), filterUserRegisterByNoOrganiserEventSelectedCopy);
         
-        return organiserWithoutOrganisersAndEventStaffList;
+        return usersrWithoutOrganisersAndEventStaffList;
     }
     
     public StaffMember assignUser(List<User> availableUserToAssignToEvent, int userPos) {
         
-        StaffMember staffMember = new StaffMember();
+       // StaffMember staffMember = new StaffMember();
+        StaffMember staffMember = staffRegister.createStaffMember();
+        
         User user = availableUserToAssignToEvent.get(userPos - 1);
-        staffMember.setStaff(user);
+        staffMember.setUser(user);
         return staffMember;
     }
     

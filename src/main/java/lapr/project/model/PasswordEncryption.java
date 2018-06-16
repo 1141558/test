@@ -16,7 +16,7 @@ public class PasswordEncryption {
     /**
      * Method to encrypt a String password (Arithmetic coding)
      *
-     * @param password String ith the password to be encrypted
+     * @param password String with the password to be encrypted
      * @return Double with the encrypted password
      */
     public static double encryptPassword(String password) {
