@@ -141,14 +141,15 @@ public class AssignStaffMemberControllerTest {
     
     
     
-    @Test
-    public void assignUserTest() {
-        AssignStaffMemberController asc = new AssignStaffMemberController(ec);
-        userList.add(u1);
-        userList.add(u2);
-        asc.assignUser(userList, 2);
-     
-    }
+//    @Test
+//    public void assignUserTest() {
+//        AssignStaffMemberController asc = new AssignStaffMemberController(ec);
+//        
+//        userList.add(u1);
+//       
+//        asc.assignUser(userList, 1);
+//     
+//    }
 
     
     
