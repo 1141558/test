@@ -59,8 +59,25 @@ public class StandRegister implements Serializable{
         return standList.isEmpty();
     }
     
+    /**
+     *
+     * @return size the List
+     */
     public int sizeStandList(){
         return standList.size();
+    }
+    
+    /**
+     *
+     * @param s
+     * @return
+     */
+    public Stand getStandByDescriptionStand(Stand s){
+        for(Stand stand : standList){
+            if(stand.getDescription().equals(s.getDescription()))
+                return stand;
+        }
+        return null;
     }
     
     @Override
