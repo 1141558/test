@@ -5,6 +5,7 @@
 */
 package lapr.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Application;
 import lapr.project.model.ApplicationRegister;
@@ -12,6 +13,7 @@ import lapr.project.model.Event;
 import lapr.project.model.EventRegister;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
+import lapr.project.model.Role;
 import lapr.project.model.Stand;
 import lapr.project.model.User;
 import lapr.project.utils.Utils;
@@ -26,6 +28,7 @@ public class AssignStandToApplicationController {
     Stand stand;
     Application application;
     ExhibitionCentre exhibitionCentre;
+    EventRegister eventRegister;
     Organiser organiser;
     
       String accepted = "ACCEPTED";
@@ -46,25 +49,34 @@ public class AssignStandToApplicationController {
     public AssignStandToApplicationController() {
     
     }
-    public List<Application> matchsApplicationOnEventListByOrganiserWithStandList() {
-        User organiser = exhibitionCentre.getUserOnline();
-        EventRegister eventRegister = exhibitionCentre.getEventRegister();
-        List<Event> eventList = eventRegister.getEventListByOrganiser(organiser);
+    public void matchsApplicationOnEventListByOrganiserWithStandList() {
+        System.out.println("Passou aqui 1");
+       User organiser = new User("manuel","fcsd@","ewr",12345678,Role.EMPLOYEE);
+      // User organiser = new User();
+      
+              // organiser = exhibitionCentre.getUserOnline();
+//       EventRegister eventRegister = new EventRegister();
+         eventRegister = exhibitionCentre.getEventRegister();
+       List<Event> eventList = eventRegister.getEventListByOrganiser(organiser);
+         filteringList(eventList, organiser);
+                   System.out.println("Passou aqui ??");
+            
+      
+        }
+      
         
         
-        
-        
-        return filteringList(eventList, organiser);
-    }
+     
+    
     
     private List<Application> filteringList(List<Event> event, User organiser) {
-      
-        for (Event event1 : event) {
-            List<Stand> standsListByEvent = event1.getStandRegister().getStandList();
-            List<Application> applicationsAccepted = event1.getEventApplicationByState(accepted);
+       List<Application> applicationsAccepted = new ArrayList<>();
+        for (Event eventItem : event) {
+            List<Stand> standsListByEvent = eventItem.getStandRegister().getStandList();
+           applicationsAccepted = eventItem.getEventApplicationByState(accepted);
             System.out.println("aPPLICATIONaCCEPTED" +applicationsAccepted.toString() );
         }
-        return null;
+        return applicationsAccepted;
     }
     
 }

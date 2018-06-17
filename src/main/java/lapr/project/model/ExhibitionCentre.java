@@ -24,8 +24,16 @@ public class ExhibitionCentre {
     public ExhibitionCentre(){
         this.eventRegister=new EventRegister();
         this.userRegister= new UserRegister(); 
+        this.organiserRegister = new OrganiserRegister();
+        this.userOnline = new User();
         
     }
+    
+    public ExhibitionCentre(EventRegister eventRegister){
+        this.eventRegister = eventRegister;
+    }
+            
+    
     public ExhibitionCentre(EventRegister eventRegister, UserRegister userRegister){
         this.eventRegister=eventRegister;
         this.userRegister= userRegister; 
@@ -91,9 +99,7 @@ public class ExhibitionCentre {
         this.staffRegister = staffRegister;
     }
 
-    public ApplicationRegister getApplicationRegisterByOrganiser(Organiser organiser) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
     
  
     

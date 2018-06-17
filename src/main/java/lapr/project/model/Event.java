@@ -6,6 +6,7 @@
 package lapr.project.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -44,21 +45,21 @@ public class Event implements Comparable<Event>, Serializable {
         this.eventState = EventState.CREATED;
     }
     
-    
-    
     public Event(OrganiserRegister organiserRegister) {
         this.organiserRegister = new OrganiserRegister();
-      
+        
     }
     
     public Event() {
         this.organiserRegister = new OrganiserRegister();
-        this.staffRegister=new StaffRegister();
+        this.staffRegister = new StaffRegister();
     }
     
     public void changeToReadyForApplication() {
         if ((!this.staffRegister.isEmpty()) && (!this.organiserRegister.isEmpty()) && this.daysApplication != 0) //{
+        {
             this.eventState = EventState.READY_FOR_APPLICATION;
+        }
     }
     
     public boolean isCreated() {
@@ -295,27 +296,38 @@ public class Event implements Comparable<Event>, Serializable {
     public StaffRegister createStaffMemberRegister() {
         return new StaffRegister();
     }
-
+    
     public void saveStaffRegister(StaffRegister staffRegister) {
         this.staffRegister.getStaffList().addAll(staffRegister.getStaffList());
     }
-
+    
     /**
      * @return the dateEndApplications
      */
     public Date getDateEndApplications() {
         return dateEndApplications;
     }
-
+    
     /**
      * @param dateEndApplications the dateEndApplications to set
      */
     public void setDateEndApplications(Date dateEndApplications) {
         this.dateEndApplications = dateEndApplications;
     }
-
+    
     public List<Application> getEventApplicationByState(String accepted) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Application> allEventApplicationList = new ArrayList<>();
+        List<Application> acceptedApplicationList = new ArrayList<>();
+        allEventApplicationList = applicationRegister.getApplicationList();
+        
+        for (Application application : allEventApplicationList) {
+            if (application.getState() == ApplicationState.ACCEPTED) {
+                acceptedApplicationList.add(application);
+                System.out.println("EnventApplicationBy State -event class"+application );
+            }
+            
+        }
+        return acceptedApplicationList;
     }
     
 }

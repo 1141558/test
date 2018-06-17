@@ -41,6 +41,21 @@ public final class AssignStaffMemberUI {
         for (Event event : organiserValidatedList) {
             
             System.out.println("EVENTO:" + event);
+                  
+        /***
+         *
+         */
+       
+         /*Testar Assign event*/
+        
+        System.out.println("Teste atribuir stands");
+         AssignStandToApplicationController nreAssignStaffToApplicationController = new AssignStandToApplicationController();
+        nreAssignStaffToApplicationController.matchsApplicationOnEventListByOrganiserWithStandList();
+        
+        
+       //********************************************************************************************************************* 
+        
+        
         }
         
 

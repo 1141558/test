@@ -35,7 +35,7 @@ public class AssignStaffMemberController {
     
     public AssignStaffMemberController(ExhibitionCentre centre) {
         this.exhibitionCentre = centre;
-        this.dummy = new DummyData(centre);
+       // this.dummy = new DummyData(centre);
     }
     
     public List<Event> getEventsListByOrganiser() {
