@@ -10,5 +10,6 @@ package lapr.project.model;
  * @author MariaJoão
  */
 public enum Role {
-    EMPLOYEE, PARTICIPANT, ATENDEE
+   
+    EVENT_MANAGER, EMPLOYEE, PARTICIPANT, ATENDEE
 }

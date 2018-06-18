@@ -44,16 +44,72 @@ import org.xml.sax.SAXException;
 public class XMLDecoder {
     private static final String USER_TAG = "user";
     private static final String EVENT_TAG = "event";
+    
+    public static void readExhibitionCentreFromFile(String filePath, ExhibitionCentre centre) throws ParserConfigurationException, SAXException, IOException{
+            
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = dbf.newDocumentBuilder();
+            Document doc = docBuilder.parse(new File(filePath));
+            Element docElement = doc.getDocumentElement();
+            UserRegister ur= new UserRegister();
+            
+            Node list_users_node = docElement.getElementsByTagName("userSet").item(0);
+            Element el_users= (Element)list_users_node;
+            NodeList list_users = el_users.getElementsByTagName("user");
+            
+            for (int i = 0; i < list_users.getLength(); i++) {
+                Node node_user= list_users.item(i);
+                Element user_element= (Element) node_user;
+                User u = new User();
+                String name = user_element.getElementsByTagName("name").item(0).getTextContent();
+                String email = user_element.getElementsByTagName("email").item(0).getTextContent();
+                String username = user_element.getElementsByTagName("username").item(0).getTextContent();
+                String password = user_element.getElementsByTagName("password").item(0).getTextContent();
+                String role = user_element.getElementsByTagName("role").item(0).getTextContent();
 
-    public static Event readEventFromFile(String filePath, ExhibitionCentre centre) throws ParserConfigurationException, SAXException, IOException {
+                u.setEmail(email);
+                u.setName(name);
+                u.setPassword(PasswordEncryption.encryptPassword(password));
+                u.setUsername(username);
+                switch(role){
+                    case "PARTICIPANT":
+                        u.setRole(Role.PARTICIPANT);
+                        break;
+                    case "EMPLOYEE":
+                        u.setRole(Role.EMPLOYEE);
+                        break;
+                    case "EVENT_MANAGER":
+                        u.setRole(Role.EVENT_MANAGER);
+                        break;
+                    case "ATENDEE":
+                        u.setRole(Role.ATENDEE);
+                        break;
+                }   
+                ur.addUser(u);          
+           
+            }
+            
+            centre.setUserRegister(ur);
+            NodeList list_events = docElement.getElementsByTagName("event");
+
+            for (int i = 0; i < list_events.getLength(); i++) {
+    
+                readEventFromFile(filePath, centre, i);
+            
+            }
+    
+    }
+    
+    public static Event readEventFromFile(String filePath, ExhibitionCentre centre, int cont) throws ParserConfigurationException, SAXException, IOException {
 
         try {
+            Event e = new Event();  
         
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = dbf.newDocumentBuilder();
             Document doc = docBuilder.parse(new File(filePath));
             Element docElement = doc.getDocumentElement();
-            Event e = new Event();    
+            Node s2 = docElement.getElementsByTagName("event").item(cont);
             String title = docElement.getElementsByTagName("title").item(0).getTextContent();
             e.setTitle(title);
             System.out.println("--------------------TITLE------------------");
