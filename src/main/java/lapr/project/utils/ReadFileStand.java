@@ -59,7 +59,7 @@ public class ReadFileStand {
     String csvDivisor = ";";
     String [] listDistance;
     int count = 0;
-    Stand s;
+    Stand s = new Stand();
     
     try {
         
@@ -91,7 +91,7 @@ public class ReadFileStand {
                                      + "");
                          
                         //instancia um stand
-                        s = new Stand(stand[1], Double.parseDouble(stand[2]));
+                        s.addPairDistance(stand[1], Double.parseDouble(stand[2]));
                         
                         //Verificar se o event tem stands e se tiver devolvende o objecto stand ou null se não existir
                         st = event.getStandRegister().getStandByDescriptionStand(s);
