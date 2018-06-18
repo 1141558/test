@@ -13,6 +13,7 @@ import lapr.project.model.Event;
 import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
+import lapr.project.utils.Utils;
 
 /**
  *
@@ -59,6 +60,10 @@ public class SubmitApplicationToEventController {
 
     public void setEvent(int n) {
         this.event= getEventsReadyForApplications().get(n-1);
+    }
+
+    public void registerLog() {
+        Utils.writeLog(this.centre.getUserOnline().getUsername()+" submited application '"+this.application.getDescription()+"' to event '"+this.event.getTitle()+"';");
     }
     
 }

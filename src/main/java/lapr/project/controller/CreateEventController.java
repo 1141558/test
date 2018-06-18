@@ -16,11 +16,13 @@ import java.util.List;
 import java.util.Locale;
 import javax.xml.parsers.ParserConfigurationException;
 import lapr.project.model.Event;
+import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
 import lapr.project.model.Role;
 import lapr.project.model.User;
+import lapr.project.ui.MainMenu;
 import lapr.project.utils.Utils;
 import lapr.project.utils.XMLDecoder;
 import org.xml.sax.SAXException;
@@ -101,7 +103,7 @@ public class CreateEventController {
         e.setStartDate(startDate);
         e.setOrganisersRegister(this.or);
         e.setPlace(place);
-
+        e.setEventState(EventState.CREATED);
         this.event=e;
     }
 
@@ -141,19 +143,23 @@ public class CreateEventController {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void getEventFromFile(String filename){
+    public boolean getEventFromFile(String filename){
+        boolean x; 
         try{
         
             this.event=XMLDecoder.readEventFromFile("./src/main/resources/"+filename+".xml", this.exhibitionCentre);
-            
-        
+            x=true;
         } catch (ParserConfigurationException | IOException | SAXException e) {
-                Utils.printError("FAILED TO LOAD FILE : "+e.getMessage());
-
-                
+            x=false;
+            Utils.printError("FAILED TO LOAD FILE : "+e.getMessage());
         }
+        
+        
+            return x;
     }
 
-
+    public void registerLog() {
+        Utils.writeLog(this.exhibitionCentre.getUserOnline().getUsername()+" created a new event called '"+event.getTitle()+"';");
+    }
     
 }

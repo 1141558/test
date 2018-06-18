@@ -6,10 +6,18 @@
 package lapr.project.utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import lapr.project.model.Application;
@@ -42,6 +50,21 @@ public class Utils {
        }
    }
    
+   public static boolean writeLog(String log){ 
+            
+       Date d=new Date();
+       try(FileWriter fw = new FileWriter("./src/main/resources/logs.txt", true);
+               BufferedWriter bw = new BufferedWriter(fw);
+               PrintWriter out = new PrintWriter(bw))
+           {
+               out.println("Date: "+d+" -> "+log);
+
+           } catch (IOException e) {
+               //exception handling left as an exercise for the reader
+           }
+            return true;
+
+   }
     public static void printError(String message){
         
         System.out.println((char)27 + "[31m\n-----------------------ERROR-----------------------" + (char)27 + "[0m");

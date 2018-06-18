@@ -45,7 +45,7 @@ public class XMLDecoder {
     private static final String USER_TAG = "user";
     private static final String EVENT_TAG = "event";
 
-    public static void readExhibitionCentreFile(String filePath, ExhibitionCentre centre) throws ParserConfigurationException, SAXException, IOException {
+    public static Event readEventFromFile(String filePath, ExhibitionCentre centre) throws ParserConfigurationException, SAXException, IOException {
 
         try {
         
@@ -116,13 +116,13 @@ public class XMLDecoder {
                 
             }
             e.setEventState(EventState.CREATED);
-            centre.getEventRegister().addEvent(e);
+            return e;
             
         } catch (ParserConfigurationException | IOException | SAXException e) {
                 Utils.printError("FAILED TO LOAD FILE : "+e.getMessage());
                 
         }
-
+        return null;
     }
 
     private static StandRegister buildStandRegister(Element docElement) {

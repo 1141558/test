@@ -8,6 +8,7 @@ package lapr.project.controller;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.User;
 import static lapr.project.model.PasswordEncryption.encryptPassword;
+import lapr.project.utils.Utils;
 
 /**
  *
@@ -60,5 +61,9 @@ public class UserRegistrationController {
      */
     public User getUser() {
         return user;
+    }
+
+    public void registerLog(String username) {
+        Utils.writeLog(username+" Registered;"); 
     }
 }

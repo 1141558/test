@@ -54,6 +54,7 @@ public class LoginUI {
             
         }else{
             accepted=true;
+            controller.registerLog(username);
             new MainMenu(centre);
         }
         

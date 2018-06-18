@@ -93,5 +93,9 @@ public class AssignStaffMemberController {
     public void saveStaffMemberList() {
         event.saveStaffRegister(staffRegister);
     }
+
+    public void registerLog() {
+        Utils.writeLog(this.exhibitionCentre.getUserOnline().getUsername()+" assigned staff members to event '"+event.getTitle()+"';");
+    }
     
 }

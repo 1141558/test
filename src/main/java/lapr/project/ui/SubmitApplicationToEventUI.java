@@ -112,7 +112,8 @@ public class SubmitApplicationToEventUI {
             Utils.printWarning("APPLICATION CANCELED");
             new MainMenu(centre);
         }else if(resposta.equalsIgnoreCase("y")){
-            controller.registerApplication();          
+            controller.registerApplication();
+            controller.registerLog();
             Utils.printConfirmation("APPLICATION SAVED");
             new MainMenu(centre);        
 

@@ -1,0 +1,2 @@
+Date: Mon Jun 18 16:09:16 BST 2018 -> username1 created a new event called 'fbdg';
+Date: Mon Jun 18 16:11:58 BST 2018 -> username1 created a new event called 'exhibition1';

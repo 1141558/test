@@ -103,7 +103,7 @@ public final class AssignStaffMemberUI {
             
             Utils.printConfirmation("STAFF MEMBER ATRIBUITION SAVED");
               printStaffMemberList(assignStaffMemberController.getStaffMemberList());
-            
+            assignStaffMemberController.registerLog();
             new MainMenu(exhibitionCentre);
             
         }

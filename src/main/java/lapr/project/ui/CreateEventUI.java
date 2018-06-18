@@ -51,14 +51,16 @@ public class CreateEventUI {
                     answer=true;
                     String filename= Utils.readLineFromConsole("NAME OF FILE (ALL FILES MUST BE IN 'resources' FOLDER): ");
                     
-                    controller.getEventFromFile(filename); 
-                    title=controller.getEvent().getTitle();
-                    description= controller.getEvent().getDescription();
-                    place = controller.getEvent().getPlace();
-                    List<StaffMember> list= controller.getEvent().getStaffRegister().getStaffList();
-                    List<Organiser> list2=controller.getEvent().getOrganiserRegister().getOrganiserList();
-                    printEventFile(title, description, startDate, endDate, place,list, list2, nDays);
-
+                    if(controller.getEventFromFile(filename)){ 
+                        title=controller.getEvent().getTitle();
+                        description= controller.getEvent().getDescription();
+                        place = controller.getEvent().getPlace();
+                        List<StaffMember> list= controller.getEvent().getStaffRegister().getStaffList();
+                        List<Organiser> list2=controller.getEvent().getOrganiserRegister().getOrganiserList();
+                        printEventFile(title, description, startDate, endDate, place,list, list2, nDays);
+                    }else{
+                        new MainMenu(exhibitionCentre);
+                    }
             }else if(fromFile.equalsIgnoreCase("n")){
                     answer=true;
                     title = Utils.readLineFromConsole("TITLE: ");
@@ -123,7 +125,8 @@ public class CreateEventUI {
             Utils.printWarning("EVENT CANCELED");
             new MainMenu(exhibitionCentre);
         }else if(resposta.equalsIgnoreCase("y")){
-            controller.registerEvent();          
+            controller.registerEvent(); 
+            controller.registerLog();
             Utils.printConfirmation("EVENT SAVED");
             new MainMenu(exhibitionCentre);        
 

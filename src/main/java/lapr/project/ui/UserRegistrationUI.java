@@ -72,6 +72,7 @@ public class UserRegistrationUI {
         if (controller.addUser()) {
             //confirma sucesso
             Utils.printConfirmation("User registered!");
+            controller.registerLog(username);
         } else {
             Utils.printError("User registration failed!");
         }
