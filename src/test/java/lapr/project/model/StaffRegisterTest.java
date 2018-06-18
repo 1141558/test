@@ -368,38 +368,35 @@ public class StaffRegisterTest {
     /**
      * Test of setStaffList method, of class StaffRegister.
      */
-    @org.junit.Test
+    @Test
     public void testSetStaffList() {
         System.out.println("setStaffList");
         StaffRegister instance = new StaffRegister();
         instance.setStaffList(staffMemberListEvent4);
-        // TODO review the generated test code and remove the default call to fail.
     }
     
     /**
      * Test of toString method, of class StaffRegister.
      */
-    @org.junit.Test
+    @Test
     public void testToString() {
         System.out.println("toString");
         StaffRegister instance = new StaffRegister(staffMemberListEvent4);
         String expResult = instance.toString();
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
     
     /**
      *Test of hashCode method, of class StaffRegister.
      */
-    @org.junit.Test
+    @Test
     public void testHashCode() {
         System.out.println("hashCode");
         StaffRegister instance = new StaffRegister(staffMemberListEvent4);
-        int expResult = 0;
+        int expResult = instance.hashCode();
         int result = instance.hashCode();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
     
 }
