@@ -25,7 +25,7 @@ public class CalculateCableController {
         
     }
     
-    public List getEventList(){
+    public List<Event> getEventList(){
         return exhibitionCentre.getEventRegister().getEventList();
     }
     
@@ -39,7 +39,7 @@ public class CalculateCableController {
     }
     
     
-    public List calcPath(String eventTitle){
+    public List<StandConnection> calcPath(String eventTitle){
         Event event=findEvent(eventTitle);
         ArrayList <StandConnection> connections = new ArrayList<>(CalculateElectricalCable.cablePath(event.getStandRegister().getStandList()));
         return connections;
