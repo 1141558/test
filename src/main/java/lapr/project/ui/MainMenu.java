@@ -37,10 +37,8 @@ public class MainMenu implements Serializable{
             opt = Utils.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
-                break; 
-                
-                case 2:
-                break;    
+                    /*TO DO*/
+                break;  
                     
             }
         }
@@ -68,11 +66,28 @@ public class MainMenu implements Serializable{
                     new StartSubmissionPeriodUI(centre);    
                 break;
                 case 3:
+                    /*TO DO*/
                 break;
+                case 4:
+                    /*TO DO*/
                 case 5:
                     new ListEventsUI(centre, "SUBMITTED");                    
                 break;
-                    
+                case 6:
+                    new ListEventsUI(centre, "REVIEW-PENDING");                    
+                break;   
+                case 7:
+                   new ListEventsUI(centre, "ACCEPTED");                    
+                break;
+                case 8:
+                   new ListEventsUI(centre, "REJECTED");                    
+                break;    
+                case 9:
+                    /*TO DO*/
+                break;
+                case 10:
+                    /*TO DO*/
+                break;    
             }
         }
         else if(centre.getEventRegister().userIsEventManager(centre.getUserOnline())){
@@ -87,6 +102,15 @@ public class MainMenu implements Serializable{
                 case 1:
                     new CreateEventUI(centre);    
                 break; 
+                case 2:
+                    /*TO DO*/
+                break;    
+                case 3:
+                    /*TO DO*/
+                break; 
+                case 4:
+                    /*TO DO*/
+                break;                 
             }         
         }else if(centre.getUserOnline().getRole().equals(Role.PARTICIPANT)){
         System.out.println("                1.SUBMIT APPLICATION TO EVENT            ");       
@@ -96,6 +120,9 @@ public class MainMenu implements Serializable{
             switch(Integer.parseInt(opt)){         
                 case 1:
                     new SubmitApplicationToEventUI(centre);  
+                break;
+                case 2:
+                    /*TO DO*/
                 break; 
             } 
         }else if(centre.getUserOnline().getRole().equals(Role.ATENDEE)){
@@ -104,6 +131,7 @@ public class MainMenu implements Serializable{
         opt = Utils.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
+                    /*TO DO*/
                 break; 
             }     
         }

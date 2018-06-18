@@ -25,7 +25,6 @@ public class Application implements Importable<Application>, Exportable {
     private List<Keyword> keywordList;
     private List<Review> listReview;
     private String description;
-    private boolean accepted;
     private double boothArea;
     private int numberInvites;
     private ApplicationState state;
@@ -187,20 +186,6 @@ public class Application implements Importable<Application>, Exportable {
         }
         return getKeywordList().equals(that.getKeywordList());
 
-    }
-
-    /**
-     * @return the accepted
-     */
-    public boolean isAccepted() {
-        return accepted;
-    }
-
-    /**
-     * @param accepted the accepted to set
-     */
-    public void setAccepted(boolean accepted) {
-        this.accepted = accepted;
     }
 
     /**

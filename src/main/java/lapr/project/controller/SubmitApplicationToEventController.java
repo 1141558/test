@@ -40,7 +40,6 @@ public class SubmitApplicationToEventController {
         }
         this.application.setKeywordList(list);
         this.application.setState(ApplicationState.CREATED);
-        this.application.setAccepted(false);
         
     }
 
