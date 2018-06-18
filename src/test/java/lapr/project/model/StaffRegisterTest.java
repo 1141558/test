@@ -8,11 +8,11 @@ package lapr.project.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import lapr.project.controller.DummyData;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.User;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,6 +21,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author andre
  */
 public class StaffRegisterTest {
+    DummyData data;
+    
+    ExhibitionCentre centre = new ExhibitionCentre();
     
     ExhibitionCentre exhibitionCentre;
     
@@ -93,6 +96,7 @@ public class StaffRegisterTest {
     }
     
     public StaffRegisterTest() {
+        data = new DummyData(centre);
         
         /*
         Event 4
@@ -304,6 +308,20 @@ public class StaffRegisterTest {
     public void testEquals2() {
         System.out.println("equals2");
         Object otherObject = staffMemberListEvent4;
+        StaffRegister instance = new StaffRegister(staffMemberListEvent4);
+        boolean expResult = false;
+        boolean result = instance.equals(otherObject);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+    
+    /**
+     * Test of equals method, of class StaffRegister.
+     */
+    @Test
+    public void testEquals3() {
+        System.out.println("equals3");
+        Object otherObject = data.getEventRegister().getEvent(0);
         StaffRegister instance = new StaffRegister(staffMemberListEvent4);
         boolean expResult = false;
         boolean result = instance.equals(otherObject);
