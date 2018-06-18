@@ -58,57 +58,53 @@ public class OrganiserRegisterTest {
         boolean actuals = organiserRegister.addOrganiser(organiser);
         
         //Assert
-         Assert.assertEquals(expecteds, actuals);
+        Assert.assertEquals(expecteds, actuals);
     }
     
-       @Test
+    @Test
     public void organiserRegisterTestFalse() {
         
         //Arrange
         User user = new User("Name name", "email@server.com", "user", 0.1234);
         User otherUser = new User("Outro nome", "email2@server.com", "user1", 0.1234);
         OrganiserRegister organiserRegister = new OrganiserRegister();
-    
+        
         Organiser organiser = new Organiser(user);
         Organiser organiser1 = new Organiser(otherUser);
         boolean expecteds = true;
         
         //Act
-       organiserRegister.addOrganiser(organiser);
-      organiserRegister.addOrganiser(organiser1);
+        organiserRegister.addOrganiser(organiser);
+        organiserRegister.addOrganiser(organiser1);
         
         //Assert
-         Assert.assertNotEquals( organiserRegister.getOrganiserList().get(0), organiserRegister.getOrganiserList().get(1));
+        Assert.assertNotEquals(organiserRegister.getOrganiserList().get(0), organiserRegister.getOrganiserList().get(1));
     }
-       @Test
+    
+    @Test
     public void notEqualsTest() {
         
         //Arrange
         User user = new User("Name name", "email@server.com", "user", 0.1234);
         User otherUser = new User("Outro nome", "email2@server.com", "user1", 0.1234);
-       
+        
         OrganiserRegister organiserRegister = new OrganiserRegister();
         
         Organiser organiser = new Organiser(user);
         Organiser organiser1 = new Organiser(otherUser);
         boolean expecteds = true;
         
-        //Act
+        //Assert
         Assert.assertFalse(organiserRegister.equals(otherUser));
         
-        //Assert
-     
+        
     }
     
-    
-    
-    
-     @Test
+    @Test
     public void hashCodeTest() {
-    
+        
         OrganiserRegister organiserRegister = new OrganiserRegister();
         OrganiserRegister organiserRegister1 = new OrganiserRegister();
-     
         Assert.assertEquals(organiserRegister.hashCode(), organiserRegister1.hashCode());
     }
     
