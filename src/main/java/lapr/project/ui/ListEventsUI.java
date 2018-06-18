@@ -30,6 +30,13 @@ public class ListEventsUI {
             case "REVIEW-PENDING":
                 controller.setState(ApplicationState.IN_EVALUALTION);
                 break;
+            case "ACCEPTED":
+                controller.setState(ApplicationState.ACCEPTED);
+                break;
+            case "REJECTED":
+                controller.setState(ApplicationState.REJECTED);
+                break;                
+                
         }
         String event;       
         int event_index = 0;
@@ -66,15 +73,16 @@ public class ListEventsUI {
 
         }
         controller.eventPicked(event_index-1);
-        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
 
         System.out.println("     "+state.toUpperCase()+" APPLICATIONS OF "+controller.getEvent().getTitle()+"      ");
-        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
         
-        for (Application a : controller.getEvent().getEventApplicationByState(ApplicationState.CREATED)) {
+        for (Application a : controller.getEvent().getEventApplicationByState(controller.getState())) {
             System.out.println(" - "+a.getDescription());
         }
-
+        Utils.readLineFromConsole("PRESS ENTER TO GO BACK TO MAIN MENU: ");
+        new MainMenu(centre);
     }
     
 }

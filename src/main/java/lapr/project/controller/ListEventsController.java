@@ -47,5 +47,12 @@ public class ListEventsController {
     public void setState(ApplicationState state) {
         this.state = state;
     }
+
+    /**
+     * @return the state
+     */
+    public ApplicationState getState() {
+        return state;
+    }
     
 }

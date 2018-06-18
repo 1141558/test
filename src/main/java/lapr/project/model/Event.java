@@ -331,7 +331,7 @@ public class Event implements Comparable<Event>, Serializable {
         List<Application> acceptedApplicationList = new ArrayList<>();
         
         for (Application application : applicationRegister.getApplicationList()) {
-            if (application.isAccepted()) {
+            if (application.getState().equals(ApplicationState.ACCEPTED)) {
                 acceptedApplicationList.add(application);
                 System.out.println("EnventApplicationBy State -event class"+application );
             }

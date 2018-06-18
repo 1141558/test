@@ -343,19 +343,16 @@ public class XMLDecoder {
                 r.setAssignedStaffMember(event.getStaffRegister().getStaffMemberByUsername(username));
                 list_reviews.add(r);
             }
-            boolean accepted_bool;
-            if(accepted.equalsIgnoreCase(accepted)){
-                accepted_bool=true;
-            }else{
-                accepted_bool=false;
+            if(accepted.equalsIgnoreCase("true")){
+                a.setState(ApplicationState.ACCEPTED);
+            }else if(accepted.equalsIgnoreCase("false")){
+                a.setState(ApplicationState.REJECTED);
             }
-            a.setAccepted(accepted_bool);
             a.setBoothArea(Double.parseDouble(boothArea));
             a.setNumberInvites(Integer.parseInt(invitesQuantity));
             a.setDescription(description);
             a.setKeywordList(list_keywords);
             a.setListReview(list_reviews);
-            a.setState(ApplicationState.CREATED);
             ar.addApplication(a);
         }
         return ar;
