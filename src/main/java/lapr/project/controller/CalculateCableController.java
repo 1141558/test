@@ -11,6 +11,7 @@ import lapr.project.model.CalculateElectricalCable;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.StandConnection;
+import lapr.project.utils.Utils;
 
 /**
  *
@@ -41,12 +42,20 @@ public class CalculateCableController {
     
     public List<StandConnection> calcPath(String eventTitle){
         Event event=findEvent(eventTitle);
+        if(!hasStands(event)){
+            Utils.printError("THE EVENT SELECTED HAS NO STANDS!");
+            return null;
+        }
         ArrayList <StandConnection> connections = new ArrayList<>(CalculateElectricalCable.cablePath(event.getStandRegister().getStandList()));
         return connections;
     }
     
     public double calcLength(String eventTitle){
         Event event=findEvent(eventTitle);
+        if(!hasStands(event)){
+            Utils.printError("THE EVENT SELECTED HAS NO STANDS!");
+            return 0;
+        }
         ArrayList <StandConnection> connections = new ArrayList<>(CalculateElectricalCable.cablePath(event.getStandRegister().getStandList()));
         return CalculateElectricalCable.cableLength(connections);
     }
@@ -63,6 +72,10 @@ public class CalculateCableController {
             }
         }
         return event;
+    }
+    
+    public boolean hasStands(Event event){
+        return ((event.getStandRegister()!=null)&&(!(event.getStandRegister().getStandList().isEmpty())));
     }
     
     

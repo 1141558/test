@@ -8,9 +8,11 @@ package lapr.project.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import lapr.project.controller.DummyData;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.User;
+import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,6 +21,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author andre
  */
 public class StaffRegisterTest {
+    DummyData data;
+    
+    ExhibitionCentre centre = new ExhibitionCentre();
     
     ExhibitionCentre exhibitionCentre;
     
@@ -91,6 +96,7 @@ public class StaffRegisterTest {
     }
     
     public StaffRegisterTest() {
+        data = new DummyData(centre);
         
         /*
         Event 4
@@ -135,13 +141,26 @@ public class StaffRegisterTest {
        this.exhibitionCentre = new ExhibitionCentre(eventRegister, userRegister);
     }
     
-
     /**
      * Test of addStaffMember method, of class StaffRegister.
      */
     @Test
     public void testAddStaffMember() {
         System.out.println("addStaffMember");
+        StaffMember sm = new StaffMember(user3);
+        StaffRegister instance = new StaffRegister(staffMemberListEvent4);
+        boolean expResult = true;
+        boolean result = instance.addStaffMember(sm);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }    
+
+    /**
+     * Test of addStaffMember method, of class StaffRegister.
+     */
+    @Test
+    public void testStaffRegister() {
+        System.out.println("StaffRegister");
         StaffMember sm = new StaffMember(user3);
         StaffRegister instance = new StaffRegister(staffMemberListEvent4);
         boolean expResult = true;
@@ -295,6 +314,20 @@ public class StaffRegisterTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
+    
+    /**
+     * Test of equals method, of class StaffRegister.
+     */
+    @Test
+    public void testEquals3() {
+        System.out.println("equals3");
+        Object otherObject = data.getEventRegister().getEvent(0);
+        StaffRegister instance = new StaffRegister(staffMemberListEvent4);
+        boolean expResult = false;
+        boolean result = instance.equals(otherObject);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
 
 
     /**
@@ -330,6 +363,43 @@ public class StaffRegisterTest {
         StaffMember expResult = new StaffMember();
         StaffMember result = instance.createStaffMember();
         assertNotEquals(expResult, result);
+    }
+    
+    /**
+     * Test of setStaffList method, of class StaffRegister.
+     */
+    @org.junit.Test
+    public void testSetStaffList() {
+        System.out.println("setStaffList");
+        StaffRegister instance = new StaffRegister();
+        instance.setStaffList(staffMemberListEvent4);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+    
+    /**
+     * Test of toString method, of class StaffRegister.
+     */
+    @org.junit.Test
+    public void testToString() {
+        System.out.println("toString");
+        StaffRegister instance = new StaffRegister(staffMemberListEvent4);
+        String expResult = instance.toString();
+        String result = instance.toString();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+    
+    /**
+     *Test of hashCode method, of class StaffRegister.
+     */
+    @org.junit.Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        StaffRegister instance = new StaffRegister(staffMemberListEvent4);
+        int expResult = 0;
+        int result = instance.hashCode();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
     }
     
 }
