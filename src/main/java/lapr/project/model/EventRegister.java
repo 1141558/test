@@ -164,7 +164,7 @@ public class EventRegister implements Serializable{
             
             for (Organiser item : organisersList) {
                 
-                if (item.getOrganiser().getUsername() == organiserValidated.getUsername()) {
+                if (item.getOrganiser().getUsername().equals(organiserValidated.getUsername())) {
                     
                     organiserValidatedList.add(item1);
                     

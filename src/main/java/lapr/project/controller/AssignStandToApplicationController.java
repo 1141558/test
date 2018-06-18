@@ -73,7 +73,7 @@ public class AssignStandToApplicationController {
        List<Application> applicationsAccepted = new ArrayList<>();
         for (Event eventItem : event) {
             List<Stand> standsListByEvent = eventItem.getStandRegister().getStandList();
-           applicationsAccepted = eventItem.getEventApplicationByState(accepted);
+           applicationsAccepted = eventItem.getEventApplicationByAcception();
             System.out.println("aPPLICATIONaCCEPTED" +applicationsAccepted.toString() );
         }
         return applicationsAccepted;

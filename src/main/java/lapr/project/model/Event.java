@@ -315,13 +315,23 @@ public class Event implements Comparable<Event>, Serializable {
         this.dateEndApplications = dateEndApplications;
     }
     
-    public List<Application> getEventApplicationByState(String accepted) {
-        List<Application> allEventApplicationList = new ArrayList<>();
+    public List<Application> getEventApplicationByState(ApplicationState accepted) {
         List<Application> acceptedApplicationList = new ArrayList<>();
-        allEventApplicationList = applicationRegister.getApplicationList();
         
-        for (Application application : allEventApplicationList) {
-            if (application.getState() == ApplicationState.ACCEPTED) {
+        for (Application application : applicationRegister.getApplicationList()) {
+            if (application.getState().equals(accepted)) {
+                acceptedApplicationList.add(application);
+            }
+            
+        }
+        return acceptedApplicationList;
+    }
+
+    public List<Application> getEventApplicationByAcception() {
+        List<Application> acceptedApplicationList = new ArrayList<>();
+        
+        for (Application application : applicationRegister.getApplicationList()) {
+            if (application.isAccepted()) {
                 acceptedApplicationList.add(application);
                 System.out.println("EnventApplicationBy State -event class"+application );
             }
