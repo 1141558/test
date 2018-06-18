@@ -22,6 +22,8 @@ import lapr.project.model.Event;
 import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
+import lapr.project.model.Organiser;
+import lapr.project.model.OrganiserRegister;
 import lapr.project.model.PasswordEncryption;
 import lapr.project.model.Review;
 import lapr.project.model.Role;
@@ -94,7 +96,8 @@ public class XMLDecoder {
 
             for (int i = 0; i < list_events.getLength(); i++) {
     
-                readEventFromFile(filePath, centre, i);
+                Event e=readEventFromFile(filePath, centre, i);
+                centre.getEventRegister().addEvent(e);
             
             }
     
@@ -127,6 +130,8 @@ public class XMLDecoder {
                 System.out.println("------------------------------------------");
 
             }
+            OrganiserRegister or= buildOrganiserRegister(docElement, centre);
+            e.setOrganisersRegister(or);
             e.setStandRegister(sr);
             StaffRegister stffr= buildStaffRegister(docElement, centre);
             System.out.println("-------------------STAFFS------------------");
@@ -214,7 +219,40 @@ public class XMLDecoder {
         }
         return sr;
     }
-
+    private static OrganiserRegister buildOrganiserRegister(Element docElement, ExhibitionCentre centre) {
+        
+        OrganiserRegister or= new OrganiserRegister();
+        
+        NodeList s2 = docElement.getElementsByTagName("organiserSet");
+        Node s1 = s2.item(0);
+        Element el = (Element) s1; 
+        if(el!=null){
+        NodeList organisers = el.getElementsByTagName("organiser");
+        UserRegister ur= centre.getUserRegister();
+        
+        for (int i = 0; i < organisers.getLength(); i++) {
+            User u= new User();
+            Organiser o= new Organiser();
+            Node staff_node = organisers.item(i);
+            Element staff_element = (Element) staff_node;
+            String name = staff_element.getElementsByTagName("name").item(0).getTextContent();
+            String email = staff_element.getElementsByTagName("email").item(0).getTextContent();
+            String username = staff_element.getElementsByTagName("username").item(0).getTextContent();
+            String password = staff_element.getElementsByTagName("password").item(0).getTextContent();
+            u.setEmail(email);
+            u.setName(name);
+            u.setPassword(PasswordEncryption.encryptPassword(password));
+            u.setUsername(username);
+            u.setRole(Role.EMPLOYEE);
+            o.setOrganiser(u);
+            ur.addUser(u);
+            or.addOrganiser(o);
+        }
+        centre.setUserRegister(ur);
+        }
+        return or;
+        
+    }
     private static StaffRegister buildStaffRegister(Element docElement, ExhibitionCentre centre) {
         
         StaffRegister sr= new StaffRegister();
@@ -223,7 +261,7 @@ public class XMLDecoder {
         Node s1 = s2.item(0);
         Element el = (Element) s1; 
         NodeList staffs = el.getElementsByTagName("staff");
-        UserRegister ur= new UserRegister();
+        UserRegister ur= centre.getUserRegister();
         
         for (int i = 0; i < staffs.getLength(); i++) {
             User u= new User();

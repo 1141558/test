@@ -89,10 +89,8 @@ public class EventRegister implements Serializable{
      * @return
      */
     public boolean userIsEventManager(User u){
-        for (Event event : this.eventList) {
-            if(event.getEventManager().getEventManager().getUsername().equals(u.getUsername())){
-                return true;
-            }
+        if(u.getRole().equals(Role.EVENT_MANAGER)){
+            return true;
         }
         return false;
     }
