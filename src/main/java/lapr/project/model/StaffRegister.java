@@ -29,16 +29,11 @@ public class StaffRegister implements Serializable {
         this.staffList = new ArrayList<>();
     }
     
-//    public StaffRegister(StaffRegister staffList) {
-//        this.staffList = staffList.getListStaff();
-//    }
+
     public StaffRegister(List<StaffMember> staffList) {
         this.staffList = staffList;
     }
     
-//    public List<StaffMember> getListStaff(){
-//        return new ArrayList<>(staffList);
-//    }
     public boolean addStaffMember(StaffMember sm) {
         for (StaffMember staffMember : staffList) {
             if (staffMember.getStaff().equals(sm.getStaff())) {
@@ -47,21 +42,6 @@ public class StaffRegister implements Serializable {
             
         }
         return this.staffList.add(sm);
-    }
-    
-    /**
-     *
-     * @param user
-     * @return true or false Valida se já existe o user passado por parametro,
-     * caso não exista adiciona à List
-     */
-    public boolean registerStaff(User user) {
-        if (!isExist(user)) {
-            staffList.add(new StaffMember(user));
-            return true;
-        } else {
-            return false;
-        }
     }
     
     /**
@@ -122,19 +102,6 @@ public class StaffRegister implements Serializable {
         return s.toString().trim();
     }
     
-//    @Override
-//    public String toString() {
-//        List<StaffMember> copy = new ArrayList<>(staffList);
-//        Collections.sort(copy);
-//
-//        StringBuilder s = new StringBuilder();
-//        for (StaffMember staff : copy) {
-//            s.append(staff);
-//            s.append("\n");
-//        }
-//
-//        return s.toString().trim();
-//    }
     @Override
     public boolean equals(Object otherObject) {
         if (this == otherObject) {
