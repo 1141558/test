@@ -10,5 +10,5 @@ package lapr.project.model;
  * @author MariaJoão
  */
 public enum ApplicationState {
-    CEATED, IN_EVALUALTION, CLOSED, ACCEPTED,REJECTED;
+    CREATED, IN_EVALUALTION, CLOSED;
 }

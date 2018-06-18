@@ -16,6 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import lapr.project.model.Application;
 import lapr.project.model.ApplicationRegister;
+import lapr.project.model.ApplicationState;
 import lapr.project.model.Decision;
 import lapr.project.model.Distance;
 import lapr.project.model.Event;
@@ -354,6 +355,7 @@ public class XMLDecoder {
             a.setDescription(description);
             a.setKeywordList(list_keywords);
             a.setListReview(list_reviews);
+            a.setState(ApplicationState.CREATED);
             ar.addApplication(a);
         }
         return ar;
