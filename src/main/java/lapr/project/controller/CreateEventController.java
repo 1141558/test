@@ -147,7 +147,7 @@ public class CreateEventController {
         boolean x; 
         try{
         
-            this.event=XMLDecoder.readEventFromFile("./src/main/resources/"+filename+".xml", this.exhibitionCentre);
+            this.event=XMLDecoder.readEventFromFile("./src/main/resources/"+filename+".xml", this.exhibitionCentre,0);
             x=true;
         } catch (ParserConfigurationException | IOException | SAXException e) {
             x=false;
