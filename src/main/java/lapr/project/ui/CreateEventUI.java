@@ -20,6 +20,7 @@ import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
+import lapr.project.model.StaffMember;
 import lapr.project.model.User;
 import lapr.project.utils.Utils;
 
@@ -33,7 +34,8 @@ public class CreateEventUI {
 
     public CreateEventUI(ExhibitionCentre exhibitionCentre){
         this.controller= new CreateEventController(exhibitionCentre);
-        String title, description, startDateString, endDateString, place, user1="";
+        String title="", description="", startDateString, endDateString, place="", user1="", fromFile="";
+        boolean file=false, answer=false;
         Date startDate = new Date(), endDate= new Date();
         List<Organiser> organisersToPrint = new ArrayList<>();
         int userPos=0, nDays=0;
@@ -42,47 +44,74 @@ public class CreateEventUI {
         System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         System.out.println("           CREATE EVENT           ");
         System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
-        title = Utils.readLineFromConsole("TITLE: ");
-        description = Utils.readLineFromConsole("DESCRIPTION: ");
-        startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");
-        startDate= validateStartDateFormat(startDateString);
-        endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
-        endDate=validateEndDateFormat(endDateString, startDate);        
-        place = Utils.readLineFromConsole("PLACE: ");
-        while(nDays<1){
-            try{
-                nDays = Integer.parseInt(Utils.readLineFromConsole("NUMBER OF DAYS FOR OPEN APPLICATIONS: "));
-                if(nDays<1){
-                 Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
+        while(!answer){
+    
+            fromFile= Utils.readLineFromConsole("DO YOU WISH TO LOAD EVENT FROM FILE OR DO YOU WISH TO CREATE HERE A NEW ONE? ENTER 'Y' TO LOAD EVENT FROM FILE OR 'N' TO CREATE A NEW ONE: ");
+            if(fromFile.equalsIgnoreCase("y")){
+                    answer=true;
+                    String filename= Utils.readLineFromConsole("NAME OF FILE (ALL FILES MUST BE IN 'resources' FOLDER): ");
+                    
+                    controller.getEventFromFile(filename); 
+                    title=controller.getEvent().getTitle();
+                    description= controller.getEvent().getDescription();
+                    place = controller.getEvent().getPlace();
+                    List<StaffMember> list= controller.getEvent().getStaffRegister().getStaffList();
+                    List<Organiser> list2=controller.getEvent().getOrganiserRegister().getOrganiserList();
+                    printEventFile(title, description, startDate, endDate, place,list, list2, nDays);
 
-                }    
-                }catch(NumberFormatException e){
+            }else if(fromFile.equalsIgnoreCase("n")){
+                    answer=true;
+                    title = Utils.readLineFromConsole("TITLE: ");
+                    description = Utils.readLineFromConsole("DESCRIPTION: ");
+                    startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");
+                    startDate= validateStartDateFormat(startDateString);
+                    endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
+                    endDate=validateEndDateFormat(endDateString, startDate);        
+                    place = Utils.readLineFromConsole("PLACE: ");
+                    while(nDays<1){
+                        try{
+                            nDays = Integer.parseInt(Utils.readLineFromConsole("NUMBER OF DAYS FOR OPEN APPLICATIONS: "));
+                            if(nDays<1){
+                             Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
 
-                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                            }    
+                            }catch(NumberFormatException e){
 
-            }           
-        }
-        while(!user1.equalsIgnoreCase("X")){
+                            Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+
+                        }           
+                    }
+                    while(!user1.equalsIgnoreCase("X")){
+
+                        int n=1;
+                        userPos=0;
+                        System.out.println("--------------------------");
+                        System.out.println("          USERS           ");
+                        System.out.println("--------------------------");
+
+                        for (User user : controller.getUsersAvailable()) {
+                            System.out.println(n+" - "+user.getUsername());
+                            n++;
+                        }
+                        System.out.println("--------------------------");
+
+                        user1=Utils.readLineFromConsole("PICK ORGANISER (WRITE X WHEN YOU ARE DONE): ");
+                        readOrganiser(user1, userPos, n, organisersToPrint);
+
+
+                    }
+            controller.setData(title, description, startDate, endDate, place);
+            printEvent(title, description, startDate, endDate, place,organisersToPrint, nDays);
             
-            int n=1;
-            userPos=0;
-            System.out.println("--------------------------");
-            System.out.println("          USERS           ");
-            System.out.println("--------------------------");
-
-            for (User user : controller.getUsersAvailable()) {
-                System.out.println(n+" - "+user.getUsername());
-                n++;
+            }else{
+                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+                
             }
-            System.out.println("--------------------------");
-            
-            user1=Utils.readLineFromConsole("PICK ORGANISER (WRITE X WHEN YOU ARE DONE): ");
-            readOrganiser(user1, userPos, n, organisersToPrint);
-           
-            
-        }        
-        controller.setData(title, description, startDate, endDate, place);
-        printEvent(title, description, startDate, endDate, place,organisersToPrint, nDays);
+
+
+        }
+        
+        
         String resposta="";
         while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
             resposta=Utils.readLineFromConsole("DO YOU CONFIRM THIS EVENT? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
@@ -150,7 +179,36 @@ public class CreateEventUI {
         return endDate;
     }
     
-
+    private void printEventFile(String title, String description, Date startDate, Date endDate, String place, List<StaffMember> list, List<Organiser> list2, int nDays){
+        System.out.println("");        
+        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        System.out.println("           CREATED EVENT          ");
+        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        System.out.println("TITLE: "+title);
+        System.out.println("DESCRIPTION: "+description);
+        System.out.println("START DATE : "+startDate.toString());
+        System.out.println("END DATE : "+endDate.toString());
+        System.out.println("PLACE: "+place);
+        System.out.println("NUMBER OF DAYS FOR OPEN APPLICATIONS: "+nDays);
+        System.out.println("--------------------------");
+        System.out.println("      STAFF MEMBERS        ");
+        System.out.println("--------------------------");
+        int n=1;
+            for (StaffMember o : list) {
+                System.out.println(n+" - "+o.getStaff().getUsername());
+                n++;
+            }
+        System.out.println("--------------------------");
+        System.out.println("--------------------------");
+        System.out.println("        ORGANISERS        ");
+        System.out.println("--------------------------");
+        int n2=1;
+            for (Organiser o : list2) {
+                System.out.println(n2+" - "+o.getOrganiser().getUsername());
+                n2++;
+            }
+        System.out.println("--------------------------");
+    }
     private void printEvent(String title, String description, Date startDate, Date endDate, String place, List<Organiser> list, int nDays){
         System.out.println("");        
         System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  

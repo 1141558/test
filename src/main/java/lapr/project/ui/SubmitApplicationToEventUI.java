@@ -45,6 +45,7 @@ public class SubmitApplicationToEventUI {
 
                 try{
                         event_number = Integer.parseInt(Utils.readLineFromConsole("PICK EVENT: "));
+                        controller.setEvent(n);
                         if(event_number <1 || event_number>n){
                             Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
                             event_number=-1;                            
@@ -98,6 +99,23 @@ public class SubmitApplicationToEventUI {
                 Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
 
             }           
+        }
+        
+        String resposta="";
+        while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
+            resposta=Utils.readLineFromConsole("DO YOU CONFIRM THIS APPLICATION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
+            if(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
+                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+            }
+        }
+        if(resposta.equalsIgnoreCase("c")){
+            Utils.printWarning("APPLICATION CANCELED");
+            new MainMenu(centre);
+        }else if(resposta.equalsIgnoreCase("y")){
+            controller.registerApplication();          
+            Utils.printConfirmation("APPLICATION SAVED");
+            new MainMenu(centre);        
+
         }
         
         controller.setData(description,nInvites,keywords,area);

@@ -17,14 +17,6 @@ import javax.xml.parsers.ParserConfigurationException;
  * @author by Nuno Bettencourt [nmb@isep.ipp.pt] on 29/05/16.
  */
 public class Keyword implements Exportable, Importable<Keyword> {
-
-    /**
-     * @param value the value to set
-     */
-    public void setValue(String value) {
-        this.value = value;
-    }
-
     private static final String ROOT_ELEMENT_NAME = "keyword";
     private static final String VALUE_ELEMENT_NAME = "value";
 
@@ -32,6 +24,14 @@ public class Keyword implements Exportable, Importable<Keyword> {
      * Keyword representation.
      */
     private String value = "";
+    /**
+     * @param value the value to set
+     */
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+
 
     /**
      * Default empty constructor.

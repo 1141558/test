@@ -8,9 +8,11 @@ package lapr.project.controller;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Application;
+import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
 import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
+import lapr.project.model.Keyword;
 
 /**
  *
@@ -20,12 +22,25 @@ public class SubmitApplicationToEventController {
 
     Application application;  
     ExhibitionCentre centre;
+    Event event;
+    List<Event> events= new  ArrayList<>();
     public SubmitApplicationToEventController(ExhibitionCentre centre) {
         this.application= new Application();
         this.centre=centre;
     }
 
     public void setData(String description, int nInvites, List<String> keywords, double area) {
+        List<Keyword> list= new ArrayList<>();
+        this.application.setDescription(description);
+        this.application.setNumberInvites(nInvites);
+        for (String keyword : keywords) {
+            Keyword k= new Keyword();
+            k.setValue(keyword);
+        }
+        this.application.setKeywordList(list);
+        this.application.setState(ApplicationState.CEATED);
+        this.application.setAccepted(false);
+        
     }
 
     public List<Event> getEventsReadyForApplications() {
@@ -36,6 +51,14 @@ public class SubmitApplicationToEventController {
             }
         }
         return list;
+    }
+
+    public void registerApplication() {
+        this.event.getApplicationRegister().addApplication(this.application);
+    }
+
+    public void setEvent(int n) {
+        this.event= getEventsReadyForApplications().get(n-1);
     }
     
 }
