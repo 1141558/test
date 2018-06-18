@@ -1,3 +1,12 @@
 Date: Mon Jun 18 16:09:16 BST 2018 -> username1 created a new event called 'fbdg';
 Date: Mon Jun 18 16:11:58 BST 2018 -> username1 created a new event called 'exhibition1';
 Date: Mon Jun 18 17:48:04 BST 2018 -> null created a new event called 'sdvfbgf';
+Date: Mon Jun 18 17:59:52 BST 2018 -> ana_santos logged in;
+Date: Mon Jun 18 18:01:02 BST 2018 -> ana_santos logged in;
+Date: Mon Jun 18 18:02:59 BST 2018 -> ana_santos logged in;
+Date: Mon Jun 18 18:08:49 BST 2018 -> andre_silva logged in;
+Date: Mon Jun 18 18:13:58 BST 2018 -> andre_silva logged in;
+Date: Mon Jun 18 18:14:29 BST 2018 -> maria_venefredo logged in;
+Date: Mon Jun 18 18:15:08 BST 2018 -> maria_venefredo created a new event called 'wqfeg';
+Date: Mon Jun 18 18:17:17 BST 2018 -> maria_venefredo logged in;
+Date: Mon Jun 18 18:18:37 BST 2018 -> maria_venefredo logged in;
