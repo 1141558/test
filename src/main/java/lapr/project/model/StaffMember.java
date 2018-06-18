@@ -16,24 +16,27 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
     
     private static final long serialVersionUID = 1L;
     
-    
-    private User staff;
+    private User staff;    
 
-    
-
-   
-
+    /**
+     *
+     * @return User
+     */
     public User getStaff() {
         return staff;
     }
-   
-   
 
-
+    /**
+     * Construtor Vazio
+     */
     public StaffMember() {
         this.staff = new User();
     }
-
+    
+    /**
+     *
+     * @param staff type User 
+     */
     public StaffMember(User staff) {
         this.staff = staff;
     }
@@ -49,32 +52,30 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
     public String toString() {
         return String.format("UserName:%s Nome:%s", staff.getUsername(), staff.getName());
     }
-
-//    @Override
-//    public boolean equals(Object otherObject) {
-//        if (this == otherObject) {
-//            return true;
-//        }
-//        if (otherObject == null || getClass() != otherObject.getClass()) {
-//            return false;
-//        }
-//        StaffMember otherStaff = (StaffMember) otherObject;
-//        
-//        return staff == otherStaff.staff;
-//    }
- public boolean equalsUser(User obj) {
-        if (obj == null) {
-            return false;
-        }
-        return (obj.getEmail().equals(this.staff.getEmail()) && obj.getName().equals(this.staff.getName()) && Double.compare(obj.getPassword(), this.staff.getPassword())==0 && obj.getUsername().equals(this.staff.getUsername()));
-    }
-
     
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.staff);
         return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final StaffMember other = (StaffMember) obj;
+        if (!Objects.equals(this.staff, other.staff)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
