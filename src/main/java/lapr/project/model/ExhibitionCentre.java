@@ -17,14 +17,11 @@ public class ExhibitionCentre {
     private EventRegister eventRegister;
     private UserRegister userRegister;
     private User userOnline;
-    private OrganiserRegister organiserRegister;
-    private StaffRegister staffRegister;
 
     
     public ExhibitionCentre(){
         this.eventRegister=new EventRegister();
         this.userRegister= new UserRegister(); 
-        this.organiserRegister = new OrganiserRegister();
         this.userOnline = new User();
         
     }
@@ -84,23 +81,7 @@ public class ExhibitionCentre {
     public String toString() {
         return "ExhibitionCentre{" + "eventRegister=" + eventRegister + ", userRegister=" + userRegister + '}';
 
-    }
-
-   
-    public OrganiserRegister getOrganiserRegister() {
-        return organiserRegister;
-    }
-
-    public void setOrganiserRegister(OrganiserRegister organiserRegister1) {
-       this.organiserRegister = organiserRegister1;
-    }
-
-    public void setStaffRegister(StaffRegister staffRegister) {
-        this.staffRegister = staffRegister;
-    }
-
- 
-    
+    }   
  
     
 }
