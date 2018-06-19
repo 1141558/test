@@ -14,6 +14,7 @@ import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.User;
+import lapr.project.utils.Utils;
 
 /**
  *
@@ -23,12 +24,19 @@ public class StartSubmissionPeriodController {
     
     private ExhibitionCentre exhibitionCentre;
     List<Event> listEvent;
+    Event e;
 
     public StartSubmissionPeriodController(ExhibitionCentre exhibitionCentre) {
         this.exhibitionCentre = exhibitionCentre;
         this.listEvent = new ArrayList<>();
+        this.e = new Event();
     }
     
+    /**
+     *
+     * @param user
+     * @return List<Event>
+     */
     public List<Event> findEventByOrganiserAndState(User user){
         changeEventStateCreated();
         for(Event e : this.exhibitionCentre.getEventRegister().getEventList()){
@@ -41,23 +49,40 @@ public class StartSubmissionPeriodController {
         return listEvent;
     }
     
+    /**
+     *
+     * @param indice
+     * @return boolean
+     */
     public boolean changeStateEventToSubmission(int indice){
         Event event = listEvent.get(indice);
         event.setEventState(EventState.OPEN_APPLICATION);
-        Date dateEndApplications= new Date();
+        e.setTitle(event.getTitle());
+        Date dateEndApplications = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(dateEndApplications);
         calendar.add(Calendar.DATE, event.getDaysApplication());
-        dateEndApplications= calendar.getTime();
+        dateEndApplications = calendar.getTime();
         event.setDateEndApplications(dateEndApplications);
         return event.isOpenApplication();
     }
     
+    /**
+     *
+     */
     public void changeEventStateCreated(){
         for(Event e : exhibitionCentre.getEventRegister().getEventList()){
             if(e.isCreated())
                 e.changeToReadyForApplication();
         }
+    }
+    
+    /**
+     *
+     * @param event
+     */
+    public void registerLog() {
+        Utils.writeLog(this.exhibitionCentre.getUserOnline().getUsername()+" Start Submission Application Period '"+e.getTitle()+"';");
     }
     
 }

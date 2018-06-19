@@ -21,8 +21,8 @@ public class StartSubmissionPeriodUI {
     int n = 1;
     
     public StartSubmissionPeriodUI(ExhibitionCentre exhibitionCentre){
-        String event_selected_string=""; 
-        int event_selected=0;
+        String event_selected_string = ""; 
+        int event_selected = 0;
         boolean right=false;
         this.controller = new StartSubmissionPeriodController(exhibitionCentre);
         System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
@@ -56,9 +56,10 @@ public class StartSubmissionPeriodUI {
                   n=1;  
                 }
         }
-        if(controller.changeStateEventToSubmission(event_selected-1))
+        if(controller.changeStateEventToSubmission(event_selected-1)){
             Utils.printConfirmation("SUBMISSION PERIOD OPEN");
-        else
+            controller.registerLog();
+        }else
             Utils.printError("IT WAS NOT POSSIBLE TO OPEN SUBMISSIN PERIOD");
     
     }
