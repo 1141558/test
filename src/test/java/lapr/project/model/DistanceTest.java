@@ -127,17 +127,20 @@ public class DistanceTest {
     }
     
     @Test
-    public void testString() {
+    public void testToString() {
         Distance distance = new Distance();
         distance.setDescription("descricao1");
         distance.setValue(21.5);
-        String expecteds = distance.toString();
+        String expecteds = "description= descricao1, value= 21.5\n" ;//distance.toString();
         distance.getValue().toString();
-        distance.getDescription().toString();
-          
+        //Arrange
+        String result = distance.toString();
+  
+        
+        //Act
+        Assert.assertEquals(expecteds, result);
     }
-       
-     
+    
     @Test
     public void testCompareTo() {
         Distance distance = new Distance();
@@ -146,7 +149,8 @@ public class DistanceTest {
         distance1.setDescription("descricao");
         distance.setValue(22.6);
         distance1.setValue(222222.55);
-        distance.compareTo(distance1); Assert.assertTrue((distance.getValue()<distance1.getValue()));
+        distance.compareTo(distance1);
+        Assert.assertTrue((distance.getValue() < distance1.getValue()));
         
     }
     
@@ -183,19 +187,77 @@ public class DistanceTest {
         
     }
     
-     @Test
+    @Test
     public void testCompareTo2() {
         Distance distance = new Distance();
         Distance distance1 = new Distance();
         distance.setDescription("descricao");
         distance1.setDescription("descricao");
         distance.setValue(0.000);
-        distance1.setValue(0.100001);
+        distance1.setValue(1.0);
         distance.compareTo(distance1);
-        Assert.assertTrue((distance.getValue()<distance1.getValue()));
+        
+        Assert.assertTrue((distance.getValue() < distance1.getValue()));
         
     }
     
+    @Test
+    public void testCompareToNull() {
+        Distance distance = new Distance();
+        Distance distance1 = null;
+        distance.setDescription(null);
+        distance.setValue(0.000);
+        distance.compareTo(distance1);
+        
+        Assert.assertTrue(distance.compareTo(distance1) == 0);
+        
+    }
     
+    @Test
+    public void testCompareToAslmostEquals() {
+        Distance distance1 = new Distance();
+        Distance distance2 = new Distance();
+        distance1.setDescription("descricao");
+        distance2.setDescription("descricao");
+        distance1.setValue(0.0001);
+        distance2.setValue(0.0002);
+        Assert.assertTrue((Math.abs(distance1.getValue() - distance2.getValue()) > 0.00001));
+        
+    }
     
+    @Test
+    public void testCompareToInferior() {
+        Distance distance1 = new Distance();
+        Distance distance2 = new Distance();
+        distance1.setDescription("descricao");
+        distance2.setDescription("descricao");
+        distance1.setValue(0.0000);
+        distance2.setValue(0.23231234);
+        Assert.assertTrue(distance1.compareTo(distance2) < 0);
+        
+    }
+    
+    @Test
+    public void testCompareToSuperior() {
+        Distance distance1 = new Distance();
+        Distance distance2 = new Distance();
+        distance1.setDescription("descricao");
+        distance2.setDescription("descricao");
+        distance1.setValue(0.0000);
+        distance2.setValue(0.23231234);
+        Assert.assertTrue(distance2.compareTo(distance1) > 0);
+        
+    }
+    
+    @Test
+    public void testCompareToEqual() {
+        Distance distance1 = new Distance();
+        Distance distance2 = new Distance();
+        distance1.setDescription("descricao");
+        distance2.setDescription("descricao");
+        distance1.setValue(0.0000);
+        distance2.setValue(0.00000);
+        Assert.assertTrue(distance2.compareTo(distance1) == 0);
+        
+    }
 }

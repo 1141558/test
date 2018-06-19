@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author Altran
+ * @author Manuel
  */
 public class OrganiserRegisterTest {
     

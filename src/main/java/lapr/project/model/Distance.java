@@ -88,8 +88,12 @@ public class Distance implements Comparable<Distance>, Serializable{
 
     @Override
     public int compareTo(Distance o) {
+        if(o!=null){
         int cmp = value > o.value ? +1 : value < o.value ? -1 : 0;
-        return cmp;   
+      
+        return cmp;
+        }
+        return 0;   
     }
     
 }

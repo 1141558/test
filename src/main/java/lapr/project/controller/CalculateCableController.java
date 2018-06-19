@@ -71,7 +71,7 @@ public class CalculateCableController {
                 return event;
             }
         }
-        return event;
+        return null;
     }
     
     public boolean hasStands(Event event){
