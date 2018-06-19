@@ -48,10 +48,10 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
         this.staff = staff;
     }
     
-    @Override
-    public String toString() {
-        return String.format("UserName:%s Nome:%s", staff.getUsername(), staff.getName());
-    }
+//    @Override
+//    public String toString() {
+//        return String.format("UserName:%s Nome:%s", staff.getUsername(), staff.getName());
+//    }
     
     @Override
     public int hashCode() {
