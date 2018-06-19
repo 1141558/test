@@ -98,88 +98,46 @@ public class XMLDecoder {
 
             for (int i = 0; i < list_events.getLength(); i++) {
     
-                Event e=readEventFromFile(filePath, centre, i);
+                Event e=readEventFromFile(filePath, centre, i, null);
                 centre.getEventRegister().addEvent(e);
             
             }
     
     }
     
-    public static Event readEventFromFile(String filePath, ExhibitionCentre centre, int cont) throws ParserConfigurationException, SAXException, IOException {
+    public static Event readEventFromFile(String filePath, ExhibitionCentre centre, int cont, Element el_sender) throws ParserConfigurationException, SAXException, IOException {
 
         try {
             Event e = new Event();  
         
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = dbf.newDocumentBuilder();
-            Document doc = docBuilder.parse(new File(filePath));
-            Element docElement = doc.getDocumentElement();
+            Document doc;
+            Element docElement;
+            
+            if(!filePath.equals("")){
+                doc = docBuilder.parse(new File(filePath)); 
+                docElement = doc.getDocumentElement();
+            }else{
+                doc=docBuilder.newDocument();
+                docElement= el_sender;
+            }
             Node s2 = docElement.getElementsByTagName("event").item(cont);
             String title = docElement.getElementsByTagName("title").item(0).getTextContent();
-            int nrRooms = Integer.parseInt(docElement.getElementsByTagName("numberRooms").item(0).getTextContent());
+            int nrRooms=0;
+            if(docElement.getElementsByTagName("numberRooms").getLength()>0){
+                 nrRooms = Integer.parseInt(docElement.getElementsByTagName("numberRooms").item(0).getTextContent());
+            }
             e.setRooms(nrRooms);
             e.setTitle(title);
-            System.out.println("--------------------TITLE------------------");
-            System.out.println(title);
-            System.out.println("------------------------------------------");
             StandRegister sr= buildStandRegister(docElement);
-            System.out.println("-------------------STANDS------------------");
-            for (Stand s : sr.getStandList()) {
-                System.out.println(s.getDescription());
-                System.out.println(s.getArea());
-                for (Distance d : s.getDistanceList()) {
-                    System.out.println("****Distances****");    
-                    System.out.println(d.toString());
-                }
-                System.out.println("------------------------------------------");
-
-            }
             OrganiserRegister or= buildOrganiserRegister(docElement, centre);
             e.setOrganisersRegister(or);
             e.setStandRegister(sr);
             StaffRegister stffr= buildStaffRegister(docElement, centre);
-            System.out.println("-------------------STAFFS------------------");
-
-            for (StaffMember sm : stffr.getStaffList()) {
-                System.out.println(sm.getStaff().getName());
-                System.out.println(sm.getStaff().getEmail());
-                System.out.println(sm.getStaff().getPassword());
-                System.out.println(sm.getStaff().getUsername());
-                System.out.println(sm.getStaff().getRole());
-                System.out.println("------------------------------------------");
-
-            }
             e.setStaffRegister(stffr);
             ApplicationRegister  ar= buildApplicationRegister(docElement, e);
             e.setApplicationRegister(ar);
-            System.out.println("---------------APPLICATIONS-------------------");
-            for (Application app : ar.getApplicationList()) {
-                System.out.println(app.getDescription());
-                System.out.println(app.getBoothArea());
-                System.out.println(app.getNumberInvites());
-                System.out.println("****Reviews****");    
-                for (Review r : app.getListReview()) {
-                    System.out.println(r.getAssignedStaffMember().getStaff().getUsername());
-                    System.out.println(r.getText());
-                    System.out.println(r.getDecision());
-                    System.out.println(r.getEventAdequacy());
-                    System.out.println(r.getRecommendation());
-                    System.out.println(r.getInviteAdequacy());
-                    System.out.println(r.getRecommendation());
-
-                }
-                    System.out.println("************");    
-
-                System.out.println("****Keywords****");    
-                for (Keyword k : app.getKeywordList()) {
-                    System.out.println(k.getValue());
-
-                }
-                    System.out.println("************");    
-
-                System.out.println("------------------------------------------");
-                
-            }
             e.setEventState(EventState.CREATED);
             return e;
             
@@ -389,4 +347,3 @@ public class XMLDecoder {
         return ar;
     }
 }
-

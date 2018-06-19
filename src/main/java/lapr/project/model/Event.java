@@ -239,14 +239,16 @@ public class Event implements Comparable<Event>, Serializable {
         return this.startDate.compareTo(o.startDate);
     }
     
-    public boolean equals(Event e) {
-        if (e == null) {
-            return false;
-        }
-        if (this.getClass() != e.getClass()) {
-            return false;
-        }
+    @Override
+    public boolean equals(Object o) {
         
+        if (o == null) {
+            return false;
+        }
+        if (this.getClass() != o.getClass()) {
+            return false;
+        }
+        Event e= (Event)o;
         if (!Objects.equals(this.title, e.title)) {
             return false;
         }
@@ -263,6 +265,18 @@ public class Event implements Comparable<Event>, Serializable {
             return false;
         }
         return Objects.equals(this.daysApplication, this.daysApplication);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.title);
+        hash = 59 * hash + Objects.hashCode(this.description);
+        hash = 59 * hash + Objects.hashCode(this.startDate);
+        hash = 59 * hash + Objects.hashCode(this.endDate);
+        hash = 59 * hash + Objects.hashCode(this.place);
+        hash = 59 * hash + this.daysApplication;
+        return hash;
     }
     
     /**
