@@ -6,7 +6,9 @@
 package lapr.project.model;
 
 import java.text.ParseException;
+
 import lapr.project.controller.DummyData;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -282,5 +284,26 @@ public class EventTest {
         boolean result = instance.equals(event);
         assertEquals(expResult, result);
     }  
+      @Test
+    public void testDetDescription() {
+        System.out.println("Get Decription");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+      event.getDescription();
+      Assert.assertEquals("Teste para evento", event.getDescription().toString());
+    } 
+    
+     @Test
+    public void testGetstartDate() {
+        System.out.println("Get Decription");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+     
+     Assert.assertEquals( event.getTitle(),"Evento teste");
+       Assert.assertEquals( event.getDescription(),"Teste para evento");
+        Assert.assertEquals( event.getStartDate(),data.getDate1());
+            Assert.assertEquals(event.getEndDate(),data.getDate2());
+      Assert.assertEquals(event.getPlace(), "");
+    } 
+    
+    
     
 }
