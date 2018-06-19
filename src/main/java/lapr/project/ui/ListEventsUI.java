@@ -10,6 +10,7 @@ import lapr.project.model.Application;
 import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
+import lapr.project.model.Keyword;
 import lapr.project.model.User;
 import lapr.project.utils.Utils;
 
@@ -79,8 +80,17 @@ public class ListEventsUI {
         System.out.println("-------------------------------------------------------------------");
         
         for (Application a : controller.getEvent().getEventApplicationByState(controller.getState())) {
-            System.out.println(" - "+a.getDescription());
+            System.out.println("APLICATION: "+a.getDescription());
+            System.out.println("        WANTED BOOTH AREA: "+a.getBoothArea()+"m2");
+            System.out.println("        NUMBER OF INVITES: "+a.getNumberInvites());
+            System.out.print("        KEYWORDS: ");
+
+            for (Keyword k : a.getKeywordList()) {
+                System.out.print(k.getValue()+"; ");
+            }
+            System.out.println("");
         }
+        controller.registerLog();
         Utils.readLineFromConsole("PRESS ENTER TO GO BACK TO MAIN MENU: ");
         new MainMenu(centre);
     }

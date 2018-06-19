@@ -34,6 +34,7 @@ import lapr.project.model.Stand;
 import lapr.project.model.StandRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
+import lapr.project.model.Workshop;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -115,6 +116,8 @@ public class XMLDecoder {
             Element docElement = doc.getDocumentElement();
             Node s2 = docElement.getElementsByTagName("event").item(cont);
             String title = docElement.getElementsByTagName("title").item(0).getTextContent();
+            int nrRooms = Integer.parseInt(docElement.getElementsByTagName("numberRooms").item(0).getTextContent());
+            e.setRooms(nrRooms);
             e.setTitle(title);
             System.out.println("--------------------TITLE------------------");
             System.out.println(title);
@@ -307,10 +310,37 @@ public class XMLDecoder {
             Node sr = reviews.item(0);
             Element elr = (Element) sr; 
             NodeList reviews_list = elr.getElementsByTagName("review");
+            
             List<Review> list_reviews= new ArrayList<>();
             NodeList keywords= application_element.getElementsByTagName("topic");
             List<Keyword> list_keywords= new ArrayList<>();
             
+            NodeList workshops= application_element.getElementsByTagName("workshopSet");
+            Node wnode = workshops.item(0);
+            Element welem = (Element) wnode; 
+            List<Workshop> list_workshops= new ArrayList<>();
+            if(welem!=null){
+            NodeList workshops_list = welem.getElementsByTagName("workshop");
+
+                for (int j = 0; j <workshops_list.getLength(); j++) {
+                Workshop w= new Workshop();
+                List<String> equipment= new ArrayList<>();
+                Node workshop_node = workshops_list.item(j);
+                Element workshop_element = (Element) workshop_node;
+                String description_w = workshop_element.getElementsByTagName("description").item(0).getTextContent();
+                String hours=   workshop_element.getElementsByTagName("duration").item(0).getTextContent();
+                NodeList eq_list = workshop_element.getElementsByTagName("equipment");
+                for (int k = 0; k < eq_list.getLength(); k++) {
+                    Node eq_node = eq_list.item(j);
+                    Element eq_element = (Element) eq_node;
+                    equipment.add(eq_element.getTextContent());                    
+                }
+                w.setDescription(description_w);
+                w.setDurationInHours(Integer.parseInt(hours));
+                w.setNecessaryEquipment(equipment);
+                list_workshops.add(w);
+            }
+            }
             for (int j = 0; j < keywords.getLength(); j++) {
                 Keyword k= new Keyword();
                 Node keyword_node = keywords.item(j);
@@ -352,6 +382,7 @@ public class XMLDecoder {
             a.setNumberInvites(Integer.parseInt(invitesQuantity));
             a.setDescription(description);
             a.setKeywordList(list_keywords);
+            a.setWorkshopList(list_workshops);
             a.setListReview(list_reviews);
             ar.addApplication(a);
         }

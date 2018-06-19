@@ -10,6 +10,7 @@ import java.util.List;
 import lapr.project.controller.SubmitApplicationToEventController;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
+import lapr.project.model.Workshop;
 import lapr.project.utils.Utils;
 
 /**
@@ -23,8 +24,8 @@ public class SubmitApplicationToEventUI {
        public SubmitApplicationToEventUI(ExhibitionCentre centre){
            
         this.controller= new SubmitApplicationToEventController(centre);
-        String description, keyTemp="", event="";
-        int nInvites=-1, nKeywords=0, n=1, event_number=-1;
+        String description, keyTemp="", event="", companyName="";        
+        int nInvites=-1, nKeywords=0, n=1, event_number=-1, phoneNumber=0, vatNumber=0;
         double area=-1;
         List<String> keywords= new ArrayList<>(); 
         System.out.println("");        
@@ -45,7 +46,7 @@ public class SubmitApplicationToEventUI {
 
                 try{
                         event_number = Integer.parseInt(Utils.readLineFromConsole("PICK EVENT: "));
-                        controller.setEvent(n);
+                        controller.setEvent(n-2);
                         if(event_number <1 || event_number>n){
                             Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
                             event_number=-1;                            
@@ -100,6 +101,44 @@ public class SubmitApplicationToEventUI {
 
             }           
         }
+        companyName = Utils.readLineFromConsole("COMPANY NAME: ");
+
+        while(!controller.validatePhoneNumber(phoneNumber)){
+            try{
+                phoneNumber = Integer.parseInt(Utils.readLineFromConsole("PHONE NUMBER: "));
+                if(!controller.validatePhoneNumber(phoneNumber)){
+                 Utils.printError("NUMBER INSERTED NOT VALID. YOU SHOULD INSERT 9 DIGIT NUMBER. PLEASE TRY AGAIN.");
+
+                }    
+                }catch(NumberFormatException e){
+
+                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+
+            }           
+        }
+        boolean vat=false;
+        while(!vat){
+            try{
+                vatNumber = Integer.parseInt(Utils.readLineFromConsole("VAT NUMBER: "));
+                vat=true;
+                }catch(NumberFormatException e){
+
+                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                vat=false;    
+            }           
+        } 
+        String resposta_workshops="";
+        List<Workshop> workshop_list = new ArrayList<>();
+        while(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
+            resposta_workshops=Utils.readLineFromConsole("DO YOU WISH TO DO WORKSHOPS? (WRITE 'Y' IF YES OR 'N' IF NO): ");
+            if(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
+                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+            }               
+        }
+        
+        if(resposta_workshops.equalsIgnoreCase("y")){
+            workshop_list=readWorkshops(controller.getEvent());   
+        }
         
         String resposta="";
         while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
@@ -112,6 +151,7 @@ public class SubmitApplicationToEventUI {
             Utils.printWarning("APPLICATION CANCELED");
             new MainMenu(centre);
         }else if(resposta.equalsIgnoreCase("y")){
+            controller.setData(description,nInvites,keywords,area,companyName, phoneNumber, vatNumber, workshop_list );
             controller.registerApplication();
             controller.registerLog();
             Utils.printConfirmation("APPLICATION SAVED");
@@ -119,6 +159,60 @@ public class SubmitApplicationToEventUI {
 
         }
         
-        controller.setData(description,nInvites,keywords,area);
+       }
+       
+       public List<Workshop> readWorkshops(Event e){
+        boolean vat=false;
+        List<Workshop> list= new ArrayList<>();
+        int number_of_workshops;
+        while(!vat){
+            try{
+                number_of_workshops = Integer.parseInt(Utils.readLineFromConsole("HOW MANY WORKSHOPS DO YOU WISH TO EXECUTE (NOTE: EVENT HAS "+e.getRooms()+" ROOMS AVAILABLE): "));
+                if(number_of_workshops<=e.getRooms()){                   
+                    
+                    for (int i = 0; i < number_of_workshops; i++) {
+                        Workshop w= new Workshop();
+                        String description;
+                        int duration=0;
+                        List<String> equip= new ArrayList<>();
+                        System.out.println("---------------------------");    
+                        System.out.println("       WORKSHOP "+(i+1)+"  ");                     
+                        System.out.println("---------------------------");    
+                        description = Utils.readLineFromConsole("DESCRIPTION: ");
+                        boolean ans=false;
+                        while(!ans){
+                            try{
+                                duration = Integer.parseInt(Utils.readLineFromConsole("DURATION (HOURS): "));
+                                ans=true;
+                                }catch(NumberFormatException ex){
+
+                                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                                ans=false;    
+                            }           
+                        }
+                        String done="";
+                        while(!done.equalsIgnoreCase("x")){
+                            done=Utils.readLineFromConsole("NECESSARY EQUIPMENT (WRITE 'X' WHEN YOU ARE DONE):  ");
+                            if(!done.equalsIgnoreCase("x")){ 
+                                equip.add(done);
+                            }
+                        }
+                        w.setDescription(description);
+                        w.setDurationInHours(duration);
+                        w.setNecessaryEquipment(equip);
+                        list.add(w);
+                    }
+                    vat=true;
+                }else{
+                Utils.printError("NUMBER OF WORSHOPS EXCEEDED. PLEASE TRY AGAIN.");
+                 vat=false;   
+                }
+                }catch(NumberFormatException ex){
+
+                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                vat=false;    
+            }           
+        }
+        return list;
        }
 }

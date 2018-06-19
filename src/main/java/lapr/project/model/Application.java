@@ -19,14 +19,53 @@ import java.util.List;
  * @author by Nuno Bettencourt [nmb@isep.ipp.pt] on 29/05/16.
  */
 public class Application implements Importable<Application>, Exportable {
+
+    /**
+     * @return the workshopList
+     */
+    public List<Workshop> getWorkshopList() {
+        return workshopList;
+    }
+
+    /**
+     * @param nameOfCompany the nameOfCompany to set
+     */
+    public void setNameOfCompany(String nameOfCompany) {
+        this.nameOfCompany = nameOfCompany;
+    }
+
+    /**
+     * @param phoneNumber the phoneNumber to set
+     */
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * @param vatNumber the vatNumber to set
+     */
+    public void setVatNumber(int vatNumber) {
+        this.vatNumber = vatNumber;
+    }
+
+    /**
+     * @param workshopList the workshopList to set
+     */
+    public void setWorkshopList(List<Workshop> workshopList) {
+        this.workshopList = workshopList;
+    }
     private static final String ROOT_ELEMENT_NAME = "application";
     private static final String DESCRIPTION_ELEMENT_NAME = "description";
     private static final String KEYWORDS_ELEMENT_NAME = "keywords";
+    private String nameOfCompany;
+    private int phoneNumber;
+    private int vatNumber;
     private List<Keyword> keywordList;
     private List<Review> listReview;
     private String description;
     private double boothArea;
     private int numberInvites;
+    private List<Workshop> workshopList;
     private ApplicationState state;
     
     private List<Organiser> organisers ;
@@ -52,6 +91,7 @@ public class Application implements Importable<Application>, Exportable {
     public Application() {
         this.keywordList= new ArrayList<>();
         this.listReview= new ArrayList<>();
+        this.workshopList= new ArrayList<>();
     }
 
     public Application(String description) {

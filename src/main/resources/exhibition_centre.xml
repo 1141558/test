@@ -49,6 +49,7 @@
     </userSet>
     <eventSet>
         <event>
+            <numberRooms>5</numberRooms>
             <title>Boat Expo</title>
             <description>Exibição de Barcos</description>
             <startDate>2019-01-10</startDate>
@@ -265,6 +266,27 @@
                 <description>Candidatura para expor 1 barco</description>
                 <boothArea>158</boothArea>
                 <invitesQuantity>86</invitesQuantity>
+                <workshopSet>
+                    <workshop>
+                        <description>Workshop sobre como limpar um barco</description>
+                        <duration>2</duration>
+                        <equipmentSet>
+                            <equipment>motor de um barco</equipment>
+                            <equipment>3 focos</equipment>
+                            <equipment>1 esfergona 5000</equipment>
+                        </equipmentSet>
+                    </workshop>
+                    <workshop>
+                        <description>Workshop sobre como comprar um barco</description>
+                        <duration>2</duration>
+                        <equipmentSet>
+                            <equipment>catalogo de barcos nº787</equipment>
+                            <equipment>4 focos</equipment>
+                            <equipment>expositor</equipment>
+                            <equipment>banca</equipment>                           
+                        </equipmentSet>
+                    </workshop>
+                </workshopSet>
                 <reviews>
                     <review>
                         <text>text0153</text>

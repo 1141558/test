@@ -46,13 +46,13 @@ public class MainMenu implements Serializable{
             System.out.println("               1.ASSIGN STAFF MEMBER TO EVENT            ");
             System.out.println("       2.START EVENT'S APPLICATION SUBMISSION PERIOD     ");
             System.out.println("                  3.EVALUATE APPLICATION                 ");
-            System.out.println("              4.ASSIGN STAFF MEMBERS TO REVIEW           ");
+            System.out.println("              4.ASSIGN STAFF MEMBER TO REVIEW            ");
             System.out.println("           5.LIST AN EVENT'S SUBMITTED APPLICATIONS      ");
             System.out.println("       6.LIST AN EVENT'S REVIEW-PENDING APPLICATIONS     ");
             System.out.println("          7.LIST AN EVENT'S ACCEPTED APPLICATIONS        ");
             System.out.println("          8.LIST AN EVENT'S REJECTED APPLICATIONS        ");
-            System.out.println("                9.LIST AN EVENT'S TOPICS                ");
-            System.out.println("            10.LIST AN EVENT'S STAND INFORMATION         ");
+            System.out.println("                9.LIST AN EVENT'S TOPICS                ");/*frequencias*/
+            System.out.println("            10.LIST AN EVENT'S STAND INFORMATION         ");/*frequencias*/
 
             System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
 
@@ -68,6 +68,7 @@ public class MainMenu implements Serializable{
                 case 3:
                     /*TO DO*/
                 break;
+                
                 case 4:
                     /*TO DO*/
                 case 5:
@@ -131,7 +132,7 @@ public class MainMenu implements Serializable{
         opt = Utils.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
-                    /*TO DO*/
+                    new SubmitWorkshopSurveyUI(centre);
                 break; 
             }     
         }

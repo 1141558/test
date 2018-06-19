@@ -9,6 +9,7 @@ import java.util.List;
 import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
+import lapr.project.utils.Utils;
 
 /**
  *
@@ -53,6 +54,10 @@ public class ListEventsController {
      */
     public ApplicationState getState() {
         return state;
+    }
+
+    public void registerLog() {
+        Utils.writeLog(this.centre.getUserOnline().getUsername()+" consulted "+this.state.toString().toLowerCase()+" applications of '"+event.getTitle()+"';");
     }
     
 }

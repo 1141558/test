@@ -33,6 +33,7 @@ public class Event implements Comparable<Event>, Serializable {
     private StandRegister standRegister;
     private ApplicationRegister applicationRegister;
     private Date dateEndApplications;
+    private int rooms;
     private int daysApplication = CORDAYS_APPLICATION_OMISSION;
     
     public Event(String title, String description, Date startDate, Date endDate, String place, OrganiserRegister organiserRegister) {
@@ -338,6 +339,20 @@ public class Event implements Comparable<Event>, Serializable {
             
         }
         return acceptedApplicationList;
+    }
+
+    /**
+     * @return the rooms
+     */
+    public int getRooms() {
+        return rooms;
+    }
+
+    /**
+     * @param rooms the rooms to set
+     */
+    public void setRooms(int rooms) {
+        this.rooms = rooms;
     }
     
 }
