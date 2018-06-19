@@ -6,6 +6,7 @@
 package lapr.project.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lapr.project.model.CalculateElectricalCable;
 import lapr.project.model.Event;
@@ -43,17 +44,16 @@ public class CalculateCableController {
     public List<StandConnection> calcPath(String eventTitle){
         Event event=findEvent(eventTitle);
         if(!hasStands(event)){
-            Utils.printError("THE EVENT SELECTED HAS NO STANDS!");
-            return null;
+            Utils.printError("THE SELECTED EVENT HAS NO STANDS!");
+            return Collections.emptyList();
         }
-        ArrayList <StandConnection> connections = new ArrayList<>(CalculateElectricalCable.cablePath(event.getStandRegister().getStandList()));
-        return connections;
+        return new ArrayList<>(CalculateElectricalCable.cablePath(event.getStandRegister().getStandList()));
     }
     
     public double calcLength(String eventTitle){
         Event event=findEvent(eventTitle);
         if(!hasStands(event)){
-            Utils.printError("THE EVENT SELECTED HAS NO STANDS!");
+            Utils.printError("THE SELECTED EVENT HAS NO STANDS!");
             return 0;
         }
         ArrayList <StandConnection> connections = new ArrayList<>(CalculateElectricalCable.cablePath(event.getStandRegister().getStandList()));

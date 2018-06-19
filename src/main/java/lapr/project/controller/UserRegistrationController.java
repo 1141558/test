@@ -100,11 +100,8 @@ public class UserRegistrationController {
             return false;
         }
 
-        if (emailSplit[0].equals("")) {
-            return false;
-        }
+        return (!"".equals(emailSplit[0]));
 
-        return true;
     }
 
     /**
@@ -154,6 +151,7 @@ public class UserRegistrationController {
 
     /**
      * Method to write to the log the User registration
+     *
      * @param username Username of the registered user
      */
     public void registerLog(String username) {
