@@ -62,15 +62,14 @@ public class UserRegistrationController {
     public User getUser() {
         return user;
     }
-    
-    
+
     /**
      * Method to verify if the String name is valid (only letters and spaces)
      *
      * @param name String to verify
      * @return boolean value defining the string as valid or not
      */
-    public static boolean isName(String name) {
+    public boolean isName(String name) {
         char[] chars = name.toCharArray();
         for (char c : chars) {
             if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
@@ -87,7 +86,7 @@ public class UserRegistrationController {
      * @param email String with the email adress to verify
      * @return boolean value defining the string as valid or not
      */
-    public static boolean isEmail(String email) {
+    public boolean isEmail(String email) {
         if (!email.contains("@")) {
             return false;
         }
@@ -114,7 +113,7 @@ public class UserRegistrationController {
      * @param username string to verify
      * @return boolean value defining the string as valid or not
      */
-    public static boolean isUsername(String username) {
+    public boolean isUsername(String username) {
 
         if (username.equals("")) {
             return false;
@@ -129,16 +128,16 @@ public class UserRegistrationController {
      * @param passString string with the inserted password
      * @return boolean value defining the password as valid or not
      */
-    public static boolean isPassword(String passString) {
+    public boolean isPassword(String passString) {
         int n = 0;
-        int dif=0;
+        int dif = 0;
         char[] chars = passString.toCharArray();
         for (char c : chars) {
             n++;
             if (!Character.isDigit(c)) {
                 return false;
             }
-            if(chars[0]!=c){
+            if (chars[0] != c) {
                 dif++;
             }
         }
@@ -147,14 +146,17 @@ public class UserRegistrationController {
             return false;
         }
         //não podem ser todos iguais
-        if(dif==0){
+        if (dif == 0) {
             return false;
         }
         return true;
     }
-    
 
+    /**
+     * Method to write to the log the User registration
+     * @param username Username of the registered user
+     */
     public void registerLog(String username) {
-        Utils.writeLog(username+" Registered;"); 
+        Utils.writeLog(username + " Registered;");
     }
 }
