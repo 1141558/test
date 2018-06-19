@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.model;
 
 import java.text.ParseException;
@@ -24,7 +24,7 @@ public class EventTest {
     public EventTest() throws ParseException {
         data = new DummyData(centre);
     }
-
+    
     /**
      * Test of changeToReadyForApplication method, of class Event.
      */
@@ -39,7 +39,7 @@ public class EventTest {
         assertEquals(expResult, result);
         
     }
-
+    
     /**
      * Test of isCreated method, of class Event.
      */
@@ -64,7 +64,7 @@ public class EventTest {
         boolean result = event.isCreated();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of isReadyForApplication method, of class Event.
      */
@@ -90,7 +90,7 @@ public class EventTest {
         boolean result = event.isReadyForApplication();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of isOpenApplication method, of class Event.
      */
@@ -115,7 +115,7 @@ public class EventTest {
         boolean result = event.isOpenApplication();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of isInEvaluations method, of class Event.
      */
@@ -140,7 +140,7 @@ public class EventTest {
         boolean result = event.isInEvaluations();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of isReadyForOpening method, of class Event.
      */
@@ -165,7 +165,7 @@ public class EventTest {
         boolean result = event.isReadyForOpening();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of isOpen method, of class Event.
      */
@@ -190,7 +190,7 @@ public class EventTest {
         boolean result = event.isOpen();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of isClose method, of class Event.
      */
@@ -215,11 +215,10 @@ public class EventTest {
         boolean result = event.isClose();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of compareTo method, of class Event.
      */
-
     @Test
     public void testCompareTo() {
         System.out.println("compareTo");
@@ -258,7 +257,7 @@ public class EventTest {
         result = instance.compareTo(event);
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of equals method, of class Event.
      */
@@ -283,27 +282,26 @@ public class EventTest {
         boolean expResult = false;
         boolean result = instance.equals(event);
         assertEquals(expResult, result);
-    }  
-      @Test
+    }
+    
+    @Test
     public void testDetDescription() {
         System.out.println("Get Decription");
         Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
-      event.getDescription();
-      Assert.assertEquals("Teste para evento", event.getDescription().toString());
-    } 
+        event.getDescription();
+        Assert.assertEquals("Teste para evento", event.getDescription().toString());
+    }
     
-     @Test
+    @Test
     public void testGetstartDate() {
         System.out.println("Get Decription");
         Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
-     
-     Assert.assertEquals( event.getTitle(),"Evento teste");
-       Assert.assertEquals( event.getDescription(),"Teste para evento");
-        Assert.assertEquals( event.getStartDate(),data.getDate1());
-            Assert.assertEquals(event.getEndDate(),data.getDate2());
-      Assert.assertEquals(event.getPlace(), "");
-    } 
-    
-    
+        
+        Assert.assertEquals("Evento teste", event.getTitle());
+        Assert.assertEquals("Teste para evento", event.getDescription());
+        Assert.assertEquals(event.getStartDate(), data.getDate1());
+        Assert.assertEquals(event.getEndDate(), data.getDate2());
+        Assert.assertEquals("", event.getPlace());
+    }
     
 }
