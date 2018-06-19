@@ -54,6 +54,7 @@ public class Event implements Comparable<Event>, Serializable {
     public Event() {
         this.organiserRegister = new OrganiserRegister();
         this.staffRegister = new StaffRegister();
+        this.applicationRegister= new ApplicationRegister();
     }
     
     public void changeToReadyForApplication() {

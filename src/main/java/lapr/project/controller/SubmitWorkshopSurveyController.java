@@ -42,7 +42,7 @@ public class SubmitWorkshopSurveyController {
      * @param event the event to set
      */
     public void setEvent(int index) {
-        this.event = getEvents().get(index);
+        this.setEvent(getEvents().get(index));
     }
 
     public List<Workshop> listaWorkshopsOfAcceptedApplications() {
@@ -71,9 +71,16 @@ public class SubmitWorkshopSurveyController {
             }
     }
 
-    public void registerLog() {
+    public boolean registerLog() {
 
-        Utils.writeLog("an anonymous user took a survey about workshops");
+        return Utils.writeLog("an anonymous user took a survey about workshops");
     
     }   
+
+    /**
+     * @param event the event to set
+     */
+    public void setEvent(Event event) {
+        this.event = event;
+    }
 }
