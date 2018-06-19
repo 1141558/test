@@ -8,6 +8,7 @@ package lapr.project.ui;
 import lapr.project.controller.UserRegistrationController;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.utils.Utils;
+import static lapr.project.controller.UserRegistrationController.*;
 
 /**
  *
@@ -81,83 +82,4 @@ public class UserRegistrationUI {
 
     }
 
-    /**
-     * Method to verify if the String name is valid (only letters and spaces)
-     *
-     * @param name String to verify
-     * @return boolean value defining the string as valid or not
-     */
-    public boolean isName(String name) {
-        char[] chars = name.toCharArray();
-        for (char c : chars) {
-            if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Method to verify if the String email is valid (one "@", valid email and
-     * server)
-     *
-     * @param email String with the email adress to verify
-     * @return boolean value defining the string as valid or not
-     */
-    public boolean isEmail(String email) {
-        if (!email.contains("@")) {
-            return false;
-        }
-
-        String[] emailSplit = email.split("@");
-        if (emailSplit.length != 2) {
-            return false;
-        }
-
-        if (!emailSplit[1].contains(".")) {
-            return false;
-        }
-
-        if (emailSplit[0].equals("")) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Method to verify if the String username is valid (not empty)
-     *
-     * @param username string to verify
-     * @return boolean value defining the string as valid or not
-     */
-    public boolean isUsername(String username) {
-
-        if (username.equals("")) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Method to verify if the String password is valid (only digits and >=8)
-     *
-     * @param passString string with the inserted password
-     * @return boolean value defining the password as valid or not
-     */
-    public boolean isPassword(String passString) {
-        int n = 0;
-        char[] chars = passString.toCharArray();
-        for (char c : chars) {
-            n++;
-            if (!Character.isDigit(c)) {
-                return false;
-            }
-        }
-        if (n != 8) {
-            return false;
-        }
-        return true;
-    }
 }

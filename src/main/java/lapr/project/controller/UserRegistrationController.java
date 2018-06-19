@@ -62,6 +62,97 @@ public class UserRegistrationController {
     public User getUser() {
         return user;
     }
+    
+    
+    /**
+     * Method to verify if the String name is valid (only letters and spaces)
+     *
+     * @param name String to verify
+     * @return boolean value defining the string as valid or not
+     */
+    public static boolean isName(String name) {
+        char[] chars = name.toCharArray();
+        for (char c : chars) {
+            if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Method to verify if the String email is valid (one "@", valid email and
+     * server)
+     *
+     * @param email String with the email adress to verify
+     * @return boolean value defining the string as valid or not
+     */
+    public static boolean isEmail(String email) {
+        if (!email.contains("@")) {
+            return false;
+        }
+
+        String[] emailSplit = email.split("@");
+        if (emailSplit.length != 2) {
+            return false;
+        }
+
+        if (!emailSplit[1].contains(".")) {
+            return false;
+        }
+
+        if (emailSplit[0].equals("")) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Method to verify if the String username is valid (not empty)
+     *
+     * @param username string to verify
+     * @return boolean value defining the string as valid or not
+     */
+    public static boolean isUsername(String username) {
+
+        if (username.equals("")) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Method to verify if the String password is valid (only digits and >=8)
+     *
+     * @param passString string with the inserted password
+     * @return boolean value defining the password as valid or not
+     */
+    public static boolean isPassword(String passString) {
+        int n = 0;
+        int dif=0;
+        char[] chars = passString.toCharArray();
+        for (char c : chars) {
+            n++;
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+            if(chars[0]!=c){
+                dif++;
+            }
+        }
+        //8 dígitos
+        if (n != 8) {
+            return false;
+        }
+        //não podem ser todos iguais
+        if(dif==0){
+            return false;
+        }
+        return true;
+    }
+    
 
     public void registerLog(String username) {
         Utils.writeLog(username+" Registered;"); 
