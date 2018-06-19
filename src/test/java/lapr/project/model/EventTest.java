@@ -445,6 +445,19 @@ public class EventTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEquals5() {
+        System.out.println("equals5");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        Event instance = new Event("Evento teste2", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        boolean expResult = false;
+        boolean result = instance.equals(event);
+        assertEquals(expResult, result);
+    }
+    
     @Test
     public void testSetAndGetDescription() {
         System.out.println("Set Get Decription");
@@ -623,8 +636,8 @@ public class EventTest {
         System.out.println("toString2");
         Event instance = new Event();
         instance = data.getEventRegister().getEvent(0);
-        String expResult = instance.toString();
-        String result = instance.toString();
+        String expResult = instance.toString2();
+        String result = instance.toString2();
         assertEquals(expResult, result);
     }
 
