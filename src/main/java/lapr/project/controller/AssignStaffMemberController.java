@@ -10,8 +10,7 @@ import java.util.List;
 import lapr.project.model.Event;
 import lapr.project.model.EventRegister;
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.model.Organiser;
-import lapr.project.model.OrganiserRegister;
+
 import lapr.project.model.StaffMember;
 import lapr.project.model.StaffRegister;
 import lapr.project.model.User;

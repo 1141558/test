@@ -72,4 +72,20 @@ public class UserRegisterTest {
         assertEquals(expResult, result);
         assertEquals(false, instance.userExists(user2));
     }
+    
+    
+       @Test
+    public void testgetAvailablesUsersWithoutOrganisersTest() {
+        System.out.println("userExists");
+        User user1 = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        User user2 = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        UserRegister instance = new UserRegister();
+        OrganiserRegister orgReg= new OrganiserRegister();
+        Organiser org = new Organiser(user2);
+        orgReg.addOrganiser(org);
+        instance.addUser(user1);
+       UserRegister userReg= new UserRegister();
+       userReg.getAvailableUsersWithoutOrganisers(orgReg.getOrganiserList());
+        
+    }
 }
