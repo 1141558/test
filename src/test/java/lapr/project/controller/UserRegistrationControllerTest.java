@@ -63,14 +63,25 @@ public class UserRegistrationControllerTest {
     public void testIsName() {
         System.out.println("isName");
         String name = "Nome Nome";
-        String notName = "123 José";
         ExhibitionCentre centre = new ExhibitionCentre();
         UserRegistrationController instance = new UserRegistrationController(centre);
         boolean expResult = true;
         boolean result = instance.isName(name);
-        boolean result2 = instance.isName(notName);
         assertEquals(expResult, result);
-        assertNotEquals(expResult, result2);
+    }
+    
+    /**
+     * Test of isName method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsNameNumber() {
+        System.out.println("isName");
+        String name = "123 José";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isName(name);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -80,14 +91,81 @@ public class UserRegistrationControllerTest {
     public void testIsEmail() {
         System.out.println("isEmail");
         String email = "emailtest@gmail.com";
-        String notEmail = "emailtest@gmail.com@hotmail.com";
         ExhibitionCentre centre = new ExhibitionCentre();
         UserRegistrationController instance = new UserRegistrationController(centre);
         boolean expResult = true;
         boolean result = instance.isEmail(email);
-        boolean result2 = instance.isEmail(notEmail);
         assertEquals(expResult, result);
-        assertNotEquals(expResult, result2);
+    }
+    
+    /**
+     * Test of isEmail method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsEmailEmptyFirst() {
+        System.out.println("isEmail");
+        String email = "@gmail.com";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isEmail(email);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isEmail method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsEmailEmpty() {
+        System.out.println("isEmail");
+        String email = "";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isEmail(email);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isEmail method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsEmailMultipleAt() {
+        System.out.println("isEmail");
+        String email = "emailtest@gmail.com@hotmail.com";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isEmail(email);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isEmail method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsEmailNoAt() {
+        System.out.println("isEmail");
+        String email = "emailtestgmail.com";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isEmail(email);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isEmail method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsEmailNoPoint() {
+        System.out.println("isEmail");
+        String email = "emailtest@gmailcom";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isEmail(email);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -97,14 +175,25 @@ public class UserRegistrationControllerTest {
     public void testIsUsername() {
         System.out.println("isUsername");
         String username = "user123";
-        String notUsername = "";
         ExhibitionCentre centre = new ExhibitionCentre();
         UserRegistrationController instance = new UserRegistrationController(centre);
         boolean expResult = true;
         boolean result = instance.isUsername(username);
-        boolean result2 = instance.isUsername(notUsername);
         assertEquals(expResult, result);
-        assertNotEquals(expResult, result2);
+    }
+    
+    /**
+     * Test of isUsername method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsUsernameEmpty() {
+        System.out.println("isUsername");
+        String username = "";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isUsername(username);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -114,16 +203,55 @@ public class UserRegistrationControllerTest {
     public void testIsPassword() {
         System.out.println("isPassword");
         String passString = "12345678";
-        String notPassString = "12345abc";
         ExhibitionCentre centre = new ExhibitionCentre();
         UserRegistrationController instance = new UserRegistrationController(centre);
         boolean expResult = true;
         boolean result = instance.isPassword(passString);
-        boolean result2 = instance.isPassword(notPassString);
         assertEquals(expResult, result);
-        assertNotEquals(expResult, result2);
+    }
+    
+     /**
+     * Test of isPassword method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsPasswordNotNumbers() {
+        System.out.println("isPassword");
+        String passString = "12345abc";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isPassword(passString);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of isPassword method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsPasswordLength() {
+        System.out.println("isPassword");
+        String passString = "1234567";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isPassword(passString);
+        assertEquals(expResult, result);
     }
 
+    /**
+     * Test of isPassword method, of class UserRegistrationUI.
+     */
+    @Test
+    public void testIsPasswordSame() {
+        System.out.println("isPassword");
+        String passString = "00000000";
+        ExhibitionCentre centre = new ExhibitionCentre();
+        UserRegistrationController instance = new UserRegistrationController(centre);
+        boolean expResult = false;
+        boolean result = instance.isPassword(passString);
+        assertEquals(expResult, result);
+    }
+    
     /**
      * Test of getUser method, of class UserRegistrationController.
      */
