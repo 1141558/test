@@ -6,6 +6,9 @@
 package lapr.project.model;
 
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import lapr.project.controller.DummyData;
 import org.junit.Assert;
@@ -285,23 +288,449 @@ public class EventTest {
     }
     
     @Test
-    public void testDetDescription() {
-        System.out.println("Get Decription");
-        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
-        event.getDescription();
-        Assert.assertEquals("Teste para evento", event.getDescription().toString());
+    public void testSetAndGetDescription() {
+        System.out.println("Set Get Decription");
+        String description = "Description";
+        Event instance = new Event();
+        instance.setDescription(description);
+        String expResult = "Description";
+        String result = instance.getDescription();
+        assertEquals(expResult, result);
     }
-    
+
+    /**
+     * Test of getTitle method, of class Event.
+     */
     @Test
-    public void testGetstartDate() {
-        System.out.println("Get Decription");
-        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
-        
-        Assert.assertEquals("Evento teste", event.getTitle());
-        Assert.assertEquals("Teste para evento", event.getDescription());
-        Assert.assertEquals(event.getStartDate(), data.getDate1());
-        Assert.assertEquals(event.getEndDate(), data.getDate2());
-        Assert.assertEquals("", event.getPlace());
+    public void testGetAndSetTitle() {
+        System.out.println("set and getTitle");
+        String Title = "Titulo";
+        Event instance = new Event();
+        instance.setTitle(Title);
+        String expResult = "Titulo";
+        String result = instance.getTitle();
+        assertEquals(expResult, result);
     }
+
+    /**
+     * Test of getStartDate method, of class Event.
+     */
+    @Test
+    public void testSetAndGetStartDate() {
+        System.out.println("set and getStartDate");
+        Event instance = new Event();
+        Date expResult = new Date();
+        Calendar calendar = Calendar.getInstance();
+        expResult = calendar.getTime();
+        instance.setStartDate(expResult);
+        Date result = instance.getStartDate();
+        assertEquals(expResult, result);
+    }
+
+//    /**
+//     * Test of getEndDate method, of class Event.
+//     */
+//    @Test
+//    public void testGetEndDate() {
+//        System.out.println("getEndDate");
+//        Event instance = new Event();
+//        Date expResult = null;
+//        Date result = instance.getEndDate();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setEndDate method, of class Event.
+//     */
+//    @Test
+//    public void testSetEndDate() {
+//        System.out.println("setEndDate");
+//        Date endDate = null;
+//        Event instance = new Event();
+//        instance.setEndDate(endDate);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getPlace method, of class Event.
+//     */
+//    @Test
+//    public void testGetPlace() {
+//        System.out.println("getPlace");
+//        Event instance = new Event();
+//        String expResult = "";
+//        String result = instance.getPlace();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setPlace method, of class Event.
+//     */
+//    @Test
+//    public void testSetPlace() {
+//        System.out.println("setPlace");
+//        String place = "";
+//        Event instance = new Event();
+//        instance.setPlace(place);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getOrganisersRegister method, of class Event.
+//     */
+//    @Test
+//    public void testGetOrganisersRegister() {
+//        System.out.println("getOrganisersRegister");
+//        Event instance = new Event();
+//        OrganiserRegister expResult = null;
+//        OrganiserRegister result = instance.getOrganisersRegister();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setOrganisersRegister method, of class Event.
+//     */
+//    @Test
+//    public void testSetOrganisersRegister() {
+//        System.out.println("setOrganisersRegister");
+//        OrganiserRegister organisersList = null;
+//        Event instance = new Event();
+//        instance.setOrganisersRegister(organisersList);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getOrganiserRegister method, of class Event.
+//     */
+//    @Test
+//    public void testGetOrganiserRegister() {
+//        System.out.println("getOrganiserRegister");
+//        Event instance = new Event();
+//        OrganiserRegister expResult = null;
+//        OrganiserRegister result = instance.getOrganiserRegister();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of addOrganiserRegister method, of class Event.
+//     */
+//    @Test
+//    public void testAddOrganiserRegister() {
+//        System.out.println("addOrganiserRegister");
+//        OrganiserRegister organiserRegister = null;
+//        Event instance = new Event();
+//        instance.addOrganiserRegister(organiserRegister);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setEventState method, of class Event.
+//     */
+//    @Test
+//    public void testSetEventState() {
+//        System.out.println("setEventState");
+//        EventState eventState = null;
+//        Event instance = new Event();
+//        instance.setEventState(eventState);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getEventManager method, of class Event.
+//     */
+//    @Test
+//    public void testGetEventManager() {
+//        System.out.println("getEventManager");
+//        Event instance = new Event();
+//        EventManager expResult = null;
+//        EventManager result = instance.getEventManager();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setEventManager method, of class Event.
+//     */
+//    @Test
+//    public void testSetEventManager() {
+//        System.out.println("setEventManager");
+//        EventManager eventManager = null;
+//        Event instance = new Event();
+//        instance.setEventManager(eventManager);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getStaffRegister method, of class Event.
+//     */
+//    @Test
+//    public void testGetStaffRegister() {
+//        System.out.println("getStaffRegister");
+//        Event instance = new Event();
+//        StaffRegister expResult = null;
+//        StaffRegister result = instance.getStaffRegister();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setStaffRegister method, of class Event.
+//     */
+//    @Test
+//    public void testSetStaffRegister() {
+//        System.out.println("setStaffRegister");
+//        StaffRegister staffRegister = null;
+//        Event instance = new Event();
+//        instance.setStaffRegister(staffRegister);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getEventState method, of class Event.
+//     */
+//    @Test
+//    public void testGetEventState() {
+//        System.out.println("getEventState");
+//        Event instance = new Event();
+//        EventState expResult = null;
+//        EventState result = instance.getEventState();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getDaysApplication method, of class Event.
+//     */
+//    @Test
+//    public void testGetDaysApplication() {
+//        System.out.println("getDaysApplication");
+//        Event instance = new Event();
+//        int expResult = 0;
+//        int result = instance.getDaysApplication();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setDaysApplication method, of class Event.
+//     */
+//    @Test
+//    public void testSetDaysApplication() {
+//        System.out.println("setDaysApplication");
+//        int daysApplication = 0;
+//        Event instance = new Event();
+//        instance.setDaysApplication(daysApplication);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of toString method, of class Event.
+//     */
+//    @Test
+//    public void testToString() {
+//        System.out.println("toString");
+//        Event instance = new Event();
+//        instance = data.getEventRegister().getEvent(0);
+//        String expResult = instance.toString();
+//        String result = instance.toString();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of toString2 method, of class Event.
+//     */
+//    @Test
+//    public void testToString2() {
+//        System.out.println("toString2");
+//        Event instance = new Event();
+//        instance = data.getEventRegister().getEvent(0);
+//        String expResult = instance.toString();
+//        String result = instance.toString();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getStandRegister method, of class Event.
+//     */
+//    @Test
+//    public void testGetStandRegister() {
+//        System.out.println("getStandRegister");
+//        Event instance = new Event();
+//        StandRegister expResult = null;
+//        StandRegister result = instance.getStandRegister();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setStandRegister method, of class Event.
+//     */
+//    @Test
+//    public void testSetStandRegister() {
+//        System.out.println("setStandRegister");
+//        StandRegister standRegister = null;
+//        Event instance = new Event();
+//        instance.setStandRegister(standRegister);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getApplicationRegister method, of class Event.
+//     */
+//    @Test
+//    public void testGetApplicationRegister() {
+//        System.out.println("getApplicationRegister");
+//        Event instance = new Event();
+//        ApplicationRegister expResult = null;
+//        ApplicationRegister result = instance.getApplicationRegister();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setApplicationRegister method, of class Event.
+//     */
+//    @Test
+//    public void testSetApplicationRegister() {
+//        System.out.println("setApplicationRegister");
+//        ApplicationRegister applicationRegister = null;
+//        Event instance = new Event();
+//        instance.setApplicationRegister(applicationRegister);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of createStaffMemberRegister method, of class Event.
+//     */
+//    @Test
+//    public void testCreateStaffMemberRegister() {
+//        System.out.println("createStaffMemberRegister");
+//        Event instance = new Event();
+//        StaffRegister expResult = null;
+//        StaffRegister result = instance.createStaffMemberRegister();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of saveStaffRegister method, of class Event.
+//     */
+//    @Test
+//    public void testSaveStaffRegister() {
+//        System.out.println("saveStaffRegister");
+//        StaffRegister staffRegister = null;
+//        Event instance = new Event();
+//        instance.saveStaffRegister(staffRegister);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getDateEndApplications method, of class Event.
+//     */
+//    @Test
+//    public void testGetDateEndApplications() {
+//        System.out.println("getDateEndApplications");
+//        Event instance = new Event();
+//        Date expResult = null;
+//        Date result = instance.getDateEndApplications();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setDateEndApplications method, of class Event.
+//     */
+//    @Test
+//    public void testSetDateEndApplications() {
+//        System.out.println("setDateEndApplications");
+//        Date dateEndApplications = null;
+//        Event instance = new Event();
+//        instance.setDateEndApplications(dateEndApplications);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getEventApplicationByState method, of class Event.
+//     */
+//    @Test
+//    public void testGetEventApplicationByState() {
+//        System.out.println("getEventApplicationByState");
+//        ApplicationState accepted = null;
+//        Event instance = new Event();
+//        List<Application> expResult = null;
+//        List<Application> result = instance.getEventApplicationByState(accepted);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getEventApplicationByAcception method, of class Event.
+//     */
+//    @Test
+//    public void testGetEventApplicationByAcception() {
+//        System.out.println("getEventApplicationByAcception");
+//        Event instance = new Event();
+//        List<Application> expResult = null;
+//        List<Application> result = instance.getEventApplicationByAcception();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getRooms method, of class Event.
+//     */
+//    @Test
+//    public void testGetRooms() {
+//        System.out.println("getRooms");
+//        Event instance = new Event();
+//        int expResult = 0;
+//        int result = instance.getRooms();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of setRooms method, of class Event.
+//     */
+//    @Test
+//    public void testSetRooms() {
+//        System.out.println("setRooms");
+//        int rooms = 0;
+//        Event instance = new Event();
+//        instance.setRooms(rooms);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
 }

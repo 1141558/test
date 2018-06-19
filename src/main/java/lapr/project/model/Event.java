@@ -58,10 +58,8 @@ public class Event implements Comparable<Event>, Serializable {
     }
     
     public void changeToReadyForApplication() {
-        if ((!this.staffRegister.isEmpty()) && (!this.organiserRegister.isEmpty()) && this.daysApplication != 0) //{
-        {
+        if ((!this.staffRegister.isEmpty()) && (!this.organiserRegister.isEmpty()) && this.daysApplication != 0)
             this.eventState = EventState.READY_FOR_APPLICATION;
-        }
     }
     
     public boolean isCreated() {
@@ -317,6 +315,11 @@ public class Event implements Comparable<Event>, Serializable {
         this.dateEndApplications = dateEndApplications;
     }
     
+    /**
+     *
+     * @param accepted Application State
+     * @return List<Application>
+     */
     public List<Application> getEventApplicationByState(ApplicationState accepted) {
         List<Application> acceptedApplicationList = new ArrayList<>();
         
@@ -329,6 +332,10 @@ public class Event implements Comparable<Event>, Serializable {
         return acceptedApplicationList;
     }
 
+    /**
+     *
+     * @return List<Application>
+     */
     public List<Application> getEventApplicationByAcception() {
         List<Application> acceptedApplicationList = new ArrayList<>();
         
