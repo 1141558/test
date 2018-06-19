@@ -8,7 +8,7 @@ package lapr.project.ui;
 import lapr.project.controller.UserRegistrationController;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.utils.Utils;
-import static lapr.project.controller.UserRegistrationController.*;
+//import static lapr.project.controller.UserRegistrationController.*;
 
 /**
  *
@@ -17,13 +17,6 @@ import static lapr.project.controller.UserRegistrationController.*;
 public class UserRegistrationUI {
 
     private UserRegistrationController controller;
-
-    /**
-     * Empty constructor for test purposes
-     */
-    public UserRegistrationUI() {
-        ExhibitionCentre testCentre = new ExhibitionCentre();
-    }
 
     /**
      * Constructor
@@ -48,22 +41,22 @@ public class UserRegistrationUI {
         username = Utils.readLineFromConsole("USERNAME: ");
         passwordString = Utils.readLineFromConsole("PASSWORD: ");
 
-        while (!isName(name)) {
+        while (!controller.isName(name)) {
             Utils.printError("The name inserted is not valid!\nPlease try again.");
             name = Utils.readLineFromConsole("NAME: ");
         }
 
-        while (!isEmail(email)) {
+        while (!controller.isEmail(email)) {
             Utils.printError("The email inserted is not valid!\nPlease try again.");
             email = Utils.readLineFromConsole("EMAIL: ");
         }
 
-        while (!isUsername(username)) {
+        while (!controller.isUsername(username)) {
             Utils.printError("The username inserted is not valid!\nPlease try again.");
             username = Utils.readLineFromConsole("USERNAME: ");
         }
 
-        while (!isPassword(passwordString)) {
+        while (!controller.isPassword(passwordString)) {
             Utils.printError("The password inserted is not valid!\nPlease try again.");
             passwordString = Utils.readLineFromConsole("PASSWORD: ");
         }
