@@ -27,7 +27,8 @@ public class LoginUI {
         Console console = System.console();
         Scanner scanner = new Scanner(System.in);
 
-        String username = "", passwordString="";
+        String username = "";
+        String passwordString=new String();
         char[] password;
         boolean accepted=false;
        while(!accepted){
