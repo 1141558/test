@@ -14,6 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ReviewTest {
     
+    StaffMember staffMemberReviewer = new StaffMember();
+    Review reviewOne = new Review("RV1", 4, 4, 5, 2, Decision.DECLINED, staffMemberReviewer);
+    
     public ReviewTest() {
     }
 
@@ -278,7 +281,9 @@ public class ReviewTest {
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
-        Review instance = new Review();
+        User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
+        StaffMember staff = new StaffMember(user);
+        Review instance = new Review("text", 3, 4, 4, 3, Decision.ACCEPTED, staff);
         int expResult = instance.hashCode();
         int result = instance.hashCode();
         assertEquals(expResult, result);
