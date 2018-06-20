@@ -6,14 +6,10 @@
 package lapr.project.controller;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import javax.xml.parsers.ParserConfigurationException;
 import lapr.project.model.Event;
 import lapr.project.model.EventState;
@@ -22,7 +18,6 @@ import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
 import lapr.project.model.Role;
 import lapr.project.model.User;
-import lapr.project.ui.MainMenu;
 import lapr.project.ui.UtilsUI;
 import lapr.project.utils.Utils;
 import lapr.project.utils.XMLDecoder;
@@ -34,7 +29,7 @@ import org.xml.sax.SAXException;
  */
 public class CreateEventController {
 
-    private ExhibitionCentre exhibitionCentre;
+    private final ExhibitionCentre exhibitionCentre;
     private Event event;
     private OrganiserRegister or;
     
@@ -124,11 +119,7 @@ public class CreateEventController {
     public void setOr(OrganiserRegister or) {
         this.or = or;
     }
-
-    public void getEventFromFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+ 
     public boolean getEventFromFile(String filename){
         boolean x; 
         try{

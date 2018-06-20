@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.controller;
 
 import java.util.ArrayList;
@@ -10,7 +10,6 @@ import java.util.List;
 import lapr.project.model.Application;
 import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
-import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
 import lapr.project.model.Workshop;
@@ -21,60 +20,61 @@ import lapr.project.utils.Utils;
  * @author MariaJoão
  */
 public class SubmitApplicationToEventController {
-
-    Application application;  
-    ExhibitionCentre centre;
+    
+    private Application application;
+    private ExhibitionCentre centre;
     private Event event;
-    List<Event> events= new  ArrayList<>();
+    private List<Event> events = new ArrayList<>();
+    
     public SubmitApplicationToEventController(ExhibitionCentre centre) {
-        this.application= new Application();
-        this.centre=centre;
+        this.application = new Application();
+        this.centre = centre;
     }
-
+    
     public List<Event> getEventsReadyForApplications() {
-        List<Event> list= new ArrayList<>(); 
+        List<Event> list = new ArrayList<>();
         for (Event e : centre.getEventRegister().getEventList()) {
-        /*DESCOMENTAR DEPOIS*/    
-        //if(e.getEventState().equals(EventState.OPEN_APPLICATION)){
-                list.add(e);
+            /*DESCOMENTAR DEPOIS*/
+            //if(e.getEventState().equals(EventState.OPEN_APPLICATION)){
+            list.add(e);
             //}
         }
         return list;
     }
-
+    
     public void registerApplication() {
         this.getEvent().getApplicationRegister().addApplication(this.application);
     }
-
+    
     public void setEvent(int n) {
-        this.event= getEventsReadyForApplications().get(n);
+        this.event = getEventsReadyForApplications().get(n);
     }
-
+    
     public void registerLog() {
-        Utils.writeLog(this.centre.getUserOnline().getUsername()+" submited application '"+this.application.getDescription()+"' to event '"+this.getEvent().getTitle()+"';");
+        Utils.writeLog(this.centre.getUserOnline().getUsername() + " submited application '" + this.application.getDescription() + "' to event '" + this.getEvent().getTitle() + "';");
     }
-
+    
     public boolean validatePhoneNumber(int phoneNumber) {
-        int length = (int)(Math.log10(phoneNumber)+1);
-        if(length!=9){
+        int length = (int) (Math.log10(phoneNumber) + 1);
+        if (length != 9) {
             return false;
         }
         return true;
     }
-
+    
     /**
      * @return the event
      */
     public Event getEvent() {
         return event;
     }
-
+    
     public void setData(String description, int nInvites, List<String> keywords, double area, String companyName, int phoneNumber, int vatNumber, List<Workshop> workshop_list) {
-        List<Keyword> list= new ArrayList<>();
+        List<Keyword> list = new ArrayList<>();
         this.application.setDescription(description);
         this.application.setNumberInvites(nInvites);
         for (String keyword : keywords) {
-            Keyword k= new Keyword();
+            Keyword k = new Keyword();
             k.setValue(keyword);
             list.add(k);
         }
@@ -84,7 +84,7 @@ public class SubmitApplicationToEventController {
         this.application.setVatNumber(vatNumber);
         this.application.setBoothArea(area);
         this.application.setWorkshopList(workshop_list);
-        this.application.setState(ApplicationState.CREATED); 
+        this.application.setState(ApplicationState.CREATED);
         this.application.setUserThatSubmited(this.centre.getUserOnline());
         
     }

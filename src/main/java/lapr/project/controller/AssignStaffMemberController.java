@@ -23,8 +23,8 @@ import lapr.project.utils.Utils;
  */
 public class AssignStaffMemberController {
     
-    private ExhibitionCentre exhibitionCentre;
-    private EventRegister eventRegister;
+    private final ExhibitionCentre exhibitionCentre;
+    private EventRegister evReg;
     
     private StaffRegister staffRegister;
     private UserRegister usersRegister;
@@ -40,11 +40,9 @@ public class AssignStaffMemberController {
     public List<Event> getEventsListByOrganiser() {
         
         User organiserValidated = exhibitionCentre.getUserOnline();
-        eventRegister = exhibitionCentre.getEventRegister();
-        List<Event> eventList = eventRegister.getEventListByOrganiser(organiserValidated);
-        
-        return eventList;
-        
+        evReg = exhibitionCentre.getEventRegister();
+       return evReg.getEventListByOrganiser(organiserValidated);
+  
     }
     
     public void selectEvent(Event eventSelected) {
@@ -54,21 +52,20 @@ public class AssignStaffMemberController {
     
     public List<User> filterUserRegisterByNoOrganiserEventSelected() {
         
-        List<User> usersExhibitionCentreCopyWithoutOrganisers = new ArrayList<>();
+        
         usersRegister = exhibitionCentre.getUserRegister();
-        usersExhibitionCentreCopyWithoutOrganisers = usersRegister.getAvailableUsersWithoutOrganisers(event.getOrganisersRegister().getOrganiserList());
-        return usersExhibitionCentreCopyWithoutOrganisers;
+       return usersRegister.getAvailableUsersWithoutOrganisers(event.getOrganisersRegister().getOrganiserList());
+       
     }
     
     public List<User> getAvailableUsers() {
         
         List<User> filterUserRegisterByNoOrganiserEventSelectedCopy = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected());
         
-        List<User> filterUserRegisterByNoOrganiserEventSelectedAndNoEventStaff = new ArrayList<>();
+       
         
-        List<User> usersrWithoutOrganisersAndEventStaffList = usersRegister.getAvailableUsersWithoutStaffMember(event.getStaffRegister().getStaffList(), filterUserRegisterByNoOrganiserEventSelectedCopy);
+      return usersRegister.getAvailableUsersWithoutStaffMember(event.getStaffRegister().getStaffList(), filterUserRegisterByNoOrganiserEventSelectedCopy);
         
-        return usersrWithoutOrganisersAndEventStaffList;
     }
     
     public StaffMember assignUser(List<User> availableUserToAssignToEvent, int userPos) {
