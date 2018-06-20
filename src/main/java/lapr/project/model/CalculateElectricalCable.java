@@ -14,16 +14,25 @@ import java.util.List;
  * @author JM
  */
 public class CalculateElectricalCable {
-    
-    private CalculateElectricalCable(){
-        
+
+    /**
+     * Constructor
+     */
+    private CalculateElectricalCable() {
+
     }
 
+    /**
+     * Method to calculate the minimum cable path
+     *
+     * @param stands List of existing stands
+     * @return List of the minimum path tree
+     */
     public static List<StandConnection> cablePath(List<Stand> stands) {
 
         //Gerar as ligações existentes em formato StandConnection
         List<StandConnection> connections = generateConnections(stands);
-        
+
         //Sort connections por distância, crescente
         Collections.sort(connections);
 
@@ -80,6 +89,12 @@ public class CalculateElectricalCable {
         return tree.get(0);
     }
 
+    /**
+     * Method to calculate the minimum amount of cable length
+     *
+     * @param tree Minimum path tree previously generated
+     * @return Return the length
+     */
     public static double cableLength(ArrayList<StandConnection> tree) {
         double length = 0.0;
 
@@ -89,18 +104,16 @@ public class CalculateElectricalCable {
         return length;
     }
 
-    
-    
-    
     /**
      * Generates StandConnection connections based on the Stand list
+     *
      * @param stands Stand list of the existing stands
      * @return List of StandConnection with the existing connections
      */
-    public static List<StandConnection> generateConnections(List<Stand> stands){
-         ArrayList<StandConnection> connections = new ArrayList<>();
-         
-         for (Stand temp : stands) {
+    public static List<StandConnection> generateConnections(List<Stand> stands) {
+        ArrayList<StandConnection> connections = new ArrayList<>();
+
+        for (Stand temp : stands) {
             if (temp.getDistanceList() != null) {
                 List<Distance> distancias = temp.getDistanceList();
 
@@ -112,7 +125,5 @@ public class CalculateElectricalCable {
         }
         return connections;
     }
-    
-    
-    
+
 }
