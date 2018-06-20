@@ -20,6 +20,8 @@ import java.util.List;
  */
 public class Application implements Importable<Application>, Exportable {
 
+
+
     private static final String ROOT_ELEMENT_NAME = "application";
     private static final String DESCRIPTION_ELEMENT_NAME = "description";
     private static final String KEYWORDS_ELEMENT_NAME = "keywords";
@@ -33,8 +35,7 @@ public class Application implements Importable<Application>, Exportable {
     private int numberInvites;
     private List<Workshop> workshopList;
     private ApplicationState state;
-    
-    private List<Organiser> organisers ;
+    private User userThatSubmited;
     
     /**
      * Constructor for Application
@@ -47,12 +48,14 @@ public class Application implements Importable<Application>, Exportable {
         this.keywordList= keywordList;
         this.listReview=  listReview;
         this.workshopList= new ArrayList<>();
+        this.userThatSubmited= new User();
 
     }
     public Application(String description, List<Keyword> keywordList) {
         this.description = description;
         this.keywordList= keywordList;
         this.workshopList= new ArrayList<>();
+        this.userThatSubmited= new User();
 
     }
     /**
@@ -62,6 +65,7 @@ public class Application implements Importable<Application>, Exportable {
         this.keywordList= new ArrayList<>();
         this.listReview= new ArrayList<>();
         this.workshopList= new ArrayList<>();
+        this.userThatSubmited= new User();
     }
 
     public Application(String description) {
@@ -69,8 +73,29 @@ public class Application implements Importable<Application>, Exportable {
         this.keywordList= new ArrayList<>();
         this.listReview= new ArrayList<>();
         this.workshopList= new ArrayList<>();
+        this.userThatSubmited= new User();
+
+    }
+    /**
+     * @return the nameOfCompany
+     */
+    public String getNameOfCompany() {
+        return nameOfCompany;
     }
 
+    /**
+     * @return the phoneNumber
+     */
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * @return the vatNumber
+     */
+    public int getVatNumber() {
+        return vatNumber;
+    }
     /**
      * Obtain Candidatura's description.
      *
@@ -319,5 +344,19 @@ public class Application implements Importable<Application>, Exportable {
      */
     public void setWorkshopList(List<Workshop> workshopList) {
         this.workshopList = workshopList;
+    }
+
+    /**
+     * @return the userThatSubmited
+     */
+    public User getUserThatSubmited() {
+        return userThatSubmited;
+    }
+
+    /**
+     * @param userThatSubmited the userThatSubmited to set
+     */
+    public void setUserThatSubmited(User userThatSubmited) {
+        this.userThatSubmited = userThatSubmited;
     }
 }

@@ -59,6 +59,7 @@ public class SubmitApplicationToEventUI {
                     }           
         }
         
+        
         description = Utils.readLineFromConsole("DESCRIPTION: ");
         while(nInvites<0){
             try{
@@ -70,7 +71,6 @@ public class SubmitApplicationToEventUI {
                 }catch(NumberFormatException e){
 
                 UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
-
             }           
         }
         while(nKeywords<5){

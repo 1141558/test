@@ -123,7 +123,7 @@ public class MainMenu implements Serializable{
                     new SubmitApplicationToEventUI(centre);  
                 break;
                 case 2:
-                    /*TO DO*/
+                    new UpdateOrWithdrawApplicationUI(centre);
                 break; 
             } 
         }else if(centre.getUserOnline().getRole().equals(Role.ATENDEE)){
@@ -140,3 +140,4 @@ public class MainMenu implements Serializable{
     }
     
 }
+

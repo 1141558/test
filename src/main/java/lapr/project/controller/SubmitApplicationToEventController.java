@@ -76,13 +76,17 @@ public class SubmitApplicationToEventController {
         for (String keyword : keywords) {
             Keyword k= new Keyword();
             k.setValue(keyword);
+            list.add(k);
         }
         this.application.setKeywordList(list);
         this.application.setNameOfCompany(companyName);
         this.application.setPhoneNumber(phoneNumber);
         this.application.setVatNumber(vatNumber);
+        this.application.setBoothArea(area);
         this.application.setWorkshopList(workshop_list);
-        this.application.setState(ApplicationState.CREATED);   
+        this.application.setState(ApplicationState.CREATED); 
+        this.application.setUserThatSubmited(this.centre.getUserOnline());
+        
     }
     
 }
