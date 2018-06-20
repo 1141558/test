@@ -32,8 +32,9 @@ public class UserTest {
     @Test
     public void testSetName() {
         System.out.println("setName");
-        String name = "Nome Nome";
-        User instance = new User();
+        User instance2 = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        String name = "José Magalhães";
+        User instance = new User(instance2);
         instance.setName(name);
         assertEquals(name, instance.getName());
     }
@@ -138,5 +139,37 @@ public class UserTest {
         assertEquals(false, user1.equals(userNull));
         assertEquals(expResult, result);
         assertNotEquals(expResult, result2);
+    }
+
+    /**
+     * Test of hashCode method, of class User.
+     */
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        User instance = new User();
+        int expResult = -1779633265;
+        int result = instance.hashCode();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of hashCode method, of class User.
+     */
+    @Test
+    public void testHashCode2() {
+        System.out.println("hashCode");
+        User instance = new User("José","j@gmail.com","jose",0.1234);
+        double password=instance.getPassword();
+        instance.setRole(Role.EMPLOYEE);
+        int hash=5;
+        hash = 83 * hash + instance.getName().hashCode();
+        hash = 83 * hash + instance.getEmail().hashCode();
+        hash = 83 * hash + instance.getUsername().hashCode();//        double test=(int) Double.doubleToLongBits(instance.getPassword()) ^ Double.doubleToLongBits(instance.getPassword())>>>32;
+        hash = 83 * hash + (int) (Double.doubleToLongBits(password) ^ (Double.doubleToLongBits(password) >>> 32));
+        hash = 83 * hash + instance.getRole().hashCode();
+        
+        assertEquals(hash, instance.hashCode());
+        
     }
 }
