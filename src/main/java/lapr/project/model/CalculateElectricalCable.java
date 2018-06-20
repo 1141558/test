@@ -14,33 +14,25 @@ import java.util.List;
  * @author JM
  */
 public class CalculateElectricalCable {
+    
+    private CalculateElectricalCable(){
+        
+    }
 
-    public static ArrayList<StandConnection> cablePath(List<Stand> stands) {
+    public static List<StandConnection> cablePath(List<Stand> stands) {
 
-
-        ArrayList<StandConnection> connections = new ArrayList<>();
-
-        for (Stand temp : stands) {
-            if (temp.getDistanceList() != null) {
-                List<Distance> distancias = temp.getDistanceList();
-
-                for (Distance temp2 : distancias) {
-                    StandConnection c = new StandConnection(temp.getDescription(), temp2.getDescription(), temp2.getValue());
-                    connections.add(c);
-                }
-            }
-        }
-
-        //Sort connections
+        //Gerar as ligações existentes em formato StandConnection
+        List<StandConnection> connections = generateConnections(stands);
+        
+        //Sort connections por distância, crescente
         Collections.sort(connections);
 
         ArrayList<ArrayList<StandConnection>> tree = new ArrayList<>();
 
-
-        int indexA = 0, indexB = 0;
+        int indexA = 0;
+        int indexB = 0;
 
         for (StandConnection c : connections) {
-
             boolean foundA = false;
             boolean foundB = false;
             for (int i = 0; i < tree.size(); i++) {
@@ -55,14 +47,12 @@ public class CalculateElectricalCable {
                     }
                 }
             }
-
             //Se não existir
             if (!foundA && !foundB) {
                 ArrayList<StandConnection> novo = new ArrayList<>();
                 novo.add(c);
                 tree.add(novo);
             }
-
             //Se existir
             if (foundA && !foundB) {
                 tree.get(indexA).add(c);
@@ -70,7 +60,6 @@ public class CalculateElectricalCable {
             if (!foundA && foundB) {
                 tree.get(indexB).add(c);
             }
-
             if ((foundA && foundB) && (indexA != indexB)) {
                 tree.get(indexA).add(c);
                 if (indexB < indexA) {
@@ -100,6 +89,30 @@ public class CalculateElectricalCable {
         return length;
     }
 
-}
+    
+    
+    
+    /**
+     * Generates StandConnection connections based on the Stand list
+     * @param stands Stand list of the existing stands
+     * @return List of StandConnection with the existing connections
+     */
+    public static List<StandConnection> generateConnections(List<Stand> stands){
+         ArrayList<StandConnection> connections = new ArrayList<>();
+         
+         for (Stand temp : stands) {
+            if (temp.getDistanceList() != null) {
+                List<Distance> distancias = temp.getDistanceList();
 
-//        CalculateElectricalCable.cablePath(centre.getEventRegister().getEvent(0).getStandRegister().getStandList());
+                for (Distance temp2 : distancias) {
+                    StandConnection c = new StandConnection(temp.getDescription(), temp2.getDescription(), temp2.getValue());
+                    connections.add(c);
+                }
+            }
+        }
+        return connections;
+    }
+    
+    
+    
+}
