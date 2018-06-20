@@ -5,13 +5,17 @@
  */
 package lapr.project.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author MariaJoão
  */
-public class Review {
+public class Review implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private String text;
     private int staffTopicKnowledge;
     private int eventAdequacy;
@@ -131,39 +135,38 @@ public class Review {
     public void setAssignedStaffMember(StaffMember assignedStaffMember) {
         this.assignedStaffMember = assignedStaffMember;
     }
+
     @Override
-    public boolean equals(Object o){
-        if (this == o) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (!(o instanceof Review)) {
+        if (obj == null) {
             return false;
         }
-
-        Review that = (Review) o;
-        
-        if (!this.assignedStaffMember.equals(that.assignedStaffMember)) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        
-        if(this.eventAdequacy!=that.eventAdequacy){
+        final Review other = (Review) obj;
+        if (this.staffTopicKnowledge != other.staffTopicKnowledge) {
             return false;
         }
-        if(this.inviteAdequacy!=that.inviteAdequacy){
+        if (this.eventAdequacy != other.eventAdequacy) {
             return false;
         }
-        if(this.recommendation!=that.recommendation){
+        if (this.inviteAdequacy != other.inviteAdequacy) {
             return false;
         }
-        if(this.staffTopicKnowledge!=that.staffTopicKnowledge){
-            return false;
-        } 
-        /*
-        if(this.text.equals(that.text)){
+        if (this.recommendation != other.recommendation) {
             return false;
         }
-        */
-        return this.decision.equals(that.decision);
+        if (!Objects.equals(this.text, other.text)) {
+            return false;
+        }
+        if (this.decision != other.decision) {
+            return false;
+        }
+        return Objects.equals(this.assignedStaffMember, other.assignedStaffMember);
     }
 
     @Override
