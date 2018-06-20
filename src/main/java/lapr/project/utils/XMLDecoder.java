@@ -125,27 +125,31 @@ public class XMLDecoder {
             Node s2 = docElement.getElementsByTagName("event").item(cont);
             String title = docElement.getElementsByTagName("title").item(0).getTextContent();
             int nrRooms=0;
+            Date sd= new Date();
+            Date ed= new Date();
             String place="", startDate="", endDate="";
             if(docElement.getElementsByTagName("numberRooms").getLength()>0){
                  nrRooms = Integer.parseInt(docElement.getElementsByTagName("numberRooms").item(0).getTextContent());
             }
             if(docElement.getElementsByTagName("startDate").getLength()>0){
                  startDate = docElement.getElementsByTagName("startDate").item(0).getTextContent();
+                 e.setStartDate(Utils.changeFormat(sd, startDate));
+
             }
             if(docElement.getElementsByTagName("endDate").getLength()>0){
                  endDate = docElement.getElementsByTagName("endDate").item(0).getTextContent();
+                 e.setEndDate(Utils.changeFormat(ed, endDate));
+
             }
             if(docElement.getElementsByTagName("place").getLength()>0){
                  place = docElement.getElementsByTagName("place").item(0).getTextContent();
+                e.setPlace(place);
+
             }                        
             e.setRooms(nrRooms);
             e.setTitle(title);
-            e.setPlace(place);
-            Date sd= new Date();
-            Date ed= new Date();
 
-            e.setStartDate(Utils.changeFormat(sd, startDate));
-            e.setEndDate(Utils.changeFormat(ed, endDate));
+
             StandRegister sr= buildStandRegister(docElement);
             OrganiserRegister or= buildOrganiserRegister(docElement, centre);
             e.setOrganisersRegister(or);

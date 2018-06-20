@@ -24,7 +24,6 @@ public class UtilsTest {
         Date startDate = new Date();        
         String startDateString = "2018-07-07";
         ExhibitionCentre centre= new ExhibitionCentre();
-        Utils instance = new Utils();
         Date expResult= new Date();
 
         Calendar calendar = Calendar.getInstance();
@@ -40,7 +39,7 @@ public class UtilsTest {
         calendar.set( Calendar.MONTH, 6 );
         expResult=calendar.getTime();
         
-        Date result = instance.changeFormat(startDate, startDateString);
+        Date result = Utils.changeFormat(startDate, startDateString);
         assertEquals(result, expResult);
     }
 }
