@@ -58,10 +58,7 @@ public class Organiser  implements Comparable<Organiser> ,  Serializable{
         if (otherObject == null || getClass() != otherObject.getClass()) {
             return false;
         }
-        Organiser otherOrganiser = (Organiser) otherObject;
-        
-
- 
+        Organiser otherOrganiser = (Organiser) otherObject;   
 
         return this.getOrganiser().equals(otherOrganiser.getOrganiser());
      

@@ -7,6 +7,7 @@ package lapr.project.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -33,7 +34,22 @@ public class ApplicationRegister {
     public List<Application> getApplicationList() {
         return ApplicationList;
     }
+    
+    @Override
+    public boolean equals(Object o){
+        ApplicationRegister other= (ApplicationRegister)o;
 
+       
+        return this.ApplicationList.equals(other.getApplicationList());
+        
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 73 * hash + Objects.hashCode(this.ApplicationList);
+        return hash;
+    }
     /**
      * @param ApplicationList the ApplicationList to set
      */

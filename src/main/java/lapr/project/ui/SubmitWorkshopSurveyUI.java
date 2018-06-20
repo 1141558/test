@@ -43,12 +43,12 @@ public class SubmitWorkshopSurveyUI {
                         event_number = Integer.parseInt(Utils.readLineFromConsole("PICK EVENT YOU WOULD LIKE TO ATTEND: "));
                         controller.setEvent(n-2);
                         if(event_number <1 || event_number>n){
-                            Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
+                            UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
                             event_number=-1;                            
                         }    
                         }catch(NumberFormatException e){
 
-                        Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                        UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
                         event_number=-1;                            
 
                     }           
@@ -60,7 +60,7 @@ public class SubmitWorkshopSurveyUI {
 
                 resposta_workshops=Utils.readLineFromConsole("WORKSHOP "+lista_workshops.get(i).getDescription()+" LASTING "+lista_workshops.get(i).getDurationInHours()+" HOURS (WRITE 'Y' IF YES OR 'N' IF NO): ");
                 if(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
-                    Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+                    UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
                     i--;
                 }else if(resposta_workshops.equalsIgnoreCase("y")){
                     answers.add(Boolean.TRUE);
@@ -69,7 +69,7 @@ public class SubmitWorkshopSurveyUI {
                 }                
       }
         controller.registerAnswers(answers);
-        Utils.printConfirmation("ANSWERS SUCCESSFULY SAVED");
+        UtilsUI.printConfirmation("ANSWERS SUCCESSFULY SAVED");
         controller.registerLog();
         new MainMenu(centre);
 

@@ -20,40 +20,6 @@ import java.util.List;
  */
 public class Application implements Importable<Application>, Exportable {
 
-    /**
-     * @return the workshopList
-     */
-    public List<Workshop> getWorkshopList() {
-        return workshopList;
-    }
-
-    /**
-     * @param nameOfCompany the nameOfCompany to set
-     */
-    public void setNameOfCompany(String nameOfCompany) {
-        this.nameOfCompany = nameOfCompany;
-    }
-
-    /**
-     * @param phoneNumber the phoneNumber to set
-     */
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    /**
-     * @param vatNumber the vatNumber to set
-     */
-    public void setVatNumber(int vatNumber) {
-        this.vatNumber = vatNumber;
-    }
-
-    /**
-     * @param workshopList the workshopList to set
-     */
-    public void setWorkshopList(List<Workshop> workshopList) {
-        this.workshopList = workshopList;
-    }
     private static final String ROOT_ELEMENT_NAME = "application";
     private static final String DESCRIPTION_ELEMENT_NAME = "description";
     private static final String KEYWORDS_ELEMENT_NAME = "keywords";
@@ -80,10 +46,14 @@ public class Application implements Importable<Application>, Exportable {
         this.description = description;
         this.keywordList= keywordList;
         this.listReview=  listReview;
+        this.workshopList= new ArrayList<>();
+
     }
     public Application(String description, List<Keyword> keywordList) {
         this.description = description;
         this.keywordList= keywordList;
+        this.workshopList= new ArrayList<>();
+
     }
     /**
      * Default public constructor.
@@ -96,6 +66,9 @@ public class Application implements Importable<Application>, Exportable {
 
     public Application(String description) {
       this.description = description;
+        this.keywordList= new ArrayList<>();
+        this.listReview= new ArrayList<>();
+        this.workshopList= new ArrayList<>();
     }
 
     /**
@@ -224,6 +197,21 @@ public class Application implements Importable<Application>, Exportable {
         if (!getDescription().equals(that.getDescription())) {
             return false;
         }
+        if(Double.compare(this.boothArea, that.boothArea)!=0){
+            return false;
+        }
+        if(!this.getState().equals(that.getState())){
+            return false;
+        }
+        
+        if(!this.getWorkshopList().equals(that.getWorkshopList())){
+            return false;
+        }
+        
+        if(!this.listReview.equals(that.listReview)){
+            return false;
+        }
+        
         return getKeywordList().equals(that.getKeywordList());
 
     }
@@ -296,5 +284,40 @@ public class Application implements Importable<Application>, Exportable {
      */
     public void setState(ApplicationState state) {
         this.state = state;
+    }
+    
+    /**
+     * @return the workshopList
+     */
+    public List<Workshop> getWorkshopList() {
+        return workshopList;
+    }
+
+    /**
+     * @param nameOfCompany the nameOfCompany to set
+     */
+    public void setNameOfCompany(String nameOfCompany) {
+        this.nameOfCompany = nameOfCompany;
+    }
+
+    /**
+     * @param phoneNumber the phoneNumber to set
+     */
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * @param vatNumber the vatNumber to set
+     */
+    public void setVatNumber(int vatNumber) {
+        this.vatNumber = vatNumber;
+    }
+
+    /**
+     * @param workshopList the workshopList to set
+     */
+    public void setWorkshopList(List<Workshop> workshopList) {
+        this.workshopList = workshopList;
     }
 }

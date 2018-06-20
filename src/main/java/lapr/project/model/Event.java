@@ -264,6 +264,21 @@ public class Event implements Comparable<Event>, Serializable {
         if (!Objects.equals(this.startDate, e.startDate)) {
             return false;
         }
+        if(!Objects.equals(this.applicationRegister, e.applicationRegister)){
+            return false;
+        }
+        if(!Objects.equals(this.eventState, e.eventState)){
+            return false;
+        }
+        if(!Objects.equals(this.organiserRegister, e.organiserRegister)){
+            return false;
+        }
+        if(!Objects.equals(this.staffRegister, e.staffRegister)){
+            return false;
+        }
+        if(!Objects.equals(this.standRegister, e.standRegister)){
+            return false;
+        }
         return Objects.equals(this.daysApplication, this.daysApplication);
     }
 

@@ -43,7 +43,7 @@ public class CalculateCableUI {
         selection = Utils.readLineFromConsole("EVENT TITLE: ");
 
         while (!controller.eventExists(selection) && (!selection.equalsIgnoreCase("Q"))) {
-            Utils.printError("EVENT NOT FOUND!\nPLEASE TRY AGAIN");
+            UtilsUI.printError("EVENT NOT FOUND!\nPLEASE TRY AGAIN");
             System.out.println("EVENTS:");
             for (Event ev : events) {
                 System.out.println(ev.getTitle());
@@ -55,7 +55,7 @@ public class CalculateCableUI {
         }
         
         if(!controller.hasStands(controller.findEvent(selection))){
-            Utils.printError("THE EVENT SELECTED HAS NO STANDS!");
+            UtilsUI.printError("THE EVENT SELECTED HAS NO STANDS!");
             new InitialMenuUI(exhibitionCentre);
         }
 

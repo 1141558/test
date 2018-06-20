@@ -91,17 +91,17 @@ public final class AssignStaffMemberUI {
         while (!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")) {
             resposta = Utils.readLineFromConsole("DO YOU CONFIRM ATRIBUITION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
             if (!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")) {
-                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+                UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
         }
         if (resposta.equalsIgnoreCase("c")) {
-            Utils.printWarning("Staff Member Atribuition Cancelled");
+            UtilsUI.printWarning("Staff Member Atribuition Cancelled");
             new MainMenu(exhibitionCentre);
         } else if (resposta.equalsIgnoreCase("y")) {
             assignStaffMemberController.saveStaffMemberList();
             
             
-            Utils.printConfirmation("STAFF MEMBER ATRIBUITION SAVED");
+            UtilsUI.printConfirmation("STAFF MEMBER ATRIBUITION SAVED");
               printStaffMemberList(assignStaffMemberController.getStaffMemberList());
             assignStaffMemberController.registerLog();
             new MainMenu(exhibitionCentre);
@@ -159,17 +159,17 @@ public final class AssignStaffMemberUI {
                 
                 boolean answer = assignStaffMemberController.addStaffMemberToEvent(staffMember);
                 if (!answer) {
-                    Utils.printError("USER ALLREADY ADDED. PLEASE TRY AGAIN.");
+                    UtilsUI.printError("USER ALLREADY ADDED. PLEASE TRY AGAIN.");
                 } else {
                     staffMembers.add(staffMember);
                 }
             } else {
-                Utils.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
+                UtilsUI.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
                 
             }
         } catch (NumberFormatException e) {
             if (!user1.equalsIgnoreCase("X")) {
-                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
                 
             }
         }

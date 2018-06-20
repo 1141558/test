@@ -74,12 +74,12 @@ public class CreateEventUI {
                         try{
                             nDays = Integer.parseInt(Utils.readLineFromConsole("NUMBER OF DAYS FOR OPEN APPLICATIONS: "));
                             if(nDays<1){
-                             Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
+                             UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
 
                             }    
                             }catch(NumberFormatException e){
 
-                            Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                            UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
 
                         }           
                     }
@@ -106,7 +106,7 @@ public class CreateEventUI {
             printEvent(title, description, startDate, endDate, place,organisersToPrint, nDays);
             
             }else{
-                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+                UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
                 
             }
 
@@ -118,16 +118,16 @@ public class CreateEventUI {
         while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
             resposta=Utils.readLineFromConsole("DO YOU CONFIRM THIS EVENT? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
             if(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
-                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+                UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
         }
         if(resposta.equalsIgnoreCase("c")){
-            Utils.printWarning("EVENT CANCELED");
+            UtilsUI.printWarning("EVENT CANCELED");
             new MainMenu(exhibitionCentre);
         }else if(resposta.equalsIgnoreCase("y")){
             controller.registerEvent(); 
             controller.registerLog();
-            Utils.printConfirmation("EVENT SAVED");
+            UtilsUI.printConfirmation("EVENT SAVED");
             new MainMenu(exhibitionCentre);        
 
         }
@@ -142,11 +142,11 @@ public class CreateEventUI {
             startDate=controller.checkFormat(startDate,startDateString);
             if(controller.checkFormat(startDate,startDateString)==null){
 
-                Utils.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
+                UtilsUI.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
                 startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");               
                
             }else if(!controller.compareDates(today,startDate)){
-                Utils.printError("DATE EXPIRED, PLEASE TRY AGAIN.");
+                UtilsUI.printError("DATE EXPIRED, PLEASE TRY AGAIN.");
                 startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");                
 
             }else{
@@ -167,12 +167,12 @@ public class CreateEventUI {
         while(!validate){
             endDate=controller.checkFormat(endDate,endDateString);
             if(controller.checkFormat(endDate,endDateString)==null){
-                Utils.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
+                UtilsUI.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
                 endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
                 
             }else if(!controller.compareDates(startDate, endDate)){
                 
-                Utils.printError("END DATE MUST BE AFTER START DATE. PLEASE TRY AGAIN.");
+                UtilsUI.printError("END DATE MUST BE AFTER START DATE. PLEASE TRY AGAIN.");
                 endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");                
 
             }else{
@@ -241,17 +241,17 @@ public class CreateEventUI {
                     Organiser o = controller.createOrganiser(controller.getUsersAvailable(), userPos);
                     boolean answer = controller.addOrganiser(o);
                     if(!answer){
-                        Utils.printError("USER ALLREADY ADDED. PLEASE TRY AGAIN.");
+                        UtilsUI.printError("USER ALLREADY ADDED. PLEASE TRY AGAIN.");
                     }else{
                         organisersToPrint.add(o);
                     }
                 }else{
-                    Utils.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
+                    UtilsUI.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
 
                 }
             }catch(NumberFormatException e){
                 if(!user1.equalsIgnoreCase("X")){
-                    Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                    UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
 
                 }
             }           

@@ -51,7 +51,7 @@ public class LoginUI {
 
         
         if(!controller.login(username, passwordString)){
-            Utils.printError("USERNAME OR PASSOWORD ARE WRONG. PLEASE TRY AGAIN");
+            UtilsUI.printError("USERNAME OR PASSOWORD ARE WRONG. PLEASE TRY AGAIN");
             
         }else{
             accepted=true;

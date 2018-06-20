@@ -65,10 +65,10 @@ public class ListEventsUI {
                 if(event_index>0 && event_index<=controller.getEventsFromUser().size()){
                     answer=true;
                 }else{
-                    Utils.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
+                    UtilsUI.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
                 }
             }catch(NumberFormatException e){
-                    Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                    UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
                     answer=false;    
             }   
 

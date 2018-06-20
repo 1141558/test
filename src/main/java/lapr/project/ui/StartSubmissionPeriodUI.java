@@ -46,21 +46,21 @@ public class StartSubmissionPeriodUI {
                 try{
                     event_selected= Integer.parseInt(event_selected_string);
                     if(event_selected>n || event_selected<1){
-                        Utils.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
+                        UtilsUI.printError("NUMBER OUT OF BOUNDARIES. PLEASE TRY AGAIN.");
                      n=1;   
                     }else{
                         right=true;
                     }
                 }catch(NumberFormatException e){
-                  Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                  UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
                   n=1;  
                 }
         }
         if(controller.changeStateEventToSubmission(event_selected-1)){
-            Utils.printConfirmation("SUBMISSION PERIOD OPEN");
+            UtilsUI.printConfirmation("SUBMISSION PERIOD OPEN");
             controller.registerLog();
         }else
-            Utils.printError("IT WAS NOT POSSIBLE TO OPEN SUBMISSIN PERIOD");
+            UtilsUI.printError("IT WAS NOT POSSIBLE TO OPEN SUBMISSIN PERIOD");
     
     }
 }

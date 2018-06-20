@@ -23,6 +23,7 @@ import lapr.project.model.OrganiserRegister;
 import lapr.project.model.Role;
 import lapr.project.model.User;
 import lapr.project.ui.MainMenu;
+import lapr.project.ui.UtilsUI;
 import lapr.project.utils.Utils;
 import lapr.project.utils.XMLDecoder;
 import org.xml.sax.SAXException;
@@ -151,7 +152,7 @@ public class CreateEventController {
             x=true;
         } catch (ParserConfigurationException | IOException | SAXException e) {
             x=false;
-            Utils.printError("FAILED TO LOAD FILE : "+e.getMessage());
+            UtilsUI.printError("FAILED TO LOAD FILE : "+e.getMessage());
         }
         
         

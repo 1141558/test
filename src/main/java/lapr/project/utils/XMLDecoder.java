@@ -35,6 +35,7 @@ import lapr.project.model.StandRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
 import lapr.project.model.Workshop;
+import lapr.project.ui.UtilsUI;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -142,7 +143,7 @@ public class XMLDecoder {
             return e;
             
         } catch (ParserConfigurationException | IOException | SAXException e) {
-                Utils.printError("FAILED TO LOAD FILE : "+e.getMessage());
+                UtilsUI.printError("FAILED TO LOAD FILE : "+e.getMessage());
                 
         }
         return null;

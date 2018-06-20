@@ -48,12 +48,12 @@ public class SubmitApplicationToEventUI {
                         event_number = Integer.parseInt(Utils.readLineFromConsole("PICK EVENT: "));
                         controller.setEvent(n-2);
                         if(event_number <1 || event_number>n){
-                            Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
+                            UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
                             event_number=-1;                            
                         }    
                         }catch(NumberFormatException e){
 
-                        Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                        UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
                         event_number=-1;                            
 
                     }           
@@ -64,12 +64,12 @@ public class SubmitApplicationToEventUI {
             try{
                 nInvites = Integer.parseInt(Utils.readLineFromConsole("NUMBER OF INVITES: "));
                 if(nInvites<0){
-                 Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER OR EQUAL TO 0. PLEASE TRY AGAIN.");
+                 UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER OR EQUAL TO 0. PLEASE TRY AGAIN.");
 
                 }    
                 }catch(NumberFormatException e){
 
-                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
 
             }           
         }
@@ -81,7 +81,7 @@ public class SubmitApplicationToEventUI {
                 }else{
                    if(nKeywords<2){
                        
-                        Utils.printError("YOU NEED AT LEAST 2 KEYWORDS.");
+                        UtilsUI.printError("YOU NEED AT LEAST 2 KEYWORDS.");
                        
                    }else{
                        break;
@@ -92,12 +92,12 @@ public class SubmitApplicationToEventUI {
             try{
                 area = Double.parseDouble(Utils.readLineFromConsole("WANTED BOOTH AREA (m2): "));
                 if(area<=0){
-                 Utils.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
+                 UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
 
                 }    
                 }catch(NumberFormatException e){
 
-                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
 
             }           
         }
@@ -107,12 +107,12 @@ public class SubmitApplicationToEventUI {
             try{
                 phoneNumber = Integer.parseInt(Utils.readLineFromConsole("PHONE NUMBER: "));
                 if(!controller.validatePhoneNumber(phoneNumber)){
-                 Utils.printError("NUMBER INSERTED NOT VALID. YOU SHOULD INSERT 9 DIGIT NUMBER. PLEASE TRY AGAIN.");
+                 UtilsUI.printError("NUMBER INSERTED NOT VALID. YOU SHOULD INSERT 9 DIGIT NUMBER. PLEASE TRY AGAIN.");
 
                 }    
                 }catch(NumberFormatException e){
 
-                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
 
             }           
         }
@@ -123,7 +123,7 @@ public class SubmitApplicationToEventUI {
                 vat=true;
                 }catch(NumberFormatException e){
 
-                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
                 vat=false;    
             }           
         } 
@@ -132,7 +132,7 @@ public class SubmitApplicationToEventUI {
         while(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
             resposta_workshops=Utils.readLineFromConsole("DO YOU WISH TO DO WORKSHOPS? (WRITE 'Y' IF YES OR 'N' IF NO): ");
             if(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
-                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+                UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }               
         }
         
@@ -144,17 +144,17 @@ public class SubmitApplicationToEventUI {
         while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
             resposta=Utils.readLineFromConsole("DO YOU CONFIRM THIS APPLICATION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
             if(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
-                Utils.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+                UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
         }
         if(resposta.equalsIgnoreCase("c")){
-            Utils.printWarning("APPLICATION CANCELED");
+            UtilsUI.printWarning("APPLICATION CANCELED");
             new MainMenu(centre);
         }else if(resposta.equalsIgnoreCase("y")){
             controller.setData(description,nInvites,keywords,area,companyName, phoneNumber, vatNumber, workshop_list );
             controller.registerApplication();
             controller.registerLog();
-            Utils.printConfirmation("APPLICATION SAVED");
+            UtilsUI.printConfirmation("APPLICATION SAVED");
             new MainMenu(centre);        
 
         }
@@ -186,7 +186,7 @@ public class SubmitApplicationToEventUI {
                                 ans=true;
                                 }catch(NumberFormatException ex){
 
-                                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
                                 ans=false;    
                             }           
                         }
@@ -204,12 +204,12 @@ public class SubmitApplicationToEventUI {
                     }
                     vat=true;
                 }else{
-                Utils.printError("NUMBER OF WORSHOPS EXCEEDED. PLEASE TRY AGAIN.");
+                UtilsUI.printError("NUMBER OF WORSHOPS EXCEEDED. PLEASE TRY AGAIN.");
                  vat=false;   
                 }
                 }catch(NumberFormatException ex){
 
-                Utils.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
                 vat=false;    
             }           
         }

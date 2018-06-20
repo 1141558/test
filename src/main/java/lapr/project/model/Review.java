@@ -5,6 +5,8 @@
  */
 package lapr.project.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author MariaJoão
@@ -129,5 +131,51 @@ public class Review {
     public void setAssignedStaffMember(StaffMember assignedStaffMember) {
         this.assignedStaffMember = assignedStaffMember;
     }
+    @Override
+    public boolean equals(Object o){
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Review)) {
+            return false;
+        }
 
+        Review that = (Review) o;
+        
+        if (!this.assignedStaffMember.equals(that.assignedStaffMember)) {
+            return false;
+        }
+        
+        if(this.eventAdequacy!=that.eventAdequacy){
+            return false;
+        }
+        if(this.inviteAdequacy!=that.inviteAdequacy){
+            return false;
+        }
+        if(this.recommendation!=that.recommendation){
+            return false;
+        }
+        if(this.staffTopicKnowledge!=that.staffTopicKnowledge){
+            return false;
+        } 
+        /*
+        if(this.text.equals(that.text)){
+            return false;
+        }
+        */
+        return this.decision.equals(that.decision);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.text);
+        hash = 23 * hash + this.staffTopicKnowledge;
+        hash = 23 * hash + this.eventAdequacy;
+        hash = 23 * hash + this.inviteAdequacy;
+        hash = 23 * hash + this.recommendation;
+        hash = 23 * hash + Objects.hashCode(this.decision);
+        hash = 23 * hash + Objects.hashCode(this.assignedStaffMember);
+        return hash;
+    }
 }

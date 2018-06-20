@@ -42,22 +42,22 @@ public class UserRegistrationUI {
         passwordString = Utils.readLineFromConsole("PASSWORD: ");
 
         while (!controller.isName(name)) {
-            Utils.printError("The name inserted is not valid!\nPlease try again.");
+            UtilsUI.printError("The name inserted is not valid!\nPlease try again.");
             name = Utils.readLineFromConsole("NAME: ");
         }
 
         while (!controller.isEmail(email)) {
-            Utils.printError("The email inserted is not valid!\nPlease try again.");
+            UtilsUI.printError("The email inserted is not valid!\nPlease try again.");
             email = Utils.readLineFromConsole("EMAIL: ");
         }
 
         while (!controller.isUsername(username)) {
-            Utils.printError("The username inserted is not valid!\nPlease try again.");
+            UtilsUI.printError("The username inserted is not valid!\nPlease try again.");
             username = Utils.readLineFromConsole("USERNAME: ");
         }
 
         while (!controller.isPassword(passwordString)) {
-            Utils.printError("The password inserted is not valid!\nPlease try again.");
+            UtilsUI.printError("The password inserted is not valid!\nPlease try again.");
             passwordString = Utils.readLineFromConsole("PASSWORD: ");
         }
 
@@ -65,10 +65,10 @@ public class UserRegistrationUI {
 
         if (controller.addUser()) {
             //confirma sucesso
-            Utils.printConfirmation("User registered!");
+            UtilsUI.printConfirmation("User registered!");
             controller.registerLog(username);
         } else {
-            Utils.printError("User registration failed!");
+            UtilsUI.printError("User registration failed!");
         }
 
         new InitialMenuUI(exhibitionCentre);

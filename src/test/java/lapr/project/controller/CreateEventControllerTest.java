@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import lapr.project.model.Event;
+import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
@@ -147,7 +148,7 @@ public class CreateEventControllerTest {
         
         Organiser result = instance.createOrganiser(usersAvailable, userPos);
         boolean x=result.equals(expResult);
-        assertTrue(result.equals(expResult));
+        assertEquals(result,expResult);
         }
 
     /**
@@ -184,12 +185,11 @@ public class CreateEventControllerTest {
         expResult.setDescription(description);
         expResult.setTitle(title);
         expResult.setPlace(place);
+        expResult.setEventState(EventState.CREATED);
         expResult.setOrganisersRegister(new OrganiserRegister());
         instance.setData(title, description, null, null, place);
-        Event result= instance.getEvent();
-        boolean result2 = result.equals(expResult);
-        boolean expResult2 = true;      
-        assertEquals(result2, expResult2);
+        Event result= instance.getEvent();            
+        assertEquals(result, expResult);
 
     }
 
