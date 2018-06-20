@@ -131,18 +131,28 @@ public class StandConnectionTest {
 
     }
     
-          /**
+    /**
+     * Test of equals method, of class StandConnection.
+     */
+    @Test
+    public void testEqualsNot() {
+        System.out.println("equals");
+        Object obj = new User();
+        StandConnection instance = new StandConnection("s1", "s2", 4.3);
+        boolean expResult = false;
+        boolean result = instance.equals(obj);
+        assertEquals(expResult, result);
+    }
+
+    /**
      * Test of hashCode method, of class Stand.
      */
     @Test
     public void testHashCodeOne() {
-      StandConnection instance = new StandConnection("s3", "s4", 4.3);
-        StandConnection instance2 = new StandConnection("s3", "s4", 4.3);
+        StandConnection instance = new StandConnection("s3", "s4", 4.3);
         int result = instance.hashCode();
         int expectedResult = 1938847114;
         assertEquals(expectedResult, result);
-        
-        System.out.println(instance.hashCode());
     }
 
 }
