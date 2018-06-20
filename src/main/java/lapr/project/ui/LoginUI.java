@@ -5,9 +5,7 @@
  */
 package lapr.project.ui;
 
-import java.io.BufferedReader;
 import java.io.Console;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Scanner;
 import lapr.project.controller.LoginController;

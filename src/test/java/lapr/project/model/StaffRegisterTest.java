@@ -9,12 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import lapr.project.controller.DummyData;
-import lapr.project.model.Event;
-import lapr.project.model.ExhibitionCentre;
-import lapr.project.model.User;
 import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *

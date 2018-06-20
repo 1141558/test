@@ -171,14 +171,15 @@ public class Review implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.text);
-        hash = 23 * hash + this.staffTopicKnowledge;
-        hash = 23 * hash + this.eventAdequacy;
-        hash = 23 * hash + this.inviteAdequacy;
-        hash = 23 * hash + this.recommendation;
-        hash = 23 * hash + Objects.hashCode(this.decision);
-        hash = 23 * hash + Objects.hashCode(this.assignedStaffMember);
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.text);
+        hash = 71 * hash + this.staffTopicKnowledge;
+        hash = 71 * hash + this.eventAdequacy;
+        hash = 71 * hash + this.inviteAdequacy;
+        hash = 71 * hash + this.recommendation;
+        hash = 71 * hash + Objects.hashCode(this.decision);
+        hash = 71 * hash + Objects.hashCode(this.assignedStaffMember);
         return hash;
     }
+   
 }

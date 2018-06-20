@@ -6,11 +6,8 @@
 package lapr.project.model;
 
 import java.util.Objects;
-import lapr.project.utils.Utils;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
-import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /**
