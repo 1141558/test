@@ -30,11 +30,16 @@ public class Workshop {
         this.necessaryEquipment= new ArrayList<>();
         this.wantToAttend= new ArrayList<>();
     }
+    
     /**
      * @return the wantToAttend
      */
     public List<Boolean> getWantToAttend() {
         return wantToAttend;
+    }
+
+    public void setWantToAttend(List<Boolean> wantToAttend) {
+        this.wantToAttend = wantToAttend;
     }
 
     /**
