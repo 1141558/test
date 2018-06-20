@@ -7,6 +7,7 @@ package lapr.project.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,17 +16,17 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author andre
  */
 public class StandTest {
-    
+
     Distance dist1;
     Distance dist3;
     Distance dist2;
-    
+
     List<Distance> listDist;
-    
+
     Stand st1;
     Stand st2;
     Stand st3;
-    
+
     public StandTest() {
         this.dist1 = new Distance("Stand 1", 10.2);
         this.dist2 = new Distance("Stand 2", 14.2);
@@ -116,7 +117,7 @@ public class StandTest {
         int result = st1.compareTo(st2);
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of compareTo method, of class Stand.
      */
@@ -127,7 +128,7 @@ public class StandTest {
         int result = st1.compareTo(st1);
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of compareTo method, of class Stand.
      */
@@ -187,7 +188,7 @@ public class StandTest {
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of equals method, of class Stand.
      */
@@ -198,7 +199,7 @@ public class StandTest {
         boolean result = instance.equals(st1);
         assertTrue(result);
     }
-    
+
     /**
      * Test of equals method, of class Stand.
      */
@@ -210,7 +211,7 @@ public class StandTest {
         boolean result = instance.equals(test);
         assertFalse(result);
     }
-    
+
     /**
      * Test of equals method, of class Stand.
      */
@@ -222,7 +223,7 @@ public class StandTest {
         boolean result = instance.equals(test);
         assertFalse(result);
     }
-    
+
     /**
      * Test of equals method, of class Stand.
      */
@@ -233,5 +234,23 @@ public class StandTest {
         boolean result = instance.equals(dist1);
         assertFalse(result);
     }
-     
+
+    @Test
+    public void hashCodeTest() {
+
+        Stand stand = new Stand();
+        Stand stand2 = new Stand();
+
+        Assert.assertEquals(stand.hashCode(), 1134906);
+    }
+     @Test
+    public void hashCodeTest2() {
+
+        Stand stand = new Stand();
+        Stand stand2 = new Stand();
+        stand.setDescription("descrição");
+        stand.setArea(2.55555555);
+    
+        Assert.assertEquals(stand.hashCode(), 1700517535);
+    }
 }
