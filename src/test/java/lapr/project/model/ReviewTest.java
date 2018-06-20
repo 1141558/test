@@ -144,9 +144,10 @@ public class ReviewTest {
         User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
         StaffMember staff = new StaffMember(user);
         Review rv1 = new Review("RV1", 4, 4, 5, 3, Decision.DECLINED, staff);
-        Object o = rv1;
         Review instance = new Review("RV1", 4, 4, 5, 3, Decision.DECLINED, staff);
-        boolean result = instance.equals(rv1);
+        Object o = rv1;
+        
+        boolean result = instance.equals(instance);
         assertTrue(result);
     }
     
@@ -235,7 +236,7 @@ public class ReviewTest {
         StaffMember staff = new StaffMember(user);
         Review rv1 = new Review("RV1", 4, 4, 5, 2, Decision.ACCEPTED, staff);
         Object o = rv1;
-        Review instance = new Review("RV1", 4, 4, 5, 3, Decision.DECLINED, staff);
+        Review instance = new Review("RV1", 4, 4, 5, 2, Decision.DECLINED, staff);
         boolean result = instance.equals(o);
         assertFalse(result);
     }
@@ -253,6 +254,20 @@ public class ReviewTest {
         Review rv1 = new Review("RV1", 4, 4, 5, 2, Decision.DECLINED, staff);
         Object o = rv1;
         Review instance = new Review("RV1", 4, 4, 5, 2, Decision.DECLINED, staff2);
+        boolean result = instance.equals(o);
+        assertFalse(result);
+    }
+    
+     /**
+     * Test of equals method, of class Review.
+     */
+    @Test
+    public void testEquals10() {
+        System.out.println("equals10");
+        User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
+        StaffMember staff = new StaffMember(user);      
+        Object o = user;
+        Review instance = new Review("RV1", 4, 4, 5, 2, Decision.DECLINED, staff);
         boolean result = instance.equals(o);
         assertFalse(result);
     }
