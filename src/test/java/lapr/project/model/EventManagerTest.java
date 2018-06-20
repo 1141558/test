@@ -5,8 +5,6 @@
  */
 package lapr.project.model;
 
-import lapr.project.controller.DummyData;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 /**
