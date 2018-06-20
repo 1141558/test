@@ -67,41 +67,69 @@ public class StandRegisterTest {
         Assert.assertTrue(standRegister.isEmptyStandList());
     }
     
-       @Test
+    @Test
     public void getStandByDescritionTest() {
-         List<Distance> distance = new ArrayList<>();
+        List<Distance> distance = new ArrayList<>();
         StandRegister standRegister = new StandRegister();
         Stand s = new Stand("STAND1", 2.50);
-         stand1.setDistanceList(distanceList);
+        stand1.setDistanceList(distanceList);
         standRegister.addStand(stand1);
         standRegister.addStand(s);
         stand1.setDistanceList(distance);
-      
+        
         //Act
- 
     }
     
-     @Test
+    @Test
     public void hashCodeTest() {
         
-       StandRegister standRegister = new StandRegister();
+        StandRegister standRegister = new StandRegister();
         StandRegister standRegister1 = new StandRegister();
-         
-         
+        
         Assert.assertEquals(standRegister.hashCode(), 260);
     }
-      @Test
+    
+    @Test
     public void testEquals() {
         System.out.println("equals");
         Stand s = new Stand("STAND1", 2.50);
         Stand stand1 = new Stand("STAND1", 2.50);
-       StandRegister standReg  = new StandRegister();
-     
-      standReg.getStandByDescriptionStand(s);
-      
-     
-          System.out.println(""+ standRegister.getStandByDescriptionStand(stand1));
-     
-        assertNull(standRegister.getStandByDescriptionStand(stand1));    
+        StandRegister standReg = new StandRegister();
+        
+        standReg.getStandByDescriptionStand(s);
+        
+        System.out.println("" + standRegister.getStandByDescriptionStand(stand1));
+        
+        assertNull(standRegister.getStandByDescriptionStand(stand1));
+    }
+    
+    @Test
+    public void testEqualsTwo() {
+        
+        Stand s = new Stand("STAND1", 2.50);
+        Stand s2 = new Stand("STAND1", 2.50);
+        StandRegister standReg = new StandRegister();
+        List<Stand> standList = new ArrayList<>();
+        standList.add(s);
+        standList.add(s2);
+        standReg.setStandList(standList);
+        Stand stand3 = standReg.getStandByDescriptionStand(s);
+        System.out.println("stan3" + stand3);
+        Assert.assertNotNull(stand3);
+        
+    }
+    
+    @Test
+    public void testEqualFalse() {
+        
+        Stand s = new Stand("STAND1", 2.50);
+        
+        StandRegister standReg = new StandRegister();
+        
+        standReg.getStandByDescriptionStand(s);
+        
+        boolean result = standReg.equals(s);
+        
+        Assert.assertFalse(result);
     }
 }
