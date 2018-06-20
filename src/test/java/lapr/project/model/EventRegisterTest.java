@@ -178,32 +178,58 @@ public class EventRegisterTest {
     @Test
     public void existEventByDescriptionTrueTest() {
         //Arrange
-       
         
         Event event1 = new Event();
         event1.setDescription("Evento");
         String s = "Evento";
         
-        EventRegister eventRegister = new EventRegister();        
+        EventRegister eventRegister = new EventRegister();
         eventRegister.addEvent(event1);
         Event event2 = eventRegister.existEventByDescription(s);
         Assert.assertNotNull(event2);
         
     }
-      @Test
+    
+    @Test
     public void existEventByDescriptionFalseTest() {
         //Arrange
-       
         
         Event event1 = new Event();
         event1.setDescription("Evento");
         String s = "Outro Evento";
         
-        EventRegister eventRegister = new EventRegister();        
+        EventRegister eventRegister = new EventRegister();
         eventRegister.addEvent(event1);
         Event event2 = eventRegister.existEventByDescription(s);
         
-        Assert.assertNotEquals(event2,event1);
+        Assert.assertNotEquals(event2, event1);
+        
+    }
+    
+    @Test
+    public void existsFalseTest() {
+        //Arrange
+        
+        Event event1 = new Event();
+        
+        event1.setDescription("Evento");
+        String s = "Outro Evento";
+        Event event2 = new Event();
+        EventRegister eventRegister = new EventRegister();
+        eventRegister.addEvent(event1);
+        
+        Assert.assertFalse(eventRegister.exists(event2));
+        
+    }
+    
+    @Test
+    public void otherTest() {
+        //Arrange
+        
+        List<Event> eventsList = new ArrayList<>();
+        EventRegister eventReg = new EventRegister(eventsList);
+        
+        Assert.assertTrue(eventReg.isEmptyEvents());
         
     }
 }

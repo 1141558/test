@@ -74,7 +74,14 @@ public class StartSubmissionPeriodControllerTest {
         assertEquals(expResult, result2);
         // TODO review the generated test code and remove the default call to fail.
     }
-    
+    /**
+     * Test of changeStateEventToSubmission method, of class StartSubmissionPeriodController.
+     */
+    @Test
+    public void testChangeStateEventCreated() {
+        System.out.println("changeStateEventToReady");
+       
+    }
 }
 
    
