@@ -16,9 +16,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import lapr.project.model.Application;
 import lapr.project.model.Event;
@@ -49,7 +53,21 @@ public class Utils {
            return null;
        }
    }
-   
+       public static Date changeFormat(Date startDate, String startDateString) {
+        
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        
+            try {
+                startDate = format.parse(startDateString);
+
+                return startDate;
+                
+            } catch (ParseException ex) {
+                
+                return null;
+                
+            }    
+    }
    public static boolean writeLog(String log){ 
             
        Date d=new Date();

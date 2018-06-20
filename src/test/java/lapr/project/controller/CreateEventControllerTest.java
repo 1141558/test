@@ -59,31 +59,7 @@ public class CreateEventControllerTest {
     /**
      * Test of checkFormat method, of class CreateEventController.
      */
-    @Test
-    public void testCheckFormat() {
-        System.out.println("checkFormat");
-        Date startDate = new Date();        
-        String startDateString = "2018-07-07";
-        ExhibitionCentre centre= new ExhibitionCentre();
-        CreateEventController instance = new CreateEventController(centre);
-        Date expResult= new Date();
 
-        Calendar calendar = Calendar.getInstance();
-
-        calendar.set( Calendar.HOUR_OF_DAY, 0 );
-        calendar.set( Calendar.MINUTE, 0 );
-        calendar.set( Calendar.SECOND, 0 );
-        calendar.set( Calendar.MILLISECOND, 0 );
-
-        calendar.set( Calendar.DAY_OF_MONTH, 7 );
-        calendar.set( Calendar.YEAR, 2018 );
-        //6 beacuse it starts at zero
-        calendar.set( Calendar.MONTH, 6 );
-        expResult=calendar.getTime();
-        
-        Date result = instance.checkFormat(startDate, startDateString);
-        assertEquals(result, expResult);
-    }
 
     /**
      * Test of validateDateGap method, of class CreateEventController.

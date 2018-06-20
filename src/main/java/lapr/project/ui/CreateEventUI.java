@@ -139,8 +139,8 @@ public class CreateEventUI {
     Date startDate=new Date();
     //Validates date format
         while(!validate){
-            startDate=controller.checkFormat(startDate,startDateString);
-            if(controller.checkFormat(startDate,startDateString)==null){
+            startDate=Utils.changeFormat(startDate,startDateString);
+            if(Utils.changeFormat(startDate,startDateString)==null){
 
                 UtilsUI.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
                 startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");               
@@ -165,8 +165,8 @@ public class CreateEventUI {
     boolean validate=false;
     Date endDate= new Date();            
         while(!validate){
-            endDate=controller.checkFormat(endDate,endDateString);
-            if(controller.checkFormat(endDate,endDateString)==null){
+            endDate=Utils.changeFormat(endDate,endDateString);
+            if(Utils.changeFormat(endDate,endDateString)==null){
                 UtilsUI.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
                 endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
                 

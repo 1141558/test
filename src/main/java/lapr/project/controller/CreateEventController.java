@@ -54,21 +54,6 @@ public class CreateEventController {
         return ret;
     }
     
-    public Date checkFormat(Date startDate, String startDateString) {
-        
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        
-            try {
-                startDate = format.parse(startDateString);
-
-                return startDate;
-                
-            } catch (ParseException ex) {
-                
-                return null;
-                
-            }    
-    }
 
     public boolean compareDates(Date date1, Date date2) {
 
