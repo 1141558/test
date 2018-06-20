@@ -86,7 +86,9 @@ public class StandRegisterTest {
         
        StandRegister standRegister = new StandRegister();
         StandRegister standRegister1 = new StandRegister();
-        Assert.assertEquals(standRegister.hashCode(), standRegister1.hashCode());
+         
+         
+        Assert.assertEquals(standRegister.hashCode(), 260);
     }
       @Test
     public void testEquals() {
