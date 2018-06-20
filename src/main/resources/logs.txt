@@ -125,3 +125,6 @@ Date: Wed Jun 20 20:52:56 WEST 2018 -> an anonymous user took a survey about wor
 Date: Wed Jun 20 20:56:02 WEST 2018 -> an anonymous user took a survey about workshops
 Date: Wed Jun 20 21:41:11 WEST 2018 -> an anonymous user took a survey about workshops
 Date: Wed Jun 20 22:06:19 WEST 2018 -> an anonymous user took a survey about workshops
+Date: Wed Jun 20 22:18:36 BST 2018 -> an anonymous user took a survey about workshops
+Date: Wed Jun 20 22:21:46 BST 2018 -> an anonymous user took a survey about workshops
+Date: Wed Jun 20 22:23:41 BST 2018 -> an anonymous user took a survey about workshops
