@@ -12,6 +12,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Candidatura class.
@@ -201,13 +202,12 @@ public class Application implements Importable<Application>, Exportable {
         return this;
     }
 
-    @Override
+     @Override
     public int hashCode() {
         int result = getDescription().hashCode();
         result = 31 * result + getKeywordList().hashCode();
         return result;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -216,9 +216,7 @@ public class Application implements Importable<Application>, Exportable {
         if (!(o instanceof Application)) {
             return false;
         }
-
         Application that = (Application) o;
-
         if (!getDescription().equals(that.getDescription())) {
             return false;
         }
@@ -238,9 +236,7 @@ public class Application implements Importable<Application>, Exportable {
         }
         
         return getKeywordList().equals(that.getKeywordList());
-
     }
-
     /**
      * @return the boothArea
      */
