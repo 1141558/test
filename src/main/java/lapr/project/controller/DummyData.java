@@ -31,32 +31,34 @@ import lapr.project.model.UserRegister;
  */
 public class DummyData {
     
-    Organiser org1;
-    Organiser org2;
-    Organiser org3;
+    private Organiser org1;
+    private Organiser org2;
+    private Organiser org3;
+    private Event event1;
+    private Event event2;
+    private Event event3;
+    private Date data1, data2, data3, data4;
     
-    Date data1, data2, data3, data4;
+    private OrganiserRegister organiserRegister = new OrganiserRegister();
+    private OrganiserRegister organiserRegister2 = new OrganiserRegister();
+    private OrganiserRegister organiserRegister3 = new OrganiserRegister();
     
-    OrganiserRegister organiserRegister = new OrganiserRegister();
-    OrganiserRegister organiserRegister2 = new OrganiserRegister();
-    OrganiserRegister organiserRegister3 = new OrganiserRegister();
+    private List<Organiser> organiserList = new ArrayList<>();
+    private List<Organiser> organiserList2 = new ArrayList<>();
+    private List<Organiser> organiserList3 = new ArrayList<>();
     
-    List<Organiser> organiserList = new ArrayList<>();
-    List<Organiser> organiserList2 = new ArrayList<>();
-    List<Organiser> organiserList3 = new ArrayList<>();
-    
-    StaffRegister staffRegister1 = new StaffRegister();
-    List<StaffMember> staffMemberListEvent1 = new ArrayList<>();
+    private StaffRegister staffRegister1 = new StaffRegister();
+    private List<StaffMember> staffMemberListEvent1 = new ArrayList<>();
     
     ExhibitionCentre exhibitionCentre;
     User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123, Role.ATENDEE);
-    User user2 = new User("jose", "mail2@hotmail.com", "jo", 123 , Role.ATENDEE);
-    User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123 , Role.ATENDEE);
-    User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123 , Role.ATENDEE);
+    User user2 = new User("jose", "mail2@hotmail.com", "jo", 123, Role.ATENDEE);
+    User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123, Role.ATENDEE);
+    User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123, Role.ATENDEE);
     User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123, Role.ATENDEE);
-    User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);    
-    User user7 = new User("Andre", "mailu3", "andr", 133 , Role.ATENDEE);
-    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.EMPLOYEE);   
+    User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);
+    User user7 = new User("Andre", "mailu3", "andr", 133, Role.ATENDEE);
+    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.EMPLOYEE);
     User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133, Role.ATENDEE);
     User user10 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123, Role.ATENDEE);
     
@@ -73,24 +75,20 @@ public class DummyData {
         usersCentre.add(user4);
         usersCentre.add(user5);
         usersCentre.add(user6);
-    
+        
         usersCentre.add(user7);
         usersCentre.add(user8);
-        usersCentre.add(user9);       
+        usersCentre.add(user9);
         usersCentre.add(user10);
-       
+        
         userRegister.setUserList(usersCentre);
-      
+        
         exhibitionCentre.setUserRegister(userRegister);
-
+        
     }
     
     //*********************************************************************************************
-    Event event1;
-    Event event2;
-    Event event3;
-    
-    EventRegister eventRegister = new EventRegister();
+   private  EventRegister eventRegister = new EventRegister();
     
     public EventRegister getEventRegister() {
         return eventRegister;
@@ -162,7 +160,7 @@ public class DummyData {
         event1.setEventState(EventState.READY_FOR_APPLICATION);
         event1.addOrganiserRegister(organiserRegister);
         event1.setStaffRegister(staffRegister1);
-         event1.setDaysApplication(4);
+        event1.setDaysApplication(4);
         event1.setStartDate(data1);
         event1.setEndDate(data2);
         eventRegister.addEvent(event1);
@@ -211,11 +209,11 @@ public class DummyData {
         
     }
     
-    public Date getDate1(){
+    public Date getDate1() {
         return this.data1;
     }
     
-    public Date getDate2(){
+    public Date getDate2() {
         return this.data2;
     }
     

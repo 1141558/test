@@ -19,15 +19,15 @@ public class InitialMenuUI {
      
         String opt;
         this.centre=centre;
-        System.out.println((char)27 + "[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
-        System.out.println("             WELLCOME            ");
-        System.out.println((char)27 + "[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
+        UtilsUI.printLine((char)27 + "[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
+        UtilsUI.printLine("             WELLCOME            ");
+        UtilsUI.printLine((char)27 + "[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
         
      
         
-        System.out.println("             1.LOGIN             ");
-        System.out.println("            2.REGISTER           ");
-        System.out.println((char)27 + "[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
+        UtilsUI.printLine("             1.LOGIN             ");
+        UtilsUI.printLine("            2.REGISTER           ");
+        UtilsUI.printLine((char)27 + "[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
       
         opt = Utils.readLineFromConsole("INSERT OPTION: ");
         switch(Integer.parseInt(opt)){

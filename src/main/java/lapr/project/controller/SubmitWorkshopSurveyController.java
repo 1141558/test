@@ -8,7 +8,6 @@ package lapr.project.controller;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Application;
-import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Workshop;
@@ -19,7 +18,7 @@ import lapr.project.utils.Utils;
  * @author MariaJoão
  */
 public class SubmitWorkshopSurveyController {
-    ExhibitionCentre centre;
+    private ExhibitionCentre centre;
     private Event event;
     private List<Application> appsOfWorkshops;
     public SubmitWorkshopSurveyController(ExhibitionCentre centre) {

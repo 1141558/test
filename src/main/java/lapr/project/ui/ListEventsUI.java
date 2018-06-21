@@ -11,7 +11,6 @@ import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
-import lapr.project.model.User;
 import lapr.project.utils.Utils;
 
 /**
@@ -41,23 +40,23 @@ public class ListEventsUI {
         }
         String event;       
         int event_index = 0;
-        System.out.println("");        
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
-        System.out.println("      LIST EVENT'S "+state.toUpperCase()+" APPLICATIONS       ");
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine("");        
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine("      LIST EVENT'S "+state.toUpperCase()+" APPLICATIONS       ");
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         
         while(!answer){
 
             int n=1;
-            System.out.println("--------------------------");
-            System.out.println("       YOUR EVENTS        ");
-            System.out.println("--------------------------");
+            UtilsUI.printLine("--------------------------");
+            UtilsUI.printLine("       YOUR EVENTS        ");
+            UtilsUI.printLine("--------------------------");
 
             for (Event e : controller.getEventsFromUser()) {
-                System.out.println(n+" - "+e.getTitle());
+                UtilsUI.printLine(n+" - "+e.getTitle());
                 n++;
             }
-            System.out.println("--------------------------");
+            UtilsUI.printLine("--------------------------");
 
             event=Utils.readLineFromConsole("PICK EVENT: ");
             try{
@@ -74,21 +73,21 @@ public class ListEventsUI {
 
         }
         controller.eventPicked(event_index-1);
-        System.out.println("-------------------------------------------------------------------");
+        UtilsUI.printLine("-------------------------------------------------------------------");
 
-        System.out.println("     "+state.toUpperCase()+" APPLICATIONS OF "+controller.getEvent().getTitle()+"      ");
-        System.out.println("-------------------------------------------------------------------");
+        UtilsUI.printLine("     "+state.toUpperCase()+" APPLICATIONS OF "+controller.getEvent().getTitle()+"      ");
+        UtilsUI.printLine("-------------------------------------------------------------------");
         
         for (Application a : controller.getEvent().getEventApplicationByState(controller.getState())) {
-            System.out.println("APLICATION: "+a.getDescription());
-            System.out.println("        WANTED BOOTH AREA: "+a.getBoothArea()+"m2");
-            System.out.println("        NUMBER OF INVITES: "+a.getNumberInvites());
-            System.out.print("        KEYWORDS: ");
+            UtilsUI.printLine("APLICATION: "+a.getDescription());
+            UtilsUI.printLine("        WANTED BOOTH AREA: "+a.getBoothArea()+"m2");
+            UtilsUI.printLine("        NUMBER OF INVITES: "+a.getNumberInvites());
+            UtilsUI.printLine("        KEYWORDS: ");
 
             for (Keyword k : a.getKeywordList()) {
-                System.out.print(k.getValue()+"; ");
+                UtilsUI.printLine(k.getValue()+"; ");
             }
-            System.out.println("");
+            UtilsUI.printLine("");
         }
         controller.registerLog();
         Utils.readLineFromConsole("PRESS ENTER TO GO BACK TO MAIN MENU: ");

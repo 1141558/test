@@ -19,7 +19,7 @@ import lapr.project.utils.Utils;
  *
  * @author MariaJoão
  */
-public class UpdateOrWithdrawApplicationUI {
+public final class UpdateOrWithdrawApplicationUI {
     
     UpdateOrWithdrawApplicationController controller;
     
@@ -28,25 +28,25 @@ public class UpdateOrWithdrawApplicationUI {
         this.controller= new UpdateOrWithdrawApplicationController(centre);
         
         
-        String description, keyTemp="", event="", companyName="";        
+        String description, keyTemp, companyName;        
         int nInvites=-1, nKeywords=0, n=1, app_number=-1, phoneNumber=0, vatNumber=0;
         double area=-1;
         List<Keyword> keywords= new ArrayList<>(); 
-        System.out.println("");        
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
-        System.out.println("           UPDATE OR WITHDRAW APPLICATION TO EVENT           ");
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine("");        
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine("           UPDATE OR WITHDRAW APPLICATION TO EVENT           ");
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         
         while(app_number==-1){
-                System.out.println("--------------------------");
-                System.out.println("     YOUR APPLICATIONS    ");
-                System.out.println("--------------------------");
+                UtilsUI.printLine("--------------------------");
+                UtilsUI.printLine("     YOUR APPLICATIONS    ");
+                UtilsUI.printLine("--------------------------");
 
                 for (Application a : controller.getUserApplications()) {
-                        System.out.println(n+" - "+a.getDescription());
+                        UtilsUI.printLine(n+" - "+a.getDescription());
                         n++;
                     }
-                System.out.println("--------------------------");
+                UtilsUI.printLine("--------------------------");
 
                 try{
                         app_number = Integer.parseInt(Utils.readLineFromConsole("PICK APPLICATION: "));
@@ -109,10 +109,10 @@ public class UpdateOrWithdrawApplicationUI {
             }           
         }
         String maintain_keywords="";
-        System.out.println("CURRENT KEYWORDS: ");
-            for (Keyword keyword : controller.getA().getKeywordList()) {
-                System.out.println("- "+keyword.getValue());
-            }
+        UtilsUI.printLine("CURRENT KEYWORDS: ");
+        controller.getA().getKeywordList().forEach((keyword) -> {
+            System.out.println("- "+keyword.getValue());
+            });
         while(!maintain_keywords.equalsIgnoreCase("y") && !maintain_keywords.equalsIgnoreCase("n")){
             maintain_keywords = Utils.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS KEYWORDS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
             if(!maintain_keywords.equalsIgnoreCase("y") && !maintain_keywords.equalsIgnoreCase("n")){
@@ -205,10 +205,10 @@ public class UpdateOrWithdrawApplicationUI {
         List<Workshop> workshop_list = new ArrayList<>();
         
         String maintain_workshops="";
-        System.out.println("CURRENT WORKSHOPS: ");
-            for (Workshop w : controller.getA().getWorkshopList()) {
-                System.out.println("- "+w.getDescription());
-            }
+        UtilsUI.printLine("CURRENT WORKSHOPS: ");
+        controller.getA().getWorkshopList().forEach((w) -> {
+            System.out.println("- "+w.getDescription());
+            });
         while(!maintain_workshops.equalsIgnoreCase("y") && !maintain_workshops.equalsIgnoreCase("n")){
             maintain_workshops = Utils.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS WORSHOPS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
             if(!maintain_workshops.equalsIgnoreCase("y") && !maintain_workshops.equalsIgnoreCase("n")){
@@ -267,9 +267,9 @@ public class UpdateOrWithdrawApplicationUI {
                         String description;
                         int duration=0;
                         List<String> equip= new ArrayList<>();
-                        System.out.println("---------------------------");    
-                        System.out.println("       WORKSHOP "+(i+1)+"  ");                     
-                        System.out.println("---------------------------");    
+                        UtilsUI.printLine("---------------------------");    
+                        UtilsUI.printLine("       WORKSHOP "+(i+1)+"  ");                     
+                        UtilsUI.printLine("---------------------------");    
                         description = Utils.readLineFromConsole("DESCRIPTION: ");
                         boolean ans=false;
                         while(!ans){

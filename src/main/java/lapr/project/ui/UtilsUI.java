@@ -37,7 +37,9 @@ public class UtilsUI {
         System.out.println((char)27 + "[32m---------------------------------------------------\n"+ (char)27 + "[0m");
     }     
 
-     
+     public static void printLine(String message){
+         System.out.println(message);
+    }      
     
      
     public static void showUsersExhibitionCentre(ExhibitionCentre exhibitionCentre) {

@@ -23,7 +23,7 @@ import lapr.project.utils.Utils;
 public class StartSubmissionPeriodController {
     
     private ExhibitionCentre exhibitionCentre;
-    List<Event> listEvent;
+   private  List<Event> listEvent;
     Event e;
 
     public StartSubmissionPeriodController(ExhibitionCentre exhibitionCentre) {

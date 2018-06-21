@@ -17,32 +17,32 @@ import lapr.project.utils.Utils;
  *
  * @author MariaJoão
  */
-public class SubmitApplicationToEventUI {
+public final class SubmitApplicationToEventUI {
    
        private SubmitApplicationToEventController controller;
        
        public SubmitApplicationToEventUI(ExhibitionCentre centre){
            
         this.controller= new SubmitApplicationToEventController(centre);
-        String description, keyTemp="", event="", companyName="";        
+        String description, keyTemp, companyName;        
         int nInvites=-1, nKeywords=0, n=1, event_number=-1, phoneNumber=0, vatNumber=0;
         double area=-1;
         List<String> keywords= new ArrayList<>(); 
-        System.out.println("");        
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
-        System.out.println("           SUBMIT APPLICATION TO EVENT           ");
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine("");        
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine("           SUBMIT APPLICATION TO EVENT           ");
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         
         while(event_number==-1){
-                System.out.println("--------------------------");
-                System.out.println("          EVENTS          ");
-                System.out.println("--------------------------");
+                UtilsUI.printLine("--------------------------");
+                UtilsUI.printLine("          EVENTS          ");
+                UtilsUI.printLine("--------------------------");
 
                 for (Event e : controller.getEventsReadyForApplications()) {
-                        System.out.println(n+" - "+e.getTitle());
+                        UtilsUI.printLine(n+" - "+e.getTitle());
                         n++;
                     }
-                System.out.println("--------------------------");
+                UtilsUI.printLine("--------------------------");
 
                 try{
                         event_number = Integer.parseInt(Utils.readLineFromConsole("PICK EVENT: "));
@@ -175,9 +175,9 @@ public class SubmitApplicationToEventUI {
                         String description;
                         int duration=0;
                         List<String> equip= new ArrayList<>();
-                        System.out.println("---------------------------");    
-                        System.out.println("       WORKSHOP "+(i+1)+"  ");                     
-                        System.out.println("---------------------------");    
+                        UtilsUI.printLine("---------------------------");    
+                        UtilsUI.printLine("       WORKSHOP "+(i+1)+"  ");                     
+                        UtilsUI.printLine("---------------------------");    
                         description = Utils.readLineFromConsole("DESCRIPTION: ");
                         boolean ans=false;
                         while(!ans){
