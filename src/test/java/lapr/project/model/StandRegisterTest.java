@@ -151,4 +151,13 @@ public class StandRegisterTest {
         assertFalse(result);
     }
 
+    @Test
+    public void compareEqualsObjects(){
+        Stand standOne = new Stand("STAND1", 2.50);
+          StandRegister instance2 = new StandRegister(); 
+          instance2.addStand(stand1);
+          boolean result = instance2.equals(instance2);
+           
+          Assert.assertTrue(result);
+    }
 }
