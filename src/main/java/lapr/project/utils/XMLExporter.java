@@ -33,10 +33,9 @@ import org.xml.sax.SAXException;
  */
 public class XMLExporter {
     
-    public XMLExporter(ExhibitionCentre centre) throws ParserConfigurationException, SAXException, IOException{
-                        
-     
-   
+    XMLExporter(ExhibitionCentre centre) throws ParserConfigurationException, SAXException, IOException{
+                       
+       
     }
     public static boolean isEmpty(CharSequence str) {
         return str == null || str.length() == 0;
@@ -73,9 +72,9 @@ public class XMLExporter {
             userEl.appendChild(passwordEl);  
             userEl.appendChild(roleEl);
             return userEl;
-        }).forEachOrdered((userEl) -> {
-            userSetEl.appendChild(userEl);
-        });
+        }).forEachOrdered((userEl) -> 
+            userSetEl.appendChild(userEl)
+        );
         
         
         Element eventSetEl = document.createElement("eventSet");

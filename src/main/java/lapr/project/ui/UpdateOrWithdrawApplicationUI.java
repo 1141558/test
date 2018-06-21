@@ -110,8 +110,8 @@ public final class UpdateOrWithdrawApplicationUI {
         }
         String maintain_keywords="";
         UtilsUI.printLine("CURRENT KEYWORDS: ");
-        controller.getA().getKeywordList().forEach((keyword) -> {
-            System.out.println("- "+keyword.getValue());
+        controller.getA().getKeywordList().forEach(keyword -> {
+            UtilsUI.printLine("- "+keyword.getValue());
             });
         while(!maintain_keywords.equalsIgnoreCase("y") && !maintain_keywords.equalsIgnoreCase("n")){
             maintain_keywords = Utils.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS KEYWORDS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
