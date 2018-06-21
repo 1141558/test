@@ -91,14 +91,7 @@ public class XMLExporter {
             if(!isEmpty(e.getPlace())){
                 placeEl.setTextContent(e.getPlace());
             }
-            Element startDateEl = document.createElement("startDate");
-            if(e.getStartDate()!=null){
-                startDateEl.setTextContent(new SimpleDateFormat("yyyy-MM-dd").format(e.getStartDate()));
-            }
-            Element endDateEl = document.createElement("endDate");
-            if(e.getEndDate()!=null){
-                endDateEl.setTextContent(new SimpleDateFormat("yyyy-MM-dd").format(e.getEndDate()));
-            }
+
             Element standsEl = document.createElement("stands");
             e.getStandRegister().getStandList().stream().map((Stand s) -> {
                 Element standEl = document.createElement("stand");
@@ -121,9 +114,9 @@ public class XMLExporter {
                 standEl.appendChild(areaEl);
                 standEl.appendChild(relativeDistanceSetEl);
                 return standEl;
-            }).forEachOrdered((standEl) -> {
-                standsEl.appendChild(standEl);
-            });
+            }).forEachOrdered(standEl -> 
+                standsEl.appendChild(standEl)
+            );
             Element staffsEl = document.createElement("StaffSet");
             e.getStaffRegister().getStaffList().stream().map((s) -> {
                 Element staffEl = document.createElement("staff");
@@ -196,7 +189,7 @@ public class XMLExporter {
                 invitesEl.setTextContent(String.valueOf(a.getNumberInvites()));
                 Element topicsEl = document.createElement("topics");
                 
-                a.getKeywordList().stream().map((k) -> {
+                a.getKeywordList().stream().map(k -> {
                     Element topicEl = document.createElement("topic");
                     topicEl.setTextContent(k.getValue());
                     return topicEl;
@@ -205,7 +198,7 @@ public class XMLExporter {
                 });
                 
                 Element elementReviews = document.createElement("reviews");
-                a.getListReview().forEach((r) -> {
+                a.getListReview().forEach(r -> {
                     Element elementReview = document.createElement("review");
                     Element elementReviewText = document.createElement("text");
                     elementReviewText.setTextContent(r.getText());
@@ -260,6 +253,14 @@ public class XMLExporter {
                 applicationEl.appendChild(aceptedEl);
                 applicationSetEl.appendChild(applicationEl);
             }
+            Element startDateEl = document.createElement("startDate");
+            if(e.getStartDate()!=null){
+                startDateEl.setTextContent(new SimpleDateFormat("yyyy-MM-dd").format(e.getStartDate()));
+            }
+            Element endDateEl = document.createElement("endDate");
+            if(e.getEndDate()!=null){
+                endDateEl.setTextContent(new SimpleDateFormat("yyyy-MM-dd").format(e.getEndDate()));
+            }
             //Add sub-element to root element
             exhibitionEl.appendChild(titleEl);
             exhibitionEl.appendChild(nrRoomsEl);
@@ -271,10 +272,10 @@ public class XMLExporter {
             exhibitionEl.appendChild(organisersEl);
             exhibitionEl.appendChild(applicationSetEl);
             return exhibitionEl;
-           }).forEachOrdered((exhibitionEl) -> {
-            eventSetEl.appendChild(exhibitionEl);
+           }).forEachOrdered((exhibitionEl) ->
+            eventSetEl.appendChild(exhibitionEl)
             //Add root element to document
-        });
+        );
                 exhibitionCentreEl.appendChild(userSetEl);
                 exhibitionCentreEl.appendChild(eventSetEl);
                 document.appendChild(exhibitionCentreEl);
