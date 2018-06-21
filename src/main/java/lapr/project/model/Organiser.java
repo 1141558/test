@@ -31,7 +31,11 @@ public class Organiser  implements Comparable<Organiser> ,  Serializable{
         this.organiser = new User();
     }
 
+<<<<<<< Updated upstream
 
+=======
+ 
+>>>>>>> Stashed changes
     public Organiser(User organiser) {
         this.organiser = organiser;
     }
@@ -63,7 +67,11 @@ public class Organiser  implements Comparable<Organiser> ,  Serializable{
 
     }
 
+<<<<<<< Updated upstream
 
+=======
+ 
+>>>>>>> Stashed changes
     @Override
     public int hashCode() {
         int hash = 7;

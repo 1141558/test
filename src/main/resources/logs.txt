@@ -265,4 +265,7 @@ Date: Thu Jun 21 01:57:18 BST 2018 -> An anonymous user took a survey about work
 Date: Thu Jun 21 01:57:46 BST 2018 -> An anonymous user took a survey about workshops
 Date: Thu Jun 21 02:02:36 BST 2018 -> An anonymous user took a survey about workshops
 Date: Thu Jun 21 02:03:10 BST 2018 -> An anonymous user took a survey about workshops
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
