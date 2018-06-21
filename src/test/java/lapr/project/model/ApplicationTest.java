@@ -273,7 +273,16 @@ public class ApplicationTest {
     @Test
     public void testEquals1() {
         System.out.println("equals1");
-        Application instance = new Application();
+        
+        Keyword keyword1 = new Keyword("keyword1");
+        Keyword keyword2 = new Keyword("keyword2");
+        Keyword keyword3 = new Keyword("keyword3");
+        Keyword keyword4 = new Keyword("keyword4");
+        List<Keyword> listKey = new ArrayList<>();
+        listKey.add(keyword1);
+        listKey.add(keyword2);
+        listKey.add(keyword3);
+        listKey.add(keyword4);
         
         List<Boolean> wantToAttend = new ArrayList<>();
         wantToAttend.add(Boolean.TRUE);
@@ -303,12 +312,11 @@ public class ApplicationTest {
         listRev.add(rv2);
         listRev.add(rv3);
         
+        Application instance = new Application("description", listKey, listRev);
         instance.setWorkshopList(listWo);
-        instance.setListReview(listRev);
         instance.setBoothArea(20.2);
         instance.setState(ApplicationState.CREATED);
         instance.setNameOfCompany("nameOfCompany");
-        instance.setDescription("description");
         instance.setUserThatSubmited(user);
         
         Application instance2 = new Application();

@@ -8,8 +8,7 @@ package lapr.project.model;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Assert;
-import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -59,7 +58,6 @@ public class StandRegisterTest {
         Stand s = new Stand("STAND1", 2.50);
         standRegister.addStand(stand1);
         standRegister.addStand(s);
-        List<Distance> distance = new ArrayList<>();
         //Act
         List<Stand> standsList1 = new ArrayList<>();
         standRegister.setStandList(standsList1);
@@ -84,14 +82,13 @@ public class StandRegisterTest {
     public void hashCodeTest() {
         
         StandRegister standRegister = new StandRegister();
-        StandRegister standRegister1 = new StandRegister();
         
         Assert.assertEquals(standRegister.hashCode(), 260);
     }
     
     @Test
-    public void testEquals() {
-        System.out.println("equals");
+    public void testEquals2() {
+        System.out.println("equals2");
         Stand s = new Stand("STAND1", 2.50);
         Stand stand1 = new Stand("STAND1", 2.50);
         StandRegister standReg = new StandRegister();
@@ -132,4 +129,28 @@ public class StandRegisterTest {
         
         Assert.assertFalse(result);
     }
+
+    /**
+     * Test of equals method, of class StandRegister.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        
+        Stand s1 = new Stand("STAND1", 2.50);
+        Stand s2 = new Stand("STAND2", 2.50);
+        
+        StandRegister instance = new StandRegister();        
+        instance.addStand(s1);
+        instance.addStand(s2);
+        
+        StandRegister instance2 = new StandRegister();        
+        instance2.addStand(s1);
+        instance2.addStand(s2);
+        
+        Object otherObject = instance2;
+        boolean result = instance.equals(otherObject);
+        assertTrue(result);
+    }
+
 }

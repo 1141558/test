@@ -61,14 +61,6 @@ public class StandRegister implements Serializable{
     
     /**
      *
-     * @return size the List
-     */
-    public int sizeStandList(){
-        return standList.size();
-    }
-    
-    /**
-     *
      * @param s
      * @return
      */

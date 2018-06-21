@@ -31,9 +31,7 @@ public class Organiser  implements Comparable<Organiser> ,  Serializable{
         this.organiser = new User();
     }
 
-//    public Organiser(String nome, String email, String userName, double pass){
-//        super(nome,email,userName,pass);
-//    }
+
     public Organiser(User organiser) {
         this.organiser = organiser;
     }
@@ -64,8 +62,6 @@ public class Organiser  implements Comparable<Organiser> ,  Serializable{
      
 
     }
-
-
 
     @Override
     public int hashCode() {
