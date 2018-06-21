@@ -29,7 +29,7 @@ public class InitialMenuUI {
         UtilsUI.printLine("            2.REGISTER           ");
         UtilsUI.printLine((char)27 + "[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
       
-        opt = Utils.readLineFromConsole("INSERT OPTION: ");
+        opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
         switch(Integer.parseInt(opt)){
          
             case 1:

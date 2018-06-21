@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 import lapr.project.controller.LoginController;
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.utils.Utils;
 
 /**
  *
@@ -36,14 +35,14 @@ public class LoginUI {
         UtilsUI.printLine("        USER LOGIN        ");
         UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
 
-        username = Utils.readLineFromConsole("USERNAME: ");
+        username = UtilsUI.readLineFromConsole("USERNAME: ");
         if (console != null) {
         password = console.readPassword("PASSWORD: ");
         Arrays.fill(password, ' ');
         passwordString= new String(password);
         
         }else{
-        passwordString = Utils.readLineFromConsole("PASSWORD: ");
+        passwordString = UtilsUI.readLineFromConsole("PASSWORD: ");
             
         }
 

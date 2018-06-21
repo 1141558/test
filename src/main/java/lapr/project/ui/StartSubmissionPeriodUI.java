@@ -5,11 +5,10 @@
  */
 package lapr.project.ui;
 
-import lapr.project.controller.DummyData;
+
 import lapr.project.controller.StartSubmissionPeriodController;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.utils.Utils;
 
 /**
  *
@@ -41,7 +40,7 @@ public class StartSubmissionPeriodUI {
                 }
 
                 System.out.println("--------------------------");
-                event_selected_string=Utils.readLineFromConsole("PICK EVENNT: ");
+                event_selected_string=UtilsUI.readLineFromConsole("PICK EVENNT: ");
 
                 try{
                     event_selected= Integer.parseInt(event_selected_string);

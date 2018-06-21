@@ -37,10 +37,10 @@ public class CreateEventUI {
         UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         while(!answer){
     
-            fromFile= Utils.readLineFromConsole("DO YOU WISH TO LOAD EVENT FROM FILE OR DO YOU WISH TO CREATE HERE A NEW ONE? ENTER 'Y' TO LOAD EVENT FROM FILE OR 'N' TO CREATE A NEW ONE: ");
+            fromFile= UtilsUI.readLineFromConsole("DO YOU WISH TO LOAD EVENT FROM FILE OR DO YOU WISH TO CREATE HERE A NEW ONE? ENTER 'Y' TO LOAD EVENT FROM FILE OR 'N' TO CREATE A NEW ONE: ");
             if(fromFile.equalsIgnoreCase("y")){
                     answer=true;
-                    String filename= Utils.readLineFromConsole("NAME OF FILE (ALL FILES MUST BE IN 'resources' FOLDER): ");
+                    String filename= UtilsUI.readLineFromConsole("NAME OF FILE (ALL FILES MUST BE IN 'resources' FOLDER): ");
                     
                     if(controller.getEventFromFile(filename)){ 
                         title=controller.getEvent().getTitle();
@@ -54,16 +54,16 @@ public class CreateEventUI {
                     }
             }else if(fromFile.equalsIgnoreCase("n")){
                     answer=true;
-                    title = Utils.readLineFromConsole("TITLE: ");
-                    description = Utils.readLineFromConsole("DESCRIPTION: ");
-                    startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");
+                    title = UtilsUI.readLineFromConsole("TITLE: ");
+                    description = UtilsUI.readLineFromConsole("DESCRIPTION: ");
+                    startDateString =UtilsUI.readLineFromConsole("START DATE (YYYY-MM-DD): ");
                     startDate= validateStartDateFormat(startDateString);
-                    endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
+                    endDateString =UtilsUI.readLineFromConsole("END DATE (YYYY-MM-DD): ");
                     endDate=validateEndDateFormat(endDateString, startDate);        
-                    place = Utils.readLineFromConsole("PLACE: ");
+                    place = UtilsUI.readLineFromConsole("PLACE: ");
                     while(nDays<1){
                         try{
-                            nDays = Integer.parseInt(Utils.readLineFromConsole("NUMBER OF DAYS FOR OPEN APPLICATIONS: "));
+                            nDays = Integer.parseInt(UtilsUI.readLineFromConsole("NUMBER OF DAYS FOR OPEN APPLICATIONS: "));
                             if(nDays<1){
                              UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
 
@@ -88,7 +88,7 @@ public class CreateEventUI {
                         }
                         UtilsUI.printLine("--------------------------");
 
-                        user1=Utils.readLineFromConsole("PICK ORGANISER (WRITE X WHEN YOU ARE DONE): ");
+                        user1=UtilsUI.readLineFromConsole("PICK ORGANISER (WRITE X WHEN YOU ARE DONE): ");
                         readOrganiser(user1, userPos, n, organisersToPrint);
 
 
@@ -107,7 +107,7 @@ public class CreateEventUI {
         
         String resposta="";
         while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
-            resposta=Utils.readLineFromConsole("DO YOU CONFIRM THIS EVENT? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
+            resposta=UtilsUI.readLineFromConsole("DO YOU CONFIRM THIS EVENT? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
             if(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
                 UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
@@ -134,11 +134,11 @@ public class CreateEventUI {
             if(Utils.changeFormat(startDate,startDateString)==null){
 
                 UtilsUI.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
-                startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");               
+                startDateString =UtilsUI.readLineFromConsole("START DATE (YYYY-MM-DD): ");               
                
             }else if(!controller.compareDates(today,startDate)){
                 UtilsUI.printError("DATE EXPIRED, PLEASE TRY AGAIN.");
-                startDateString =Utils.readLineFromConsole("START DATE (YYYY-MM-DD): ");                
+                startDateString =UtilsUI.readLineFromConsole("START DATE (YYYY-MM-DD): ");                
 
             }else{
 
@@ -159,12 +159,12 @@ public class CreateEventUI {
             endDate=Utils.changeFormat(endDate,endDateString);
             if(Utils.changeFormat(endDate,endDateString)==null){
                 UtilsUI.printError("INVALID FORMAT, PLEASE TRY AGAIN.");                
-                endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");
+                endDateString =UtilsUI.readLineFromConsole("END DATE (YYYY-MM-DD): ");
                 
             }else if(!controller.compareDates(startDate, endDate)){
                 
                 UtilsUI.printError("END DATE MUST BE AFTER START DATE. PLEASE TRY AGAIN.");
-                endDateString =Utils.readLineFromConsole("END DATE (YYYY-MM-DD): ");                
+                endDateString =UtilsUI.readLineFromConsole("END DATE (YYYY-MM-DD): ");                
 
             }else{
                 validate=true;

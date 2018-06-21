@@ -11,7 +11,6 @@ import lapr.project.controller.SubmitApplicationToEventController;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Workshop;
-import lapr.project.utils.Utils;
 
 /**
  *
@@ -45,7 +44,7 @@ public final class SubmitApplicationToEventUI {
                 UtilsUI.printLine("--------------------------");
 
                 try{
-                        event_number = Integer.parseInt(Utils.readLineFromConsole("PICK EVENT: "));
+                        event_number = Integer.parseInt(UtilsUI.readLineFromConsole("PICK EVENT: "));
                         controller.setEvent(n-2);
                         if(event_number <1 || event_number>n){
                             UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
@@ -60,10 +59,10 @@ public final class SubmitApplicationToEventUI {
         }
         
         
-        description = Utils.readLineFromConsole("DESCRIPTION: ");
+        description = UtilsUI.readLineFromConsole("DESCRIPTION: ");
         while(nInvites<0){
             try{
-                nInvites = Integer.parseInt(Utils.readLineFromConsole("NUMBER OF INVITES: "));
+                nInvites = Integer.parseInt(UtilsUI.readLineFromConsole("NUMBER OF INVITES: "));
                 if(nInvites<0){
                  UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER OR EQUAL TO 0. PLEASE TRY AGAIN.");
 
@@ -74,7 +73,7 @@ public final class SubmitApplicationToEventUI {
             }           
         }
         while(nKeywords<5){
-                keyTemp=Utils.readLineFromConsole("ISERT A KEYWORD (MINUMUM 2 MAXIMUM 5) (WRITE X WHEN YOU ARE DONE): ");
+                keyTemp=UtilsUI.readLineFromConsole("ISERT A KEYWORD (MINUMUM 2 MAXIMUM 5) (WRITE X WHEN YOU ARE DONE): ");
                 if(!keyTemp.equalsIgnoreCase("x")){
                     keywords.add(keyTemp);
                     nKeywords++;                   
@@ -90,7 +89,7 @@ public final class SubmitApplicationToEventUI {
         }        
         while(area<=0){
             try{
-                area = Double.parseDouble(Utils.readLineFromConsole("WANTED BOOTH AREA (m2): "));
+                area = Double.parseDouble(UtilsUI.readLineFromConsole("WANTED BOOTH AREA (m2): "));
                 if(area<=0){
                  UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
 
@@ -101,11 +100,11 @@ public final class SubmitApplicationToEventUI {
 
             }           
         }
-        companyName = Utils.readLineFromConsole("COMPANY NAME: ");
+        companyName = UtilsUI.readLineFromConsole("COMPANY NAME: ");
 
         while(!controller.validatePhoneNumber(phoneNumber)){
             try{
-                phoneNumber = Integer.parseInt(Utils.readLineFromConsole("PHONE NUMBER: "));
+                phoneNumber = Integer.parseInt(UtilsUI.readLineFromConsole("PHONE NUMBER: "));
                 if(!controller.validatePhoneNumber(phoneNumber)){
                  UtilsUI.printError("NUMBER INSERTED NOT VALID. YOU SHOULD INSERT 9 DIGIT NUMBER. PLEASE TRY AGAIN.");
 
@@ -119,7 +118,7 @@ public final class SubmitApplicationToEventUI {
         boolean vat=false;
         while(!vat){
             try{
-                vatNumber = Integer.parseInt(Utils.readLineFromConsole("VAT NUMBER: "));
+                vatNumber = Integer.parseInt(UtilsUI.readLineFromConsole("VAT NUMBER: "));
                 vat=true;
                 }catch(NumberFormatException e){
 
@@ -130,7 +129,7 @@ public final class SubmitApplicationToEventUI {
         String resposta_workshops="";
         List<Workshop> workshop_list = new ArrayList<>();
         while(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
-            resposta_workshops=Utils.readLineFromConsole("DO YOU WISH TO DO WORKSHOPS? (WRITE 'Y' IF YES OR 'N' IF NO): ");
+            resposta_workshops=UtilsUI.readLineFromConsole("DO YOU WISH TO DO WORKSHOPS? (WRITE 'Y' IF YES OR 'N' IF NO): ");
             if(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
                 UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }               
@@ -142,7 +141,7 @@ public final class SubmitApplicationToEventUI {
         
         String resposta="";
         while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
-            resposta=Utils.readLineFromConsole("DO YOU CONFIRM THIS APPLICATION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
+            resposta=UtilsUI.readLineFromConsole("DO YOU CONFIRM THIS APPLICATION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
             if(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
                 UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
@@ -167,7 +166,7 @@ public final class SubmitApplicationToEventUI {
         int number_of_workshops;
         while(!vat){
             try{
-                number_of_workshops = Integer.parseInt(Utils.readLineFromConsole("HOW MANY WORKSHOPS DO YOU WISH TO EXECUTE (NOTE: EVENT HAS "+e.getRooms()+" ROOMS AVAILABLE): "));
+                number_of_workshops = Integer.parseInt(UtilsUI.readLineFromConsole("HOW MANY WORKSHOPS DO YOU WISH TO EXECUTE (NOTE: EVENT HAS "+e.getRooms()+" ROOMS AVAILABLE): "));
                 if(number_of_workshops<=e.getRooms()){                   
                     
                     for (int i = 0; i < number_of_workshops; i++) {
@@ -178,11 +177,11 @@ public final class SubmitApplicationToEventUI {
                         UtilsUI.printLine("---------------------------");    
                         UtilsUI.printLine("       WORKSHOP "+(i+1)+"  ");                     
                         UtilsUI.printLine("---------------------------");    
-                        description = Utils.readLineFromConsole("DESCRIPTION: ");
+                        description = UtilsUI.readLineFromConsole("DESCRIPTION: ");
                         boolean ans=false;
                         while(!ans){
                             try{
-                                duration = Integer.parseInt(Utils.readLineFromConsole("DURATION (HOURS): "));
+                                duration = Integer.parseInt(UtilsUI.readLineFromConsole("DURATION (HOURS): "));
                                 ans=true;
                                 }catch(NumberFormatException ex){
 
@@ -192,7 +191,7 @@ public final class SubmitApplicationToEventUI {
                         }
                         String done="";
                         while(!done.equalsIgnoreCase("x")){
-                            done=Utils.readLineFromConsole("NECESSARY EQUIPMENT (WRITE 'X' WHEN YOU ARE DONE):  ");
+                            done=UtilsUI.readLineFromConsole("NECESSARY EQUIPMENT (WRITE 'X' WHEN YOU ARE DONE):  ");
                             if(!done.equalsIgnoreCase("x")){ 
                                 equip.add(done);
                             }

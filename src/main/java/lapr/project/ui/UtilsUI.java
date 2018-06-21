@@ -5,6 +5,9 @@
  */
 package lapr.project.ui;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.ExhibitionCentre;
@@ -49,5 +52,21 @@ public class UtilsUI {
         for (User item : users) {
             System.out.println("\n User do centro de exibiçoes: "+ item );
         }
-    }    
+    }
+
+    static public String readLineFromConsole(String strPrompt)
+      {
+          try
+          {
+              System.out.print(strPrompt);
+
+              InputStreamReader converter = new InputStreamReader(System.in);
+              BufferedReader in = new BufferedReader(converter);
+
+              return in.readLine();
+          } catch (IOException e)
+          {
+              return null;
+          }
+      }    
 }

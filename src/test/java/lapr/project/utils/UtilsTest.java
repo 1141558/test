@@ -5,16 +5,18 @@
  */
 package lapr.project.utils;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import lapr.project.controller.CreateEventController;
-import lapr.project.model.ExhibitionCentre;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.List;
+import lapr.project.model.Role;
+import lapr.project.model.User;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author Altran
+ * @author Manuel
  */
 public class UtilsTest {
         
@@ -23,7 +25,6 @@ public class UtilsTest {
         System.out.println("checkFormat");
         Date startDate = new Date();        
         String startDateString = "2018-07-07";
-        ExhibitionCentre centre= new ExhibitionCentre();
         Date expResult= new Date();
 
         Calendar calendar = Calendar.getInstance();
@@ -41,5 +42,52 @@ public class UtilsTest {
         
         Date result = Utils.changeFormat(startDate, startDateString);
         assertEquals(result, expResult);
+    }
+    
+    @Test
+    public void testChangeFormatNull(){
+        System.out.println("checkFormatNull");
+        Date startDate = new Date();        
+        String startDateString = "2070/23/43";
+        Date expResult= new Date();
+
+        expResult=null;
+        
+        Date result = Utils.changeFormat(startDate, startDateString);
+        assertEquals(result, expResult);
+    }
+
+    /**
+     * Test of writeLog method, of class Utils.
+     */
+    @Test
+    public void testWriteLog() {
+        System.out.println("writeLog");
+        String log = "String log";
+        boolean result = Utils.writeLog(log);
+        assertTrue(result);
+    }
+
+    /**
+     * Test of getCopia method, of class Utils.
+     */
+    @Test
+    public void testGetCopia() {
+        System.out.println("getCopia");
+        
+        User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123, Role.ATENDEE);
+        User user2 = new User("jose", "mail2@hotmail.com", "jo", 123 , Role.ATENDEE);
+        
+        List<User> userList = new ArrayList<>();
+        List<User> expResult = new ArrayList<>();
+        
+        userList.add(user1);
+        userList.add(user2);
+        
+        expResult.add(user1);
+        expResult.add(user2);
+        
+        List<User> result = Utils.getCopia(userList);
+        assertEquals(expResult, result);
     }
 }
