@@ -28,163 +28,37 @@ public final class UpdateOrWithdrawApplicationUI {
         this.controller= new UpdateOrWithdrawApplicationController(centre);
         
         
-        String description, keyTemp, companyName;        
-        int nInvites=-1, nKeywords=0, n=1, app_number=-1, phoneNumber=0, vatNumber=0;
-        double area=-1;
-        List<Keyword> keywords= new ArrayList<>(); 
+        String description, companyName;        
+        int nInvites=-1,  n=1, app_number=-1, phoneNumber, vatNumber=0;
+        double area;
+        List<Keyword> keywords; 
         UtilsUI.printLine("");        
         UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         UtilsUI.printLine("           UPDATE OR WITHDRAW APPLICATION TO EVENT           ");
         UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        showApplications(app_number,n);
+        String resposta1= getResposta(centre);
         
-        while(app_number==-1){
-                UtilsUI.printLine("--------------------------");
-                UtilsUI.printLine("     YOUR APPLICATIONS    ");
-                UtilsUI.printLine("--------------------------");
-
-                for (Application a : controller.getUserApplications()) {
-                        UtilsUI.printLine(n+" - "+a.getDescription());
-                        n++;
-                    }
-                UtilsUI.printLine("--------------------------");
-
-                try{
-                        app_number = Integer.parseInt(Utils.readLineFromConsole("PICK APPLICATION: "));
-                        controller.setA(n-2);
-                        if(app_number <1 || app_number>n){
-                            UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
-                            app_number=-1;                            
-                        }    
-                        }catch(NumberFormatException e){
-
-                        UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
-                        app_number=-1;                            
-
-                    }           
-        }
-        
-        String resposta1="";
-        while(!resposta1.equalsIgnoreCase("w") && !resposta1.equalsIgnoreCase("u")){
-            resposta1=Utils.readLineFromConsole("DO YOU WISH TO WITHDRAW OR UPDATE APPLICATION? (WRITE 'W' TO WHITHDRAW OR 'U' TO UPDATE): ");
-            if(!resposta1.equalsIgnoreCase("w") && !resposta1.equalsIgnoreCase("u")){
-                UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
-            }
-        }
-        
-        if(resposta1.equalsIgnoreCase("w")){
-            if(controller.withdrawApplication()){
-                UtilsUI.printConfirmation("APPLICATION REMOVED");
-                new MainMenu(centre);
-            }else{
-                UtilsUI.printError("AN ERROR HAS OCCOURED. WITHDRAW FAILED.");
-                new MainMenu(centre);
-            }
-        }
-        
+                
         if(resposta1.equalsIgnoreCase("u")){
         
-        System.out.println("******WRITE 'M' TO MAINTAIN PREVIOUS FIELD OR WRITE NEW CHOICE (ON ALL FIELDS) ******");    
+        UtilsUI.printLine("******WRITE 'M' TO MAINTAIN PREVIOUS FIELD OR WRITE NEW CHOICE (ON ALL FIELDS) ******");    
         description = Utils.readLineFromConsole("DESCRIPTION (CURRENT ONE IS '"+controller.getA().getDescription()+"'): ");
         if(description.equalsIgnoreCase("m")){
             description= controller.getA().getDescription();
         }
-        String inv_string;
-        while(nInvites<0){
-            try{
-
-                inv_string = Utils.readLineFromConsole("NUMBER OF INVITES (CURRENT ONE IS '"+controller.getA().getNumberInvites()+"'): ");
-                if(inv_string.equalsIgnoreCase("m")){
-                    nInvites=controller.getA().getNumberInvites();
-                }else{
-                    nInvites=Integer.parseInt(inv_string);
-                }
-                if(nInvites<0){
-                 UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER OR EQUAL TO 0. PLEASE TRY AGAIN.");
-
-                }    
-                }catch(NumberFormatException e){
-
-                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
-
-            }           
-        }
-        String maintain_keywords="";
-        UtilsUI.printLine("CURRENT KEYWORDS: ");
-        controller.getA().getKeywordList().forEach(keyword -> {
-            UtilsUI.printLine("- "+keyword.getValue());
-            });
-        while(!maintain_keywords.equalsIgnoreCase("y") && !maintain_keywords.equalsIgnoreCase("n")){
-            maintain_keywords = Utils.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS KEYWORDS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
-            if(!maintain_keywords.equalsIgnoreCase("y") && !maintain_keywords.equalsIgnoreCase("n")){
-                UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
-            }
-        }
-        if(maintain_keywords.equalsIgnoreCase("y")){
-           keywords = controller.getA().getKeywordList();
-        }
+        nInvites = readInvites(nInvites);
+        keywords = readKeywords();
+        area = readArea();
         
-        if(maintain_keywords.equalsIgnoreCase("n")){
-            while(nKeywords<5){
-                    keyTemp=Utils.readLineFromConsole("ISERT A KEYWORD (MINUMUM 2 MAXIMUM 5) (WRITE X WHEN YOU ARE DONE) : ");
-                    if(!keyTemp.equalsIgnoreCase("x")){
-                        Keyword k= new Keyword();
-                        k.setValue(keyTemp);
-                        keywords.add(k);
-                        nKeywords++;                   
-                    }else{
-                       if(nKeywords<2){
-
-                            UtilsUI.printError("YOU NEED AT LEAST 2 KEYWORDS.");
-
-                       }else{
-                           break;
-                       } 
-                    }
-            }
-        }
         
-        String area_string;
-        while(area<=0){
-            try{
-                area_string = Utils.readLineFromConsole("WANTED BOOTH AREA (m2) (CURRENT ONE IS "+controller.getA().getBoothArea()+" m2) : ");
-                if(area_string.equalsIgnoreCase("m")){
-                    area= controller.getA().getBoothArea();
-                }else{
-                    area=Double.parseDouble(area_string);                   
-                }
-                if(area<=0){
-                 UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
-
-                }    
-                }catch(NumberFormatException e){
-
-                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
-
-            }           
-        }
         companyName = Utils.readLineFromConsole("COMPANY NAME (CURRENT ONE IS "+controller.getA().getNameOfCompany()+") :");
         if(companyName.equalsIgnoreCase("m")){
             companyName= controller.getA().getNameOfCompany();
         }
-        String phone_number_string;
-        while(!controller.validatePhoneNumber(phoneNumber)){
-            try{
-                phone_number_string = Utils.readLineFromConsole("PHONE NUMBER (CURRENT ONE IS "+controller.getA().getPhoneNumber()+") :");
-                if(phone_number_string.equalsIgnoreCase("m")){
-                    phoneNumber=controller.getA().getPhoneNumber();
-                }else{
-                    phoneNumber=Integer.parseInt(phone_number_string);
-                }
-                if(!controller.validatePhoneNumber(phoneNumber)){
-                 UtilsUI.printError("NUMBER INSERTED NOT VALID. YOU SHOULD INSERT 9 DIGIT NUMBER. PLEASE TRY AGAIN.");
-
-                }    
-                }catch(NumberFormatException e){
-
-                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
-
-            }           
-        }
+        
+        phoneNumber= readPhoneNumber();
+        
         boolean vat=false;
         String vat_string;
         while(!vat){
@@ -207,7 +81,7 @@ public final class UpdateOrWithdrawApplicationUI {
         String maintain_workshops="";
         UtilsUI.printLine("CURRENT WORKSHOPS: ");
         controller.getA().getWorkshopList().forEach((w) -> {
-            System.out.println("- "+w.getDescription());
+            UtilsUI.printLine("- "+w.getDescription());
             });
         while(!maintain_workshops.equalsIgnoreCase("y") && !maintain_workshops.equalsIgnoreCase("n")){
             maintain_workshops = Utils.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS WORSHOPS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
@@ -307,4 +181,164 @@ public final class UpdateOrWithdrawApplicationUI {
         }
         return list;
        }
+
+    private void showApplications(int app_number, int n) {
+        while(app_number==-1){
+                UtilsUI.printLine("--------------------------");
+                UtilsUI.printLine("     YOUR APPLICATIONS    ");
+                UtilsUI.printLine("--------------------------");
+
+                for (Application a : controller.getUserApplications()) {
+                        UtilsUI.printLine(n+" - "+a.getDescription());
+                        n++;
+                    }
+                UtilsUI.printLine("--------------------------");
+
+                try{
+                        app_number = Integer.parseInt(Utils.readLineFromConsole("PICK APPLICATION: "));
+                        controller.setA(n-2);
+                        if(app_number <1 || app_number>n){
+                            UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
+                            app_number=-1;                            
+                        }    
+                        }catch(NumberFormatException e){
+
+                        UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+                        app_number=-1;                            
+
+                    }           
+        }    }
+
+    private String getResposta(ExhibitionCentre centre) {
+    String resposta1="";
+        while(!resposta1.equalsIgnoreCase("w") && !resposta1.equalsIgnoreCase("u")){
+            resposta1=Utils.readLineFromConsole("DO YOU WISH TO WITHDRAW OR UPDATE APPLICATION? (WRITE 'W' TO WHITHDRAW OR 'U' TO UPDATE): ");
+            if(!resposta1.equalsIgnoreCase("w") && !resposta1.equalsIgnoreCase("u")){
+                UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+            }
+        }
+        
+        if(resposta1.equalsIgnoreCase("w")){
+            if(controller.withdrawApplication()){
+                UtilsUI.printConfirmation("APPLICATION REMOVED");
+                new MainMenu(centre);
+            }else{
+                UtilsUI.printError("AN ERROR HAS OCCOURED. WITHDRAW FAILED.");
+                new MainMenu(centre);
+            }
+        }
+        return resposta1;
+    }
+
+    private int readInvites(int nInvites) {
+        String inv_string;
+        while(nInvites<0){
+            try{
+
+                inv_string = Utils.readLineFromConsole("NUMBER OF INVITES (CURRENT ONE IS '"+controller.getA().getNumberInvites()+"'): ");
+                if(inv_string.equalsIgnoreCase("m")){
+                    nInvites=controller.getA().getNumberInvites();
+                }else{
+                    nInvites=Integer.parseInt(inv_string);
+                }
+                if(nInvites<0){
+                 UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER OR EQUAL TO 0. PLEASE TRY AGAIN.");
+
+                }    
+                }catch(NumberFormatException e){
+
+                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+
+            }           
+        }    
+    return nInvites;
+    }
+
+    private List<Keyword> readKeywords() {
+        List<Keyword> keywords= new ArrayList<>();
+        String maintain_keywords="", keyTemp;
+        int nKeywords=0;
+        UtilsUI.printLine("CURRENT KEYWORDS: ");
+        controller.getA().getKeywordList().forEach(keyword -> {
+            UtilsUI.printLine("- "+keyword.getValue());
+            });
+        while(!maintain_keywords.equalsIgnoreCase("y") && !maintain_keywords.equalsIgnoreCase("n")){
+            maintain_keywords = Utils.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS KEYWORDS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
+            if(!maintain_keywords.equalsIgnoreCase("y") && !maintain_keywords.equalsIgnoreCase("n")){
+                UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
+            }
+        }
+        if(maintain_keywords.equalsIgnoreCase("y")){
+            keywords = controller.getA().getKeywordList();
+        }
+        
+        if(maintain_keywords.equalsIgnoreCase("n")){
+            while(nKeywords<5){
+                    keyTemp=Utils.readLineFromConsole("ISERT A KEYWORD (MINUMUM 2 MAXIMUM 5) (WRITE X WHEN YOU ARE DONE) : ");
+                    if(!keyTemp.equalsIgnoreCase("x")){
+                        Keyword k= new Keyword();
+                        k.setValue(keyTemp);
+                        keywords.add(k);
+                        nKeywords++;                   
+                    }else{
+                       if(nKeywords<2){
+
+                            UtilsUI.printError("YOU NEED AT LEAST 2 KEYWORDS.");
+
+                       }else{
+                           break;
+                       } 
+                    }
+            }
+        }
+        return keywords;
+    }
+
+    private double readArea() {
+        String area_string;
+        double area=-1;
+        while(area<=0){
+            try{
+                area_string = Utils.readLineFromConsole("WANTED BOOTH AREA (m2) (CURRENT ONE IS "+controller.getA().getBoothArea()+" m2) : ");
+                if(area_string.equalsIgnoreCase("m")){
+                    area= controller.getA().getBoothArea();
+                }else{
+                    area=Double.parseDouble(area_string);                   
+                }
+                if(area<=0){
+                 UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER BIGGER THAN 0. PLEASE TRY AGAIN.");
+
+                }    
+                }catch(NumberFormatException e){
+
+                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+
+            }           
+        }
+        return area;
+    }
+
+    private int readPhoneNumber() {
+        int phoneNumber=0;
+        String phone_number_string;
+        while(!controller.validatePhoneNumber(phoneNumber)){
+            try{
+                phone_number_string = Utils.readLineFromConsole("PHONE NUMBER (CURRENT ONE IS "+controller.getA().getPhoneNumber()+") :");
+                if(phone_number_string.equalsIgnoreCase("m")){
+                    phoneNumber=controller.getA().getPhoneNumber();
+                }else{
+                    phoneNumber=Integer.parseInt(phone_number_string);
+                }
+                if(!controller.validatePhoneNumber(phoneNumber)){
+                 UtilsUI.printError("NUMBER INSERTED NOT VALID. YOU SHOULD INSERT 9 DIGIT NUMBER. PLEASE TRY AGAIN.");
+
+                }    
+                }catch(NumberFormatException e){
+
+                UtilsUI.printError("CHARACTER INSERTED NOT VALID. PLEASE TRY AGAIN.");
+
+            }           
+        }
+        return phoneNumber;
+    }
 }
