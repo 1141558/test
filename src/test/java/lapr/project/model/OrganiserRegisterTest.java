@@ -116,6 +116,7 @@ public class OrganiserRegisterTest {
 //        int hash = 0;
 //        hash = 53 * hash + Objects.hashCode(organiserHashCode);
 
+
         User user1 = new User("Filipa", "filipa@server.com", "user1", 0.1234);
         Organiser organiser1 = new Organiser(user1);
 
@@ -128,10 +129,7 @@ public class OrganiserRegisterTest {
 
         Assert.assertEquals(hash, result);
 
-//        int result = organiserHashCode.hashCode();
-//        int hash = -1779632894;
-//        int expectedResult = organiserHashCode.hashCode();
-        Assert.assertEquals(hash, result);
+
 //        Assert.assertEquals(expectedResult, result);
 
     }

@@ -31,7 +31,7 @@ public class Organiser  implements Comparable<Organiser> ,  Serializable{
         this.organiser = new User();
     }
 
-
+ 
     public Organiser(User organiser) {
         this.organiser = organiser;
     }

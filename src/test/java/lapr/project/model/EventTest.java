@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import lapr.project.controller.DummyData;
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,6 +23,39 @@ import static org.junit.jupiter.api.Assertions.*;
 public class EventTest {
    
     DummyData data;
+    
+    //Application_________________________________
+    ApplicationRegister appRegister = new ApplicationRegister();
+    ApplicationRegister appRegister2 = new ApplicationRegister();
+        
+    Application app1 = new Application("description");
+    Application app2 = new Application("description2");
+
+    Keyword keyword1 = new Keyword("keyword1");
+    Keyword keyword2 = new Keyword("keyword2");
+    Keyword keyword3 = new Keyword("keyword3");
+    Keyword keyword4 = new Keyword("keyword4");
+
+    List<Keyword> listKey = new ArrayList<>();
+
+    List<Boolean> wantToAttend = new ArrayList<>();
+
+    List<String> necessaryEquip = new ArrayList<>();
+
+    Workshop w1 = new Workshop("description w1", 3, necessaryEquip);        
+    Workshop w2 = new Workshop("description w2", 2, necessaryEquip);
+
+    List<Workshop> listWo = new ArrayList<>();
+
+    User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
+    StaffMember staff = new StaffMember(user);
+    Review rv1 = new Review("RV1", 4, 4, 5, 3, Decision.DECLINED, staff);
+    Review rv2 = new Review("RV2", 4, 4, 5, 3, Decision.DECLINED, staff);
+    Review rv3 = new Review("RV3", 4, 4, 5, 3, Decision.ACCEPTED, staff);
+    List<Review> listRev = new ArrayList<>();
+
+    List<Application> listApp = new ArrayList<>();
+    List<Application> listApp2 = new ArrayList<>();        
     
     ExhibitionCentre centre = new ExhibitionCentre();
     
@@ -50,15 +83,16 @@ public class EventTest {
     List<Organiser> organiserList4 = new ArrayList<>();
   
     StaffRegister staffRegister4 = new StaffRegister();
+    StaffRegister staffRegister = new StaffRegister();
     
-    List<StaffMember> staffMemberListEvent4 = new ArrayList<>();
+    List<StaffMember> staffMemberListEvent4 = new ArrayList<>(); 
+    List<StaffMember> staffMemberListEvent = new ArrayList<>(); 
     
-    Application app = new Application();
-    Application app2 = new Application();
-    
-    List<Application> appList = new ArrayList<>();
-    
-    ApplicationRegister appReg = new ApplicationRegister();
+    StandRegister standRegister = new StandRegister();
+    StandRegister standRegister2 = new StandRegister();
+    Stand s1 = new Stand("STAND1", 2.50);
+    Stand s2 = new Stand("STAND2", 2.10);
+        
     
     Event event4;
     
@@ -95,8 +129,7 @@ public class EventTest {
         usersCentre.add(user9);       
         usersCentre.add(user10);
         
-        userRegister.setUserList(usersCentre);
-        
+        userRegister.setUserList(usersCentre);        
        
         return userRegister;
 
@@ -107,8 +140,55 @@ public class EventTest {
         
         /*
         Event 4
-
         */
+        
+        listKey.add(keyword1);
+        listKey.add(keyword2);
+        listKey.add(keyword3);
+        listKey.add(keyword4);
+        app1.setKeywordList(listKey);
+        app2.setKeywordList(listKey);
+        
+        wantToAttend.add(Boolean.TRUE);
+        wantToAttend.add(Boolean.TRUE);
+        wantToAttend.add(Boolean.FALSE);
+        
+        listRev.add(rv1);
+        listRev.add(rv2);
+        listRev.add(rv3);
+        
+        necessaryEquip.add("Lavatorio");
+        necessaryEquip.add("Agua potavél");
+        necessaryEquip.add("Quadro");
+        
+        app1.setBoothArea(5);
+        app1.setState(ApplicationState.ACCEPTED);
+        app1.setNameOfCompany("nameOfCompany");
+        app1.setDescription("description");
+        app1.setUserThatSubmited(user);
+        app1.setListReview(listRev);
+        
+        app2.setBoothArea(7);
+        app2.setState(ApplicationState.CREATED);
+        app2.setNameOfCompany("nameOfCompany 2");
+        app2.setDescription("description 2");
+        app2.setUserThatSubmited(user);
+        app2.setListReview(listRev);
+        
+        w1.setWantToAttend(wantToAttend);
+        w2.setWantToAttend(wantToAttend); 
+        
+        listWo.add(w2);
+        listWo.add(w1);
+        app1.setWorkshopList(listWo);
+        app2.setWorkshopList(listWo);
+        
+        listApp.add(app1);
+        listApp.add(app2);        
+        listApp2.add(app1);
+        
+        appRegister.setApplicationList(listApp);
+        appRegister2.setApplicationList(listApp2);
 
         org1 = new Organiser();
         org1.setOrganiser(user1);
@@ -123,13 +203,19 @@ public class EventTest {
 
         StaffMember staff41 = new StaffMember();
         StaffMember staff42 = new StaffMember();
+        StaffMember staff43 = new StaffMember(user3);
 
         staff41.setUser(user4);
         staff42.setUser(user5);
         staffMemberListEvent4.add(staff41);
         staffMemberListEvent4.add(staff42);
+        staffMemberListEvent.add(staff43);
 
         staffRegister4.add(staffMemberListEvent4);
+        staffRegister.add(staffMemberListEvent);
+        
+        standRegister.addStand(s1);
+        standRegister2.addStand(s2);
 
         this.event4 = new Event(organiserRegister4);
 
@@ -139,20 +225,13 @@ public class EventTest {
         event4.setStaffRegister(staffRegister4);
         event4.setDaysApplication(4);
         event4.setStartDate(data1);
-        event4.setEndDate(data2);
-        this.app.setDescription("APP 1");
-        this.app2.setDescription("APP 2");
-        this.app.setState(ApplicationState.ACCEPTED);
-        this.app2.setState(ApplicationState.IN_EVALUALTION);
+        event4.setEndDate(data2);        
+        event4.setApplicationRegister(appRegister);
+        event4.setDateEndApplications(data4);
+        event4.setDaysApplication(4);
+        event4.setStandRegister(standRegister);
         
-        event4.setApplicationRegister(appReg);
-        
-        eventRegister.addEvent(event4);        
-        
-        appList.add(app);
-        appList.add(app2);
-        
-        appReg.setApplicationList(appList);
+        eventRegister.addEvent(event4);       
         
         UserRegister userRegister = new UserRegister();
         userRegister = createUsers();
@@ -410,8 +489,8 @@ public class EventTest {
      * Test of equals method, of class Event.
      */
     @Test
-    public void testEquals2() {
-        System.out.println("equals2");
+    public void testEquals2Description() {
+        System.out.println("equals2Description");
         Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
         Event instance = new Event("Evento teste", "Teste para evento 2", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
         boolean expResult = false;
@@ -423,8 +502,8 @@ public class EventTest {
      * Test of equals method, of class Event.
      */
     @Test
-    public void testEquals3() {
-        System.out.println("equals3");
+    public void testEquals3Null() {
+        System.out.println("equals3Null");
         Event event = null;
         Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
         boolean expResult = false;
@@ -436,8 +515,8 @@ public class EventTest {
      * Test of equals method, of class Event.
      */
     @Test
-    public void testEquals4() {
-        System.out.println("equals4");
+    public void testEquals4DateStart() {
+        System.out.println("equals4DateEnd");
         Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
         Event instance = new Event("Evento teste", "Teste para evento", data.getDate2(), data.getDate2(), "", data.getOrganiserRegister());
         boolean expResult = false;
@@ -449,13 +528,293 @@ public class EventTest {
      * Test of equals method, of class Event.
      */
     @Test
-    public void testEquals5() {
-        System.out.println("equals5");
+    public void testEqualsDateEnd() {
+        System.out.println("equalsDateEnd");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate2(), data.getDate2(), "", data.getOrganiserRegister());
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate2(), data.getDate1(), "", data.getOrganiserRegister());
+        boolean expResult = false;
+        boolean result = instance.equals(event);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEquals5Title() {
+        System.out.println("equals5Title");
         Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
         Event instance = new Event("Evento teste2", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
         boolean expResult = false;
         boolean result = instance.equals(event);
         assertEquals(expResult, result);
+    }
+    
+     /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsRooms() {
+        System.out.println("equalsRooms");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        event.setRooms(3);
+        event.setDaysApplication(4);
+        event.setPlace("place");
+        event.setStaffRegister(staffRegister4);
+        event.setEventState(EventState.CREATED);
+        event.setEventManager(event4.getEventManager());
+        event.setStandRegister(event4.getStandRegister());
+        event.setApplicationRegister(appRegister);
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        instance.setRooms(1);
+        instance.setDaysApplication(4);
+        instance.setPlace("place");
+        instance.setStaffRegister(staffRegister4);
+        instance.setEventState(EventState.CREATED);
+        instance.setEventManager(event4.getEventManager());
+        instance.setStandRegister(event4.getStandRegister());
+        instance.setApplicationRegister(appRegister);
+        boolean result = instance.equals(event);
+        assertFalse(result);
+    }
+    
+      /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsDays() {
+        System.out.println("equalsDays");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        event.setRooms(3);
+        event.setDaysApplication(4);
+        event.setPlace("place");
+        event.setStaffRegister(staffRegister4);
+        event.setEventState(EventState.CREATED);
+        event.setEventManager(event4.getEventManager());
+        event.setStandRegister(event4.getStandRegister());
+        event.setApplicationRegister(appRegister);
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        instance.setRooms(3);
+        instance.setDaysApplication(3);
+        instance.setPlace("place");
+        instance.setStaffRegister(staffRegister4);
+        instance.setEventState(EventState.CREATED);
+        instance.setEventManager(event4.getEventManager());
+        instance.setStandRegister(event4.getStandRegister());
+        instance.setApplicationRegister(appRegister);
+        boolean result = instance.equals(event);
+        assertFalse(result);
+    }
+    
+      /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsPlace() {
+        System.out.println("equalsPlace");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        event.setRooms(3);
+        event.setDaysApplication(4);
+        event.setPlace("place");
+        event.setStaffRegister(staffRegister4);
+        event.setEventState(EventState.CREATED);
+        event.setEventManager(event4.getEventManager());
+        event.setStandRegister(event4.getStandRegister());
+        event.setApplicationRegister(appRegister);
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        instance.setRooms(3);
+        instance.setDaysApplication(4);
+        instance.setPlace("place2");
+        instance.setStaffRegister(staffRegister4);
+        instance.setEventState(EventState.CREATED);
+        instance.setEventManager(event4.getEventManager());
+        instance.setStandRegister(event4.getStandRegister());
+        instance.setApplicationRegister(appRegister);
+        boolean result = instance.equals(event);
+        assertFalse(result);
+    }
+    
+     /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsState() {
+        System.out.println("equalsState");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        event.setRooms(3);
+        event.setDaysApplication(4);
+        event.setPlace("place");
+        event.setStaffRegister(staffRegister4);
+        event.setEventState(EventState.CREATED);
+        event.setEventManager(event4.getEventManager());
+        event.setStandRegister(event4.getStandRegister());
+        event.setApplicationRegister(appRegister);
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        instance.setRooms(3);
+        instance.setDaysApplication(4);
+        instance.setPlace("place");
+        instance.setStaffRegister(staffRegister4);
+        instance.setEventState(EventState.IN_EVALUATIONS);
+        instance.setEventManager(event4.getEventManager());
+        instance.setStandRegister(event4.getStandRegister());
+        instance.setApplicationRegister(appRegister);
+        boolean result = instance.equals(event);
+        assertFalse(result);
+    }
+    
+     /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsOrganiser() {
+        System.out.println("equalsOrganiser");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        event.setRooms(3);
+        event.setDaysApplication(4);
+        event.setPlace("place");
+        event.setStaffRegister(staffRegister4);
+        event.setEventState(EventState.CREATED);
+        event.setEventManager(event4.getEventManager());
+        event.setStandRegister(event4.getStandRegister());
+        event.setApplicationRegister(appRegister);
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", event4.getOrganiserRegister());
+        instance.setRooms(3);
+        instance.setDaysApplication(4);
+        instance.setPlace("place");
+        instance.setStaffRegister(staffRegister4);
+        instance.setEventState(EventState.CREATED);
+        instance.setEventManager(event4.getEventManager());
+        instance.setStandRegister(event4.getStandRegister());
+        instance.setApplicationRegister(appRegister);
+        boolean result = instance.equals(event);
+        assertFalse(result);
+    }
+    
+    /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsStaff() {
+        System.out.println("equalsStaff");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        event.setRooms(3);
+        event.setDaysApplication(4);
+        event.setPlace("place");
+        event.setStaffRegister(staffRegister4);
+        event.setEventState(EventState.CREATED);
+        event.setEventManager(event4.getEventManager());
+        event.setStandRegister(event4.getStandRegister());
+        event.setApplicationRegister(appRegister);
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        instance.setRooms(3);
+        instance.setDaysApplication(4);
+        instance.setPlace("place");
+        instance.setStaffRegister(staffRegister);
+        instance.setEventState(EventState.CREATED);
+        instance.setEventManager(event4.getEventManager());
+        instance.setStandRegister(event4.getStandRegister());
+        instance.setApplicationRegister(appRegister);
+        boolean result = instance.equals(event);
+        assertFalse(result);
+    }
+    
+     /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsManager() {
+        System.out.println("equalsManager");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        event.setRooms(3);
+        event.setDaysApplication(4);
+        event.setPlace("place");
+        event.setStaffRegister(staffRegister4);
+        event.setEventState(EventState.CREATED);
+        event.setEventManager(new EventManager(user7));
+        event.setStandRegister(event4.getStandRegister());
+        event.setApplicationRegister(appRegister);
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        instance.setRooms(3);
+        instance.setDaysApplication(4);
+        instance.setPlace("place");
+        instance.setStaffRegister(staffRegister4);
+        instance.setEventState(EventState.CREATED);
+        instance.setEventManager(event4.getEventManager());
+        instance.setStandRegister(event4.getStandRegister());
+        instance.setApplicationRegister(appRegister);
+        boolean result = instance.equals(event);
+        assertFalse(result);
+    }
+    
+     /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsApp() {
+        System.out.println("equalsApp");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        event.setRooms(3);
+        event.setDaysApplication(4);
+        event.setPlace("place");
+        event.setStaffRegister(staffRegister4);
+        event.setEventState(EventState.CREATED);
+        event.setEventManager(event4.getEventManager());
+        event.setStandRegister(event4.getStandRegister());
+        event.setApplicationRegister(appRegister);
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        instance.setRooms(3);
+        instance.setDaysApplication(4);
+        instance.setPlace("place");
+        instance.setStaffRegister(staffRegister4);
+        instance.setEventState(EventState.CREATED);
+        instance.setEventManager(event4.getEventManager());
+        instance.setStandRegister(event4.getStandRegister());
+        instance.setApplicationRegister(appRegister2);
+        boolean result = instance.equals(event);
+        assertFalse(result);
+    }
+    
+    /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsStand() {
+        System.out.println("equalsStand");
+        Event event = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        event.setRooms(3);
+        event.setDaysApplication(4);
+        event.setPlace("place");
+        event.setStaffRegister(staffRegister4);
+        event.setEventState(EventState.CREATED);
+        event.setEventManager(event4.getEventManager());
+        event.setStandRegister(event4.getStandRegister());
+        event.setApplicationRegister(appRegister);
+        event.setStandRegister(standRegister);
+        Event instance = new Event("Evento teste", "Teste para evento", data.getDate1(), data.getDate2(), "", data.getOrganiserRegister());
+        instance.setRooms(3);
+        instance.setDaysApplication(4);
+        instance.setPlace("place");
+        instance.setStaffRegister(staffRegister4);
+        instance.setEventState(EventState.CREATED);
+        instance.setEventManager(event4.getEventManager());
+        instance.setStandRegister(event4.getStandRegister());
+        instance.setApplicationRegister(appRegister);
+        instance.setStandRegister(standRegister2);
+        boolean result = instance.equals(event);
+        assertFalse(result);
+    }
+    
+    /**
+     * Test of equals method, of class Event.
+     */
+    @Test
+    public void testEqualsObject() {
+        System.out.println("equalsObject");
+        Stand s = new Stand("description", 20.3);
+        Object o = s;
+        Event instance = data.getEventRegister().getEvent(0);
+        boolean result = instance.equals(o);
+        assertFalse(result);
     }
     
     @Test
@@ -621,10 +980,8 @@ public class EventTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        Event instance = new Event();
-        instance = data.getEventRegister().getEvent(0);
-        String expResult = instance.toString();
-        String result = instance.toString();
+        String expResult = event4.toString();
+        String result = event4.toString();
         assertEquals(expResult, result);
     }
 
@@ -634,10 +991,8 @@ public class EventTest {
     @Test
     public void testToString2() {
         System.out.println("toString2");
-        Event instance = new Event();
-        instance = data.getEventRegister().getEvent(0);
-        String expResult = instance.toString2();
-        String result = instance.toString2();
+        String expResult = event4.toString2();
+        String result = event4.toString2();
         assertEquals(expResult, result);
     }
 
@@ -671,8 +1026,8 @@ public class EventTest {
     public void testSetAndGetApplicationRegister() {
         System.out.println("set get ApplicationRegister");
         Event instance = new Event();
-        ApplicationRegister expResult = appReg;
-        instance.setApplicationRegister(appReg);
+        ApplicationRegister expResult = appRegister;
+        instance.setApplicationRegister(appRegister);
         ApplicationRegister result = instance.getApplicationRegister();
         assertEquals(expResult, result);
     }
@@ -722,9 +1077,9 @@ public class EventTest {
     @Test
     public void testGetEventApplicationByState() {
         System.out.println("getEventApplicationByState");
-        ApplicationState appState = ApplicationState.IN_EVALUALTION;
+        ApplicationState appState = ApplicationState.CREATED;
         Event instance = new Event();
-        instance.setApplicationRegister(appReg);
+        instance.setApplicationRegister(appRegister);
         List<Application> expResult = new ArrayList<>();
         expResult.add(event4.getApplicationRegister().getApplicationList().get(1));
         List<Application> result = instance.getEventApplicationByState(appState);
@@ -738,7 +1093,7 @@ public class EventTest {
     public void testGetEventApplicationByAcception() {
         System.out.println("getEventApplicationByAcception");
         Event instance = new Event();
-        instance.setApplicationRegister(appReg);
+        instance.setApplicationRegister(appRegister);
         List<Application> expResult = new ArrayList<>();
         expResult.add(event4.getApplicationRegister().getApplicationList().get(0));
         List<Application> result = instance.getEventApplicationByAcception();
@@ -755,7 +1110,18 @@ public class EventTest {
         int expResult = 10;
         instance.setRooms(expResult);
         int result = instance.getRooms();
-        assertEquals(expResult, result);;
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of hashCode method, of class Event.
+     */
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        int expResult = event4.hashCode();
+        int result = event4.hashCode();
+        assertEquals(expResult, result);
     }
     
 }

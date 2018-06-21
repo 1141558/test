@@ -223,13 +223,16 @@ public class Event implements Comparable<Event>, Serializable {
     public void setDaysApplication(int daysApplication) {
         this.daysApplication = daysApplication;
     }
-    
+
     @Override
     public String toString() {
-        return "Event{" + "title = " + title + ", description = " + description + ", startDate=" + startDate + ", endDate= " + endDate + ", place= " + place + ", organiserRegister=" + organiserRegister + ", staffRegister= " + staffRegister + "\n eventState=" + eventState + "\n daysApplication=" + daysApplication + "}\n";
-        
+        return "Event{" + "title=" + title + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", place=" + place + ", organiserRegister=" + organiserRegister + ", staffRegister=" + staffRegister + ", eventState=" + eventState + ", eventManager=" + eventManager + ", standRegister=" + standRegister + ", applicationRegister=" + applicationRegister + ", dateEndApplications=" + dateEndApplications + ", rooms=" + rooms + ", daysApplication=" + daysApplication + '}';
     }
     
+    /**
+     *
+     * @return String
+     */
     public String toString2() {
         return String.format("Titulo: %s", this.title);
     }
@@ -238,59 +241,78 @@ public class Event implements Comparable<Event>, Serializable {
     public int compareTo(Event o) {
         return this.startDate.compareTo(o.startDate);
     }
-    
+
     @Override
-    public boolean equals(Object o) {
-        
-        if (o == null) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        if (this.getClass() != o.getClass()) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        Event e= (Event)o;
-        if (!Objects.equals(this.title, e.title)) {
+        final Event other = (Event) obj;
+        if (this.rooms != other.rooms) {
             return false;
         }
-        if (!Objects.equals(this.description, e.description)) {
+        if (this.daysApplication != other.daysApplication) {
             return false;
         }
-        if (!Objects.equals(this.place, e.place)) {
+        if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Objects.equals(this.endDate, e.endDate)) {
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.startDate, e.startDate)) {
+        if (!Objects.equals(this.place, other.place)) {
             return false;
         }
-        if(!Objects.equals(this.applicationRegister, e.applicationRegister)){
+        if (!Objects.equals(this.startDate, other.startDate)) {
             return false;
         }
-        if(!Objects.equals(this.eventState, e.eventState)){
+        if (!Objects.equals(this.endDate, other.endDate)) {
             return false;
         }
-        if(!Objects.equals(this.organiserRegister, e.organiserRegister)){
+        if (!Objects.equals(this.organiserRegister, other.organiserRegister)) {
             return false;
         }
-        if(!Objects.equals(this.staffRegister, e.staffRegister)){
+        if (!Objects.equals(this.staffRegister, other.staffRegister)) {
             return false;
         }
-        if(!Objects.equals(this.standRegister, e.standRegister)){
+        if (this.eventState != other.eventState) {
             return false;
         }
-        return Objects.equals(this.daysApplication, this.daysApplication);
+        if (!Objects.equals(this.eventManager, other.eventManager)) {
+            return false;
+        }
+        if (!Objects.equals(this.standRegister, other.standRegister)) {
+            return false;
+        }
+        if (!Objects.equals(this.applicationRegister, other.applicationRegister)) {
+            return false;
+        }
+        return Objects.equals(this.dateEndApplications, other.dateEndApplications);
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.title);
-        hash = 59 * hash + Objects.hashCode(this.description);
-        hash = 59 * hash + Objects.hashCode(this.startDate);
-        hash = 59 * hash + Objects.hashCode(this.endDate);
-        hash = 59 * hash + Objects.hashCode(this.place);
-        hash = 59 * hash + this.daysApplication;
+        hash = 53 * hash + Objects.hashCode(this.title);
+        hash = 53 * hash + Objects.hashCode(this.description);
+        hash = 53 * hash + Objects.hashCode(this.startDate);
+        hash = 53 * hash + Objects.hashCode(this.endDate);
+        hash = 53 * hash + Objects.hashCode(this.place);
+        hash = 53 * hash + Objects.hashCode(this.organiserRegister);
+        hash = 53 * hash + Objects.hashCode(this.staffRegister);
+        hash = 53 * hash + Objects.hashCode(this.eventState);
+        hash = 53 * hash + Objects.hashCode(this.eventManager);
+        hash = 53 * hash + Objects.hashCode(this.standRegister);
+        hash = 53 * hash + Objects.hashCode(this.applicationRegister);
+        hash = 53 * hash + Objects.hashCode(this.dateEndApplications);
+        hash = 53 * hash + this.rooms;
+        hash = 53 * hash + this.daysApplication;
         return hash;
     }
     

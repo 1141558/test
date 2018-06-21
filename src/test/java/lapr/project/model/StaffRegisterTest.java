@@ -395,7 +395,7 @@ public class StaffRegisterTest {
 
 
         System.out.println("hash" +instance.hashCode() );
-
+        
 
         int result = instance.hashCode();
         assertEquals(expResult, result);
@@ -418,7 +418,7 @@ public class StaffRegisterTest {
     }
 
 
-    
+
       @Test
     public void testHashCodeTwo() {
         System.out.println("hashCode");
