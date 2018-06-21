@@ -11,7 +11,6 @@ import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
-import lapr.project.utils.Utils;
 
 /**
  *
@@ -58,7 +57,7 @@ public class ListEventsUI {
             }
             UtilsUI.printLine("--------------------------");
 
-            event=Utils.readLineFromConsole("PICK EVENT: ");
+            event=UtilsUI.readLineFromConsole("PICK EVENT: ");
             try{
                 event_index= Integer.parseInt(event);
                 if(event_index>0 && event_index<=controller.getEventsFromUser().size()){
@@ -90,7 +89,7 @@ public class ListEventsUI {
             UtilsUI.printLine("");
         }
         controller.registerLog();
-        Utils.readLineFromConsole("PRESS ENTER TO GO BACK TO MAIN MENU: ");
+        UtilsUI.readLineFromConsole("PRESS ENTER TO GO BACK TO MAIN MENU: ");
         new MainMenu(centre);
     }
     

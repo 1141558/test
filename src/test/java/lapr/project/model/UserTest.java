@@ -165,7 +165,7 @@ public class UserTest {
         int hash=5;
         hash = 83 * hash + instance.getName().hashCode();
         hash = 83 * hash + instance.getEmail().hashCode();
-        hash = 83 * hash + instance.getUsername().hashCode();//        double test=(int) Double.doubleToLongBits(instance.getPassword()) ^ Double.doubleToLongBits(instance.getPassword())>>>32;
+        hash = 83 * hash + instance.getUsername().hashCode();
         hash = 83 * hash + (int) (Double.doubleToLongBits(password) ^ (Double.doubleToLongBits(password) >>> 32));
         hash = 83 * hash + instance.getRole().hashCode();
         

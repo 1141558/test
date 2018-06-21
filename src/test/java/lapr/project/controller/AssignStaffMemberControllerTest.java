@@ -146,35 +146,34 @@ public class AssignStaffMemberControllerTest {
         Assert.assertEquals(eventRegister3.getEvent(0).getStaffRegister().getStaffList().get(0).getStaff().getName().toString(), "Manuel garnel");
         
     }
-    @Test
-    public void getAvailableUsers() {
-        
-      //Arrange
-        User availableUser1 = new User("jose", "manuel@hotmail.com", "jo", 123321);
-        User availableUser2 = new User("Manuel garnel", "garnel@hotmail.com", "garne", 321123);
-        Event event1 = new Event();
-        DummyData data = new DummyData(exhibitionCentre);
-        AssignStaffMemberController aStaffMembController = new AssignStaffMemberController(exhibitionCentre);
-        aStaffMembController.selectEvent(event3);
-        UserRegister usReg = new UserRegister();
-        exhibitionCentre.setUserRegister(usReg);
-        List<Event> eventList = new ArrayList<>();
-        List<User> users = new ArrayList<>();
-        users.add(availableUser1);
-        StaffMember staffMember = new StaffMember(availableUser2);
-        staffMemberList.add(staffMember);
-        staffRegister.add(staffMemberList);
-        event3.setStaffRegister(staffRegister);
-        eventList.add(event3);
-        eventRegister3.setEventList(eventList);
-        exhibitionCentre.setEventRegister(eventRegister3);
-        List<User> expecteds = new ArrayList<>();
-                  
-      List<User> actuals=   aStaffMembController.getAvailableUsers();
-      //actuals.get(0);
-      //expecteds.get(0);
-      // Assert.assertEquals(expecteds, actuals);
-        
-                
-    }
+//    @Test
+//    public void getAvailableUsers() {
+//        
+//      //Arrange
+//        User availableUser1 = new User("jose", "manuel@hotmail.com", "jo", 123321);
+//        User availableUser2 = new User("Manuel garnel", "garnel@hotmail.com", "garne", 321123);
+//        Event event1 = new Event();
+//        DummyData data = new DummyData(exhibitionCentre);
+//        AssignStaffMemberController aStaffMembController = new AssignStaffMemberController(exhibitionCentre);
+//        aStaffMembController.selectEvent(event3);
+//        UserRegister usReg = new UserRegister();
+//        exhibitionCentre.setUserRegister(usReg);
+//        List<Event> eventList = new ArrayList<>();
+//        List<User> users = new ArrayList<>();
+//        users.add(availableUser1);
+//        StaffMember staffMember = new StaffMember(availableUser2);
+//        staffMemberList.add(staffMember);
+//        staffRegister.add(staffMemberList);
+//        event3.setStaffRegister(staffRegister);
+//        eventList.add(event3);
+//        eventRegister3.setEventList(eventList);
+//        exhibitionCentre.setEventRegister(eventRegister3);
+//        List<User> expecteds = new ArrayList<>();
+//                  
+//      List<User> actuals=   aStaffMembController.getAvailableUsers();
+//     Assert.assertNull(actuals.get(0));
+// 
+//        
+//                
+//    }
 }

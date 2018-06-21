@@ -7,6 +7,7 @@ package lapr.project.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -170,8 +171,15 @@ public class StandTest {
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
-        Stand instance = new Stand();
-        int expResult = instance.hashCode();
+        Stand instance = new Stand("Stand 1", 20.2);
+        Stand instance2 = new Stand("Stand 1", 20.2);
+        
+        int hash = 5;
+        hash = 61 * hash + Objects.hashCode(instance2.getDescription());
+        hash = 61 * hash + (int) (Double.doubleToLongBits(instance2.getArea()) ^ (Double.doubleToLongBits(instance2.getArea()) >>> 32));
+        hash = 61 * hash + Objects.hashCode(instance2.getDistanceList());
+        
+        int expResult = hash;
         int result = instance.hashCode();
         assertEquals(expResult, result);
     }

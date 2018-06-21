@@ -8,7 +8,6 @@ package lapr.project.ui;
 import java.io.Serializable;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Role;
-import lapr.project.utils.Utils;
 
 
 /**
@@ -34,7 +33,7 @@ public class MainMenu implements Serializable{
         if(centre.getEventRegister().userIsStaffMember(centre.getUserOnline())){
             UtilsUI.printLine("               1.SUBMIT APPLICATION REVIEW               ");
             UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
-            opt = Utils.readLineFromConsole("INSERT OPTION: ");
+            opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
                     /*TO DO*/
@@ -56,7 +55,7 @@ public class MainMenu implements Serializable{
 
             System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
 
-            opt = Utils.readLineFromConsole("INSERT OPTION: ");
+            opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
                     new AssignStaffMemberUI(centre);    
@@ -98,7 +97,7 @@ public class MainMenu implements Serializable{
        UtilsUI.printLine("4.SHOW MEAN DEVIATION BETWEEN STAFF MEMBERS' AVERAGE RATINGS AND EVENTS MEAN RATINGS");
 
        UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
-            opt = Utils.readLineFromConsole("INSERT OPTION: ");
+            opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
                     new CreateEventUI(centre);    
@@ -117,7 +116,7 @@ public class MainMenu implements Serializable{
         UtilsUI.printLine("                1.SUBMIT APPLICATION TO EVENT            ");       
         UtilsUI.printLine("               2.UPDATE OR WITHDRAW APPLICATION          ");       
         UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
-        opt = Utils.readLineFromConsole("INSERT OPTION: ");
+        opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
                     new SubmitApplicationToEventUI(centre);  
@@ -129,7 +128,7 @@ public class MainMenu implements Serializable{
         }else if(centre.getUserOnline().getRole().equals(Role.ATENDEE)){
         UtilsUI.printLine("                1.SUBMIT WORKSHOP SURVEY            ");       
         UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
-        opt = Utils.readLineFromConsole("INSERT OPTION: ");
+        opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
                     new SubmitWorkshopSurveyUI(centre);

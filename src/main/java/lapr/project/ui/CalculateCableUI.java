@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.utils.Utils;
 import lapr.project.model.StandConnection;
 import lapr.project.controller.CalculateCableController;
 
@@ -40,7 +39,7 @@ public class CalculateCableUI {
 
         //Selecctionar evento
         UtilsUI.printLine("SELECT EVENT ('Q' TO QUIT)");
-        selection = Utils.readLineFromConsole("EVENT TITLE: ");
+        selection = UtilsUI.readLineFromConsole("EVENT TITLE: ");
 
         while (!controller.eventExists(selection) && (!selection.equalsIgnoreCase("Q"))) {
             UtilsUI.printError("EVENT NOT FOUND!\nPLEASE TRY AGAIN");
@@ -51,7 +50,7 @@ public class CalculateCableUI {
 
             //Seleccionar evento
             UtilsUI.printLine("SELECT EVENT ('Q' TO QUIT)");
-            selection = Utils.readLineFromConsole("EVENT TITLE: ");
+            selection = UtilsUI.readLineFromConsole("EVENT TITLE: ");
         }
         
         if(!controller.hasStands(controller.findEvent(selection))){

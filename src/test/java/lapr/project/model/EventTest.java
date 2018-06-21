@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import lapr.project.controller.DummyData;
 import static org.junit.Assert.assertEquals;
@@ -230,6 +231,7 @@ public class EventTest {
         event4.setDateEndApplications(data4);
         event4.setDaysApplication(4);
         event4.setStandRegister(standRegister);
+        event4.setDateEndApplications(data2);
         
         eventRegister.addEvent(event4);       
         
@@ -1119,7 +1121,24 @@ public class EventTest {
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
-        int expResult = event4.hashCode();
+        
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(event4.getTitle());
+        hash = 53 * hash + Objects.hashCode(event4.getDescription());
+        hash = 53 * hash + Objects.hashCode(event4.getStartDate());
+        hash = 53 * hash + Objects.hashCode(event4.getEndDate());
+        hash = 53 * hash + Objects.hashCode(event4.getPlace());
+        hash = 53 * hash + Objects.hashCode(event4.getOrganisersRegister());
+        hash = 53 * hash + Objects.hashCode(event4.getStaffRegister());
+        hash = 53 * hash + Objects.hashCode(event4.getEventState());
+        hash = 53 * hash + Objects.hashCode(event4.getEventManager());
+        hash = 53 * hash + Objects.hashCode(event4.getStandRegister());
+        hash = 53 * hash + Objects.hashCode(event4.getApplicationRegister());
+        hash = 53 * hash + Objects.hashCode(event4.getDateEndApplications());
+        hash = 53 * hash + event4.getRooms();
+        hash = 53 * hash + event4.getDaysApplication();
+       
+        int expResult = hash;
         int result = event4.hashCode();
         assertEquals(expResult, result);
     }

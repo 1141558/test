@@ -11,7 +11,6 @@ import lapr.project.controller.SubmitWorkshopSurveyController;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Workshop;
-import lapr.project.utils.Utils;
 
 /**
  *
@@ -40,7 +39,7 @@ public class SubmitWorkshopSurveyUI {
                 UtilsUI.printLine("--------------------------");
 
                 try{
-                        event_number = Integer.parseInt(Utils.readLineFromConsole("PICK EVENT YOU WOULD LIKE TO ATTEND: "));
+                        event_number = Integer.parseInt(UtilsUI.readLineFromConsole("PICK EVENT YOU WOULD LIKE TO ATTEND: "));
                         controller.setEvent(n-2);
                         if(event_number <1 || event_number>n){
                             UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
@@ -58,7 +57,7 @@ public class SubmitWorkshopSurveyUI {
         String resposta_workshops;
         for (int i=0; i<lista_workshops.size();i++) {
 
-                resposta_workshops=Utils.readLineFromConsole("WORKSHOP "+lista_workshops.get(i).getDescription()+" LASTING "+lista_workshops.get(i).getDurationInHours()+" HOURS (WRITE 'Y' IF YES OR 'N' IF NO): ");
+                resposta_workshops=UtilsUI.readLineFromConsole("WORKSHOP "+lista_workshops.get(i).getDescription()+" LASTING "+lista_workshops.get(i).getDurationInHours()+" HOURS (WRITE 'Y' IF YES OR 'N' IF NO): ");
                 if(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
                     UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
                     i--;

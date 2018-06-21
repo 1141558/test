@@ -20,6 +20,7 @@ public class Review implements Serializable{
     private int staffTopicKnowledge;
     private int eventAdequacy;
     private int inviteAdequacy;
+    private int areaAdequacy;
     private int recommendation;
     private Decision decision;
     private StaffMember assignedStaffMember;
@@ -92,6 +93,20 @@ public class Review implements Serializable{
      */
     public void setInviteAdequacy(int inviteAdequacy) {
         this.inviteAdequacy = inviteAdequacy;
+    }
+    
+    /**
+     * @return the areaAdequacy
+     */
+    public int getAreaAdequacy() {
+        return areaAdequacy;
+    }
+
+    /**
+     * @param areaAdequacy the areaAdequacy to set
+     */
+    public void setAreaAdequacy(int areaAdequacy) {
+        this.areaAdequacy = areaAdequacy;
     }
 
     /**

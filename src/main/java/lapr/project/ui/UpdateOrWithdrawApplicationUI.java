@@ -13,7 +13,6 @@ import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
 import lapr.project.model.Workshop;
-import lapr.project.utils.Utils;
 
 /**
  *
@@ -43,7 +42,7 @@ public final class UpdateOrWithdrawApplicationUI {
         if(resposta1.equalsIgnoreCase("u")){
         
         UtilsUI.printLine("******WRITE 'M' TO MAINTAIN PREVIOUS FIELD OR WRITE NEW CHOICE (ON ALL FIELDS) ******");    
-        description = Utils.readLineFromConsole("DESCRIPTION (CURRENT ONE IS '"+controller.getA().getDescription()+"'): ");
+        description = UtilsUI.readLineFromConsole("DESCRIPTION (CURRENT ONE IS '"+controller.getA().getDescription()+"'): ");
         if(description.equalsIgnoreCase("m")){
             description= controller.getA().getDescription();
         }
@@ -52,7 +51,7 @@ public final class UpdateOrWithdrawApplicationUI {
         area = readArea();
         
         
-        companyName = Utils.readLineFromConsole("COMPANY NAME (CURRENT ONE IS "+controller.getA().getNameOfCompany()+") :");
+        companyName = UtilsUI.readLineFromConsole("COMPANY NAME (CURRENT ONE IS "+controller.getA().getNameOfCompany()+") :");
         if(companyName.equalsIgnoreCase("m")){
             companyName= controller.getA().getNameOfCompany();
         }
@@ -63,7 +62,7 @@ public final class UpdateOrWithdrawApplicationUI {
         String vat_string;
         while(!vat){
             try{
-                vat_string = Utils.readLineFromConsole("VAT NUMBER: ");
+                vat_string = UtilsUI.readLineFromConsole("VAT NUMBER: ");
                 if(vat_string.equalsIgnoreCase("m")){
                     vatNumber=controller.getA().getVatNumber();
                 }else{
@@ -84,7 +83,7 @@ public final class UpdateOrWithdrawApplicationUI {
             UtilsUI.printLine("- "+w.getDescription());
             });
         while(!maintain_workshops.equalsIgnoreCase("y") && !maintain_workshops.equalsIgnoreCase("n")){
-            maintain_workshops = Utils.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS WORSHOPS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
+            maintain_workshops = UtilsUI.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS WORSHOPS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
             if(!maintain_workshops.equalsIgnoreCase("y") && !maintain_workshops.equalsIgnoreCase("n")){
                 UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
@@ -95,7 +94,7 @@ public final class UpdateOrWithdrawApplicationUI {
         else{
             String resposta_workshops="";
             while(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
-                resposta_workshops=Utils.readLineFromConsole("DO YOU WISH TO DO WORKSHOPS? (WRITE 'Y' IF YES OR 'N' IF NO): ");
+                resposta_workshops=UtilsUI.readLineFromConsole("DO YOU WISH TO DO WORKSHOPS? (WRITE 'Y' IF YES OR 'N' IF NO): ");
                 if(!resposta_workshops.equalsIgnoreCase("y") && !resposta_workshops.equalsIgnoreCase("n")){
                     UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
                 }               
@@ -107,7 +106,7 @@ public final class UpdateOrWithdrawApplicationUI {
         }
         String resposta="";
         while(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
-            resposta=Utils.readLineFromConsole("DO YOU CONFIRM THIS APPLICATION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
+            resposta=UtilsUI.readLineFromConsole("DO YOU CONFIRM THIS APPLICATION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
             if(!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")){
                 UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
@@ -133,7 +132,7 @@ public final class UpdateOrWithdrawApplicationUI {
         int number_of_workshops;
         while(!vat){
             try{
-                number_of_workshops = Integer.parseInt(Utils.readLineFromConsole("HOW MANY WORKSHOPS DO YOU WISH TO EXECUTE (NOTE: EVENT HAS "+e.getRooms()+" ROOMS AVAILABLE): "));
+                number_of_workshops = Integer.parseInt(UtilsUI.readLineFromConsole("HOW MANY WORKSHOPS DO YOU WISH TO EXECUTE (NOTE: EVENT HAS "+e.getRooms()+" ROOMS AVAILABLE): "));
                 if(number_of_workshops<=e.getRooms()){                   
                     
                     for (int i = 0; i < number_of_workshops; i++) {
@@ -144,11 +143,11 @@ public final class UpdateOrWithdrawApplicationUI {
                         UtilsUI.printLine("---------------------------");    
                         UtilsUI.printLine("       WORKSHOP "+(i+1)+"  ");                     
                         UtilsUI.printLine("---------------------------");    
-                        description = Utils.readLineFromConsole("DESCRIPTION: ");
+                        description = UtilsUI.readLineFromConsole("DESCRIPTION: ");
                         boolean ans=false;
                         while(!ans){
                             try{
-                                duration = Integer.parseInt(Utils.readLineFromConsole("DURATION (HOURS): "));
+                                duration = Integer.parseInt(UtilsUI.readLineFromConsole("DURATION (HOURS): "));
                                 ans=true;
                                 }catch(NumberFormatException ex){
 
@@ -158,7 +157,7 @@ public final class UpdateOrWithdrawApplicationUI {
                         }
                         String done="";
                         while(!done.equalsIgnoreCase("x")){
-                            done=Utils.readLineFromConsole("NECESSARY EQUIPMENT (WRITE 'X' WHEN YOU ARE DONE):  ");
+                            done=UtilsUI.readLineFromConsole("NECESSARY EQUIPMENT (WRITE 'X' WHEN YOU ARE DONE):  ");
                             if(!done.equalsIgnoreCase("x")){ 
                                 equip.add(done);
                             }
@@ -195,7 +194,7 @@ public final class UpdateOrWithdrawApplicationUI {
                 UtilsUI.printLine("--------------------------");
 
                 try{
-                        app_number = Integer.parseInt(Utils.readLineFromConsole("PICK APPLICATION: "));
+                        app_number = Integer.parseInt(UtilsUI.readLineFromConsole("PICK APPLICATION: "));
                         controller.setA(n-2);
                         if(app_number <1 || app_number>n){
                             UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
@@ -212,7 +211,7 @@ public final class UpdateOrWithdrawApplicationUI {
     private String getResposta(ExhibitionCentre centre) {
     String resposta1="";
         while(!resposta1.equalsIgnoreCase("w") && !resposta1.equalsIgnoreCase("u")){
-            resposta1=Utils.readLineFromConsole("DO YOU WISH TO WITHDRAW OR UPDATE APPLICATION? (WRITE 'W' TO WHITHDRAW OR 'U' TO UPDATE): ");
+            resposta1=UtilsUI.readLineFromConsole("DO YOU WISH TO WITHDRAW OR UPDATE APPLICATION? (WRITE 'W' TO WHITHDRAW OR 'U' TO UPDATE): ");
             if(!resposta1.equalsIgnoreCase("w") && !resposta1.equalsIgnoreCase("u")){
                 UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
@@ -235,7 +234,7 @@ public final class UpdateOrWithdrawApplicationUI {
         while(nInvites<0){
             try{
 
-                inv_string = Utils.readLineFromConsole("NUMBER OF INVITES (CURRENT ONE IS '"+controller.getA().getNumberInvites()+"'): ");
+                inv_string = UtilsUI.readLineFromConsole("NUMBER OF INVITES (CURRENT ONE IS '"+controller.getA().getNumberInvites()+"'): ");
                 if(inv_string.equalsIgnoreCase("m")){
                     nInvites=controller.getA().getNumberInvites();
                 }else{
@@ -263,7 +262,7 @@ public final class UpdateOrWithdrawApplicationUI {
             UtilsUI.printLine("- "+keyword.getValue());
             });
         while(!maintain_keywords.equalsIgnoreCase("y") && !maintain_keywords.equalsIgnoreCase("n")){
-            maintain_keywords = Utils.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS KEYWORDS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
+            maintain_keywords = UtilsUI.readLineFromConsole("DO YOU WISH TO MAINTAIN THIS KEYWORDS? (WRITE 'y' IF YES OR 'n' IF NO) : ");   
             if(!maintain_keywords.equalsIgnoreCase("y") && !maintain_keywords.equalsIgnoreCase("n")){
                 UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
@@ -274,7 +273,7 @@ public final class UpdateOrWithdrawApplicationUI {
         
         if(maintain_keywords.equalsIgnoreCase("n")){
             while(nKeywords<5){
-                    keyTemp=Utils.readLineFromConsole("ISERT A KEYWORD (MINUMUM 2 MAXIMUM 5) (WRITE X WHEN YOU ARE DONE) : ");
+                    keyTemp=UtilsUI.readLineFromConsole("ISERT A KEYWORD (MINUMUM 2 MAXIMUM 5) (WRITE X WHEN YOU ARE DONE) : ");
                     if(!keyTemp.equalsIgnoreCase("x")){
                         Keyword k= new Keyword();
                         k.setValue(keyTemp);
@@ -299,7 +298,7 @@ public final class UpdateOrWithdrawApplicationUI {
         double area=-1;
         while(area<=0){
             try{
-                area_string = Utils.readLineFromConsole("WANTED BOOTH AREA (m2) (CURRENT ONE IS "+controller.getA().getBoothArea()+" m2) : ");
+                area_string = UtilsUI.readLineFromConsole("WANTED BOOTH AREA (m2) (CURRENT ONE IS "+controller.getA().getBoothArea()+" m2) : ");
                 if(area_string.equalsIgnoreCase("m")){
                     area= controller.getA().getBoothArea();
                 }else{
@@ -323,7 +322,7 @@ public final class UpdateOrWithdrawApplicationUI {
         String phone_number_string;
         while(!controller.validatePhoneNumber(phoneNumber)){
             try{
-                phone_number_string = Utils.readLineFromConsole("PHONE NUMBER (CURRENT ONE IS "+controller.getA().getPhoneNumber()+") :");
+                phone_number_string = UtilsUI.readLineFromConsole("PHONE NUMBER (CURRENT ONE IS "+controller.getA().getPhoneNumber()+") :");
                 if(phone_number_string.equalsIgnoreCase("m")){
                     phoneNumber=controller.getA().getPhoneNumber();
                 }else{

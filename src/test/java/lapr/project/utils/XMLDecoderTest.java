@@ -18,6 +18,8 @@ import lapr.project.model.Event;
 import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
+import lapr.project.model.Organiser;
+import lapr.project.model.OrganiserRegister;
 import lapr.project.model.PasswordEncryption;
 import lapr.project.model.Review;
 import lapr.project.model.Role;
@@ -26,10 +28,6 @@ import lapr.project.model.StaffRegister;
 import lapr.project.model.Stand;
 import lapr.project.model.StandRegister;
 import lapr.project.model.User;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.w3c.dom.Document;
@@ -83,6 +81,12 @@ public class XMLDecoderTest {
         sm.setUser(u1);
         str.addStaffMember(sm);        
         event.setStaffRegister(str);
+
+        OrganiserRegister or= new OrganiserRegister();
+        Organiser o= new Organiser();
+        o.setOrganiser(u1);
+        or.getOrganiserList().add(o);        
+        event.setOrganisersRegister(or);
         
         ApplicationRegister ar= new ApplicationRegister();
         Application app= new Application();
@@ -151,6 +155,24 @@ public class XMLDecoderTest {
         userEl.appendChild(passwordEl);
         staffEl.appendChild(userEl);
         StaffsEl.appendChild(staffEl);
+        
+        Element organisersEl = document.createElement("organiserSet");
+        Element organiserEl = document.createElement("organiser");
+        Element user2El = document.createElement("user");
+        Element organiserNameEl = document.createElement("name");
+        organiserNameEl.setTextContent("name");
+        Element username2El = document.createElement("username");
+        username2El.setTextContent("user1");
+        Element email2El = document.createElement("email");
+        email2El.setTextContent("email@gmail.com");
+        Element password2El = document.createElement("password");
+        password2El.setTextContent("01230123");
+        user2El.appendChild(organiserNameEl);
+        user2El.appendChild(username2El);
+        user2El.appendChild(email2El);
+        user2El.appendChild(password2El);
+        organiserEl.appendChild(user2El);
+        organisersEl.appendChild(organiserEl);
 
         Element applicationSetEl = document.createElement("applicationSet");
         Element applicationEl = document.createElement("application");
@@ -223,7 +245,7 @@ public class XMLDecoderTest {
         exhibitionEl.appendChild(standsEl);
         exhibitionEl.appendChild(StaffsEl);
         exhibitionEl.appendChild(applicationSetEl);
-
+        exhibitionEl.appendChild(organisersEl);
         //Add root element to document
         document.appendChild(exhibitionEl);
         ExhibitionCentre centre= new ExhibitionCentre();

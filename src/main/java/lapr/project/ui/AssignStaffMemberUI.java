@@ -13,7 +13,6 @@ import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.StaffMember;
 import lapr.project.model.User;
-import lapr.project.utils.Utils;
 
 /**
  *
@@ -72,7 +71,7 @@ public final class AssignStaffMemberUI {
         
         showOrganiserEventsList(events);
         do {
-            opcaoEq = Utils.readLineFromConsole("\n Choose Event to assign to! (O - Exit)\n");
+            opcaoEq = UtilsUI.readLineFromConsole("\n Choose Event to assign to! (O - Exit)\n");
             option = new Integer(opcaoEq);
         } while (option < 0 || option > events.size());
         
@@ -87,7 +86,7 @@ public final class AssignStaffMemberUI {
         printStaffMemberList(assignStaffMemberController.getStaffMemberList());
         String resposta = "";
         while (!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")) {
-            resposta = Utils.readLineFromConsole("DO YOU CONFIRM ATRIBUITION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
+            resposta = UtilsUI.readLineFromConsole("DO YOU CONFIRM ATRIBUITION? (WRITE 'Y' TO CONFIRM OR 'C' TO CANCEL): ");
             if (!resposta.equalsIgnoreCase("y") && !resposta.equalsIgnoreCase("c")) {
                 UtilsUI.printError("INVALID CHARACTER. PLEASE ANSWER AGAIN.");
             }
@@ -140,7 +139,7 @@ public final class AssignStaffMemberUI {
             }
             UtilsUI.printLine("--------------------------");
             
-            user1 = Utils.readLineFromConsole("PICK USER (WRITE X WHEN YOU ARE DONE): ");
+            user1 = UtilsUI.readLineFromConsole("PICK USER (WRITE X WHEN YOU ARE DONE): ");
             readStaffMember(user1, userPos, n, availableUserToAssignToEvent, exhibitionCentre);
         }
     }
