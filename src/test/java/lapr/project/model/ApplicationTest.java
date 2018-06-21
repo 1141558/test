@@ -226,6 +226,7 @@ public class ApplicationTest {
     /**
      * Test of hashCode method, of class Application.
      */
+    
     @Test
     public void testHashCode() {
         System.out.println("hashCode");

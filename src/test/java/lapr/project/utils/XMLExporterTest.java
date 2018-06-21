@@ -6,6 +6,8 @@
 package lapr.project.utils;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import lapr.project.model.Application;
 import lapr.project.model.ApplicationRegister;
@@ -71,14 +73,24 @@ public class XMLExporterTest {
         s.setDistanceList(distanceList);
         sr.addStand(s);
         event.setStandRegister(sr);
-
+        event.setRooms(5);
+        event.setPlace("place1");
+        Date date1= new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date1);
+        calendar.set( Calendar.HOUR_OF_DAY, 0 );
+        calendar.set( Calendar.MINUTE, 0 );
+        calendar.set( Calendar.SECOND, 0 );
+        calendar.set( Calendar.MILLISECOND, 0 );
+        date1= calendar.getTime();
+        event.setStartDate(date1);
+        event.setEndDate(date1);      
         User u1= new User();
         u1.setEmail("email@gmail.com");
         u1.setName("name");
         u1.setRole(Role.EMPLOYEE);
         u1.setUsername("user1");
         u1.setPassword(PasswordEncryption.encryptPassword("01230123"));
-
                 
         StaffRegister str= new StaffRegister();
         StaffMember sm= new StaffMember();
@@ -94,6 +106,10 @@ public class XMLExporterTest {
         
         ApplicationRegister ar= new ApplicationRegister();
         Application app= new Application();
+        app.setNameOfCompany("Company1");
+        app.setNumberInvites(3);
+        app.setPhoneNumber(911911911);
+        app.setVatNumber(123456789);
         app.setBoothArea(0.01);
         app.setDescription("app1");
         app.setState(ApplicationState.ACCEPTED);
