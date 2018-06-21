@@ -5,6 +5,8 @@
  */
 package lapr.project.utils;
 
+import java.util.ArrayList;
+import java.util.List;
 import lapr.project.model.Application;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
@@ -34,18 +36,70 @@ public class StaffRating {
 
         for (Event ev : centre.getEventRegister().getEventList()) {
             for (Application app : ev.getApplicationRegister().getApplicationList()) {
-                for (Review rev : app.getListReview()) {
-                    if (rev.getAssignedStaffMember().getStaff().equals(user)) {
-                        double rmean = (rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation());
-                        rmean = rmean / 5.0;
-                        rsum = rsum + rmean;
-                        rcount++;
-                    }
-                }
+                List<Review> reviews = getReviews(user, app);
+                rsum += calculateRMean(reviews);
+                rcount += reviews.size();
             }
         }
-        return rcount!=0 ? rsum / rcount:0;
+        return rcount != 0 ? rsum / rcount : 0;
+                
+//        double rsum = 0.0;
+//        int rcount = 0;
+//
+//        for (Event ev : centre.getEventRegister().getEventList()) {
+//            for (Application app : ev.getApplicationRegister().getApplicationList()) {
+//                for (Review rev : app.getListReview()) {
+//                    if (rev.getAssignedStaffMember().getStaff().equals(user)) {
+//                        double rmean = (rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation());
+//                        rmean = rmean / 5.0;
+//                        rsum = rsum + rmean;
+//                        rcount++;
+//                    }
+//                }
+//            }
+//        }
+//        return rcount!=0 ? rsum / rcount:0;
     }
+    
+     private List<Review> getReviews(User user, Application app) {
+
+        List<Review> reviews = new ArrayList<>();
+
+        for (Review rev : app.getListReview()) {
+
+            if (rev.getAssignedStaffMember().getStaff().equals(user)) {
+
+                reviews.add(rev);
+
+            }
+
+        }
+
+        return reviews;
+
+    }
+
+   
+
+    private double calculateRMean(List<Review> reviews){
+
+        double rmean, rsum = 0;
+
+        for (Review rev : reviews) {
+
+            rmean = (rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation());
+
+            rmean /= 5.0;
+
+            rsum += rmean;
+
+        }
+
+        return rsum;
+
+    }
+
+
 
     /**
      * Method to calculate the mean deviation of an user ratings and an event
