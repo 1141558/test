@@ -49,7 +49,7 @@ public class XMLDecoder {
     private static final String USER_TAG = "user";
     private static final String EVENT_TAG = "event";
     
-    public static void readExhibitionCentreFromFile(String filePath, ExhibitionCentre centre) throws ParserConfigurationException, SAXException, IOException{
+    public static ExhibitionCentre readExhibitionCentreFromFile(String filePath, ExhibitionCentre centre) throws ParserConfigurationException, SAXException, IOException{
             
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = dbf.newDocumentBuilder();
@@ -73,7 +73,13 @@ public class XMLDecoder {
 
                 u.setEmail(email);
                 u.setName(name);
-                u.setPassword(PasswordEncryption.encryptPassword(password));
+                try{
+                    Integer.parseInt(password);
+                    u.setPassword(PasswordEncryption.encryptPassword(password));
+                
+                }catch(NumberFormatException e){
+                    u.setPassword(Double.parseDouble(password));
+                }
                 u.setUsername(username);
                 switch(role){
                     case "PARTICIPANT":
@@ -102,7 +108,7 @@ public class XMLDecoder {
                 centre.getEventRegister().addEvent(e);
             
             }
-    
+            return centre;
     }
     
     public static Event readEventFromFile(String filePath, ExhibitionCentre centre, int cont, Element el_sender) throws ParserConfigurationException, SAXException, IOException {
@@ -223,8 +229,13 @@ public class XMLDecoder {
             String password = staff_element.getElementsByTagName("password").item(0).getTextContent();
             u.setEmail(email);
             u.setName(name);
-            u.setPassword(PasswordEncryption.encryptPassword(password));
-            u.setUsername(username);
+                try{
+                    Integer.parseInt(password);
+                    u.setPassword(PasswordEncryption.encryptPassword(password));
+                
+                }catch(NumberFormatException e){
+                    u.setPassword(Double.parseDouble(password));
+                }            u.setUsername(username);
             u.setRole(Role.EMPLOYEE);
             o.setOrganiser(u);
             ur.addUser(u);
@@ -256,7 +267,13 @@ public class XMLDecoder {
             String password = staff_element.getElementsByTagName("password").item(0).getTextContent();
             u.setEmail(email);
             u.setName(name);
-            u.setPassword(PasswordEncryption.encryptPassword(password));
+                try{
+                    Integer.parseInt(password);
+                    u.setPassword(PasswordEncryption.encryptPassword(password));
+                
+                }catch(NumberFormatException e){
+                    u.setPassword(Double.parseDouble(password));
+                }
             u.setUsername(username);
             u.setRole(Role.EMPLOYEE);
             sm.setUser(u);
@@ -366,4 +383,6 @@ public class XMLDecoder {
         }
         return ar;
     }
+    
+    
 }
