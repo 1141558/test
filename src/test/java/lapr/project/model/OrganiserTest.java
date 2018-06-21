@@ -5,7 +5,6 @@
 */
 package lapr.project.model;
 
-import java.util.Objects;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
@@ -40,7 +39,6 @@ public class OrganiserTest {
         User otherUser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
         
         Organiser organiser = new Organiser(user);
-        Organiser otherOrganiser = new Organiser(otherUser);
         boolean expectedResult = true;
         
         Object obj = new Organiser(otherUser);
@@ -62,7 +60,6 @@ public class OrganiserTest {
         User otherUser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
         
         Organiser organiser = new Organiser(user);
-        Organiser otherOrganiser = new Organiser(otherUser);
         boolean expectedResult = true;
         
         Object obj = new Organiser(otherUser);
@@ -82,8 +79,6 @@ public class OrganiserTest {
     public void testHashCode() {
         System.out.println("hashCode");
         Organiser organiserHashCode = new Organiser();
-//        int hash = 0;
-//        hash = 53 * hash + Objects.hashCode(organiserHashCode);
         int result = organiserHashCode.hashCode();
         int hash = -1779632894;
         int expectedResult = organiserHashCode.hashCode();

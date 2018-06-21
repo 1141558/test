@@ -34,21 +34,7 @@ public class EventRegisterTest {
         //Assert
         Assert.assertEquals(result, expectedResult);
     }
-    /*
-    @Test
-    public void registerEventTrueTest() {
-        
-        //Arrange
-        eventRegister.addEvent(event1);
-        
-        //Act
-        boolean expectedResult = true;
-        boolean result = eventRegister.registerEvent(event2);
-        
-        //Assert
-        Assert.assertEquals(result, expectedResult);
-    }
-    */
+   
     @Test
     public void userOrganiserTrueTest() {
         
