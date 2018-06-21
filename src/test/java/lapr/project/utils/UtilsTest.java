@@ -56,14 +56,14 @@ public class UtilsTest {
         Date result = Utils.changeFormat(startDate, startDateString);
         assertEquals(result, expResult);
     }
-
+    
     /**
      * Test of writeLog method, of class Utils.
      */
     @Test
-    public void testWriteLog() {
-        System.out.println("writeLog");
-        String log = "String log";
+    public void testWriteLogNull() {
+        System.out.println("writeLogNull");
+        String log = null;
         boolean result = Utils.writeLog(log);
         assertTrue(result);
     }

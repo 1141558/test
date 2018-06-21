@@ -5,11 +5,9 @@
  */
 package lapr.project.utils;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import lapr.project.model.User;
+import lapr.project.ui.UtilsUI;
 
 /**
  *
@@ -53,7 +52,7 @@ public class Utils {
               out.println("Date: "+d+" -> "+log);
 
            } catch (IOException e) {
-               //exception handling left as an exercise for the reader
+               UtilsUI.printLine("Error IO");
            }
             return true;
 
