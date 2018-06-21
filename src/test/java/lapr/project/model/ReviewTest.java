@@ -5,6 +5,7 @@
 */
 package lapr.project.model;
 
+import java.util.Objects;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -274,39 +275,38 @@ public class ReviewTest {
         boolean result = instance.equals(o);
         assertFalse(result);
     }
-    
-    /**
-     * Test of hashCode method, of class Review.
-     */
-    @Test
-    public void testHashCode() {
-        System.out.println("hashCode");
-//        User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
-//        StaffMember staff = new StaffMember(user);
-Review instance = new Review();
-int result = instance.hashCode();
-int expResult = -1292570735;
-System.out.println("hash" + result);
 
-assertEquals(expResult, result);
-    }
-    
-    @Test
-    public void testHashCodeTwo() {
-        System.out.println("hashCodetwo");
+ @Test
+
+    public void testHashCode() {
+
+        System.out.println("hashCode");
+
         User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
-        Review instance = new Review();
-        StaffMember staff123 = new StaffMember(user);
-        instance.setAssignedStaffMember(staff123);
-        instance.setDecision(Decision.DECLINED);
-        instance.setEventAdequacy(2);
-        instance.setInviteAdequacy(2);
-        instance.setRecommendation(2);
-        instance.setStaffTopicKnowledge(1);
-        instance.setText("asd");
-        int expResult = instance.hashCode();
-        System.out.println("has" + expResult);
-        int result = expResult;
+
+        StaffMember staff = new StaffMember(user);
+      
+        int expResult = 5;
+
+        expResult = 71 * expResult + Objects.hashCode("text");
+
+        expResult = 71 * expResult + 3;
+
+        expResult = 71 * expResult + 4;
+
+        expResult = 71 * expResult + 4;
+
+        expResult = 71 * expResult + 3;
+
+        expResult = 71 * expResult + Objects.hashCode(Decision.ACCEPTED);
+
+        expResult = 71 * expResult + Objects.hashCode(staff);
+       
+        Review instance = new Review("text", 3, 4, 4, 3, Decision.ACCEPTED, staff);
+
+        int result = instance.hashCode();
+       
         assertEquals(expResult, result);
+
     }
 }
