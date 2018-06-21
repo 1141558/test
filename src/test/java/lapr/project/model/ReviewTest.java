@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.model;
 
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ public class ReviewTest {
     
     public ReviewTest() {
     }
-
+    
     /**
      * Test of set/getText method, of class Review.
      */
@@ -32,7 +32,7 @@ public class ReviewTest {
         String result = instance.getText();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of set/getStaffTopicKnowledge method, of class Review.
      */
@@ -45,7 +45,7 @@ public class ReviewTest {
         int result = instance.getStaffTopicKnowledge();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of set/getEventAdequacy method, of class Review.
      */
@@ -58,7 +58,7 @@ public class ReviewTest {
         int result = instance.getEventAdequacy();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of set/getInviteAdequacy method, of class Review.
      */
@@ -71,7 +71,7 @@ public class ReviewTest {
         int result = instance.getInviteAdequacy();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of set/getRecommendation method, of class Review.
      */
@@ -84,7 +84,7 @@ public class ReviewTest {
         int result = instance.getRecommendation();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of set/getDecision method, of class Review.
      */
@@ -97,7 +97,7 @@ public class ReviewTest {
         Decision result = instance.getDecision();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of set/getDecision method, of class Review.
      */
@@ -110,7 +110,7 @@ public class ReviewTest {
         Decision result = instance.getDecision();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of set/getAssignedStaffMember method, of class Review.
      */
@@ -124,7 +124,7 @@ public class ReviewTest {
         StaffMember result = instance.getAssignedStaffMember();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of equals method, of class Review.
      */
@@ -261,32 +261,52 @@ public class ReviewTest {
         assertFalse(result);
     }
     
-     /**
+    /**
      * Test of equals method, of class Review.
      */
     @Test
     public void testEquals10() {
         System.out.println("equals10");
         User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
-        StaffMember staff = new StaffMember(user);      
+        StaffMember staff = new StaffMember(user);
         Object o = user;
         Review instance = new Review("RV1", 4, 4, 5, 2, Decision.DECLINED, staff);
         boolean result = instance.equals(o);
         assertFalse(result);
     }
-
+    
     /**
      * Test of hashCode method, of class Review.
      */
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
-        User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
-        StaffMember staff = new StaffMember(user);
-        Review instance = new Review("text", 3, 4, 4, 3, Decision.ACCEPTED, staff);
-        int expResult = instance.hashCode();
-        int result = instance.hashCode();
-        assertEquals(expResult, result);
+//        User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
+//        StaffMember staff = new StaffMember(user);
+Review instance = new Review();
+int result = instance.hashCode();
+int expResult = -1292570735;
+System.out.println("hash" + result);
+
+assertEquals(expResult, result);
     }
     
+    @Test
+    public void testHashCodeTwo() {
+        System.out.println("hashCodetwo");
+        User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
+        Review instance = new Review();
+        StaffMember staff123 = new StaffMember(user);
+        instance.setAssignedStaffMember(staff123);
+        instance.setDecision(Decision.DECLINED);
+        instance.setEventAdequacy(2);
+        instance.setInviteAdequacy(2);
+        instance.setRecommendation(2);
+        instance.setStaffTopicKnowledge(1);
+        instance.setText("asd");
+        int expResult = instance.hashCode();
+        System.out.println("has" + expResult);
+        int result = expResult;
+        assertEquals(expResult, result);
+    }
 }

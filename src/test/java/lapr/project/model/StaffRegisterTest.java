@@ -392,7 +392,11 @@ public class StaffRegisterTest {
         System.out.println("hashCode");
         StaffRegister instance = new StaffRegister(staffMemberListEvent4);
         int expResult = instance.hashCode();
+
+
         System.out.println("hash" +instance.hashCode() );
+
+
         int result = instance.hashCode();
         assertEquals(expResult, result);
     }
@@ -412,4 +416,22 @@ public class StaffRegisterTest {
        instance.createStaffMember();
         Assert.assertNotNull(instance.createStaffMember());
     }
+
+
+    
+      @Test
+    public void testHashCodeTwo() {
+        System.out.println("hashCode");
+        StaffRegister instance = new StaffRegister(staffMemberListEvent4);
+        int expResult = instance.hashCode();
+        System.out.println("hash" +instance.hashCode() );
+        int result = instance.hashCode();
+        assertEquals(expResult, result);
+        int hash = 0;
+       hash = 37 * hash + instance.hashCode();
+          System.out.println("hasss"+ hash);
+          assertEquals(hash, instance.hashCode());
+        
+    }
+
 }
