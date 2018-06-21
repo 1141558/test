@@ -144,13 +144,11 @@ public class StandRegisterTest {
         instance.addStand(s1);
         instance.addStand(s2);
         
-        StandRegister instance2 = new StandRegister();        
-        instance2.addStand(s1);
-        instance2.addStand(s2);
+        Stand instance2 = new Stand("STAND2", 2.50);
         
         Object otherObject = instance2;
         boolean result = instance.equals(otherObject);
-        assertTrue(result);
+        assertFalse(result);
     }
 
 }
