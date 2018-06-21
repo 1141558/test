@@ -31,10 +31,10 @@ public class LoginUI {
         boolean accepted=false;
        while(!accepted){
         //Request user data
-        System.out.println("");
-        System.out.println((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-        System.out.println("        USER LOGIN        ");
-        System.out.println((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        UtilsUI.printLine("");
+        UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        UtilsUI.printLine("        USER LOGIN        ");
+        UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
 
         username = Utils.readLineFromConsole("USERNAME: ");
         if (console != null) {

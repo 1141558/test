@@ -25,14 +25,14 @@ public class StartSubmissionPeriodUI {
         int event_selected = 0;
         boolean right=false;
         this.controller = new StartSubmissionPeriodController(exhibitionCentre);
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
-        System.out.println("           START EVENT'S APPLICATION SUBMISSION PERIOD           ");
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine("           START EVENT'S APPLICATION SUBMISSION PERIOD           ");
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         while(!right){
-                System.out.println("--------------------------");
-                System.out.println("          EVENTS          ");
-                System.out.println("--------------------------");
-                System.out.println("EVENTS OF "+exhibitionCentre.getUserOnline().getName());
+                UtilsUI.printLine("--------------------------");
+                UtilsUI.printLine("          EVENTS          ");
+                UtilsUI.printLine("--------------------------");
+                UtilsUI.printLine("EVENTS OF "+exhibitionCentre.getUserOnline().getName());
 
 
                 for (Event event : controller.findEventByOrganiserAndState(exhibitionCentre.getUserOnline())) {

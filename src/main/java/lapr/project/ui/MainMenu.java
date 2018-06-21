@@ -23,17 +23,17 @@ public class MainMenu implements Serializable{
      
         String opt;
         this.centre=centre;
-        System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
-        System.out.println("                       MAIN MENU                         ");
-        System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
+        UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
+        UtilsUI.printLine("                       MAIN MENU                         ");
+        UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
         
         /*
         * Não apagar, comentado temporariamente
         */
         
         if(centre.getEventRegister().userIsStaffMember(centre.getUserOnline())){
-            System.out.println("               1.SUBMIT APPLICATION REVIEW               ");
-            System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
+            UtilsUI.printLine("               1.SUBMIT APPLICATION REVIEW               ");
+            UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
             opt = Utils.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
@@ -43,16 +43,16 @@ public class MainMenu implements Serializable{
             }
         }
         else if(centre.getEventRegister().userIsOrganiser(centre.getUserOnline())){
-            System.out.println("               1.ASSIGN STAFF MEMBER TO EVENT            ");
-            System.out.println("       2.START EVENT'S APPLICATION SUBMISSION PERIOD     ");
-            System.out.println("                  3.EVALUATE APPLICATION                 ");
-            System.out.println("              4.ASSIGN STAFF MEMBER TO REVIEW            ");
-            System.out.println("           5.LIST AN EVENT'S SUBMITTED APPLICATIONS      ");
-            System.out.println("       6.LIST AN EVENT'S REVIEW-PENDING APPLICATIONS     ");
-            System.out.println("          7.LIST AN EVENT'S ACCEPTED APPLICATIONS        ");
-            System.out.println("          8.LIST AN EVENT'S REJECTED APPLICATIONS        ");
-            System.out.println("                9.LIST AN EVENT'S TOPICS                ");/*frequencias*/
-            System.out.println("            10.LIST AN EVENT'S STAND INFORMATION         ");/*frequencias*/
+            UtilsUI.printLine("               1.ASSIGN STAFF MEMBER TO EVENT            ");
+            UtilsUI.printLine("       2.START EVENT'S APPLICATION SUBMISSION PERIOD     ");
+            UtilsUI.printLine("                  3.EVALUATE APPLICATION                 ");
+            UtilsUI.printLine("              4.ASSIGN STAFF MEMBER TO REVIEW            ");
+            UtilsUI.printLine("           5.LIST AN EVENT'S SUBMITTED APPLICATIONS      ");
+            UtilsUI.printLine("       6.LIST AN EVENT'S REVIEW-PENDING APPLICATIONS     ");
+            UtilsUI.printLine("          7.LIST AN EVENT'S ACCEPTED APPLICATIONS        ");
+            UtilsUI.printLine("          8.LIST AN EVENT'S REJECTED APPLICATIONS        ");
+            UtilsUI.printLine("                9.LIST AN EVENT'S TOPICS                ");/*frequencias*/
+            UtilsUI.printLine("            10.LIST AN EVENT'S STAND INFORMATION         ");/*frequencias*/
 
             System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
 
@@ -92,12 +92,12 @@ public class MainMenu implements Serializable{
             }
         }
         else if(centre.getEventRegister().userIsEventManager(centre.getUserOnline())){
-       System.out.println("                         1.CREATE EVENT                       ");
-       System.out.println("                   2.SHOW EVENT'S ACCEPTANCE RATE            ");
-       System.out.println("                  3.SHOW STAFF MEMBER MEAN RATING            ");
-       System.out.println("4.SHOW MEAN DEVIATION BETWEEN STAFF MEMBERS' AVERAGE RATINGS AND EVENTS MEAN RATINGS");
+       UtilsUI.printLine("                         1.CREATE EVENT                       ");
+       UtilsUI.printLine("                   2.SHOW EVENT'S ACCEPTANCE RATE            ");
+       UtilsUI.printLine("                  3.SHOW STAFF MEMBER MEAN RATING            ");
+       UtilsUI.printLine("4.SHOW MEAN DEVIATION BETWEEN STAFF MEMBERS' AVERAGE RATINGS AND EVENTS MEAN RATINGS");
 
-       System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
+       UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
             opt = Utils.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
@@ -114,9 +114,9 @@ public class MainMenu implements Serializable{
                 break;                 
             }         
         }else if(centre.getUserOnline().getRole().equals(Role.PARTICIPANT)){
-        System.out.println("                1.SUBMIT APPLICATION TO EVENT            ");       
-        System.out.println("               2.UPDATE OR WITHDRAW APPLICATION          ");       
-        System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
+        UtilsUI.printLine("                1.SUBMIT APPLICATION TO EVENT            ");       
+        UtilsUI.printLine("               2.UPDATE OR WITHDRAW APPLICATION          ");       
+        UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
         opt = Utils.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
@@ -127,8 +127,8 @@ public class MainMenu implements Serializable{
                 break; 
             } 
         }else if(centre.getUserOnline().getRole().equals(Role.ATENDEE)){
-        System.out.println("                1.SUBMIT WORKSHOP SURVEY            ");       
-        System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
+        UtilsUI.printLine("                1.SUBMIT WORKSHOP SURVEY            ");       
+        UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
         opt = Utils.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:

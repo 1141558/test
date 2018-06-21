@@ -1,23 +1,12 @@
 package lapr.project.ui;
 
 import java.io.Console;
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
-import lapr.project.controller.AssignStandToApplicationController;
 import lapr.project.model.CalculatorExample;
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.model.Organiser;
-import lapr.project.model.OrganiserRegister;
-import lapr.project.model.Role;
-import lapr.project.model.StaffMember;
-import lapr.project.model.StaffRegister;
-import lapr.project.model.User;
-import lapr.project.model.UserRegister;
-import lapr.project.utils.Utils;
 import lapr.project.utils.XMLDecoder;
+import lapr.project.utils.XMLExporter;
 import org.xml.sax.SAXException;
 
 /**
@@ -48,7 +37,7 @@ class Main {
         Console c= System.console();
         if(c==null){
         XMLDecoder.readExhibitionCentreFromFile("./src/main/resources/exhibition_centre.xml", centre);
-            
+        XMLExporter.exportAllDataToFile(centre);
         }else{
         //XMLDecoder.readExhibitionCentreFile("../src/main/resources/exhibition1_v0.1.xml", centre);
            

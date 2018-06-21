@@ -21,23 +21,23 @@ public class SubmitWorkshopSurveyUI {
     SubmitWorkshopSurveyController controller;
     public SubmitWorkshopSurveyUI(ExhibitionCentre centre){
         this.controller= new SubmitWorkshopSurveyController(centre);
-        System.out.println("");        
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
-        System.out.println("           SUBMIT WORKSHOP SURVEY           ");
-        System.out.println((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine("");        
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
+        UtilsUI.printLine("           SUBMIT WORKSHOP SURVEY           ");
+        UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         int event_number=-1, n=1;
-        System.out.println("***NOTE: THIS SURVEY IS TOTTALY ANONYMOUS***");
+        UtilsUI.printLine("***NOTE: THIS SURVEY IS TOTTALY ANONYMOUS***");
 
         while(event_number==-1){
-                System.out.println("--------------------------");
-                System.out.println("          EVENTS          ");
-                System.out.println("--------------------------");
+                UtilsUI.printLine("--------------------------");
+                UtilsUI.printLine("          EVENTS          ");
+                UtilsUI.printLine("--------------------------");
 
                 for (Event e : controller.getEvents()) {
-                        System.out.println(n+" - "+e.getTitle());
+                        UtilsUI.printLine(n+" - "+e.getTitle());
                         n++;
                     }
-                System.out.println("--------------------------");
+                UtilsUI.printLine("--------------------------");
 
                 try{
                         event_number = Integer.parseInt(Utils.readLineFromConsole("PICK EVENT YOU WOULD LIKE TO ATTEND: "));
@@ -55,7 +55,7 @@ public class SubmitWorkshopSurveyUI {
         }
         List<Workshop> lista_workshops= controller.listaWorkshopsOfAcceptedApplications();
         List<Boolean> answers= new ArrayList<>();
-                String resposta_workshops="";
+        String resposta_workshops;
         for (int i=0; i<lista_workshops.size();i++) {
 
                 resposta_workshops=Utils.readLineFromConsole("WORKSHOP "+lista_workshops.get(i).getDescription()+" LASTING "+lista_workshops.get(i).getDurationInHours()+" HOURS (WRITE 'Y' IF YES OR 'N' IF NO): ");
