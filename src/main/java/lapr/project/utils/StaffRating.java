@@ -44,7 +44,7 @@ public class StaffRating {
                 }
             }
         }
-        return rsum / rcount;
+        return rcount!=0 ? rsum / rcount:0;
     }
 
     /**
@@ -63,7 +63,7 @@ public class StaffRating {
             for (Application app : ev.getApplicationRegister().getApplicationList()) {
                 for (Review rev : app.getListReview()) {
                     if (rev.getAssignedStaffMember().getStaff().equals(user)) {
-                        double rmean = rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation();
+                        double rmean = (double) rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation();
                         rmean = rmean / 5;
                         devSum += Math.abs(rmean - eventMean);
                         devCount++;
@@ -73,7 +73,7 @@ public class StaffRating {
             }
 
         }
-        return devSum / devCount;
+        return devCount!=0 ? devSum / devCount : 0;
     }
 
     /**
@@ -93,7 +93,7 @@ public class StaffRating {
                 rcount++;
             }
         }
-        return rsum / rcount;
+        return rcount!=0 ? rsum / rcount:0;
     }
 
 }
