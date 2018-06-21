@@ -42,23 +42,28 @@ public class XMLExporter {
         return str == null || str.length() == 0;
     }
     public static void exportAllDataToFile(ExhibitionCentre centre) throws ParserConfigurationException{
-           DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         File file= new File("./src/main/resources/exhibition1_v0.1_1.xml");
         file.delete();
         Document document = builder.newDocument();
         Element exhibitionCentreEl = document.createElement("exhibitionCentre");
-
+        String description_label="description",
+        username_label="username",
+        email_label="email",
+        password_label="password",
+        name_label="name",
+        user_label="user";
         Element userSetEl = document.createElement("userSet");
         centre.getUserRegister().getUserList().stream().map((u) -> {
             Element userEl = document.createElement("user");
-            Element nameEl = document.createElement("name");
+            Element nameEl = document.createElement(name_label);
             nameEl.setTextContent(u.getName());
-            Element usernameEl = document.createElement("username");
+            Element usernameEl = document.createElement(username_label);
             usernameEl.setTextContent(u.getUsername());
-            Element emailEl = document.createElement("email");
+            Element emailEl = document.createElement(email_label);
             emailEl.setTextContent(u.getEmail());
-            Element passwordEl = document.createElement("password");
+            Element passwordEl = document.createElement(password_label);
             passwordEl.setTextContent(String.valueOf(u.getPassword()));
             Element roleEl = document.createElement("role");
             roleEl.setTextContent(u.getRole().toString());
@@ -98,14 +103,14 @@ public class XMLExporter {
             Element standsEl = document.createElement("stands");
             e.getStandRegister().getStandList().stream().map((Stand s) -> {
                 Element standEl = document.createElement("stand");
-                Element descriptionEl = document.createElement("description");
+                Element descriptionEl = document.createElement(description_label);
                 descriptionEl.setTextContent(s.getDescription());
                 Element areaEl = document.createElement("area");
                 areaEl.setTextContent(String.valueOf(s.getArea()));
                 Element relativeDistanceSetEl = document.createElement("relativeDistanceSet");
                 s.getDistanceList().forEach((d) -> {
                     Element distanceEl = document.createElement("distance");
-                    Element distanceDescriptionEl = document.createElement("description");
+                    Element distanceDescriptionEl = document.createElement(description_label);
                     distanceDescriptionEl.setTextContent(d.getDescription());
                     Element distanceValueEl = document.createElement("value");
                     distanceValueEl.setTextContent(String.valueOf(d.getValue()));
@@ -120,17 +125,17 @@ public class XMLExporter {
             }).forEachOrdered((standEl) -> {
                 standsEl.appendChild(standEl);
             });
-            Element StaffsEl = document.createElement("StaffSet");
+            Element staffsEl = document.createElement("StaffSet");
             e.getStaffRegister().getStaffList().stream().map((s) -> {
                 Element staffEl = document.createElement("staff");
-                Element userEl = document.createElement("user");
-                Element staffNameEl = document.createElement("name");
+                Element userEl = document.createElement(user_label);
+                Element staffNameEl = document.createElement(name_label);
                 staffNameEl.setTextContent(s.getStaff().getName());
-                Element usernameEl = document.createElement("username");
+                Element usernameEl = document.createElement(username_label);
                 usernameEl.setTextContent(s.getStaff().getUsername());
-                Element emailEl = document.createElement("email");
+                Element emailEl = document.createElement(email_label);
                 emailEl.setTextContent(s.getStaff().getEmail());
-                Element passwordEl = document.createElement("password");
+                Element passwordEl = document.createElement(password_label);
                 passwordEl.setTextContent(String.valueOf(s.getStaff().getPassword()));
                 userEl.appendChild(staffNameEl);
                 userEl.appendChild(usernameEl);
@@ -139,19 +144,19 @@ public class XMLExporter {
                 staffEl.appendChild(userEl);
                 return staffEl;
             }).forEachOrdered((staffEl) -> {
-                StaffsEl.appendChild(staffEl);
+                staffsEl.appendChild(staffEl);
             });
-            Element OrganisersEl = document.createElement("organiserSet");
+            Element organisersEl = document.createElement("organiserSet");
             e.getOrganiserRegister().getOrganiserList().stream().map((o) -> {
                 Element organiserEl = document.createElement("organiser");
-                Element user2El = document.createElement("user");
-                Element organiserNameEl = document.createElement("name");
+                Element user2El = document.createElement(user_label);
+                Element organiserNameEl = document.createElement(name_label);
                 organiserNameEl.setTextContent(o.getOrganiser().getName());
-                Element username2El = document.createElement("username");
+                Element username2El = document.createElement(username_label);
                 username2El.setTextContent(o.getOrganiser().getUsername());
-                Element email2El = document.createElement("email");
+                Element email2El = document.createElement(email_label);
                 email2El.setTextContent(o.getOrganiser().getEmail());
-                Element password2El = document.createElement("password");
+                Element password2El = document.createElement(password_label);
                 password2El.setTextContent(String.valueOf(o.getOrganiser().getPassword()));
                 user2El.appendChild(organiserNameEl);
                 user2El.appendChild(username2El);
@@ -160,12 +165,12 @@ public class XMLExporter {
                 organiserEl.appendChild(user2El);
                 return organiserEl;
             }).forEachOrdered((organiserEl) -> {
-                OrganisersEl.appendChild(organiserEl);
+                organisersEl.appendChild(organiserEl);
             });
             Element applicationSetEl = document.createElement("applicationSet");
             for (Application a : e.getApplicationRegister().getApplicationList()) {
                 Element applicationEl = document.createElement("application");
-                Element appDescriptionEl = document.createElement("description");
+                Element appDescriptionEl = document.createElement(description_label);
                 appDescriptionEl.setTextContent(a.getDescription());
                 Element appCompanyEl = document.createElement("companyName");
                 
@@ -217,14 +222,14 @@ public class XMLExporter {
                     elementReviewDecision.setTextContent(r.getDecision().name().toLowerCase());
                     Element elementReviewAssignment = document.createElement("assignment");
                     Element elementReviewStaff = document.createElement("staff");
-                    Element elementReviewUser = document.createElement("user");
-                    Element elementReviewUserName = document.createElement("name");
+                    Element elementReviewUser = document.createElement(user_label);
+                    Element elementReviewUserName = document.createElement(name_label);
                     elementReviewUserName.setTextContent(r.getAssignedStaffMember().getStaff().getName());
-                    Element elementReviewUserEmail = document.createElement("email");
+                    Element elementReviewUserEmail = document.createElement(email_label);
                     elementReviewUserEmail.setTextContent(r.getAssignedStaffMember().getStaff().getEmail());
-                    Element elementReviewUserUname = document.createElement("username");
+                    Element elementReviewUserUname = document.createElement(username_label);
                     elementReviewUserUname.setTextContent(r.getAssignedStaffMember().getStaff().getUsername());
-                    Element elementReviewUserPwd = document.createElement("password");
+                    Element elementReviewUserPwd = document.createElement(password_label);
                     elementReviewUserPwd.setTextContent(String.valueOf(r.getAssignedStaffMember().getStaff().getPassword()));
                     
                     elementReviews.appendChild(elementReview);
@@ -263,8 +268,8 @@ public class XMLExporter {
             exhibitionEl.appendChild(endDateEl);
             exhibitionEl.appendChild(placeEl);
             exhibitionEl.appendChild(standsEl);
-            exhibitionEl.appendChild(StaffsEl);
-            exhibitionEl.appendChild(OrganisersEl);
+            exhibitionEl.appendChild(staffsEl);
+            exhibitionEl.appendChild(organisersEl);
             exhibitionEl.appendChild(applicationSetEl);
             return exhibitionEl;
            }).forEachOrdered((exhibitionEl) -> {
