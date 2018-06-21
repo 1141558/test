@@ -19,7 +19,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import lapr.project.model.User;
-import lapr.project.ui.UtilsUI;
 
 /**
  *
