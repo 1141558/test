@@ -25,16 +25,16 @@ public class UserRegistrationUI {
     public UserRegistrationUI(ExhibitionCentre exhibitionCentre) {
         this.controller = new UserRegistrationController(exhibitionCentre);
 
-        String name = "";
-        String email = "";
-        String username = "";
-        String passwordString = new String();
+        String name;
+        String email;
+        String username;
+        String passwordString;
 
         //Request user data
-        System.out.println("");
-        System.out.println((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-        System.out.println("        USER REGISTRATION        ");
-        System.out.println((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        UtilsUI.printLine("");
+        UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        UtilsUI.printLine("        USER REGISTRATION        ");
+        UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
 
         name = Utils.readLineFromConsole("NAME: ");
         email = Utils.readLineFromConsole("EMAIL: ");

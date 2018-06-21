@@ -38,15 +38,15 @@ public final class UpdateOrWithdrawApplicationUI {
         UtilsUI.printLine((char)27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");  
         
         while(app_number==-1){
-                System.out.println("--------------------------");
-                System.out.println("     YOUR APPLICATIONS    ");
-                System.out.println("--------------------------");
+                UtilsUI.printLine("--------------------------");
+                UtilsUI.printLine("     YOUR APPLICATIONS    ");
+                UtilsUI.printLine("--------------------------");
 
                 for (Application a : controller.getUserApplications()) {
-                        System.out.println(n+" - "+a.getDescription());
+                        UtilsUI.printLine(n+" - "+a.getDescription());
                         n++;
                     }
-                System.out.println("--------------------------");
+                UtilsUI.printLine("--------------------------");
 
                 try{
                         app_number = Integer.parseInt(Utils.readLineFromConsole("PICK APPLICATION: "));
