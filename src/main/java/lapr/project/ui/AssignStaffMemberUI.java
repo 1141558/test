@@ -5,14 +5,12 @@
 */
 package lapr.project.ui;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.controller.AssignStaffMemberController;
 import lapr.project.controller.AssignStandToApplicationController;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.model.Organiser;
 import lapr.project.model.StaffMember;
 import lapr.project.model.User;
 import lapr.project.utils.Utils;
@@ -35,12 +33,12 @@ public final class AssignStaffMemberUI {
     }
     
     private void showOrganiserEventsList(List<Event> organiserValidatedList) {
-        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-        System.out.println("                   EVENTOS ASSOCIADOS                      ");
-        System.out.println((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        UtilsUI.printLine((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        UtilsUI.printLine("                   EVENTOS ASSOCIADOS                      ");
+        UtilsUI.printLine((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
         for (Event event : organiserValidatedList) {
             
-            System.out.println("EVENTO:" + event);
+            UtilsUI.printLine("EVENTO:" + event);
                   
         /***
          *
@@ -48,7 +46,7 @@ public final class AssignStaffMemberUI {
        
          /*Testar Assign event*/
         
-        System.out.println("Teste atribuir stands");
+        UtilsUI.printLine("Teste atribuir stands");
          AssignStandToApplicationController nreAssignStaffToApplicationController = new AssignStandToApplicationController();
         nreAssignStaffToApplicationController.matchsApplicationOnEventListByOrganiserWithStandList();
         
@@ -121,7 +119,7 @@ public final class AssignStaffMemberUI {
         
         List<StaffMember> staff = eventSelected.getStaffRegister().getStaffList();
         for (StaffMember staffMember : staff) {
-            System.out.println("Staff member´s event: " + staffMember + eventSelected.toString2());
+            UtilsUI.printLine("Staff member´s event: " + staffMember + eventSelected.toString2());
             
         }
     }
@@ -132,15 +130,15 @@ public final class AssignStaffMemberUI {
         while (!user1.equalsIgnoreCase("X")) {
             int userPos = 0;
             int n = 1;
-            System.out.println("--------------------------");
-            System.out.println(" List of Available Users  ");
-            System.out.println("--------------------------");
+            UtilsUI.printLine("--------------------------");
+            UtilsUI.printLine(" List of Available Users  ");
+            UtilsUI.printLine("--------------------------");
             for (User user : availableUserToAssignToEvent) {
                 
                 System.out.println(n + "- " + user);
                 n++;
             }
-            System.out.println("--------------------------");
+            UtilsUI.printLine("--------------------------");
             
             user1 = Utils.readLineFromConsole("PICK USER (WRITE X WHEN YOU ARE DONE): ");
             readStaffMember(user1, userPos, n, availableUserToAssignToEvent, exhibitionCentre);
@@ -150,8 +148,8 @@ public final class AssignStaffMemberUI {
     private void readStaffMember(String user1, int userPos, int n, List<User> availableUserToAssignToEvent, ExhibitionCentre exhibitionCentre) {
         try {
             userPos = Integer.parseInt(user1);
-            System.out.println("UserPOs" + userPos);
-            System.out.println("N" + n);
+            UtilsUI.printLine("UserPOs" + userPos);
+            UtilsUI.printLine("N" + n);
             List<StaffMember> staffMembers = new ArrayList<>();
             if (userPos > 0 && userPos < n) {
                 
@@ -176,15 +174,15 @@ public final class AssignStaffMemberUI {
     }
     
     private void printStaffMemberList(List<StaffMember> staffMembers) {
-        System.out.println("--------------------------");
-        System.out.println("       StaffMembers       ");
-        System.out.println("--------------------------");
+        UtilsUI.printLine("--------------------------");
+        UtilsUI.printLine("       StaffMembers       ");
+        UtilsUI.printLine("--------------------------");
         int n = 1;
         for (StaffMember staffMember : staffMembers) {
-            System.out.println(n + " - " + staffMember.getStaff());
+            UtilsUI.printLine(n + " - " + staffMember.getStaff());
             n++;
         }
-        System.out.println("--------------------------");
+        UtilsUI.printLine("--------------------------");
     }
     
 }

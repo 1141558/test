@@ -26,31 +26,31 @@ public class CalculateCableUI {
         String selection = "";
 
         //Request selection of event
-        System.out.println("");
-        System.out.println((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-        System.out.println("        Electrical Cable Calculation        ");
-        System.out.println((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        UtilsUI.printLine("");
+        UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        UtilsUI.printLine("        Electrical Cable Calculation        ");
+        UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
 
         //Apresentar eventos
-        System.out.println("EVENTS:");
+        UtilsUI.printLine("EVENTS:");
         List<Event> events = controller.getEventList();
         for (Event ev : events) {
-            System.out.println(ev.getTitle());
+            UtilsUI.printLine(ev.getTitle());
         }
 
         //Selecctionar evento
-        System.out.println("SELECT EVENT ('Q' TO QUIT)");
+        UtilsUI.printLine("SELECT EVENT ('Q' TO QUIT)");
         selection = Utils.readLineFromConsole("EVENT TITLE: ");
 
         while (!controller.eventExists(selection) && (!selection.equalsIgnoreCase("Q"))) {
             UtilsUI.printError("EVENT NOT FOUND!\nPLEASE TRY AGAIN");
-            System.out.println("EVENTS:");
+            UtilsUI.printLine("EVENTS:");
             for (Event ev : events) {
-                System.out.println(ev.getTitle());
+                UtilsUI.printLine(ev.getTitle());
             }
 
             //Seleccionar evento
-            System.out.println("SELECT EVENT ('Q' TO QUIT)");
+            UtilsUI.printLine("SELECT EVENT ('Q' TO QUIT)");
             selection = Utils.readLineFromConsole("EVENT TITLE: ");
         }
         
@@ -67,9 +67,9 @@ public class CalculateCableUI {
             double length = controller.calcLength(selection);
 
             for (StandConnection connect : tree) {
-                System.out.println(connect.toString());
+               UtilsUI.printLine(connect.toString());
             }
-            System.out.println("Total: " + length + " meters");
+            UtilsUI.printLine("Total: " + length + " meters");
         }
 
         new InitialMenuUI(exhibitionCentre);

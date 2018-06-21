@@ -28,6 +28,7 @@ import lapr.project.model.Organiser;
 import lapr.project.model.Review;
 import lapr.project.model.StaffMember;
 import lapr.project.model.Stand;
+import lapr.project.model.User;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -45,6 +46,31 @@ public class XMLExporter {
         File file= new File("./src/main/resources/exhibition1_v0.1_1.xml");
         file.delete();
         Document document = builder.newDocument();
+        Element exhibitionCentreEl = document.createElement("exhibitionCentre");
+
+        Element userSetEl = document.createElement("userSet");
+        for (User u : centre.getUserRegister().getUserList()) {
+            Element userEl = document.createElement("user");
+            Element nameEl = document.createElement("name");
+            nameEl.setTextContent(u.getName());
+            Element usernameEl = document.createElement("username");
+            usernameEl.setTextContent(u.getUsername());
+            Element emailEl = document.createElement("email");
+            emailEl.setTextContent(u.getEmail());
+            Element passwordEl = document.createElement("password");
+            passwordEl.setTextContent(String.valueOf(u.getPassword()));
+            Element roleEl = document.createElement("role");
+            roleEl.setTextContent(u.getRole().toString());
+            userEl.appendChild(nameEl);
+            userEl.appendChild(usernameEl);
+            userEl.appendChild(emailEl);
+            userEl.appendChild(passwordEl);  
+            userEl.appendChild(roleEl);
+            userSetEl.appendChild(userEl);
+        }
+        
+        
+        Element eventSetEl = document.createElement("eventSet");
         
         for (Event e : centre.getEventRegister().getEventList()) {
                 Element exhibitionEl = document.createElement("event");
@@ -56,7 +82,7 @@ public class XMLExporter {
                 }
                 Element placeEl = document.createElement("place");
 
-                if(isEmpty(e.getPlace())){
+                if(!isEmpty(e.getPlace())){
                     placeEl.setTextContent(e.getPlace());
                 }
                 Element startDateEl = document.createElement("startDate");
@@ -235,6 +261,7 @@ public class XMLExporter {
 
                 //Add sub-element to root element
                 exhibitionEl.appendChild(titleEl);
+                exhibitionEl.appendChild(nrRoomsEl);
                 exhibitionEl.appendChild(startDateEl);
                 exhibitionEl.appendChild(endDateEl);
                 exhibitionEl.appendChild(placeEl);
@@ -242,13 +269,16 @@ public class XMLExporter {
                 exhibitionEl.appendChild(StaffsEl);
                 exhibitionEl.appendChild(OrganisersEl);
                 exhibitionEl.appendChild(applicationSetEl);
-                exhibitionEl.appendChild(nrRoomsEl);
 
-
+                eventSetEl.appendChild(exhibitionEl);
                 //Add root element to document
-                document.appendChild(exhibitionEl);
         }
-        
+                exhibitionCentreEl.appendChild(userSetEl);
+                exhibitionCentreEl.appendChild(eventSetEl);
+                document.appendChild(exhibitionCentreEl);
+
+
+                
 try {
             Transformer tr = TransformerFactory.newInstance().newTransformer();
             tr.setOutputProperty(OutputKeys.INDENT, "yes");
