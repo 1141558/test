@@ -32,13 +32,19 @@ public class MainMenu implements Serializable{
         
         if(centre.getEventRegister().userIsStaffMember(centre.getUserOnline())){
             UtilsUI.printLine("               1.SUBMIT APPLICATION REVIEW               ");
+            UtilsUI.printLine("               2.CALCULATE MINIMUM ELECTRICAL CABLE               ");
             UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
             opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
                 case 1:
                     /*TO DO*/
-                break;  
-                    
+                    break;
+                case 2:
+                    new CalculateCableUI(centre);
+                    break;
+                default:
+                    break;
+
             }
         }
         else if(centre.getEventRegister().userIsOrganiser(centre.getUserOnline())){
