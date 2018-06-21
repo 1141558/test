@@ -38,41 +38,43 @@ public class OrganiserTest {
         //Arrange
         User user = new User("Nome Nome", "email@server.com", "user1", 0.1234);
         User otherUser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
-
+        
         Organiser organiser = new Organiser(user);
         Organiser otherOrganiser = new Organiser(otherUser);
         boolean expectedResult = true;
-
+        
         Object obj = new Organiser(otherUser);
-
+        
         //Act
         boolean result = organiser.equals(obj);
-       
+        
         //Assert
         assertEquals(result, expectedResult);
-
+        
     }
-        @Test
+    
+    @Test
     public void notEqualsTest() {
         System.out.println("toString");
         
         //Arrange
         User user = new User("Name name", "email@server.com", "user1", 0.1234);
         User otherUser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
-
+        
         Organiser organiser = new Organiser(user);
         Organiser otherOrganiser = new Organiser(otherUser);
         boolean expectedResult = true;
-
+        
         Object obj = new Organiser(otherUser);
-
+        
         //Act
         boolean result = organiser.equals(obj);
-       
+        
         //Assert
-         Assert.assertNotEquals(result, expectedResult);
-
+        Assert.assertNotEquals(result, expectedResult);
+        
     }
+    
     /**
      * Test of hashCode method, of class Organiser.
      */
@@ -80,24 +82,61 @@ public class OrganiserTest {
     public void testHashCode() {
         System.out.println("hashCode");
         Organiser organiserHashCode = new Organiser();
-        int hash = 0;
-         hash = 53 * hash + Objects.hashCode(organiserHashCode);
+//        int hash = 0;
+//        hash = 53 * hash + Objects.hashCode(organiserHashCode);
         int result = organiserHashCode.hashCode();
-       // int expectedResult = organiserHashCode.hashCode();
+        int hash = -1779632894;
+        int expectedResult = organiserHashCode.hashCode();
         Assert.assertEquals(hash, result);
-                
+        Assert.assertEquals(expectedResult, result);
+        
     }
-     @Test
+    
+    @Test
     public void compareToTest() {
         User user1 = new User("Filipa", "filipa@server.com", "user1", 0.1234);
         Organiser organiser1 = new Organiser(user1);
         
-        
         User user2 = new User("Filipa", "filipa@server.com", "user1", 0.1234);
         Organiser organiser2 = new Organiser(user2);
         int result = organiser1.compareTo(organiser2);
-         System.out.println("result" +result);
-         Assert.assertEquals(0, result);
+        System.out.println("result" + result);
+        Assert.assertEquals(0, result);
     }
+    
+    @Test
+    public void notEqualsObjectsDiferentsClassesTest() {
+        
+        //Arrange
+        User user = new User("Name name", "email@server.com", "user1", 0.1234);
+        User otherUser = new User("Nome Nome", "email@server.com", "user1", 0.1234);
+        
+        Organiser organiser = new Organiser(user);
+        Organiser otherOrganiser = new Organiser(otherUser);
+        StaffMember staffmemb = new StaffMember();
+        boolean expectedResult = true;
+        
+        Object obj = new StaffMember();
+        
+        //Act
+        boolean result = organiser.equals(obj);
+        
+        //Assert
+        Assert.assertNotEquals(result, expectedResult);
+        
+    }
+    
+    @Test
+    public void testToString2() {
+        System.out.println("toString");
+        
+        User user = new User("Name name", "email@server.com", "user1", 0.1234);
+        Organiser organiser = new Organiser(user);
+        
+        String expResult = organiser.toString();
+        String result = "UserName:user1 Nome:Name name";
+        
+        assertEquals(expResult, result);
+    }
+    
 }
-

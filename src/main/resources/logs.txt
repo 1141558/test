@@ -242,6 +242,27 @@ Date: Wed Jun 20 22:55:20 BST 2018 -> an anonymous user took a survey about work
 
 Date: Wed Jun 20 22:44:15 BST 2018 -> an anonymous user took a survey about workshops
 Date: Wed Jun 20 22:55:20 BST 2018 -> an anonymous user took a survey about workshops
+<<<<<<< Updated upstream
 Date: Thu Jun 21 00:59:33 BST 2018 -> an anonymous user took a survey about workshops
 Date: Thu Jun 21 01:44:43 WEST 2018 -> an anonymous user took a survey about workshops
 Date: Thu Jun 21 01:56:07 WEST 2018 -> an anonymous user took a survey about workshops
+=======
+>>>>>>> Stashed changes
+Date: Wed Jun 20 23:07:49 BST 2018 -> an anonymous user took a survey about workshops
+Date: Thu Jun 21 00:44:26 BST 2018 -> an anonymous user took a survey about workshops
+Date: Thu Jun 21 00:50:53 BST 2018 -> an anonymous user took a survey about workshops
+Date: Thu Jun 21 00:56:21 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:02:05 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:09:55 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:14:55 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:21:52 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:23:59 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:26:49 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:28:33 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:41:47 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:46:38 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:57:18 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 01:57:46 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 02:02:36 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 02:03:10 BST 2018 -> An anonymous user took a survey about workshops
+>>>>>>> Stashed changes

@@ -183,12 +183,12 @@ public class StaffMemberTest {
 //    /**
 //     * Test of hashCode method, of class StaffMember.
 //     */
-//    @Test
-//    public void testHashCodeTwo() {
-//        System.out.println("hashCode");
-//        StaffMember instance = new StaffMember();
-//        int expResult = //instance.hashCode();
-//        int result = instance.hashCode();
-//        assertEquals(expResult, result);
-//    }
+    @Test
+    public void testHashCodeTwo() {
+        System.out.println("hashCode");
+        StaffMember instance = new StaffMember();
+        int expResult = instance.hashCode();
+        int result = instance.hashCode();
+        assertEquals(expResult, result);
+    }
 }

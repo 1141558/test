@@ -50,18 +50,13 @@ public class AssignStandToApplicationController {
     
     }
     public void matchsApplicationOnEventListByOrganiserWithStandList() {
-        System.out.println("Passou aqui 1");
+       
        User organiser = new User("manuel","fcsd@","ewr",12345678,Role.EMPLOYEE);
-      // User organiser = new User();
-      
-              // organiser = exhibitionCentre.getUserOnline();
-//       EventRegister eventRegister = new EventRegister();
+     
          eventRegister = exhibitionCentre.getEventRegister();
        List<Event> eventList = eventRegister.getEventListByOrganiser(organiser);
          filteringList(eventList, organiser);
-                   System.out.println("Passou aqui ??");
-            
-      
+ 
         }
       
         
@@ -74,7 +69,7 @@ public class AssignStandToApplicationController {
         for (Event eventItem : event) {
             List<Stand> standsListByEvent = eventItem.getStandRegister().getStandList();
            applicationsAccepted = eventItem.getEventApplicationByAcception();
-            System.out.println("aPPLICATIONaCCEPTED" +applicationsAccepted.toString() );
+           
         }
         return applicationsAccepted;
     }

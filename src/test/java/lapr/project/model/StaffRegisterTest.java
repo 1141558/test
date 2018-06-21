@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import lapr.project.controller.DummyData;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 
@@ -391,8 +392,24 @@ public class StaffRegisterTest {
         System.out.println("hashCode");
         StaffRegister instance = new StaffRegister(staffMemberListEvent4);
         int expResult = instance.hashCode();
+        System.out.println("hash" +instance.hashCode() );
         int result = instance.hashCode();
         assertEquals(expResult, result);
     }
-    
+       /**
+     * Test of createStaffMember method, of class StaffRegister.
+     */
+    @Test
+    public void testCreateStaffMember() {
+        System.out.println("createStaffMember");
+         User user = new User("Name name", "email@server.com", "user", 0.1234);
+        StaffMember expResult = new StaffMember(user);
+         List<StaffMember> staffList = new ArrayList<>();
+         staffList.add(expResult);
+         StaffRegister instance = new StaffRegister();
+        System.out.println("s"+instance.getStaffList());
+       
+       instance.createStaffMember();
+        Assert.assertNotNull(instance.createStaffMember());
+    }
 }

@@ -64,8 +64,8 @@ public class CalculateCableController {
 
         for (Event ev : eventList) {
             if (eventTitle.equals(ev.getTitle())) {
-                Event event = ev;
-                return event;
+              //  Event event = ev;
+                return ev;
             }
         }
         return null;

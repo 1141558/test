@@ -29,14 +29,14 @@ import lapr.project.model.UserRegister;
  *
  * @author Altran
  */
-public class DummyData {
+public final class DummyData {
     
-    private Organiser org1;
-    private Organiser org2;
-    private Organiser org3;
-    private Event event1;
-    private Event event2;
-    private Event event3;
+    private final Organiser org1;
+    private final Organiser org2;
+    private final Organiser org3;
+    private final Event event1;
+    private final Event event2;
+    private final Event event3;
     private Date data1, data2, data3, data4;
     
     private OrganiserRegister organiserRegister = new OrganiserRegister();

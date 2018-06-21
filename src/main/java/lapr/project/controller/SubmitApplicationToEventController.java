@@ -21,11 +21,10 @@ import lapr.project.utils.Utils;
  */
 public class SubmitApplicationToEventController {
     
-    private Application application;
-    private ExhibitionCentre centre;
+    private final Application application;
+    private final ExhibitionCentre centre;
     private Event event;
-    private List<Event> events = new ArrayList<>();
-    
+   
     public SubmitApplicationToEventController(ExhibitionCentre centre) {
         this.application = new Application();
         this.centre = centre;
@@ -73,11 +72,13 @@ public class SubmitApplicationToEventController {
         List<Keyword> list = new ArrayList<>();
         this.application.setDescription(description);
         this.application.setNumberInvites(nInvites);
-        for (String keyword : keywords) {
+        keywords.stream().map((keyword) -> {
             Keyword k = new Keyword();
             k.setValue(keyword);
+            return k;
+        }).forEachOrdered((k) -> {
             list.add(k);
-        }
+        });
         this.application.setKeywordList(list);
         this.application.setNameOfCompany(companyName);
         this.application.setPhoneNumber(phoneNumber);

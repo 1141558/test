@@ -63,6 +63,7 @@ public class Organiser  implements Comparable<Organiser> ,  Serializable{
 
     }
 
+
     @Override
     public int hashCode() {
         int hash = 7;

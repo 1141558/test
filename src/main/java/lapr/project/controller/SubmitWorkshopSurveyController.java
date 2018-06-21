@@ -18,9 +18,10 @@ import lapr.project.utils.Utils;
  * @author MariaJoão
  */
 public class SubmitWorkshopSurveyController {
-    private ExhibitionCentre centre;
+    private final ExhibitionCentre centre;
     private Event event;
-    private List<Application> appsOfWorkshops;
+    private final List<Application> appsOfWorkshops;
+    
     public SubmitWorkshopSurveyController(ExhibitionCentre centre) {
         this.centre= centre;
         this.appsOfWorkshops= new ArrayList<>();
@@ -38,7 +39,7 @@ public class SubmitWorkshopSurveyController {
     }
 
     /**
-     * @param event the event to set
+     * @param index
      */
     public void setEvent(int index) {
         this.setEvent(getEvents().get(index));
@@ -46,15 +47,16 @@ public class SubmitWorkshopSurveyController {
 
     public List<Workshop> listaWorkshopsOfAcceptedApplications() {
         List<Workshop> list= new ArrayList<>();
-        for (Application a : this.event.getApplicationRegister().getApplicationList()) {
-            for (Workshop w : a.getWorkshopList()) {
+        this.event.getApplicationRegister().getApplicationList().forEach((a) -> {
+            a.getWorkshopList().stream().map((w) -> {
                 //if(a.getState().equals(ApplicationState.ACCEPTED)){
-                    list.add(w);
-                    this.appsOfWorkshops.add(a);
+                list.add(w);
+                return w;
+            }).forEachOrdered((_item) -> {
+                this.appsOfWorkshops.add(a);
                 //}
-            }
- 
-        }
+            });
+        });
         return list;
     }
 
@@ -72,7 +74,7 @@ public class SubmitWorkshopSurveyController {
 
     public boolean registerLog() {
 
-        return Utils.writeLog("an anonymous user took a survey about workshops");
+        return Utils.writeLog("An anonymous user took a survey about workshops");
     
     }   
 
