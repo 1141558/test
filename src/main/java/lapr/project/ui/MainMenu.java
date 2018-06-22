@@ -126,7 +126,7 @@ public class MainMenu implements Serializable{
                     /*TO DO*/
                 break;    
                 case 3:
-                    /*TO DO*/
+                    new MeanRatingUI(centre);
                 break; 
                 case 4:
                     /*TO DO*/
