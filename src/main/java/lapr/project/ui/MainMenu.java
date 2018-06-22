@@ -160,7 +160,7 @@ public class MainMenu implements Serializable{
                     new CreateEventUI(centre);    
                 break; 
                 case 2:
-                    /*TO DO*/
+                    new EventAcceptanceRateUI(centre);
                 break;    
                 case 3:
                     new MeanRatingUI(centre);
