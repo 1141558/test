@@ -48,22 +48,6 @@ public class SubmitWorkshopSurveyControllerTest {
     }
 
     /**
-     * Test of getEvent method, of class SubmitWorkshopSurveyController.
-     */
-    @Test
-    public void testGetEvent() {
-        System.out.println("getEvent");
-        ExhibitionCentre c= new ExhibitionCentre();
-        SubmitWorkshopSurveyController instance = new SubmitWorkshopSurveyController(c);
-        Event expResult = new Event();
-        expResult.setTitle("exp");
-        instance.setEvent(expResult);
-        Event result = instance.getEvent();
-        assertEquals(expResult, result);
-
-    }
-
-    /**
      * Test of setEvent method, of class SubmitWorkshopSurveyController.
      */
     @Test
