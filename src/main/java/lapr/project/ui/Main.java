@@ -36,7 +36,7 @@ class Main {
 
         Console c= System.console();
         if(c==null){
-        XMLDecoder.readExhibitionCentreFromFile("./src/main/resources/exhibition_centre.xml", centre);
+        XMLDecoder.readExhibitionCentreFromFile("./src/main/resources/exhibition1_v0.1_1.xml", centre);
         //XMLExporter.exportAllDataToFile(centre);
         }else{
         //XMLDecoder.readExhibitionCentreFile("../src/main/resources/exhibition1_v0.1.xml", centre);

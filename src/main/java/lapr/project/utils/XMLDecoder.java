@@ -259,12 +259,24 @@ public class XMLDecoder {
         for (int i = 0; i < staffs.getLength(); i++) {
             User u= new User();
             StaffMember sm= new StaffMember();
-            Node staff_node = staffs.item(i);
+            Node staff_node = staffs.item(i);            
             Element staff_element = (Element) staff_node;
             String name = staff_element.getElementsByTagName("name").item(0).getTextContent();
             String email = staff_element.getElementsByTagName("email").item(0).getTextContent();
             String username = staff_element.getElementsByTagName("username").item(0).getTextContent();
             String password = staff_element.getElementsByTagName("password").item(0).getTextContent();
+            NodeList toReview_nodes = staff_element.getElementsByTagName("ApplicationsToReview");
+            Node toReview_node = toReview_nodes.item(0);  
+            Element toReviewElement= (Element) toReview_node;
+            if(toReviewElement!=null){
+                NodeList aplications= toReviewElement.getElementsByTagName("applicationDesc");
+                for (int j = 0; j < aplications.getLength(); j++) {
+                    Node one_app_node = aplications.item(i);            
+                    Element one_app_el = (Element) one_app_node;
+                    String descApp = one_app_el.getTextContent();
+                    sm.getReviewsAssigned().add(descApp);
+                }
+            }
             u.setEmail(email);
             u.setName(name);
                 try{

@@ -5,9 +5,13 @@
  */
 package lapr.project.ui;
 
+import java.io.IOException;
 import java.io.Serializable;
+import javax.xml.parsers.ParserConfigurationException;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Role;
+import lapr.project.utils.Utils;
+import org.xml.sax.SAXException;
 
 
 /**
@@ -56,8 +60,9 @@ public class MainMenu implements Serializable{
             UtilsUI.printLine("       6.LIST AN EVENT'S REVIEW-PENDING APPLICATIONS     ");
             UtilsUI.printLine("          7.LIST AN EVENT'S ACCEPTED APPLICATIONS        ");
             UtilsUI.printLine("          8.LIST AN EVENT'S REJECTED APPLICATIONS        ");
-            UtilsUI.printLine("                9.LIST AN EVENT'S TOPICS                ");/*frequencias*/
+            UtilsUI.printLine("                9.LIST AN EVENT'S TOPICS                 ");/*frequencias*/
             UtilsUI.printLine("            10.LIST AN EVENT'S STAND INFORMATION         ");/*frequencias*/
+            UtilsUI.printLine("                         11.EXIT                         ");/*frequencias*/
 
             System.out.println((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
 
@@ -75,7 +80,8 @@ public class MainMenu implements Serializable{
                 break;
                 
                 case 4:
-                    /*TO DO*/
+                    new AssignStaffMemberToReviewUI(centre);
+                    break;
                 case 5:
                     new ListEventsUI(centre, "SUBMITTED");                    
                 break;
@@ -93,6 +99,14 @@ public class MainMenu implements Serializable{
                 break;
                 case 10:
                     /*TO DO*/
+                break;
+                case 11:
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
                 break;    
             }
         }

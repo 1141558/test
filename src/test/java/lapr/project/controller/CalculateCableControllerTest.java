@@ -14,10 +14,8 @@ import lapr.project.model.EventRegister;
 import lapr.project.model.StandConnection;
 
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.model.PasswordEncryption;
 import lapr.project.model.Stand;
 import lapr.project.model.StandRegister;
-import lapr.project.model.User;
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 

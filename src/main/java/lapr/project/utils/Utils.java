@@ -16,8 +16,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import javax.xml.parsers.ParserConfigurationException;
+import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.User;
 import lapr.project.ui.UtilsUI;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -70,6 +73,10 @@ public class Utils {
         });
       
         return copia;
+    }
+
+    public static void export(ExhibitionCentre centre) throws ParserConfigurationException, SAXException, IOException {
+        XMLExporter.exportAllDataToFile(centre, "");
     }
  
 }

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.function.Function;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,6 +23,7 @@ import lapr.project.model.Application;
 import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
+import lapr.project.model.StaffMember;
 import lapr.project.model.Stand;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -121,23 +123,37 @@ public class XMLExporter {
                 standsEl.appendChild(standEl)
             );
             Element staffsEl = document.createElement("StaffSet");
-            e.getStaffRegister().getStaffList().stream().map((s) -> {
-                Element staffEl = document.createElement("staff");
-                Element userEl = document.createElement(user_label);
-                Element staffNameEl = document.createElement(name_label);
-                staffNameEl.setTextContent(s.getStaff().getName());
-                Element usernameEl = document.createElement(username_label);
-                usernameEl.setTextContent(s.getStaff().getUsername());
-                Element emailEl = document.createElement(email_label);
-                emailEl.setTextContent(s.getStaff().getEmail());
-                Element passwordEl = document.createElement(password_label);
-                passwordEl.setTextContent(String.valueOf(s.getStaff().getPassword()));
-                userEl.appendChild(staffNameEl);
-                userEl.appendChild(usernameEl);
-                userEl.appendChild(emailEl);
-                userEl.appendChild(passwordEl);
-                staffEl.appendChild(userEl);
-                return staffEl;
+            e.getStaffRegister().getStaffList().stream().map(new Function<StaffMember, Element>() {
+                @Override
+                public Element apply(StaffMember s) {
+                    Element staffEl = document.createElement("staff");
+                    Element userEl = document.createElement(user_label);
+                    Element staffNameEl = document.createElement(name_label);
+                    staffNameEl.setTextContent(s.getStaff().getName());
+                    Element usernameEl = document.createElement(username_label);
+                    usernameEl.setTextContent(s.getStaff().getUsername());
+                    Element emailEl = document.createElement(email_label);
+                    emailEl.setTextContent(s.getStaff().getEmail());
+                    Element passwordEl = document.createElement(password_label);
+                    passwordEl.setTextContent(String.valueOf(s.getStaff().getPassword()));
+                    Element toReviewEl = document.createElement("ApplicationsToReview");
+                    s.getReviewsAssigned().stream().map((sReview) -> {
+                        Element descEl = document.createElement("applicationDesc");
+                        descEl.setTextContent(sReview);
+                        return descEl;
+                    }).forEachOrdered((descEl) -> {
+                        toReviewEl.appendChild(descEl);
+                    });
+                    userEl.appendChild(staffNameEl);
+                    userEl.appendChild(usernameEl);
+                    userEl.appendChild(emailEl);
+                    userEl.appendChild(passwordEl);
+                    staffEl.appendChild(userEl);
+                    if(s.getReviewsAssigned().size()>0){
+                    staffEl.appendChild(toReviewEl);
+                    }
+                    return staffEl;
+                }
             }).forEachOrdered((staffEl) -> {
                 staffsEl.appendChild(staffEl);
             });

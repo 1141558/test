@@ -6,6 +6,8 @@
 package lapr.project.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -17,7 +19,7 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
     private static final long serialVersionUID = 1L;
     
     private User staff;    
-
+    private List<String> reviewsAssigned;
     /**
      *
      * @return User
@@ -31,6 +33,7 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
      */
     public StaffMember() {
         this.staff = new User();
+        this.reviewsAssigned= new ArrayList<>();
     }
     
     /**
@@ -39,6 +42,7 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
      */
     public StaffMember(User staff) {
         this.staff = staff;
+        this.reviewsAssigned= new ArrayList<>();
     }
 
     /**
@@ -81,6 +85,20 @@ public class StaffMember implements Comparable<StaffMember>, Serializable{
     @Override
     public int compareTo(StaffMember otherStaff) {
         return this.staff.getUsername().compareTo(otherStaff.staff.getUsername());
+    }
+
+    /**
+     * @return the reviewsAssigned
+     */
+    public List<String> getReviewsAssigned() {
+        return reviewsAssigned;
+    }
+
+    /**
+     * @param reviewsAssigned the reviewsAssigned to set
+     */
+    public void setReviewsAssigned(List<String> reviewsAssigned) {
+        this.reviewsAssigned = reviewsAssigned;
     }
 
     
