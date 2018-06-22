@@ -5,12 +5,9 @@
  */
 package lapr.project.ui;
 
-import java.util.ArrayList;
 import java.util.List;
 import lapr.project.controller.MeanRatingController;
-import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.model.StandConnection;
 import lapr.project.model.User;
 
 /**
@@ -42,7 +39,7 @@ public class MeanRatingUI {
         UtilsUI.printLine("SELECT EMPLOYEE USERNAME ('Q' TO QUIT)");
         selection = UtilsUI.readLineFromConsole("USERNAME: ");
 
-        while (!controller.employeeExists(selection) && (!selection.equalsIgnoreCase("Q"))) {
+        while (!controller.employeeExists(selection) && (!"Q".equalsIgnoreCase(selection))) {
             UtilsUI.printError("EMPLOYEE NOT FOUND!\nPLEASE TRY AGAIN");
             UtilsUI.printLine("EMPLOYEES:");
             for (User u : employees) {
@@ -55,7 +52,7 @@ public class MeanRatingUI {
         }
         
         
-        if (!selection.equalsIgnoreCase("Q")) {
+        if (!"Q".equalsIgnoreCase(selection)) {
 
             //Employee seleccionado e encontrado
             //Calcular
