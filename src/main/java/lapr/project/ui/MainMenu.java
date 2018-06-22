@@ -150,7 +150,7 @@ public class MainMenu implements Serializable{
        UtilsUI.printLine("                         1.CREATE EVENT                      ");
        UtilsUI.printLine("                   2.SHOW EVENT'S ACCEPTANCE RATE            ");
        UtilsUI.printLine("                  3.SHOW STAFF MEMBER MEAN RATING            ");
-       UtilsUI.printLine("4.SHOW MEAN DEVIATION BETWEEN STAFF MEMBERS' AVERAGE RATINGS AND EVENTS MEAN RATINGS");
+       UtilsUI.printLine("4.SHOW MEAN DEVIATION BETWEEN STAFF MEMBER'S AVERAGE RATING AND EVENT'S MEAN RATING");
        UtilsUI.printLine("                            5.LOGOUT                         ");/*frequencias*/
        UtilsUI.printLine("                             6.EXIT                          ");/*frequencias*/
 
@@ -167,7 +167,7 @@ public class MainMenu implements Serializable{
                     new MeanRatingUI(centre);
                 break; 
                 case 4:
-                    /*TO DO*/
+                    new MeanDeviationUI(centre);
                 break; 
 
                 case 5:
