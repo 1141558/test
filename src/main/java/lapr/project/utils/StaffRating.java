@@ -27,6 +27,7 @@ public class StaffRating {
 
     /**
      * Method to calculate the mean rating of an User (StaffMember)
+     *
      * @param user User to select the ratings
      * @return Mean of the ratings for the user (StaffMember)
      */
@@ -42,67 +43,45 @@ public class StaffRating {
             }
         }
         return rcount != 0 ? rsum / rcount : 0;
-                
-//        double rsum = 0.0;
-//        int rcount = 0;
-//
-//        for (Event ev : centre.getEventRegister().getEventList()) {
-//            for (Application app : ev.getApplicationRegister().getApplicationList()) {
-//                for (Review rev : app.getListReview()) {
-//                    if (rev.getAssignedStaffMember().getStaff().equals(user)) {
-//                        double rmean = (rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation());
-//                        rmean = rmean / 5.0;
-//                        rsum = rsum + rmean;
-//                        rcount++;
-//                    }
-//                }
-//            }
-//        }
-//        return rcount!=0 ? rsum / rcount:0;
     }
-    
-     private List<Review> getReviews(User user, Application app) {
 
+    /**
+     * Method to get the reviews made by the user
+     *
+     * @param user User who made the reviews
+     * @param app Application with the reviews
+     * @return List with the reviews made by the user
+     */
+    private List<Review> getReviews(User user, Application app) {
         List<Review> reviews = new ArrayList<>();
-
         for (Review rev : app.getListReview()) {
-
             if (rev.getAssignedStaffMember().getStaff().equals(user)) {
-
                 reviews.add(rev);
-
             }
-
         }
-
         return reviews;
-
     }
 
-   
-
-    private double calculateRMean(List<Review> reviews){
-
-        double rmean, rsum = 0;
-
+    /**
+     * Method to calculate the mean of the reviews
+     *
+     * @param reviews List with the reviews
+     * @return Returns the sum of the means of the reviews
+     */
+    private double calculateRMean(List<Review> reviews) {
+        double rmean;
+        double rsum = 0;
         for (Review rev : reviews) {
-
             rmean = (rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation());
-
             rmean /= 5.0;
-
             rsum += rmean;
-
         }
-
         return rsum;
-
     }
-
-
 
     /**
      * Method to calculate the mean deviation of an user ratings and an event
+     *
      * @param user User to consider the mean ratings
      * @param event Event to use the mean rating
      * @return Mean deviation
@@ -110,28 +89,39 @@ public class StaffRating {
     public double meanDeviation(User user, Event event) {
         double devSum = 0;
         int devCount = 0;
-
         double eventMean = eventMean(event);
 
         for (Event ev : centre.getEventRegister().getEventList()) {
             for (Application app : ev.getApplicationRegister().getApplicationList()) {
-                for (Review rev : app.getListReview()) {
-                    if (rev.getAssignedStaffMember().getStaff().equals(user)) {
-                        double rmean = (double) rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation();
-                        rmean = rmean / 5;
-                        devSum += Math.abs(rmean - eventMean);
-                        devCount++;
-                    }
-                }
-
+                List<Review> reviews = getReviews(user, app);
+                devSum += calculateRdev(reviews, eventMean);
+                devCount += reviews.size();
             }
-
         }
-        return devCount!=0 ? devSum / devCount : 0;
+        return devCount != 0 ? devSum / devCount : 0;
+    }
+
+    /**
+     * Method to calculate the mean deviation of the reviews
+     *
+     * @param reviews List with the reviews
+     * @param eventMean mean of the selected event
+     * @return Returns the sum of the mean deviation of the reviews
+     */
+    private double calculateRdev(List<Review> reviews, double eventMean) {
+        double rmean;
+        double devSum = 0;
+        for (Review rev : reviews) {
+            rmean = (rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation());
+            rmean /= 5.0;
+            devSum += Math.abs(rmean - eventMean);
+        }
+        return devSum;
     }
 
     /**
      * Method to return the mean rating of an event
+     *
      * @param event Event to calculate the mean
      * @return mean rating
      */
@@ -147,7 +137,7 @@ public class StaffRating {
                 rcount++;
             }
         }
-        return rcount!=0 ? rsum / rcount:0;
+        return rcount != 0 ? rsum / rcount : 0;
     }
 
 }
