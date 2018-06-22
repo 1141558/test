@@ -7,7 +7,7 @@ package lapr.project.controller;
 
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.User;
-import static lapr.project.model.PasswordEncryption.encryptPassword;
+import static lapr.project.utils.PasswordEncryption.encryptPassword;
 import lapr.project.utils.Utils;
 
 /**

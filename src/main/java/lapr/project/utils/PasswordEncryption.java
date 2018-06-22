@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lapr.project.model;
+package lapr.project.utils;
 
 import java.util.Arrays;
 
@@ -12,6 +12,10 @@ import java.util.Arrays;
  * @author JM
  */
 public class PasswordEncryption {
+    
+    private PasswordEncryption(){
+        
+    }
 
     /**
      * Method to encrypt a String password (Arithmetic coding)
@@ -20,7 +24,7 @@ public class PasswordEncryption {
      * @return Double with the encrypted password
      */
     public static double encryptPassword(String password) {
-        double encrypted = 0.0;
+        double encrypted;
         int[] numCount = new int[10];
         Arrays.fill(numCount, 0);
 
@@ -39,8 +43,10 @@ public class PasswordEncryption {
             probArray[i] = ((double) numCount[i] / password.length()) + probArray[i - 1];
         }
 
-        double I = 0.0, F = 1.0;
-        double x = 0.0, y = 1.0;
+        double I = 0.0;
+        double F = 1.0;
+        double x;
+        double y;
 
         //Codifica
         for (int i = 0; i < password.length(); i++) {
