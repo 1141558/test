@@ -20,7 +20,7 @@ import lapr.project.ui.UtilsUI;
  */
 public class CalculateCableController {
 
-    private ExhibitionCentre exhibitionCentre;
+    private final ExhibitionCentre exhibitionCentre;
 
     public CalculateCableController(ExhibitionCentre exhibitionCentre) {
         this.exhibitionCentre = exhibitionCentre;

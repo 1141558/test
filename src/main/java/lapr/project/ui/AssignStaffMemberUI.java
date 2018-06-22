@@ -54,13 +54,7 @@ public final class AssignStaffMemberUI {
         
         
         }
-        
 
-        
-        
-        
-        
-        
     }
     
     private void staffMemberAssign(List<Event> events, ExhibitionCentre exhibitionCentre) {

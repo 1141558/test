@@ -17,7 +17,8 @@ import lapr.project.model.StaffMember;
  */
 public class AssignStaffMemberToReviewUI {
     
-    AssignStaffMemberToReviewController controller;
+    private AssignStaffMemberToReviewController controller;
+    
     public AssignStaffMemberToReviewUI(ExhibitionCentre centre) {
         this.controller= new AssignStaffMemberToReviewController(centre);
        

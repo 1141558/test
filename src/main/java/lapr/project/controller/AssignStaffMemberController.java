@@ -29,19 +29,17 @@ public class AssignStaffMemberController {
     private UserRegister usersRegister;
     private Event event;
     
-    private DummyData dummy;
-    
     public AssignStaffMemberController(ExhibitionCentre centre) {
         this.exhibitionCentre = centre;
-      
+        
     }
     
     public List<Event> getEventsListByOrganiser() {
         
         User organiserValidated = exhibitionCentre.getUserOnline();
         evReg = exhibitionCentre.getEventRegister();
-       return evReg.getEventListByOrganiser(organiserValidated);
-  
+        return evReg.getEventListByOrganiser(organiserValidated);
+        
     }
     
     public void selectEvent(Event eventSelected) {
@@ -51,19 +49,16 @@ public class AssignStaffMemberController {
     
     public List<User> filterUserRegisterByNoOrganiserEventSelected() {
         
-        
         usersRegister = exhibitionCentre.getUserRegister();
-       return usersRegister.getAvailableUsersWithoutOrganisers(event.getOrganisersRegister().getOrganiserList());
-       
+        return usersRegister.getAvailableUsersWithoutOrganisers(event.getOrganisersRegister().getOrganiserList());
+        
     }
     
     public List<User> getAvailableUsers() {
         
         List<User> filterUserRegisterByNoOrganiserEventSelectedCopy = Utils.getCopia(filterUserRegisterByNoOrganiserEventSelected());
         
-       
-        
-      return usersRegister.getAvailableUsersWithoutStaffMember(event.getStaffRegister().getStaffList(), filterUserRegisterByNoOrganiserEventSelectedCopy);
+        return usersRegister.getAvailableUsersWithoutStaffMember(event.getStaffRegister().getStaffList(), filterUserRegisterByNoOrganiserEventSelectedCopy);
         
     }
     
@@ -88,9 +83,9 @@ public class AssignStaffMemberController {
     public void saveStaffMemberList() {
         event.saveStaffRegister(staffRegister);
     }
-
+    
     public void registerLog() {
-        Utils.writeLog(this.exhibitionCentre.getUserOnline().getUsername()+" assigned staff members to event '"+event.getTitle()+"';");
+        Utils.writeLog(this.exhibitionCentre.getUserOnline().getUsername() + " assigned staff members to event '" + event.getTitle() + "';");
     }
     
 }

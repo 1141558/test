@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.controller;
 
 import java.util.ArrayList;
@@ -19,45 +19,46 @@ import lapr.project.model.Workshop;
  * @author MariaJoão
  */
 public class UpdateOrWithdrawApplicationController {
-
-    ExhibitionCentre centre;
+    
+    private ExhibitionCentre centre;
     private Application a;
     private Application newApp;
+    
     public UpdateOrWithdrawApplicationController(ExhibitionCentre centre) {
-        this.centre=centre;  
-          
+        this.centre = centre;
+        
     }
-
+    
     public List<Application> getUserApplications() {
-        List<Application> ret= new ArrayList<>();
+        List<Application> ret = new ArrayList<>();
         for (Event e : this.centre.getEventRegister().getEventList()) {
             for (Application a : e.getApplicationRegister().getApplicationList()) {
-                if(a.getUserThatSubmited().equals(this.centre.getUserOnline())){
+                if (a.getUserThatSubmited().equals(this.centre.getUserOnline())) {
                     ret.add(a);
                 }
             }
         }
         return ret;
     }
-
+    
     /**
      * @return the a
      */
     public Application getA() {
         return a;
     }
-
+    
     /**
      * @param a the a to set
      */
     public void setA(int index) {
         this.a = getUserApplications().get(index);
     }
-
+    
     public boolean withdrawApplication() {
         for (Event e : this.centre.getEventRegister().getEventList()) {
             for (Application a : e.getApplicationRegister().getApplicationList()) {
-                if(this.a.equals(a)){
+                if (this.a.equals(a)) {
                     e.getApplicationRegister().getApplicationList().remove(a);
                     return true;
                 }
@@ -65,11 +66,12 @@ public class UpdateOrWithdrawApplicationController {
         }
         return false;
     }
+    
     public boolean updateApplication() {
         for (Event e : this.centre.getEventRegister().getEventList()) {
             for (Application a1 : e.getApplicationRegister().getApplicationList()) {
-                if(this.a.equals(a1)){
-                    Application a2= new Application();
+                if (this.a.equals(a1)) {
+                    Application a2 = new Application();
                     a2.setDescription(newApp.getDescription());
                     a2.setBoothArea(newApp.getBoothArea());
                     a2.setKeywordList(newApp.getKeywordList());
@@ -89,17 +91,18 @@ public class UpdateOrWithdrawApplicationController {
         }
         return false;
     }
+    
     public boolean validatePhoneNumber(int phoneNumber) {
-        int length = (int)(Math.log10(phoneNumber)+1);
-        if(length!=9){
+        int length = (int) (Math.log10(phoneNumber) + 1);
+        if (length != 9) {
             return false;
         }
         return true;
     }
-
+    
     public void setData(String description, int nInvites, List<Keyword> keywords, double area, String companyName, int phoneNumber, int vatNumber, List<Workshop> worshopList) {
-      
-        newApp= new Application(); 
+        
+        newApp = new Application();
         newApp.setDescription(description);
         newApp.setNumberInvites(nInvites);
         newApp.setKeywordList(keywords);
@@ -108,13 +111,13 @@ public class UpdateOrWithdrawApplicationController {
         newApp.setPhoneNumber(phoneNumber);
         newApp.setVatNumber(vatNumber);
         newApp.setWorkshopList(worshopList);
-
+        
     }
-
+    
     public Event getEvent() {
         for (Event e : this.centre.getEventRegister().getEventList()) {
             for (Application a : e.getApplicationRegister().getApplicationList()) {
-                if(this.a.equals(a)){
+                if (this.a.equals(a)) {
                     e.getApplicationRegister().getApplicationList().remove(a);
                     return e;
                 }
@@ -124,4 +127,3 @@ public class UpdateOrWithdrawApplicationController {
     }
     
 }
-

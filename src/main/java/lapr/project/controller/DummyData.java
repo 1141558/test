@@ -27,7 +27,7 @@ import lapr.project.model.UserRegister;
 
 /**
  *
- * @author Altran
+ * @author Manuel Garnel
  */
 public final class DummyData {
     
@@ -88,7 +88,7 @@ public final class DummyData {
     }
     
     //*********************************************************************************************
-   private  EventRegister eventRegister = new EventRegister();
+    private EventRegister eventRegister = new EventRegister();
     
     public EventRegister getEventRegister() {
         return eventRegister;

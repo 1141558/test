@@ -125,7 +125,7 @@ public class UserRegister {
     /**
      * Method to get available Users without Staff Members
      *
-     * @param staffList list of staff menbers to be removed
+     * @param staffList list of staff menmbers to be removed
      * @param filterUserRegisterByNoOrganiserEventSelectedCopy list of Users
      * @return list without staff members
      */

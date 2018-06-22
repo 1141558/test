@@ -17,7 +17,9 @@ import lapr.project.model.Workshop;
  * @author MariaJoão
  */
 public class SubmitWorkshopSurveyUI {
-    SubmitWorkshopSurveyController controller;
+    
+  private   SubmitWorkshopSurveyController controller;
+  
     public SubmitWorkshopSurveyUI(ExhibitionCentre centre){
         this.controller= new SubmitWorkshopSurveyController(centre);
         UtilsUI.printLine("");        

@@ -16,7 +16,7 @@ import lapr.project.utils.Utils;
  */
 public class LoginController {
     
-    private ExhibitionCentre centre;
+    private final ExhibitionCentre centre;
     
     public LoginController(ExhibitionCentre centre) {
         this.centre = centre;

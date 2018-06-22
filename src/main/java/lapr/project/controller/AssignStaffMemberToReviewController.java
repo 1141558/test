@@ -7,9 +7,7 @@ package lapr.project.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import lapr.project.model.Application;
-import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.StaffMember;
@@ -21,10 +19,11 @@ import lapr.project.utils.Utils;
  */
 public class AssignStaffMemberToReviewController {
     
-    ExhibitionCentre centre;
+    private ExhibitionCentre centre;
     private Event event;
     private Application application;
     private StaffMember staff;
+    
     public AssignStaffMemberToReviewController(ExhibitionCentre centre) {
         this.centre=centre;
     }

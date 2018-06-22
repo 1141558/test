@@ -65,7 +65,7 @@ public class AssignStaffMemberControllerTest {
     private final ExhibitionCentre exhibitionCentre2 = new ExhibitionCentre();
     private final ExhibitionCentre ec = new ExhibitionCentre();
     
-    DummyData dummy = new DummyData(exhibitionCentre);
+    private DummyData dummy = new DummyData(exhibitionCentre);
     
     private final Event event3 = new Event();
     
@@ -79,7 +79,7 @@ public class AssignStaffMemberControllerTest {
         List<Event> eventListByOrganiser = assignStaffMemberController3.getEventsListByOrganiser();
         
         //Assert
-        Assert.assertEquals(eventListByOrganiser.get(1).getTitle(), "EVENTO UM");
+        Assert.assertEquals("EVENTO UM", eventListByOrganiser.get(1).getTitle());
     }
     
     @Test

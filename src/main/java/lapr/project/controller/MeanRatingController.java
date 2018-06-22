@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.controller;
 
 import java.util.ArrayList;
@@ -19,46 +19,41 @@ import lapr.project.utils.StaffRating;
 public class MeanRatingController {
     
     private ExhibitionCentre exhibitionCentre;
-    StaffRating rating;
+    private StaffRating rating;
     
-    public MeanRatingController (ExhibitionCentre exhibitionCentre){
-        this.exhibitionCentre=exhibitionCentre;
+    public MeanRatingController(ExhibitionCentre exhibitionCentre) {
+        this.exhibitionCentre = exhibitionCentre;
         this.rating = new StaffRating(exhibitionCentre);
     }
     
-    public List<User> getEmployeeList(){
+    public List<User> getEmployeeList() {
         List<User> employeeList = new ArrayList<>();
-        for(User u : exhibitionCentre.getUserRegister().getUserList()){
-            if(u.getRole().equals(Role.EMPLOYEE)){
-                employeeList.add(u);
-            }
-        }
+        exhibitionCentre.getUserRegister().getUserList().stream().filter((u) -> (u.getRole().equals(Role.EMPLOYEE))).forEachOrdered((u) -> {
+            employeeList.add(u);
+        });
         return employeeList;
     }
     
-    public double calcMeanRating(String username){
+    public double calcMeanRating(String username) {
         User user = findUser(username);
         
-        return user!=null ? rating.meanRating(user) : 0;
+        return user != null ? rating.meanRating(user) : 0;
     }
     
-    public User findUser(String username){
-        for(User u : exhibitionCentre.getUserRegister().getUserList()){
-            if(u.getUsername().equals(username)){
+    public User findUser(String username) {
+        for (User u : exhibitionCentre.getUserRegister().getUserList()) {
+            if (u.getUsername().equals(username)) {
                 return u;
             }
         }
         return null;
     }
     
-    public boolean employeeExists (String username){
-        for(User u : getEmployeeList()){
-            if(u.getUsername().equals(username)){
-                return true;
-            }
+    public boolean employeeExists(String username) {
+        if (getEmployeeList().stream().anyMatch((u) -> (u.getUsername().equals(username)))) {
+            return true;
         }
         return false;
     }
-    
     
 }

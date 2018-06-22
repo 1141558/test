@@ -12,7 +12,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Candidatura class.
@@ -44,6 +43,7 @@ public class Application implements Importable<Application>, Exportable {
      *
      * @param description CandidaturaDescription
      * @param keywordList Keyword List
+     * @param listReview
      */
     public Application(String description, List<Keyword> keywordList, List<Review> listReview) {
         this.description = description;
@@ -53,6 +53,7 @@ public class Application implements Importable<Application>, Exportable {
         this.userThatSubmited= new User();
 
     }
+    
     public Application(String description, List<Keyword> keywordList) {
         this.description = description;
         this.keywordList= keywordList;

@@ -1,9 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.controller;
 
 import java.text.ParseException;
@@ -38,57 +37,58 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author andre
  */
 public class StartSubmissionPeriodControllerTest {
+    
     private ExhibitionCentre centre = new ExhibitionCentre();
     
-    DummyData data;
+    private DummyData data;
     
-    List<Event> result;
-    List<Event> expResult;
-    StartSubmissionPeriodController controller;
+    private List<Event> result;
+    private List<Event> expResult;
+    private StartSubmissionPeriodController controller;
     
-      //Application_________________________________
+    //Application_________________________________
     ApplicationRegister appRegister = new ApplicationRegister();
     ApplicationRegister appRegister2 = new ApplicationRegister();
-        
+    
     Application app1 = new Application("description");
     Application app2 = new Application("description2");
-
+    
     Keyword keyword1 = new Keyword("keyword1");
     Keyword keyword2 = new Keyword("keyword2");
     Keyword keyword3 = new Keyword("keyword3");
     Keyword keyword4 = new Keyword("keyword4");
-
+    
     List<Keyword> listKey = new ArrayList<>();
-
+    
     List<Boolean> wantToAttend = new ArrayList<>();
-
+    
     List<String> necessaryEquip = new ArrayList<>();
-
-    Workshop w1 = new Workshop("description w1", 3, necessaryEquip);        
+    
+    Workshop w1 = new Workshop("description w1", 3, necessaryEquip);
     Workshop w2 = new Workshop("description w2", 2, necessaryEquip);
-
+    
     List<Workshop> listWo = new ArrayList<>();
-
+    
     User user = new User("manuel", "mjdg111@hotmail.com", "garnel", 1234, Role.ATENDEE);
     StaffMember staff = new StaffMember(user);
     Review rv1 = new Review("RV1", 4, 4, 5, 3, Decision.DECLINED, staff);
     Review rv2 = new Review("RV2", 4, 4, 5, 3, Decision.DECLINED, staff);
     Review rv3 = new Review("RV3", 4, 4, 5, 3, Decision.ACCEPTED, staff);
     List<Review> listRev = new ArrayList<>();
-
+    
     List<Application> listApp = new ArrayList<>();
     List<Application> listApp2 = new ArrayList<>();
     
     ExhibitionCentre exhibitionCentre;
     
     User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123, Role.ATENDEE);
-    User user2 = new User("jose", "mail2@hotmail.com", "jo", 123 , Role.ATENDEE);
-    User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123 , Role.ATENDEE);
-    User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123 , Role.ATENDEE);
+    User user2 = new User("jose", "mail2@hotmail.com", "jo", 123, Role.ATENDEE);
+    User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123, Role.ATENDEE);
+    User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123, Role.ATENDEE);
     User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123, Role.ATENDEE);
-    User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);    
-    User user7 = new User("Andre", "mailu3", "andr", 133 , Role.ATENDEE);
-    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.EMPLOYEE);   
+    User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);
+    User user7 = new User("Andre", "mailu3", "andr", 133, Role.ATENDEE);
+    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.EMPLOYEE);
     User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133, Role.ATENDEE);
     User user10 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123, Role.ATENDEE);
     
@@ -101,18 +101,17 @@ public class StartSubmissionPeriodControllerTest {
     OrganiserRegister organiserRegister4 = new OrganiserRegister();
     
     List<Organiser> organiserList4 = new ArrayList<>();
-  
+    
     StaffRegister staffRegister4 = new StaffRegister();
     StaffRegister staffRegister = new StaffRegister();
     
-    List<StaffMember> staffMemberListEvent4 = new ArrayList<>(); 
-    List<StaffMember> staffMemberListEvent = new ArrayList<>(); 
+    List<StaffMember> staffMemberListEvent4 = new ArrayList<>();
+    List<StaffMember> staffMemberListEvent = new ArrayList<>();
     
     StandRegister standRegister = new StandRegister();
     StandRegister standRegister2 = new StandRegister();
     Stand s1 = new Stand("STAND1", 2.50);
     Stand s2 = new Stand("STAND2", 2.10);
-        
     
     Event event4;
     
@@ -128,7 +127,6 @@ public class StartSubmissionPeriodControllerTest {
     
     //*****************************************************************************************
     //************************Criar registo de utilizadores***********************************
-
     /**
      *
      */
@@ -143,24 +141,23 @@ public class StartSubmissionPeriodControllerTest {
         usersCentre.add(user4);
         usersCentre.add(user5);
         usersCentre.add(user6);
-    
+        
         usersCentre.add(user7);
         usersCentre.add(user8);
-        usersCentre.add(user9);       
+        usersCentre.add(user9);
         usersCentre.add(user10);
         
-        userRegister.setUserList(usersCentre);        
-       
+        userRegister.setUserList(usersCentre);
+        
         return userRegister;
-
+        
     }
     
-    public StartSubmissionPeriodControllerTest() throws ParseException{
+    public StartSubmissionPeriodControllerTest() throws ParseException {
         
         /*
         Event 4
         */
-        
         listKey.add(keyword1);
         listKey.add(keyword2);
         listKey.add(keyword3);
@@ -195,7 +192,7 @@ public class StartSubmissionPeriodControllerTest {
         app2.setListReview(listRev);
         
         w1.setWantToAttend(wantToAttend);
-        w2.setWantToAttend(wantToAttend); 
+        w2.setWantToAttend(wantToAttend);
         
         listWo.add(w2);
         listWo.add(w1);
@@ -203,55 +200,54 @@ public class StartSubmissionPeriodControllerTest {
         app2.setWorkshopList(listWo);
         
         listApp.add(app1);
-        listApp.add(app2);        
+        listApp.add(app2);
         listApp2.add(app1);
         
         appRegister.setApplicationList(listApp);
         appRegister2.setApplicationList(listApp2);
-
+        
         org1 = new Organiser();
         org1.setOrganiser(user1);
         org2 = new Organiser();
         org2.setOrganiser(user2);
-
-
+        
         organiserList4.add(org2);
         organiserList4.add(org1);
-
+        
         organiserRegister4.setOrganiserList(organiserList4);
-
+        
         StaffMember staff41 = new StaffMember();
         StaffMember staff42 = new StaffMember();
         StaffMember staff43 = new StaffMember(user3);
-
+        
         staff41.setUser(user4);
         staff42.setUser(user5);
         staffMemberListEvent4.add(staff41);
         staffMemberListEvent4.add(staff42);
         staffMemberListEvent.add(staff43);
-
+        
         staffRegister4.add(staffMemberListEvent4);
         staffRegister.add(staffMemberListEvent);
         
         standRegister.addStand(s1);
         standRegister2.addStand(s2);
-
+        
         this.event4 = new Event(organiserRegister4);
-
+        
         this.event4.setTitle("EVENTO 4");
         event4.setEventState(EventState.READY_FOR_APPLICATION);
         event4.addOrganiserRegister(organiserRegister4);
         event4.setStaffRegister(staffRegister4);
         event4.setDaysApplication(4);
         event4.setStartDate(data1);
-        event4.setEndDate(data2);        
+        event4.setEndDate(data2);
         event4.setApplicationRegister(appRegister);
         event4.setDateEndApplications(data4);
         event4.setDaysApplication(4);
         event4.setStandRegister(standRegister);
         event4.setDateEndApplications(data2);
         
-        eventRegister.addEvent(event4);       
+        eventRegister.addEvent(event4);
         
         UserRegister userRegister = new UserRegister();
         userRegister = createUsers();
@@ -264,9 +260,9 @@ public class StartSubmissionPeriodControllerTest {
         this.controller = new StartSubmissionPeriodController(centre);
     }
     
-
     /**
-     * Test of findEventByOrganiserAndState method, of class StartSubmissionPeriodController.
+     * Test of findEventByOrganiserAndState method, of class
+     * StartSubmissionPeriodController.
      */
     @Test
     public void testFindEventByOrganiserAndState() {
@@ -279,7 +275,8 @@ public class StartSubmissionPeriodControllerTest {
     }
     
     /**
-     * Test of findEventByOrganiserAndState method, of class StartSubmissionPeriodController.
+     * Test of findEventByOrganiserAndState method, of class
+     * StartSubmissionPeriodController.
      */
     @Test
     public void testFindEventByOrganiserAndState2() {
@@ -290,9 +287,10 @@ public class StartSubmissionPeriodControllerTest {
         assertEquals(expResult2, result);
         // TODO review the generated test code and remove the default call to fail.
     }
-
+    
     /**
-     * Test of changeStateEventToSubmission method, of class StartSubmissionPeriodController.
+     * Test of changeStateEventToSubmission method, of class
+     * StartSubmissionPeriodController.
      */
     @Test
     public void testChangeStateEventToSubmission() {
@@ -305,15 +303,14 @@ public class StartSubmissionPeriodControllerTest {
         assertEquals(expResult, result2);
         // TODO review the generated test code and remove the default call to fail.
     }
+    
     /**
-     * Test of changeStateEventToSubmission method, of class StartSubmissionPeriodController.
+     * Test of changeStateEventToSubmission method, of class
+     * StartSubmissionPeriodController.
      */
     @Test
     public void testChangeStateEventCreated() {
         System.out.println("changeStateEventToReady");
-       
+        
     }
 }
-
-   
-

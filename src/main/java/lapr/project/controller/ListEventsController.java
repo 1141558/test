@@ -17,7 +17,7 @@ import lapr.project.utils.Utils;
  */
 public class ListEventsController {
     
-    private ExhibitionCentre centre;
+    private final ExhibitionCentre centre;
     private Event event;
     private ApplicationState state;
     

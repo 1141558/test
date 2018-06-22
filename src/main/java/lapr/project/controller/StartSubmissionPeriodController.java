@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.controller;
 
 import java.util.ArrayList;
@@ -23,9 +23,9 @@ import lapr.project.utils.Utils;
 public class StartSubmissionPeriodController {
     
     private ExhibitionCentre exhibitionCentre;
-   private  List<Event> listEvent;
-    Event e;
-
+    private List<Event> listEvent;
+    private Event e;
+    
     public StartSubmissionPeriodController(ExhibitionCentre exhibitionCentre) {
         this.exhibitionCentre = exhibitionCentre;
         this.listEvent = new ArrayList<>();
@@ -37,15 +37,15 @@ public class StartSubmissionPeriodController {
      * @param user
      * @return List<Event>
      */
-    public List<Event> findEventByOrganiserAndState(User user){
+    public List<Event> findEventByOrganiserAndState(User user) {
         changeEventStateCreated();
-        for(Event e : this.exhibitionCentre.getEventRegister().getEventList()){
+        for (Event e : this.exhibitionCentre.getEventRegister().getEventList()) {
             for (Organiser o : e.getOrganiserRegister().getOrganiserList()) {
-                if(o.getOrganiser().getUsername().equals(user.getUsername()) && e.isReadyForApplication()){
+                if (o.getOrganiser().getUsername().equals(user.getUsername()) && e.isReadyForApplication()) {
                     listEvent.add(e);
                 }
-            }           
-        }        
+            }
+        }
         return listEvent;
     }
     
@@ -54,7 +54,7 @@ public class StartSubmissionPeriodController {
      * @param indice
      * @return boolean
      */
-    public boolean changeStateEventToSubmission(int indice){
+    public boolean changeStateEventToSubmission(int indice) {
         Event event = listEvent.get(indice);
         event.setEventState(EventState.OPEN_APPLICATION);
         e.setTitle(event.getTitle());
@@ -70,19 +70,19 @@ public class StartSubmissionPeriodController {
     /**
      *
      */
-    public void changeEventStateCreated(){
-        for(Event e : exhibitionCentre.getEventRegister().getEventList()){
-            if(e.isCreated())
+    public void changeEventStateCreated() {
+        for (Event e : exhibitionCentre.getEventRegister().getEventList()) {
+            if (e.isCreated()) {
                 e.changeToReadyForApplication();
+            }
         }
     }
     
     /**
      *
-     * @param event
      */
     public void registerLog() {
-        Utils.writeLog(this.exhibitionCentre.getUserOnline().getUsername()+" Start Submission Application Period '"+e.getTitle()+"';");
+        Utils.writeLog(this.exhibitionCentre.getUserOnline().getUsername() + " Start Submission Application Period '" + e.getTitle() + "';");
     }
     
 }

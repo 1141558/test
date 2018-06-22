@@ -24,7 +24,7 @@ public class SubmitApplicationToEventController {
     private final Application application;
     private final ExhibitionCentre centre;
     private Event event;
-   
+    
     public SubmitApplicationToEventController(ExhibitionCentre centre) {
         this.application = new Application();
         this.centre = centre;
