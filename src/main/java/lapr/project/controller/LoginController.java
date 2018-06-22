@@ -24,6 +24,7 @@ public class LoginController {
     }
     
     public boolean login(String username, String passwordString) {
+        
         for (User u : centre.getUserRegister().getUserList()) {
             if (u.getUsername().equals(username)) {
                 if (Double.compare(u.getPassword(), PasswordEncryption.encryptPassword(passwordString)) == 0) {

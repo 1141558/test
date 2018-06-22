@@ -118,6 +118,12 @@ public class MainMenu implements Serializable{
                     /*TO DO*/
                 break;
                 case 11:
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
                     new InitialMenuUI(centre);
                 break;
                 case 12:
