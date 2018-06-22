@@ -331,11 +331,11 @@ public class XMLDecoder {
             String boothArea = application_element.getElementsByTagName("boothArea").item(0).getTextContent();
             String invitesQuantity = application_element.getElementsByTagName("invitesQuantity").item(0).getTextContent();
             String description = application_element.getElementsByTagName("description").item(0).getTextContent();
-            NodeList state = docElement.getElementsByTagName("state");
+            NodeList state = application_element.getElementsByTagName("state");
             Node st1 = state.item(0);
             Element elstate = (Element) st1;
             if(elstate!=null){
-               String st =  docElement.getElementsByTagName("state").item(0).getTextContent();
+               String st =  application_element.getElementsByTagName("state").item(0).getTextContent();
                switch(st){
                    case "CREATED":
                         a.setState(ApplicationState.CREATED);
@@ -362,7 +362,7 @@ public class XMLDecoder {
             Node user_that_submited_n = user_that_submited.item(0);
             Element eluser_sub = (Element) user_that_submited_n;
             if(eluser_sub!=null){
-                String user_name=docElement.getElementsByTagName("userSubmited").item(0).getTextContent();
+                String user_name=application_element.getElementsByTagName("userSubmited").item(0).getTextContent();
                 centre.getUserRegister().getUserList().stream().filter((u) -> (u.getUsername().equals(user_name))).forEachOrdered((u) -> {
                     a.setUserThatSubmited(u);
                 });

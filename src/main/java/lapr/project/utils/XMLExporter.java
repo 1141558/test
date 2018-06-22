@@ -48,6 +48,7 @@ public class XMLExporter {
         Document document;
 
         File  file= new File(filePath);
+    
         file.delete();
         document=builder.newDocument();
 
@@ -322,7 +323,7 @@ try {
 
             // send DOM to file
             tr.transform(new DOMSource(document), 
-                                 new StreamResult(new FileOutputStream("./src/main/resources/exhibition1_v0.1_1.xml")));
+                                 new StreamResult(new FileOutputStream(filePath)));
 
         } catch (TransformerException | IOException te) {
             System.out.println(te.getMessage());

@@ -40,7 +40,7 @@ public class CreateEventUI {
             fromFile= UtilsUI.readLineFromConsole("DO YOU WISH TO LOAD EVENT FROM FILE OR DO YOU WISH TO CREATE HERE A NEW ONE? ENTER 'Y' TO LOAD EVENT FROM FILE OR 'N' TO CREATE A NEW ONE: ");
             if(fromFile.equalsIgnoreCase("y")){
                     answer=true;
-                    String filename= UtilsUI.readLineFromConsole("NAME OF FILE (ALL FILES MUST BE IN 'resources' FOLDER): ");
+                    String filename= UtilsUI.readLineFromConsole("ABSOLUTE PATH TO FILE : ");
                     
                     if(controller.getEventFromFile(filename)){ 
                         title=controller.getEvent().getTitle();

@@ -136,8 +136,8 @@ public class XMLExporterTest {
         exCentre.setEventRegister(er);
         exCentre.setUserRegister(ur);
         
-        XMLExporter.exportAllDataToFile(exCentre, "./src/main/resources/exhibition1_v0.1_1.xml");
-        ExhibitionCentre centre2 = XMLDecoder.readExhibitionCentreFromFile("./src/main/resources/exhibition1_v0.1_1.xml", new ExhibitionCentre());
+        XMLExporter.exportAllDataToFile(exCentre, "./src/main/resources/exhibition1_test.xml");
+        ExhibitionCentre centre2 = XMLDecoder.readExhibitionCentreFromFile("./src/main/resources/exhibition1_test.xml", new ExhibitionCentre());
 
         
         assertEquals(exCentre, centre2);

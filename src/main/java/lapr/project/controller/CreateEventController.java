@@ -120,11 +120,11 @@ public class CreateEventController {
         this.or = or;
     }
  
-    public boolean getEventFromFile(String filename){
+    public boolean getEventFromFile(String filepath){
         boolean x; 
         try{
         
-            this.event=XMLDecoder.readEventFromFile("./src/main/resources/"+filename+".xml", this.exhibitionCentre,0, null);
+            this.event=XMLDecoder.readEventFromFile(filepath, this.exhibitionCentre,0, null);
             x=true;
         } catch (ParserConfigurationException | IOException | SAXException e) {
             x=false;

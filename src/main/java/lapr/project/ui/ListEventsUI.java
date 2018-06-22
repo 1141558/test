@@ -84,7 +84,7 @@ public class ListEventsUI {
             UtilsUI.printLine("        KEYWORDS: ");
 
             for (Keyword k : a.getKeywordList()) {
-                UtilsUI.printLine(k.getValue()+"; ");
+                UtilsUI.printLine("              "+k.getValue()+"; ");
             }
             UtilsUI.printLine("");
         }
