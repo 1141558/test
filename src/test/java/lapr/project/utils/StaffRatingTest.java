@@ -87,7 +87,7 @@ public class StaffRatingTest {
         appList2.add(app22);
 
         ApplicationRegister appRegister2 = new ApplicationRegister(appList2);
-        event2.setApplicationRegister(appRegister);
+        event2.setApplicationRegister(appRegister2);
 
         //Adds ao centro
         List<Event> eventList = new ArrayList<>();
