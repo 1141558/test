@@ -3,18 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package lapr.project.controller;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lapr.project.model.Application;
 import lapr.project.model.ApplicationRegister;
 import lapr.project.model.ApplicationState;
 import lapr.project.model.Decision;
 import lapr.project.model.Event;
+import lapr.project.model.EventManager;
 import lapr.project.model.EventRegister;
 import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
@@ -37,16 +41,9 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author andre
  */
-public class StartSubmissionPeriodControllerTest {
-    private ExhibitionCentre centre = new ExhibitionCentre();
+public class UpdateOrWithdrawApplicationControllerTest {
     
-    DummyData data;
-    
-    List<Event> result;
-    List<Event> expResult;
-    StartSubmissionPeriodController controller;
-    
-      //Application_________________________________
+    //Application_________________________________
     ApplicationRegister appRegister = new ApplicationRegister();
     ApplicationRegister appRegister2 = new ApplicationRegister();
         
@@ -113,7 +110,7 @@ public class StartSubmissionPeriodControllerTest {
     Stand s1 = new Stand("STAND1", 2.50);
     Stand s2 = new Stand("STAND2", 2.10);
         
-    
+    EventManager em;
     Event event4;
     
     EventRegister eventRegister = new EventRegister();
@@ -155,7 +152,31 @@ public class StartSubmissionPeriodControllerTest {
 
     }
     
-    public StartSubmissionPeriodControllerTest() throws ParseException{
+    public UpdateOrWithdrawApplicationControllerTest() throws ParseException{
+        
+        try {
+            data1 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse("2018-06-12");
+        } catch (ParseException ex) {
+            Logger.getLogger(DummyData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            data2 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse("2018-06-17");
+        } catch (ParseException ex) {
+            Logger.getLogger(DummyData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            data3 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse("2018-06-19");
+        } catch (ParseException ex) {
+            Logger.getLogger(DummyData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            data4 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse("2018-06-22");
+        } catch (ParseException ex) {
+            Logger.getLogger(DummyData.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         /*
         Event 4
@@ -180,13 +201,17 @@ public class StartSubmissionPeriodControllerTest {
         necessaryEquip.add("Agua potavél");
         necessaryEquip.add("Quadro");
         
+        app1.setNumberInvites(2);
+        app1.setPhoneNumber(916547688);
         app1.setBoothArea(5);
         app1.setState(ApplicationState.ACCEPTED);
         app1.setNameOfCompany("nameOfCompany");
         app1.setDescription("description");
-        app1.setUserThatSubmited(user);
+        app1.setUserThatSubmited(user1);
         app1.setListReview(listRev);
         
+        app2.setNumberInvites(4);
+        app2.setPhoneNumber(916547688);
         app2.setBoothArea(7);
         app2.setState(ApplicationState.CREATED);
         app2.setNameOfCompany("nameOfCompany 2");
@@ -233,13 +258,15 @@ public class StartSubmissionPeriodControllerTest {
         staffRegister4.add(staffMemberListEvent4);
         staffRegister.add(staffMemberListEvent);
         
+        em = new EventManager(user10);
+        
         standRegister.addStand(s1);
         standRegister2.addStand(s2);
 
-        this.event4 = new Event(organiserRegister4);
+        this.event4 = new Event("EVENTO 4", "description event4", data1, data2, "place", organiserRegister4);
 
         this.event4.setTitle("EVENTO 4");
-        event4.setEventState(EventState.READY_FOR_APPLICATION);
+        event4.setEventState(EventState.CREATED);
         event4.addOrganiserRegister(organiserRegister4);
         event4.setStaffRegister(staffRegister4);
         event4.setDaysApplication(4);
@@ -250,6 +277,7 @@ public class StartSubmissionPeriodControllerTest {
         event4.setDaysApplication(4);
         event4.setStandRegister(standRegister);
         event4.setDateEndApplications(data2);
+        event4.setEventManager(em);
         
         eventRegister.addEvent(event4);       
         
@@ -258,62 +286,73 @@ public class StartSubmissionPeriodControllerTest {
         
         this.exhibitionCentre = new ExhibitionCentre(eventRegister, userRegister);
         this.exhibitionCentre.setUserOnline(user1);
-        data = new DummyData(centre);
-        expResult = new ArrayList<>();
-        result = new ArrayList<>();
-        this.controller = new StartSubmissionPeriodController(centre);
     }
-    
 
     /**
-     * Test of findEventByOrganiserAndState method, of class StartSubmissionPeriodController.
+     * Test of getUserApplications method, of class UpdateOrWithdrawApplicationController.
      */
     @Test
-    public void testFindEventByOrganiserAndState() {
-        System.out.println("findEventByOrganiserAndState");
-        User user = user1;
-        StartSubmissionPeriodController controller2 = new StartSubmissionPeriodController(exhibitionCentre);
-        expResult.add(event4);
-        result = controller2.findEventByOrganiserAndState(user);
+    public void testGetUserApplications() {
+        System.out.println("getUserApplications");
+        UpdateOrWithdrawApplicationController instance = new UpdateOrWithdrawApplicationController(exhibitionCentre);
+        List<Application> expResult = new ArrayList<>();
+        expResult.add(app1);
+        List<Application> result = instance.getUserApplications();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getA method, of class UpdateOrWithdrawApplicationController.
+     */
+    @Test
+    public void testsetAndGetA() {
+        System.out.println("set/getA");
+        UpdateOrWithdrawApplicationController instance = new UpdateOrWithdrawApplicationController(exhibitionCentre);
+        instance.setA(0);
+        Application result = instance.getA();
+        assertEquals(app1, result);
+    }
+
+    /**
+     * Test of validatePhoneNumber method, of class UpdateOrWithdrawApplicationController.
+     */
+    @Test
+    public void testValidatePhoneNumberTrue() {
+        System.out.println("validatePhoneNumberTrue");
+        int phoneNumber = 9276543;
+        UpdateOrWithdrawApplicationController instance = new UpdateOrWithdrawApplicationController(exhibitionCentre);
+        boolean expResult = false;
+        boolean result = instance.validatePhoneNumber(phoneNumber);
         assertEquals(expResult, result);
     }
     
     /**
-     * Test of findEventByOrganiserAndState method, of class StartSubmissionPeriodController.
+     * Test of validatePhoneNumber method, of class UpdateOrWithdrawApplicationController.
      */
     @Test
-    public void testFindEventByOrganiserAndState2() {
-        System.out.println("findEventByOrganiserAndState2");
-        User user = data.user5;
-        List<Event> expResult2 = new ArrayList<>();
-        result = controller.findEventByOrganiserAndState(user);
-        assertEquals(expResult2, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of changeStateEventToSubmission method, of class StartSubmissionPeriodController.
-     */
-    @Test
-    public void testChangeStateEventToSubmission() {
-        System.out.println("changeStateEventToSubmission");
-        User user = data.user3;
-        result = controller.findEventByOrganiserAndState(user);
+    public void testValidatePhoneNumberFalse() {
+        System.out.println("validatePhoneNumberFalse");
+        int phoneNumber = 912765435;
+        UpdateOrWithdrawApplicationController instance = new UpdateOrWithdrawApplicationController(exhibitionCentre);
         boolean expResult = true;
-        int indice = 0;
-        boolean result2 = controller.changeStateEventToSubmission(indice);
-        assertEquals(expResult, result2);
-        // TODO review the generated test code and remove the default call to fail.
+        boolean result = instance.validatePhoneNumber(phoneNumber);
+        assertEquals(expResult, result);
     }
+
     /**
-     * Test of changeStateEventToSubmission method, of class StartSubmissionPeriodController.
+     * Test of setData method, of class UpdateOrWithdrawApplicationController.
      */
     @Test
-    public void testChangeStateEventCreated() {
-        System.out.println("changeStateEventToReady");
-       
+    public void testSetData() {
+        System.out.println("setData");
+        String description = "";
+        int nInvites = 6;
+        double area =  6.5;
+        String companyName = "New Name";
+        int phoneNumber = 254545435;
+        int vatNumber = 500667565;
+        UpdateOrWithdrawApplicationController instance = new UpdateOrWithdrawApplicationController(exhibitionCentre);
+        instance.setData(description, nInvites, listKey, area, companyName, phoneNumber, vatNumber, listWo);
     }
+    
 }
-
-   
-

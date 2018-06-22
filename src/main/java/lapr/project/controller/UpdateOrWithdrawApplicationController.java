@@ -13,8 +13,6 @@ import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
 import lapr.project.model.Workshop;
-import lapr.project.ui.UtilsUI;
-import lapr.project.utils.Utils;
 
 /**
  *

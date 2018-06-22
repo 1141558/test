@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package lapr.project.controller;
 
 import java.text.ParseException;
@@ -37,16 +36,9 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author andre
  */
-public class StartSubmissionPeriodControllerTest {
-    private ExhibitionCentre centre = new ExhibitionCentre();
+public class ListEventsControllerTest {
     
-    DummyData data;
-    
-    List<Event> result;
-    List<Event> expResult;
-    StartSubmissionPeriodController controller;
-    
-      //Application_________________________________
+    //Application_________________________________
     ApplicationRegister appRegister = new ApplicationRegister();
     ApplicationRegister appRegister2 = new ApplicationRegister();
         
@@ -155,7 +147,7 @@ public class StartSubmissionPeriodControllerTest {
 
     }
     
-    public StartSubmissionPeriodControllerTest() throws ParseException{
+    public ListEventsControllerTest() throws ParseException{
         
         /*
         Event 4
@@ -239,7 +231,7 @@ public class StartSubmissionPeriodControllerTest {
         this.event4 = new Event(organiserRegister4);
 
         this.event4.setTitle("EVENTO 4");
-        event4.setEventState(EventState.READY_FOR_APPLICATION);
+        event4.setEventState(EventState.CREATED);
         event4.addOrganiserRegister(organiserRegister4);
         event4.setStaffRegister(staffRegister4);
         event4.setDaysApplication(4);
@@ -258,62 +250,67 @@ public class StartSubmissionPeriodControllerTest {
         
         this.exhibitionCentre = new ExhibitionCentre(eventRegister, userRegister);
         this.exhibitionCentre.setUserOnline(user1);
-        data = new DummyData(centre);
-        expResult = new ArrayList<>();
-        result = new ArrayList<>();
-        this.controller = new StartSubmissionPeriodController(centre);
     }
-    
 
     /**
-     * Test of findEventByOrganiserAndState method, of class StartSubmissionPeriodController.
+     * Test of getEventsFromUser method, of class ListEventsController.
      */
     @Test
-    public void testFindEventByOrganiserAndState() {
-        System.out.println("findEventByOrganiserAndState");
-        User user = user1;
-        StartSubmissionPeriodController controller2 = new StartSubmissionPeriodController(exhibitionCentre);
+    public void testGetEventsFromUser() {
+        System.out.println("getEventsFromUser");
+        ListEventsController instance = new ListEventsController(exhibitionCentre);
+        List<Event> expResult = new ArrayList<>();
         expResult.add(event4);
-        result = controller2.findEventByOrganiserAndState(user);
+        List<Event> result = instance.getEventsFromUser();
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of eventPicked method, of class ListEventsController.
+     */
+    @Test
+    public void testEventPicked() {
+        System.out.println("eventPicked");
+        int i = 0;
+        ListEventsController instance = new ListEventsController(exhibitionCentre);
+        instance.eventPicked(i);
+    }
+
+    /**
+     * Test of getEvent method, of class ListEventsController.
+     */
+    @Test
+    public void testGetEvent() {
+        System.out.println("getEvent");
+        ListEventsController instance = new ListEventsController(exhibitionCentre);
+        Event expResult = new Event();
+        Event result = instance.getEvent();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of set/getState method, of class ListEventsController.
+     */
+    @Test
+    public void testSertAndGetState() {
+        System.out.println("set/getState");
+        ListEventsController instance = new ListEventsController(exhibitionCentre);
+        ApplicationState expResult = ApplicationState.ACCEPTED;
+        instance.setState(expResult);
+        ApplicationState result = instance.getState();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of registerLog method, of class ListEventsController.
+     */
+    @Test
+    public void testRegisterLog() {
+        System.out.println("registerLog");
+        ListEventsController instance = new ListEventsController(exhibitionCentre);
+        ApplicationState expResult = ApplicationState.ACCEPTED;
+        instance.setState(expResult);
+        instance.registerLog();
+    }
     
-    /**
-     * Test of findEventByOrganiserAndState method, of class StartSubmissionPeriodController.
-     */
-    @Test
-    public void testFindEventByOrganiserAndState2() {
-        System.out.println("findEventByOrganiserAndState2");
-        User user = data.user5;
-        List<Event> expResult2 = new ArrayList<>();
-        result = controller.findEventByOrganiserAndState(user);
-        assertEquals(expResult2, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of changeStateEventToSubmission method, of class StartSubmissionPeriodController.
-     */
-    @Test
-    public void testChangeStateEventToSubmission() {
-        System.out.println("changeStateEventToSubmission");
-        User user = data.user3;
-        result = controller.findEventByOrganiserAndState(user);
-        boolean expResult = true;
-        int indice = 0;
-        boolean result2 = controller.changeStateEventToSubmission(indice);
-        assertEquals(expResult, result2);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-    /**
-     * Test of changeStateEventToSubmission method, of class StartSubmissionPeriodController.
-     */
-    @Test
-    public void testChangeStateEventCreated() {
-        System.out.println("changeStateEventToReady");
-       
-    }
 }
-
-   
-
