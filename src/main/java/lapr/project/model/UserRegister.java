@@ -7,6 +7,7 @@ package lapr.project.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import lapr.project.utils.Utils;
 
 /**
@@ -97,6 +98,28 @@ public class UserRegister {
         }
         usersExhibitionCentreCopyWithoutOrganisers.removeAll(usersToRemove);
         return usersExhibitionCentreCopyWithoutOrganisers;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.userList);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UserRegister other = (UserRegister) obj;
+        return Objects.equals(this.userList, other.userList);
     }
 
     /**

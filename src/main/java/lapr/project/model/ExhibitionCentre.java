@@ -5,6 +5,8 @@
  */
 package lapr.project.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author MariaJoão
@@ -79,6 +81,32 @@ public class ExhibitionCentre {
         return "ExhibitionCentre{" + "eventRegister=" + eventRegister + ", userRegister=" + userRegister + '}';
 
     }   
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.eventRegister);
+        hash = 67 * hash + Objects.hashCode(this.userRegister);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ExhibitionCentre other = (ExhibitionCentre) obj;
+        if (!Objects.equals(this.eventRegister, other.eventRegister)) {
+            return false;
+        }
+        return Objects.equals(this.userRegister, other.userRegister);
+    }
  
     
 }

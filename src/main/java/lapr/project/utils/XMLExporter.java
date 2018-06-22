@@ -40,12 +40,15 @@ public class XMLExporter {
     public static boolean isEmpty(CharSequence str) {
         return str == null || str.length() == 0;
     }
-    public static void exportAllDataToFile(ExhibitionCentre centre) throws ParserConfigurationException{
+    public static void exportAllDataToFile(ExhibitionCentre centre, String filePath) throws ParserConfigurationException, SAXException, IOException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        File file= new File("./src/main/resources/exhibition1_v0.1_1.xml");
+        Document document;
+
+        File  file= new File(filePath);
         file.delete();
-        Document document = builder.newDocument();
+        document=builder.newDocument();
+
         Element exhibitionCentreEl = document.createElement("exhibitionCentre");
         String description_label="description",
         username_label="username",
@@ -84,12 +87,12 @@ public class XMLExporter {
             Element titleEl = document.createElement("title");
             titleEl.setTextContent(e.getTitle());
             Element nrRoomsEl = document.createElement("numberRooms");
-            if(e.getRooms()!=0){
-                nrRoomsEl.setTextContent(String.valueOf(e.getRooms()));
-            }
-            Element placeEl = document.createElement("place");
+            nrRoomsEl.setTextContent(String.valueOf(e.getRooms()));
             if(!isEmpty(e.getPlace())){
+                Element placeEl = document.createElement("place");
                 placeEl.setTextContent(e.getPlace());
+                exhibitionEl.appendChild(placeEl);
+
             }
 
             Element standsEl = document.createElement("stands");
@@ -253,20 +256,21 @@ public class XMLExporter {
                 applicationEl.appendChild(aceptedEl);
                 applicationSetEl.appendChild(applicationEl);
             }
-            Element startDateEl = document.createElement("startDate");
             if(e.getStartDate()!=null){
+                Element startDateEl = document.createElement("startDate");
                 startDateEl.setTextContent(new SimpleDateFormat("yyyy-MM-dd").format(e.getStartDate()));
+                exhibitionEl.appendChild(startDateEl);
+
             }
-            Element endDateEl = document.createElement("endDate");
             if(e.getEndDate()!=null){
+                Element endDateEl = document.createElement("endDate");
                 endDateEl.setTextContent(new SimpleDateFormat("yyyy-MM-dd").format(e.getEndDate()));
+                exhibitionEl.appendChild(endDateEl);
+
             }
             //Add sub-element to root element
             exhibitionEl.appendChild(titleEl);
             exhibitionEl.appendChild(nrRoomsEl);
-            exhibitionEl.appendChild(startDateEl);
-            exhibitionEl.appendChild(endDateEl);
-            exhibitionEl.appendChild(placeEl);
             exhibitionEl.appendChild(standsEl);
             exhibitionEl.appendChild(staffsEl);
             exhibitionEl.appendChild(organisersEl);

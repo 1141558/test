@@ -406,6 +406,7 @@ public class ApplicationRegisterTest {
     /**
      * Test of hashCode method, of class ApplicationRegister.
      */
+    
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
@@ -467,5 +468,6 @@ public class ApplicationRegisterTest {
         int result = instance.hashCode();
         assertEquals(expResult, result);
     }
+
     
 }
