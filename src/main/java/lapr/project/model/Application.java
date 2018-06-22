@@ -37,7 +37,8 @@ public class Application implements Importable<Application>, Exportable {
     private List<Workshop> workshopList;
     private ApplicationState state;
     private User userThatSubmited;
-    
+    private Stand assignedStand;
+
     /**
      * Constructor for Application
      *
@@ -354,5 +355,14 @@ public class Application implements Importable<Application>, Exportable {
      */
     public void setUserThatSubmited(User userThatSubmited) {
         this.userThatSubmited = userThatSubmited;
+    }
+    
+    
+    public Stand getAssignedStand() {
+        return assignedStand;
+    }
+
+    public void setAssignedStand(Stand assignedStand) {
+        this.assignedStand = assignedStand;
     }
 }

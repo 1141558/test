@@ -238,7 +238,7 @@ Date: Thu Jun 21 01:36:12 WEST 2018 -> an anonymous user took a survey about wor
 Date: Thu Jun 21 00:59:33 BST 2018 -> an anonymous user took a survey about workshops
 Date: Thu Jun 21 01:44:43 WEST 2018 -> an anonymous user took a survey about workshops
 Date: Thu Jun 21 01:56:07 WEST 2018 -> an anonymous user took a survey about workshops
-=======
+ 
 Date: Thu Jun 21 02:13:04 BST 2018 -> An anonymous user took a survey about workshops
 Date: Thu Jun 21 02:22:40 BST 2018 -> An anonymous user took a survey about workshops
 Date: Thu Jun 21 02:34:54 BST 2018 -> An anonymous user took a survey about workshops
@@ -294,7 +294,7 @@ Date: Thu Jun 21 20:50:16 WEST 2018 -> null
 Date: Thu Jun 21 20:50:38 WEST 2018 -> String log
 Date: Thu Jun 21 20:50:38 WEST 2018 -> null
 Date: Thu Jun 21 20:52:26 WEST 2018 -> null
-=======
+ 
 Date: Tue Jun 19 03:11:41 BST 2018 -> jose_magalhaes logged in;
 Date: Tue Jun 19 03:11:55 BST 2018 -> an anonymous user took a survey about workshops
 
@@ -571,27 +571,41 @@ Date: Thu Jun 21 21:25:38 BST 2018 -> An anonymous user took a survey about work
 Date: Thu Jun 21 21:53:13 BST 2018 -> An anonymous user took a survey about workshops
 Date: Thu Jun 21 21:54:11 BST 2018 -> An anonymous user took a survey about workshops
 Date: Thu Jun 21 21:57:14 BST 2018 -> An anonymous user took a survey about workshops
-Date: Thu Jun 21 22:03:11 BST 2018 -> null
-Date: Thu Jun 21 22:04:15 BST 2018 -> An anonymous user took a survey about workshops
-Date: Thu Jun 21 22:04:16 BST 2018 -> null
-Date: Thu Jun 21 22:04:26 BST 2018 -> null
-Date: Thu Jun 21 22:05:22 BST 2018 -> null
-Date: Thu Jun 21 22:10:24 BST 2018 -> An anonymous user took a survey about workshops
-Date: Thu Jun 21 22:10:25 BST 2018 -> null
-Date: Thu Jun 21 22:19:32 BST 2018 -> null
-Date: Thu Jun 21 22:19:55 BST 2018 -> An anonymous user took a survey about workshops
-Date: Thu Jun 21 22:19:56 BST 2018 -> null
-Date: Thu Jun 21 22:20:22 BST 2018 -> An anonymous user took a survey about workshops
-Date: Thu Jun 21 22:20:23 BST 2018 -> null
-Date: Thu Jun 21 22:20:31 BST 2018 -> null
-Date: Thu Jun 21 22:21:28 BST 2018 -> null
-Date: Thu Jun 21 22:24:16 BST 2018 -> An anonymous user took a survey about workshops
-Date: Thu Jun 21 22:24:18 BST 2018 -> null
-Date: Thu Jun 21 22:27:39 BST 2018 -> An anonymous user took a survey about workshops
-Date: Thu Jun 21 22:27:40 BST 2018 -> null
-Date: Thu Jun 21 22:28:39 BST 2018 -> An anonymous user took a survey about workshops
-Date: Thu Jun 21 22:28:40 BST 2018 -> null
-Date: Thu Jun 21 22:30:00 BST 2018 -> An anonymous user took a survey about workshops
 Date: Thu Jun 21 22:30:02 BST 2018 -> null
 Date: Thu Jun 21 22:34:23 BST 2018 -> An anonymous user took a survey about workshops
 Date: Thu Jun 21 22:34:25 BST 2018 -> null
+Date: Fri Jun 22 00:17:20 BST 2018 -> An anonymous user took a survey about workshops
+Date: Fri Jun 22 00:17:20 BST 2018 -> null
+Date: Fri Jun 22 00:17:33 BST 2018 -> null
+Date: Fri Jun 22 00:18:43 BST 2018 -> null
+Date: Fri Jun 22 01:06:02 BST 2018 -> An anonymous user took a survey about workshops
+Date: Fri Jun 22 01:06:03 BST 2018 -> null
+Date: Fri Jun 22 01:06:15 BST 2018 -> null
+Date: Fri Jun 22 01:07:02 BST 2018 -> null
+Date: Thu Jun 21 20:45:29 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 21:05:07 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 21:13:41 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 21:19:22 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 21:27:48 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 21:49:24 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 21:49:25 BST 2018 -> null
+Date: Thu Jun 21 21:49:37 BST 2018 -> null
+Date: Thu Jun 21 21:50:16 BST 2018 -> null
+Date: Thu Jun 21 22:13:51 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 22:13:52 BST 2018 -> null
+Date: Thu Jun 21 22:14:00 BST 2018 -> null
+Date: Thu Jun 21 22:14:39 BST 2018 -> null
+Date: Thu Jun 21 22:32:05 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 22:32:05 BST 2018 -> null
+Date: Thu Jun 21 22:32:12 BST 2018 -> null
+Date: Thu Jun 21 22:32:47 BST 2018 -> null
+Date: Thu Jun 21 23:04:37 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 23:04:38 BST 2018 -> null
+Date: Thu Jun 21 23:04:45 BST 2018 -> null
+Date: Thu Jun 21 23:05:26 BST 2018 -> null
+Date: Thu Jun 21 23:19:47 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 23:19:48 BST 2018 -> null
+Date: Thu Jun 21 23:58:46 BST 2018 -> An anonymous user took a survey about workshops
+Date: Thu Jun 21 23:58:47 BST 2018 -> null
+Date: Thu Jun 21 23:59:00 BST 2018 -> null
+Date: Thu Jun 21 23:59:50 BST 2018 -> null
