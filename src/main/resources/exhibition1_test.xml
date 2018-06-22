@@ -35,7 +35,7 @@
                         <name>name</name>
                         <username>user1</username>
                         <email>email@gmail.com</email>
-                        <password>0.1058807373046875</password>
+                        <password/>
                     </user>
                 </staff>
             </StaffSet>
