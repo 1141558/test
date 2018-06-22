@@ -5,7 +5,9 @@
  */
 package lapr.project.model;
 
-import static org.junit.Assert.*;
+ 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -71,7 +73,7 @@ public class StandConnectionTest {
         StandConnection instance = new StandConnection("s1", "s2", 4.3);
         double expResult = 4.3;
         double result = instance.getDist();
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -83,7 +85,7 @@ public class StandConnectionTest {
         double dist = 5.6;
         StandConnection instance = new StandConnection("s1", "s2", 4.3);
         instance.setDist(dist);
-        assertEquals(dist, instance.getDist(), 0);
+        assertEquals(dist, instance.getDist());
     }
 
     /**

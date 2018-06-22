@@ -130,7 +130,7 @@ public class ApplicationTest {
     /**
      * Test of set/getNameOfCompany method, of class Application.
      */
-    @org.junit.Test
+    @Test
     public void testSetAndGetNameOfCompany() {
         System.out.println("set/getNameOfCompany");
         Application instance = new Application();

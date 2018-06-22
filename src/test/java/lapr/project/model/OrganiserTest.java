@@ -5,8 +5,8 @@
 */
 package lapr.project.model;
 
-import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -68,7 +68,7 @@ public class OrganiserTest {
         boolean result = organiser.equals(obj);
         
         //Assert
-        Assert.assertNotEquals(result, expectedResult);
+        assertNotEquals(result, expectedResult);
         
     }
     
@@ -82,8 +82,8 @@ public class OrganiserTest {
         int result = organiserHashCode.hashCode();
         int hash = -1779632894;
         int expectedResult = organiserHashCode.hashCode();
-        Assert.assertEquals(hash, result);
-        Assert.assertEquals(expectedResult, result);
+        assertEquals(hash, result);
+        assertEquals(expectedResult, result);
         
     }
     
@@ -96,7 +96,7 @@ public class OrganiserTest {
         Organiser organiser2 = new Organiser(user2);
         int result = organiser1.compareTo(organiser2);
         System.out.println("result" + result);
-        Assert.assertEquals(0, result);
+        assertEquals(0, result);
     }
     
     @Test
@@ -117,7 +117,7 @@ public class OrganiserTest {
         boolean result = organiser.equals(obj);
         
         //Assert
-        Assert.assertNotEquals(result, expectedResult);
+        assertNotEquals(result, expectedResult);
         
     }
     

@@ -7,7 +7,12 @@ package lapr.project.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -32,7 +37,7 @@ public class EventRegisterTest {
         boolean result = eventRegister.registerEvent(event1);
         
         //Assert
-        Assert.assertEquals(result, expectedResult);
+      assertEquals(result, expectedResult);
     }
  
     @Test
@@ -57,7 +62,7 @@ public class EventRegisterTest {
         boolean expectedResult = true;
         
         //Assert
-        Assert.assertEquals(result, expectedResult);
+       assertEquals(result, expectedResult);
     }
     
     @Test
@@ -83,7 +88,7 @@ public class EventRegisterTest {
         //boolean expectedResult = false;
         System.out.println("result" + result);
         //Assert
-        Assert.assertFalse(result);
+       assertFalse(result);
     }
     
     @Test
@@ -108,7 +113,7 @@ public class EventRegisterTest {
         boolean expectedResult = true;
         
         //Assert
-        Assert.assertEquals(result, expectedResult);
+        assertEquals(result, expectedResult);
     }
     
     @Test
@@ -134,7 +139,7 @@ public class EventRegisterTest {
         //boolean expectedResult = false;
         System.out.println("result" + result);
         //Assert
-        Assert.assertFalse(result);
+        assertFalse(result);
     }
     
     @Test
@@ -145,7 +150,7 @@ public class EventRegisterTest {
         
         EventRegister eventRegister = new EventRegister();
         boolean expected = eventRegister.userIsEventManager(user);
-        Assert.assertTrue(expected);
+       assertTrue(expected);
         
     }
     
@@ -157,7 +162,7 @@ public class EventRegisterTest {
         
         EventRegister eventRegister = new EventRegister();
         boolean expected = eventRegister.userIsEventManager(user);
-        Assert.assertFalse(expected);
+        assertFalse(expected);
         
     }
     
@@ -172,7 +177,8 @@ public class EventRegisterTest {
         EventRegister eventRegister = new EventRegister();
         eventRegister.addEvent(event1);
         Event event2 = eventRegister.existEventByDescription(s);
-        Assert.assertNotNull(event2);
+      
+       assertNotNull(event2);
         
     }
     
@@ -188,7 +194,7 @@ public class EventRegisterTest {
         eventRegister.addEvent(event1);
         Event event2 = eventRegister.existEventByDescription(s);
         
-        Assert.assertNotEquals(event2, event1);
+       assertNotEquals(event2, event1);
         
     }
     
@@ -204,7 +210,7 @@ public class EventRegisterTest {
         EventRegister eventRegister = new EventRegister();
         eventRegister.addEvent(event1);
         
-        Assert.assertFalse(eventRegister.exists(event2));
+       assertFalse(eventRegister.exists(event2));
         
     }
     
@@ -215,7 +221,7 @@ public class EventRegisterTest {
         List<Event> eventsList = new ArrayList<>();
         EventRegister eventReg = new EventRegister(eventsList);
         
-        Assert.assertTrue(eventReg.isEmptyEvents());
+        assertTrue(eventReg.isEmptyEvents());
         
     }
 }

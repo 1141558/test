@@ -20,11 +20,7 @@ import lapr.project.model.StaffMember;
 import lapr.project.model.StaffRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
-import org.junit.After;
-import org.junit.AfterClass;
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -150,7 +146,7 @@ public class MeanDeviationControllerTest {
         String username = "js";
         double expResult = 2.5;
         double result = instance.calcMeanRating(username);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -290,7 +286,7 @@ public class MeanDeviationControllerTest {
         MeanDeviationController instance = new MeanDeviationController(centre);
         double expResult = 2.5;
         double result = instance.calcMeanDev("js", "evento um");
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
 
     /**

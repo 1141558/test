@@ -8,7 +8,8 @@ package lapr.project.model;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.utils.Utils;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import org.junit.jupiter.api.Test;
 
 /**

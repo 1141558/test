@@ -6,7 +6,7 @@
 package lapr.project.model;
 
 import java.text.ParseException;
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +29,7 @@ public class ExhibitionCentreTest {
         System.out.println("Exhibiotion Centre test : " + ec.toString());
         ec.getUserOnline();
         
-        Assert.assertNotNull(ec.toString());
+        assertNotNull(ec.toString());
         
     }
     
@@ -41,7 +41,7 @@ public class ExhibitionCentreTest {
         ec.setUserOnline(userOnLine);
         ec.getUserOnline();
         
-        Assert.assertNotNull(ec.getUserOnline());
+        assertNotNull(ec.getUserOnline());
         
     }
     
@@ -52,18 +52,18 @@ public class ExhibitionCentreTest {
         ec.setEventRegister(ev);
         ec.getEventRegister();
         
-        Assert.assertNotNull(ec.getEventRegister());
+        assertNotNull(ec.getEventRegister());
         
     }
     
-       @Test
+    @Test
     public void getUsertRegisterTest() {
         ExhibitionCentre ec = new ExhibitionCentre();
-       UserRegister ev = new UserRegister();
+        UserRegister ev = new UserRegister();
         ec.setUserRegister(ev);
         ec.getUserRegister();
         
-        Assert.assertNotNull(ec.getUserRegister());
+        assertNotNull(ec.getUserRegister());
         
     }
 }

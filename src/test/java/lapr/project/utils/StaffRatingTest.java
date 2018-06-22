@@ -18,7 +18,8 @@ import lapr.project.model.Review;
 import lapr.project.model.Role;
 import lapr.project.model.StaffMember;
 import lapr.project.model.User;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -100,10 +101,10 @@ public class StaffRatingTest {
 
         //Fim dos dados
         StaffRating rating = new StaffRating(centre);
-        assertEquals(2.5, rating.meanRating(user), 0.0);
+        assertEquals(2.5, rating.meanRating(user));
 
     }
-    
+
     /**
      * Test of meanRating method, of class StaffRating.
      */
@@ -119,7 +120,7 @@ public class StaffRatingTest {
         centre.setEventRegister(eventRegister);
         User user = new User("José", "j@gmail.com", "jose", 0.1234, Role.EMPLOYEE);
         StaffRating rating = new StaffRating(centre);
-        assertEquals(0, rating.meanRating(user),0.0);
+        assertEquals(0, rating.meanRating(user));
     }
 
     /**
@@ -196,9 +197,9 @@ public class StaffRatingTest {
 
         //Fim dos dados
         StaffRating rating = new StaffRating(centre);
-        assertEquals(2.5, rating.meanDeviation(user, event1), 0.0);
+        assertEquals(2.5, rating.meanDeviation(user, event1));
     }
-    
+
     /**
      * Test of meanDeviation method, of class StaffRating.
      */
@@ -214,7 +215,7 @@ public class StaffRatingTest {
         centre.setEventRegister(eventRegister);
         User user = new User("José", "j@gmail.com", "jose", 0.1234, Role.EMPLOYEE);
         StaffRating rating = new StaffRating(centre);
-        assertEquals(0, rating.meanDeviation(user,event1),0.0);
+        assertEquals(0, rating.meanDeviation(user, event1));
     }
 
     /**
@@ -266,7 +267,7 @@ public class StaffRatingTest {
 
         //Fim dos dados
         StaffRating rating = new StaffRating(centre);
-        assertEquals(2.5, rating.eventMean(event1), 0.0);
+        assertEquals(2.5, rating.eventMean(event1));
     }
 
 }

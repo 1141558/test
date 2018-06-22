@@ -8,7 +8,8 @@ package lapr.project.controller;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.utils.PasswordEncryption;
 import lapr.project.model.User;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -34,7 +35,7 @@ public class UserRegistrationControllerTest {
         assertEquals(user.getName(), instance.getUser().getName());
         assertEquals(user.getEmail(), instance.getUser().getEmail());
         assertEquals(user.getUsername(), instance.getUser().getUsername());
-        assertEquals(user.getPassword(), instance.getUser().getPassword(), 0.0);
+        assertEquals(user.getPassword(), instance.getUser().getPassword());
 
     }
 
@@ -255,7 +256,7 @@ public class UserRegistrationControllerTest {
     /**
      * Test of getUser method, of class UserRegistrationController.
      */
-    @org.junit.Test
+    @Test
     public void testGetUser() {
         System.out.println("getUser");
         User user = new User("nome completo", "email@server.com", "user", PasswordEncryption.encryptPassword("12345678"));

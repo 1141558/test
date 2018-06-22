@@ -16,7 +16,8 @@ import lapr.project.model.StandConnection;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Stand;
 import lapr.project.model.StandRegister;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -165,7 +166,7 @@ public class CalculateCableControllerTest {
         CalculateCableController instance = new CalculateCableController(centre);
         double expResult = 0.0;
         double result = instance.calcLength(eventTitle);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
     
     /**
@@ -205,7 +206,8 @@ public class CalculateCableControllerTest {
         //Act
         double expResult = 8.8;
         double result = instance.calcLength(eventTitle);
-        assertEquals(expResult, result, 0.0);
+
+        assertEquals(expResult, result);
     }
 
     /**

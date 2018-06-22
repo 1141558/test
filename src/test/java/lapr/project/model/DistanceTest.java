@@ -5,7 +5,10 @@
 */
 package lapr.project.model;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -21,7 +24,7 @@ public class DistanceTest {
         distance.setValue(22.5);
         distance1.setValue(22.5);
         
-        Assert.assertEquals(distance1.getValue(), distance.getValue());
+        assertEquals(distance1.getValue(), distance.getValue());
         
     }
     
@@ -32,7 +35,7 @@ public class DistanceTest {
         distance.setValue(22.5);
         distance1.setValue(21.5);
         
-        Assert.assertNotEquals(distance1.getValue(), distance.getValue());
+        assertNotEquals(distance1.getValue(), distance.getValue());
         
     }
     
@@ -43,7 +46,7 @@ public class DistanceTest {
         distance.setDescription("descricao");
         distance1.setDescription("descricao");
         
-        Assert.assertEquals(distance1.getDescription(), distance.getDescription());
+        assertEquals(distance1.getDescription(), distance.getDescription());
         
     }
     
@@ -54,7 +57,7 @@ public class DistanceTest {
         distance.setDescription("descricao");
         distance1.setDescription("descricao1");
         
-        Assert.assertNotEquals(distance1.getDescription(), distance.getDescription());
+        assertNotEquals(distance1.getDescription(), distance.getDescription());
         
     }
     
@@ -63,7 +66,7 @@ public class DistanceTest {
         
         Distance distance = new Distance();
         Distance distance1 = new Distance();
-        Assert.assertEquals(distance.hashCode(), distance1.hashCode());
+        assertEquals(distance.hashCode(), distance1.hashCode());
     }
     
     @Test
@@ -76,7 +79,7 @@ public class DistanceTest {
         distance.setValue(22.5);
         distance1.setValue(22.5);
         
-        Assert.assertTrue(distance.equals(distance1));
+        assertTrue(distance.equals(distance1));
     }
     
     @Test
@@ -89,7 +92,7 @@ public class DistanceTest {
         distance.setValue(21.5);
         distance1.setValue(22.5);
         
-        Assert.assertFalse(distance.equals(distance1));
+        assertFalse(distance.equals(distance1));
     }
     
     @Test
@@ -100,7 +103,7 @@ public class DistanceTest {
         distance.setDescription("descricao1");
         distance1.setDescription("descricao");
         
-        Assert.assertFalse(distance.equals(distance1));
+        assertFalse(distance.equals(distance1));
     }
     
     @Test
@@ -111,7 +114,7 @@ public class DistanceTest {
         distance.setDescription("descricao1");
         distance1.setDescription("descricao");
         
-        Assert.assertFalse(distance.equals(org));
+        assertFalse(distance.equals(org));
     }
     
     @Test
@@ -123,7 +126,7 @@ public class DistanceTest {
         
         distance1.setValue(22.5);
         
-        Assert.assertTrue(distance1.equals(distance1));
+        assertTrue(distance1.equals(distance1));
     }
     
     @Test
@@ -131,14 +134,13 @@ public class DistanceTest {
         Distance distance = new Distance();
         distance.setDescription("descricao1");
         distance.setValue(21.5);
-        String expecteds = "description= descricao1, value= 21.5\n" ;//distance.toString();
+        String expecteds = "description= descricao1, value= 21.5\n";//distance.toString();
         distance.getValue().toString();
         //Arrange
         String result = distance.toString();
-  
         
         //Act
-        Assert.assertEquals(expecteds, result);
+        assertEquals(expecteds, result);
     }
     
     @Test
@@ -150,7 +152,7 @@ public class DistanceTest {
         distance.setValue(22.6);
         distance1.setValue(222222.55);
         distance.compareTo(distance1);
-        Assert.assertTrue((distance.getValue() < distance1.getValue()));
+        assertTrue((distance.getValue() < distance1.getValue()));
         
     }
     
@@ -163,7 +165,7 @@ public class DistanceTest {
         
         distance1.setValue(22.5);
         
-        Assert.assertFalse(distance1.equals(distance2));
+        assertFalse(distance1.equals(distance2));
     }
     
     @Test
@@ -173,7 +175,7 @@ public class DistanceTest {
         distance.setValue(21.5);
         distance.setDescription("descriction");
         int dis = distance.hashCode();
-        Assert.assertEquals(-1773172174, dis);
+        assertEquals(-1773172174, dis);
         
     }
     
@@ -183,7 +185,7 @@ public class DistanceTest {
         distance.setValue(21.5);
         distance.setDescription("descriction");
         int dis = distance.getDescription().hashCode();
-        Assert.assertEquals(-1736551825, dis);
+        assertEquals(-1736551825, dis);
         
     }
     
@@ -197,7 +199,7 @@ public class DistanceTest {
         distance1.setValue(1.0);
         distance.compareTo(distance1);
         
-        Assert.assertTrue((distance.getValue() < distance1.getValue()));
+        assertTrue((distance.getValue() < distance1.getValue()));
         
     }
     
@@ -209,7 +211,7 @@ public class DistanceTest {
         distance.setValue(0.000);
         distance.compareTo(distance1);
         
-        Assert.assertTrue(distance.compareTo(distance1) == 0);
+        assertTrue(distance.compareTo(distance1) == 0);
         
     }
     
@@ -221,7 +223,7 @@ public class DistanceTest {
         distance2.setDescription("descricao");
         distance1.setValue(0.0001);
         distance2.setValue(0.0002);
-        Assert.assertTrue((Math.abs(distance1.getValue() - distance2.getValue()) > 0.00001));
+        assertTrue((Math.abs(distance1.getValue() - distance2.getValue()) > 0.00001));
         
     }
     
@@ -233,7 +235,7 @@ public class DistanceTest {
         distance2.setDescription("descricao");
         distance1.setValue(0.0000);
         distance2.setValue(0.23231234);
-        Assert.assertTrue(distance1.compareTo(distance2) < 0);
+        assertTrue(distance1.compareTo(distance2) < 0);
         
     }
     
@@ -245,7 +247,7 @@ public class DistanceTest {
         distance2.setDescription("descricao");
         distance1.setValue(0.0000);
         distance2.setValue(0.23231234);
-        Assert.assertTrue(distance2.compareTo(distance1) > 0);
+        assertTrue(distance2.compareTo(distance1) > 0);
         
     }
     
@@ -257,7 +259,7 @@ public class DistanceTest {
         distance2.setDescription("descricao");
         distance1.setValue(0.0000);
         distance2.setValue(0.00000);
-        Assert.assertTrue(distance2.compareTo(distance1) == 0);
+        assertTrue(distance2.compareTo(distance1) == 0);
         
     }
 }

@@ -5,7 +5,10 @@
  */
 package lapr.project.model;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -37,9 +40,9 @@ public class OrganiserRegisterTest {
         OrganiserRegister organiserRegister123 = new OrganiserRegister(organiserRegister.getOrganiserList());
 
         //Assert
-        Assert.assertEquals(otherOrganiserRegister, organiserRegister);
-        Assert.assertEquals(1, size);
-        Assert.assertTrue(otherOrganiserRegister.registerOrganiser(inexistentUser));
+        assertEquals(otherOrganiserRegister, organiserRegister);
+        assertEquals(1, size);
+        assertTrue(otherOrganiserRegister.registerOrganiser(inexistentUser));
 
     }
 
@@ -58,7 +61,7 @@ public class OrganiserRegisterTest {
         boolean actuals = organiserRegister.addOrganiser(organiser);
 
         //Assert
-        Assert.assertEquals(expecteds, actuals);
+        assertEquals(expecteds, actuals);
     }
 
     @Test
@@ -78,7 +81,7 @@ public class OrganiserRegisterTest {
         organiserRegister.addOrganiser(organiser1);
 
         //Assert
-        Assert.assertNotEquals(organiserRegister.getOrganiserList().get(0), organiserRegister.getOrganiserList().get(1));
+        assertNotEquals(organiserRegister.getOrganiserList().get(0), organiserRegister.getOrganiserList().get(1));
     }
 
     @Test
@@ -95,7 +98,7 @@ public class OrganiserRegisterTest {
         boolean expecteds = true;
 
         //Assert
-        Assert.assertFalse(organiserRegister.equals(otherUser));
+        assertFalse(organiserRegister.equals(otherUser));
 
     }
 
@@ -104,11 +107,10 @@ public class OrganiserRegisterTest {
 
         OrganiserRegister organiserRegister = new OrganiserRegister();
         OrganiserRegister organiserRegister1 = new OrganiserRegister();
-        Assert.assertEquals(organiserRegister.hashCode(), organiserRegister1.hashCode());
+        assertEquals(organiserRegister.hashCode(), organiserRegister1.hashCode());
     }
 
-    
-        @Test
+    @Test
 
     public void testHashCode() {
         System.out.println("hashCode");
@@ -126,12 +128,12 @@ public class OrganiserRegisterTest {
         int result = organiserRegisterHashCode.hashCode();
         int hash = 1644148085;
 
-        Assert.assertEquals(hash, result);
+        assertEquals(hash, result);
 
 //        int result = organiserHashCode.hashCode();
 //        int hash = -1779632894;
 //        int expectedResult = organiserHashCode.hashCode();
-        Assert.assertEquals(hash, result);
+        assertEquals(hash, result);
 //        Assert.assertEquals(expectedResult, result);
 
     }

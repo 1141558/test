@@ -20,7 +20,7 @@ import lapr.project.model.StaffMember;
 import lapr.project.model.StaffRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -146,7 +146,7 @@ public class MeanRatingControllerTest {
         String username = "js";
         double expResult = 2.5;
         double result = instance.calcMeanRating(username);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
 
     /**

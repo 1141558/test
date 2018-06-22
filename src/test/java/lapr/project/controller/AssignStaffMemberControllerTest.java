@@ -5,7 +5,7 @@
 */
 package lapr.project.controller;
 
-import java.util.AbstractList;
+
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.Event;
@@ -13,13 +13,14 @@ import lapr.project.model.EventRegister;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Organiser;
 import lapr.project.model.OrganiserRegister;
-import lapr.project.model.Role;
+
 import lapr.project.model.StaffMember;
 import lapr.project.model.StaffRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
-import org.junit.Assert;
-import org.junit.Before;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -79,7 +80,7 @@ public class AssignStaffMemberControllerTest {
         List<Event> eventListByOrganiser = assignStaffMemberController3.getEventsListByOrganiser();
         
         //Assert
-        Assert.assertEquals("EVENTO UM", eventListByOrganiser.get(1).getTitle());
+       assertEquals("EVENTO UM", eventListByOrganiser.get(1).getTitle());
     }
     
     @Test
@@ -93,7 +94,7 @@ public class AssignStaffMemberControllerTest {
         
         assignStaffMemberController.getStaffMemberList();
         //Assert
-        Assert.assertEquals(event3, event3);
+       assertEquals(event3, event3);
     }
     
     @Test
@@ -111,9 +112,9 @@ public class AssignStaffMemberControllerTest {
         List<User> users = assignStaffMemberController.filterUserRegisterByNoOrganiserEventSelected();
         
         //Assert
-        Assert.assertEquals("manuel", users.get(0).getName());
-        Assert.assertEquals("garnel", users.get(0).getUsername());
-        Assert.assertEquals("mjdg111@hotmail.com", users.get(0).getEmail());
+        assertEquals("manuel", users.get(0).getName());
+        assertEquals("garnel", users.get(0).getUsername());
+        assertEquals("mjdg111@hotmail.com", users.get(0).getEmail());
     }
   
     @Test
@@ -143,7 +144,7 @@ public class AssignStaffMemberControllerTest {
         aStaffMembController.assignUser(users, 1);
         
         //Assert
-        Assert.assertEquals("Manuel garnel", eventRegister3.getEvent(0).getStaffRegister().getStaffList().get(0).getStaff().getName());
+        assertEquals("Manuel garnel", eventRegister3.getEvent(0).getStaffRegister().getStaffList().get(0).getStaff().getName());
         
     }
 //  

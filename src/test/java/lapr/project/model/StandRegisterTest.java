@@ -7,8 +7,12 @@ package lapr.project.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -34,7 +38,7 @@ public class StandRegisterTest {
         boolean result = standRegister.addStand(stand1);
         
         //Assert
-        Assert.assertEquals(result, expectedResult);
+        assertEquals(result, expectedResult);
     }
     
     @Test
@@ -48,7 +52,7 @@ public class StandRegisterTest {
         String resultExpected = "Stand{description=null, area=0.0, distanceList=}\n";
         
         //Assert
-        Assert.assertEquals(resultExpected, standsList.get(0).toString());
+        assertEquals(resultExpected, standsList.get(0).toString());
     }
     
     @Test
@@ -62,7 +66,7 @@ public class StandRegisterTest {
         List<Stand> standsList1 = new ArrayList<>();
         standRegister.setStandList(standsList1);
         standRegister.getStandByDescriptionStand(s);
-        Assert.assertTrue(standRegister.isEmptyStandList());
+        assertTrue(standRegister.isEmptyStandList());
     }
     
     @Test
@@ -83,7 +87,7 @@ public class StandRegisterTest {
         
         StandRegister standRegister = new StandRegister();
         
-        Assert.assertEquals(standRegister.hashCode(), 260);
+        assertEquals(standRegister.hashCode(), 260);
     }
     
     @Test
@@ -112,7 +116,7 @@ public class StandRegisterTest {
         standReg.setStandList(standList);
         Stand stand3 = standReg.getStandByDescriptionStand(s);
         System.out.println("stan3" + stand3);
-        Assert.assertNotNull(stand3);
+        assertNotNull(stand3);
         
     }
     
@@ -127,9 +131,9 @@ public class StandRegisterTest {
         
         boolean result = standReg.equals(s);
         
-        Assert.assertFalse(result);
+        assertFalse(result);
     }
-
+    
     /**
      * Test of equals method, of class StandRegister.
      */
@@ -140,7 +144,7 @@ public class StandRegisterTest {
         Stand s1 = new Stand("STAND1", 2.50);
         Stand s2 = new Stand("STAND2", 2.50);
         
-        StandRegister instance = new StandRegister();        
+        StandRegister instance = new StandRegister();
         instance.addStand(s1);
         instance.addStand(s2);
         
@@ -150,14 +154,14 @@ public class StandRegisterTest {
         boolean result = instance.equals(otherObject);
         assertFalse(result);
     }
-
+    
     @Test
-    public void compareEqualsObjects(){
+    public void compareEqualsObjects() {
         Stand standOne = new Stand("STAND1", 2.50);
-          StandRegister instance2 = new StandRegister(); 
-          instance2.addStand(stand1);
-          boolean result = instance2.equals(instance2);
-           
-          Assert.assertTrue(result);
+        StandRegister instance2 = new StandRegister();
+        instance2.addStand(stand1);
+        boolean result = instance2.equals(instance2);
+        
+        assertTrue(result);
     }
 }

@@ -7,7 +7,7 @@ package lapr.project.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -57,7 +57,7 @@ public class CalculateElectricalCableTest {
         int i = 0;
         for (StandConnection e : expResult) {
             assertEquals(e.getA(), result.get(i).getA());
-            assertEquals(e.getDist(), result.get(i).getDist(), 0);
+            assertEquals(e.getDist(), result.get(i).getDist());
             i++;
         }
     }
@@ -176,7 +176,7 @@ public class CalculateElectricalCableTest {
         for (StandConnection e : expResult) {
             assertEquals(e.getA(), result.get(i).getA());
             assertEquals(e.getB(), result.get(i).getB());
-            assertEquals(e.getDist(), result.get(i).getDist(), 0);
+            assertEquals(e.getDist(), result.get(i).getDist());
             i++;
         }
     }
@@ -197,7 +197,7 @@ public class CalculateElectricalCableTest {
         //Act
         double result = CalculateElectricalCable.cableLength(tree);
         //Assert
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
 
 }

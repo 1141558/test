@@ -5,7 +5,9 @@
  */
 package lapr.project.model;
 
-import static org.junit.Assert.*;
+ 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -96,7 +98,7 @@ public class UserTest {
         User instance = new User("Nome Nome", "email@server.com", "user1", 0.1234);
         double expResult = 0.1234;
         double result = instance.getPassword();
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -108,7 +110,7 @@ public class UserTest {
         double password = 0.1234;
         User instance = new User();
         instance.setPassword(password);
-        assertEquals(password, instance.getPassword(), 0);
+        assertEquals(password, instance.getPassword());
     }
 
     /**

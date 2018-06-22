@@ -8,7 +8,6 @@ package lapr.project.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -249,7 +248,7 @@ public class StandTest {
         Stand stand = new Stand();
         Stand stand2 = new Stand();
 
-        Assert.assertEquals(stand.hashCode(), 1134906);
+       assertEquals(stand.hashCode(), 1134906);
     }
      @Test
     public void hashCodeTest2() {
@@ -259,6 +258,6 @@ public class StandTest {
         stand.setDescription("descrição");
         stand.setArea(2.55555555);
     
-        Assert.assertEquals(stand.hashCode(), 1700517535);
+      assertEquals(stand.hashCode(), 1700517535);
     }
 }

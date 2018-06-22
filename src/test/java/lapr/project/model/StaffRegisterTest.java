@@ -10,8 +10,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import lapr.project.controller.DummyData;
-import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -20,21 +20,21 @@ import org.junit.jupiter.api.Test;
  */
 public class StaffRegisterTest {
     
-   private DummyData data;
+    private DummyData data;
     
     private ExhibitionCentre centre = new ExhibitionCentre();
     
-   private  ExhibitionCentre exhibitionCentre;
+    private ExhibitionCentre exhibitionCentre;
     
-   private User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123, Role.ATENDEE);
+    private User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123, Role.ATENDEE);
     private User user2 = new User("jose", "mail2@hotmail.com", "jo", 123, Role.ATENDEE);
-  private   User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123, Role.ATENDEE);
-   private  User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123, Role.ATENDEE);
-   private  User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123, Role.ATENDEE);
-   private  User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);
-   private  User user7 = new User("Andre", "mailu3", "andr", 133, Role.ATENDEE);
-   private User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.EMPLOYEE);
-   private User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133, Role.ATENDEE);
+    private User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123, Role.ATENDEE);
+    private User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123, Role.ATENDEE);
+    private User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123, Role.ATENDEE);
+    private User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);
+    private User user7 = new User("Andre", "mailu3", "andr", 133, Role.ATENDEE);
+    private User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.EMPLOYEE);
+    private User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133, Role.ATENDEE);
     private User user10 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123, Role.ATENDEE);
     
     Organiser org1;
@@ -344,18 +344,7 @@ public class StaffRegisterTest {
         List<StaffMember> result = instance.getStaffList();
         assertEquals(expResult, result);
     }
-    
-//    /**
-//     * Test of createStaffMember method, of class StaffRegister.
-//     */
-//    @Test
-//    public void testCreateStaffMember() {
-//        System.out.println("createStaffMember");
-//        StaffRegister instance = new StaffRegister();
-//        StaffMember expResult = new StaffMember();
-//        StaffMember result = instance.createStaffMember();
-//        assertEquals(expResult, result);
-//    }
+
     /**
      * Test of setStaffList method, of class StaffRegister.
      */
@@ -407,7 +396,7 @@ public class StaffRegisterTest {
         System.out.println("s" + instance.getStaffList());
         
         instance.createStaffMember();
-        Assert.assertNotNull(instance.createStaffMember());
+        assertNotNull(instance.createStaffMember());
     }
     
     @Test

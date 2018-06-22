@@ -6,7 +6,8 @@
 package lapr.project.utils;
 
 import lapr.project.utils.PasswordEncryption;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+ 
 import org.junit.jupiter.api.Test;
 
 /**
@@ -25,6 +26,6 @@ public class PasswordEncryptionTest {
         double expResult = 0.4375;
         System.out.println(PasswordEncryption.encryptPassword(password));
         double result = PasswordEncryption.encryptPassword(password);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
 }
