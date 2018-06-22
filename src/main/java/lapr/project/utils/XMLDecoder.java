@@ -160,11 +160,18 @@ public class XMLDecoder {
                switch(st){
                    case "CREATED":
                        e.setEventState(EventState.CREATED);
+                       break;
                    case "READY_FOR_APPLICATION":   
                     e.setEventState(EventState.READY_FOR_APPLICATION);
+                    break;
+                   case "OPEN_APPLICATION":
+                    e.setEventState(EventState.OPEN_APPLICATION);
+                    break;
+                   default:
+                       e.setEventState(EventState.READY_FOR_APPLICATION);
+                    break;   
                        
                }
-               e.setEventState(EventState.CREATED);
             }else{
                 e.setEventState(EventState.READY_FOR_APPLICATION);
             }
@@ -174,7 +181,7 @@ public class XMLDecoder {
             e.setStandRegister(sr);
             StaffRegister stffr= buildStaffRegister(docElement, centre);
             e.setStaffRegister(stffr);
-            ApplicationRegister  ar= buildApplicationRegister(docElement, e);
+            ApplicationRegister  ar= buildApplicationRegister(docElement, e, centre);
             e.setApplicationRegister(ar);
 
             return e;
@@ -308,7 +315,7 @@ public class XMLDecoder {
         return sr;
     }
 
-    private static ApplicationRegister buildApplicationRegister(Element docElement, Event event) {
+    private static ApplicationRegister buildApplicationRegister(Element docElement, Event event, ExhibitionCentre centre) {
         
         ApplicationRegister ar= new ApplicationRegister();
         
@@ -324,7 +331,44 @@ public class XMLDecoder {
             String boothArea = application_element.getElementsByTagName("boothArea").item(0).getTextContent();
             String invitesQuantity = application_element.getElementsByTagName("invitesQuantity").item(0).getTextContent();
             String description = application_element.getElementsByTagName("description").item(0).getTextContent();
-
+            NodeList state = docElement.getElementsByTagName("state");
+            Node st1 = state.item(0);
+            Element elstate = (Element) st1;
+            if(elstate!=null){
+               String st =  docElement.getElementsByTagName("state").item(0).getTextContent();
+               switch(st){
+                   case "CREATED":
+                        a.setState(ApplicationState.CREATED);
+                   break;
+                   case "IN_EVALUALTION":   
+                       a.setState(ApplicationState.IN_EVALUALTION);
+                   break;
+                   case "ACCEPTED":
+                        a.setState(ApplicationState.ACCEPTED);
+                       break;
+                   case "REJECTED":
+                        a.setState(ApplicationState.REJECTED);
+                       break;
+                   default:
+                        a.setState(ApplicationState.CREATED);
+                       break;  
+                       
+               }
+            }else{
+                a.setState(ApplicationState.CREATED);
+                
+            }
+            NodeList user_that_submited = docElement.getElementsByTagName("userSubmited");
+            Node user_that_submited_n = user_that_submited.item(0);
+            Element eluser_sub = (Element) user_that_submited_n;
+            if(eluser_sub!=null){
+                String user_name=docElement.getElementsByTagName("userSubmited").item(0).getTextContent();
+                centre.getUserRegister().getUserList().stream().filter((u) -> (u.getUsername().equals(user_name))).forEachOrdered((u) -> {
+                    a.setUserThatSubmited(u);
+                });
+            }
+            
+            
             NodeList reviews= application_element.getElementsByTagName("reviews");
             Node sr = reviews.item(0);
             Element elr = (Element) sr; 

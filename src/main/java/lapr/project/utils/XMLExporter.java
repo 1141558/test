@@ -200,6 +200,12 @@ public class XMLExporter {
                 }
                 Element boothAreaEl = document.createElement("boothArea");
                 boothAreaEl.setTextContent(String.valueOf(a.getBoothArea()));
+                if(a.getUserThatSubmited()!=null){
+                    Element userthatEl = document.createElement("userSubmited");
+                    userthatEl.setTextContent(a.getUserThatSubmited().getUsername());
+                    applicationEl.appendChild(userthatEl);
+
+                } 
                 Element aceptedEl = document.createElement("accepted");
                 if(a.getState().equals(ApplicationState.ACCEPTED)){
                     aceptedEl.setTextContent("true");
