@@ -92,7 +92,7 @@ public class AssignStaffMemberToReviewController {
 
     public void registerLog() {
 
-        Utils.writeLog("Organiser "+this.centre.getUserOnline()+" assigned staff '"+this.staff.getStaff().getUsername()+" to review application "+this.application.getDescription());
+        Utils.writeLog("Organiser "+this.centre.getUserOnline().getUsername()+" assigned staff '"+this.staff.getStaff().getUsername()+" to review application "+this.application.getDescription());
     }
 
     

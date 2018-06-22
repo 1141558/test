@@ -6,6 +6,7 @@
 package lapr.project.controller;
 
 import lapr.project.model.ExhibitionCentre;
+import lapr.project.model.Role;
 import lapr.project.model.User;
 import static lapr.project.utils.PasswordEncryption.encryptPassword;
 import lapr.project.utils.Utils;
@@ -42,6 +43,7 @@ public class UserRegistrationController {
         this.user.setEmail(email);
         this.user.setUsername(username);
         this.user.setPassword(encryptPassword(password));
+        this.user.setRole(Role.PARTICIPANT);
     }
 
     /**

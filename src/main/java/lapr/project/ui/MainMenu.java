@@ -36,7 +36,10 @@ public class MainMenu implements Serializable{
         
         if(centre.getEventRegister().userIsStaffMember(centre.getUserOnline())){
             UtilsUI.printLine("               1.SUBMIT APPLICATION REVIEW               ");
-            UtilsUI.printLine("               2.CALCULATE MINIMUM ELECTRICAL CABLE               ");
+            UtilsUI.printLine("               2.CALCULATE MINIMUM ELECTRICAL CABLE      ");
+            UtilsUI.printLine("                          3.LOGOUT                       ");/*frequencias*/
+            UtilsUI.printLine("                           4.EXIT                        ");/*frequencias*/
+            
             UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
             opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
@@ -46,6 +49,16 @@ public class MainMenu implements Serializable{
                 case 2:
                     new CalculateCableUI(centre);
                     break;
+                case 3:
+                    new LoginUI(centre);
+                    break;
+                case 4:
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }                    
                 default:
                     break;
 
@@ -107,14 +120,18 @@ public class MainMenu implements Serializable{
                         UtilsUI.printLine(e.toString());
                         
                     }
-                break;    
+                break;  
+                default:
+                    new MainMenu(centre);
+                break;
             }
         }
         else if(centre.getEventRegister().userIsEventManager(centre.getUserOnline())){
-       UtilsUI.printLine("                         1.CREATE EVENT                       ");
+       UtilsUI.printLine("                         1.CREATE EVENT                      ");
        UtilsUI.printLine("                   2.SHOW EVENT'S ACCEPTANCE RATE            ");
        UtilsUI.printLine("                  3.SHOW STAFF MEMBER MEAN RATING            ");
        UtilsUI.printLine("4.SHOW MEAN DEVIATION BETWEEN STAFF MEMBERS' AVERAGE RATINGS AND EVENTS MEAN RATINGS");
+       UtilsUI.printLine("                             5.EXIT                          ");/*frequencias*/
 
        UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
             opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
@@ -135,6 +152,7 @@ public class MainMenu implements Serializable{
         }else if(centre.getUserOnline().getRole().equals(Role.PARTICIPANT)){
         UtilsUI.printLine("                1.SUBMIT APPLICATION TO EVENT            ");       
         UtilsUI.printLine("               2.UPDATE OR WITHDRAW APPLICATION          ");       
+       UtilsUI.printLine("                            3.EXIT                        ");/*frequencias*/
         UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
         opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
@@ -146,7 +164,9 @@ public class MainMenu implements Serializable{
                 break; 
             } 
         }else if(centre.getUserOnline().getRole().equals(Role.ATENDEE)){
-        UtilsUI.printLine("                1.SUBMIT WORKSHOP SURVEY            ");       
+        UtilsUI.printLine("                1.SUBMIT WORKSHOP SURVEY            ");
+       UtilsUI.printLine("                          2.EXIT                     ");/*frequencias*/
+      
         UtilsUI.printLine((char)27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+ (char)27 + "[0m");
         opt = UtilsUI.readLineFromConsole("INSERT OPTION: ");
             switch(Integer.parseInt(opt)){         
