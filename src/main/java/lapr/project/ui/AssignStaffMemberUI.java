@@ -27,7 +27,6 @@ public final class AssignStaffMemberUI {
         
         this.assignStaffMemberController = new AssignStaffMemberController(centre);
         List<Event> eventList = assignStaffMemberController.getEventsListByOrganiser();
-        // showOrganiserEventsList(eventList);
         staffMemberAssign(eventList, centre);
     }
     
@@ -35,23 +34,13 @@ public final class AssignStaffMemberUI {
         UtilsUI.printLine((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
         UtilsUI.printLine("                   EVENTOS ASSOCIADOS                      ");
         UtilsUI.printLine((char) 27 + "[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
+        int n=0;
         for (Event event : organiserValidatedList) {
             
-            UtilsUI.printLine("EVENTO:" + event);
-                  
-        /***
-         *
-         */
+            UtilsUI.printLine((n+1)+" - " + event.getTitle());
+            n++;
        
-         /*Testar Assign event*/
-        
-        UtilsUI.printLine("Teste atribuir stands");
-         AssignStandToApplicationController nreAssignStaffToApplicationController = new AssignStandToApplicationController();
-        nreAssignStaffToApplicationController.matchsApplicationOnEventListByOrganiserWithStandList();
-        
-        
-       //********************************************************************************************************************* 
-        
+       
         
         }
 
@@ -65,7 +54,7 @@ public final class AssignStaffMemberUI {
         
         showOrganiserEventsList(events);
         do {
-            opcaoEq = UtilsUI.readLineFromConsole("\n Choose Event to assign to! (O - Exit)\n");
+            opcaoEq = UtilsUI.readLineFromConsole("\n PICK EVENT (WRITE '0' TO EXIT) ");
             option = new Integer(opcaoEq);
         } while (option < 0 || option > events.size());
         
@@ -128,7 +117,7 @@ public final class AssignStaffMemberUI {
             UtilsUI.printLine("--------------------------");
             for (User user : availableUserToAssignToEvent) {
                 
-                System.out.println(n + "- " + user);
+                System.out.println(n + "- " + user.getUsername());
                 n++;
             }
             UtilsUI.printLine("--------------------------");
@@ -172,7 +161,7 @@ public final class AssignStaffMemberUI {
         UtilsUI.printLine("--------------------------");
         int n = 1;
         for (StaffMember staffMember : staffMembers) {
-            UtilsUI.printLine(n + " - " + staffMember.getStaff());
+            UtilsUI.printLine(n + " - " + staffMember.getStaff().getUsername());
             n++;
         }
         UtilsUI.printLine("--------------------------");

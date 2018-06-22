@@ -48,6 +48,7 @@ public class XMLExporter {
         Document document;
 
         File  file= new File(filePath);
+    
         file.delete();
         document=builder.newDocument();
 
@@ -88,6 +89,8 @@ public class XMLExporter {
             Element exhibitionEl = document.createElement("event");
             Element titleEl = document.createElement("title");
             titleEl.setTextContent(e.getTitle());
+            Element stateEl = document.createElement("state");
+            stateEl.setTextContent(e.getEventState().name());
             Element nrRoomsEl = document.createElement("numberRooms");
             nrRoomsEl.setTextContent(String.valueOf(e.getRooms()));
             if(!isEmpty(e.getPlace())){
@@ -96,7 +99,7 @@ public class XMLExporter {
                 exhibitionEl.appendChild(placeEl);
 
             }
-
+            exhibitionEl.appendChild(stateEl);
             Element standsEl = document.createElement("stands");
             e.getStandRegister().getStandList().stream().map((Stand s) -> {
                 Element standEl = document.createElement("stand");
@@ -198,12 +201,20 @@ public class XMLExporter {
                 }
                 Element boothAreaEl = document.createElement("boothArea");
                 boothAreaEl.setTextContent(String.valueOf(a.getBoothArea()));
+                if(a.getUserThatSubmited()!=null){
+                    Element userthatEl = document.createElement("userSubmited");
+                    userthatEl.setTextContent(a.getUserThatSubmited().getUsername());
+                    applicationEl.appendChild(userthatEl);
+
+                } 
                 Element aceptedEl = document.createElement("accepted");
                 if(a.getState().equals(ApplicationState.ACCEPTED)){
                     aceptedEl.setTextContent("true");
                 }else if(a.getState().equals(ApplicationState.REJECTED)){
                     aceptedEl.setTextContent("false");
                 }
+                Element stateaceptEl = document.createElement("state");
+                stateaceptEl.setTextContent(a.getState().name());
                 Element invitesEl = document.createElement("invitesQuantity");
                 invitesEl.setTextContent(String.valueOf(a.getNumberInvites()));
                 Element topicsEl = document.createElement("topics");
@@ -270,6 +281,7 @@ public class XMLExporter {
                 applicationEl.appendChild(topicsEl);
                 applicationEl.appendChild(elementReviews);
                 applicationEl.appendChild(aceptedEl);
+                applicationEl.appendChild(stateaceptEl);
                 applicationSetEl.appendChild(applicationEl);
             }
             if(e.getStartDate()!=null){
@@ -311,7 +323,7 @@ try {
 
             // send DOM to file
             tr.transform(new DOMSource(document), 
-                                 new StreamResult(new FileOutputStream("./src/main/resources/exhibition1_v0.1_1.xml")));
+                                 new StreamResult(new FileOutputStream(filePath)));
 
         } catch (TransformerException | IOException te) {
             System.out.println(te.getMessage());

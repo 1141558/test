@@ -5,6 +5,8 @@
  */
 package lapr.project.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -76,6 +78,27 @@ public class ExhibitionCentre {
     public void setUserOnline(User userOnline) {
         this.userOnline = userOnline;
     }
+    
+     /**
+     * Method to get all StaffMembers
+     *
+     * @return List with all the StaffMembers
+     */
+    public List<User> getAllStaffMembers() {
+        List<User> staffList = new ArrayList<>();
+        for (Event ev : this.eventRegister.getEventList()) {
+            for (StaffMember st : ev.getStaffRegister().getStaffList()) {
+                if (!staffList.contains(st.getStaff())) {
+                    staffList.add(st.getStaff());
+                }
+            }
+        }
+        
+        return staffList;
+    }
+
+
+    
     @Override
     public String toString() {
         return "ExhibitionCentre{" + "eventRegister=" + eventRegister + ", userRegister=" + userRegister + '}';

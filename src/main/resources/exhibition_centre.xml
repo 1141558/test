@@ -46,6 +46,14 @@
             <role>EMPLOYEE</role>
 
         </user>
+        <user>
+            <name>Andreia Silva</name>
+            <email>andreia_silva@gmail.com</email>
+            <username>andreia_silva</username>
+            <password>00112233</password>
+            <role>EMPLOYEE</role>
+
+        </user>
     </userSet>
     <eventSet>
         <event>

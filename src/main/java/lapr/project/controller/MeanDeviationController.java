@@ -6,6 +6,7 @@
 package lapr.project.controller;
 
 import java.util.List;
+import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.User;
 import lapr.project.utils.StaffRating;
@@ -14,12 +15,12 @@ import lapr.project.utils.StaffRating;
  *
  * @author JM
  */
-public class MeanRatingController {
+public class MeanDeviationController {
     
     private ExhibitionCentre exhibitionCentre;
     private StaffRating rating;
     
-    public MeanRatingController(ExhibitionCentre exhibitionCentre) {
+    public MeanDeviationController(ExhibitionCentre exhibitionCentre) {
         this.exhibitionCentre = exhibitionCentre;
         this.rating = new StaffRating(exhibitionCentre);
     }
@@ -34,6 +35,22 @@ public class MeanRatingController {
         return user != null ? rating.meanRating(user) : 0;
     }
     
+    public double calcMeanDev(String username, String eventTitle) {
+        User user = findUser(username);
+        Event event = findEvent(eventTitle);
+        
+        return rating.meanDeviation(user, event);
+    }
+    
+    public Event findEvent(String title) {
+        for (Event e : exhibitionCentre.getEventRegister().getEventList()) {
+            if (e.getTitle().equals(title)) {
+                return e;
+            }
+        }
+        return null;
+    }
+    
     public User findUser(String username) {
         for (User u : exhibitionCentre.getUserRegister().getUserList()) {
             if (u.getUsername().equals(username)) {
@@ -43,11 +60,23 @@ public class MeanRatingController {
         return null;
     }
     
+    
     public boolean staffExists(String username) {
         if (getStaffList().stream().anyMatch((u) -> (u.getUsername().equals(username)))) {
             return true;
         }
         return false;
+    }
+    
+    public boolean eventExists(String title) {
+        if (getEvents().stream().anyMatch((u) -> (u.getTitle().equals(title)))) {
+            return true;
+        }
+        return false;
+    }
+    
+    public List<Event> getEvents(){
+        return exhibitionCentre.getEventRegister().getEventList();
     }
     
 }

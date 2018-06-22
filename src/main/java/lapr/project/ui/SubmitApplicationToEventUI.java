@@ -45,7 +45,7 @@ public final class SubmitApplicationToEventUI {
 
                 try{
                         event_number = Integer.parseInt(UtilsUI.readLineFromConsole("PICK EVENT: "));
-                        controller.setEvent(event_number-2);
+                        controller.setEvent(event_number-1);
                         if(event_number <1 || event_number>n-1){
                             UtilsUI.printError("NUMBER INSERTED NOT VALID. INSERT NUMBER INSIDE LIMITS. PLEASE TRY AGAIN.");
                             event_number=-1;                            

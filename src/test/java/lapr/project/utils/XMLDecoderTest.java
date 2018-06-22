@@ -109,7 +109,7 @@ public class XMLDecoderTest {
         app.setListReview(revList);
         ar.addApplication(app);
         event.setApplicationRegister(ar);
-        event.setEventState(EventState.CREATED);
+        event.setEventState(EventState.READY_FOR_APPLICATION);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.newDocument();

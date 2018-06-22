@@ -81,7 +81,12 @@ public class AssignStaffMemberController {
     }
     
     public void saveStaffMemberList() {
-        event.saveStaffRegister(staffRegister);
+        for (Event e : this.exhibitionCentre.getEventRegister().getEventList()) {
+            if(e.equals(this.event)){
+                e.saveStaffRegister(staffRegister);
+                
+            }
+        }
     }
     
     public void registerLog() {

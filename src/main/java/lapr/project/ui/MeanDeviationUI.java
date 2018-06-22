@@ -6,7 +6,8 @@
 package lapr.project.ui;
 
 import java.util.List;
-import lapr.project.controller.MeanRatingController;
+import lapr.project.controller.MeanDeviationController;
+import lapr.project.model.Event;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.User;
 
@@ -14,18 +15,19 @@ import lapr.project.model.User;
  *
  * @author JM
  */
-public class MeanRatingUI {
+public class MeanDeviationUI {
     
-    private MeanRatingController controller;
+    private MeanDeviationController controller;
     
-    public MeanRatingUI (ExhibitionCentre exhibitionCentre){
-        this.controller = new MeanRatingController(exhibitionCentre);
+    public MeanDeviationUI (ExhibitionCentre exhibitionCentre){
+        this.controller = new MeanDeviationController(exhibitionCentre);
         String selection = "";
+        String selection2 = "";
 
         //Request selection of employee
         UtilsUI.printLine("");
         UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
-        UtilsUI.printLine("        Mean Rating Calculation        ");
+        UtilsUI.printLine("        Mean Deviation Calculation        ");
         UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
 
         //Apresentar employees
@@ -52,12 +54,37 @@ public class MeanRatingUI {
         }
         
         
-        if (!"Q".equalsIgnoreCase(selection)) {
+        //Apresentar eventos
+        UtilsUI.printLine("\nEVENTS:");
+        List<Event> events = controller.getEvents();
+        for (Event e : events) {
+            UtilsUI.printLine("event:: "+e.getTitle());
+        }
 
-            //Employee seleccionado e encontrado
+        //Seleccionar evento
+        UtilsUI.printLine("SELECT EVENT TITLE ('Q' TO QUIT)");
+        selection2 = UtilsUI.readLineFromConsole("TITLE: ");
+
+        while (!controller.eventExists(selection2) && (!"Q".equalsIgnoreCase(selection2))) {
+            UtilsUI.printError("EVENT NOT FOUND!\nPLEASE TRY AGAIN");
+            UtilsUI.printLine("EVENT:");
+            for (Event e : events) {
+            UtilsUI.printLine("event: "+e.getTitle());
+            }
+
+            //Seleccionar employee
+            UtilsUI.printLine("SELECT EVENT TITLE ('Q' TO QUIT)");
+            selection2 = UtilsUI.readLineFromConsole("TITLE: ");
+        }
+        
+        
+        if (!"Q".equalsIgnoreCase(selection2)) {
+
+            //Staff e evento seleccionados e encontrados
             //Calcular
-            double mean = controller.calcMeanRating(selection);
-            UtilsUI.printLine("STAFF MEMBER: " + controller.findUser(selection).getName() + String.format("  -->  MEAN RATING: %.2f",mean));
+            double mean = controller.calcMeanDev(selection, selection2);
+            UtilsUI.printLine("STAFF MEMBER: " + controller.findUser(selection).getName() +"\n" + 
+                    controller.findEvent(selection2).getTitle() + String.format("  -->  MEAN DEVITION: %.2f",mean));
         }
         
         

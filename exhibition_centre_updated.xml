@@ -12,6 +12,7 @@
     <eventSet>
         <event>
             <place>place1</place>
+            <state>CREATED</state>
             <startDate>2018-06-22</startDate>
             <endDate>2018-06-22</endDate>
             <title>event1</title>
@@ -34,7 +35,7 @@
                         <name>name</name>
                         <username>user1</username>
                         <email>email@gmail.com</email>
-                        <password/>
+                        <password>0.1058807373046875</password>
                     </user>
                 </staff>
             </StaffSet>
@@ -50,6 +51,7 @@
             </organiserSet>
             <applicationSet>
                 <application>
+                    <userSubmited/>
                     <description>app1</description>
                     <boothArea>0.01</boothArea>
                     <invitesQuantity>3</invitesQuantity>
@@ -80,6 +82,7 @@
                         </review>
                     </reviews>
                     <accepted>true</accepted>
+                    <state>ACCEPTED</state>
                 </application>
             </applicationSet>
         </event>

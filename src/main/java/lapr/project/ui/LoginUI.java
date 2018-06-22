@@ -37,12 +37,11 @@ public class LoginUI {
 
         username = UtilsUI.readLineFromConsole("USERNAME: ");
         if (console != null) {
-        password = console.readPassword("PASSWORD: ");
-        Arrays.fill(password, ' ');
-        passwordString= new String(password);
-        
+            password = console.readPassword("PASSWORD: ");
+            passwordString= new String(password);
+            Arrays.fill(password, ' ');
         }else{
-        passwordString = UtilsUI.readLineFromConsole("PASSWORD: ");
+            passwordString = UtilsUI.readLineFromConsole("PASSWORD: ");
             
         }
 

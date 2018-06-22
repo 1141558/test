@@ -20,14 +20,18 @@ import lapr.project.model.StaffMember;
 import lapr.project.model.StaffRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
+import org.junit.After;
+import org.junit.AfterClass;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 /**
  *
  * @author JM
  */
-public class MeanRatingControllerTest {
+public class MeanDeviationControllerTest {
 
     /**
      * Test of getStaffList method, of class MeanRatingController.
@@ -204,6 +208,149 @@ public class MeanRatingControllerTest {
         boolean result = instance.staffExists(username);
         assertEquals(expResult, result);
         assertEquals(false, instance.staffExists("a"));
+    }
+
+    /**
+     * Test of calcMeanDev method, of class MeanDeviationController.
+     */
+    @Test
+    public void testCalcMeanDev() {
+        System.out.println("calcMeanDev");
+        ExhibitionCentre centre = new ExhibitionCentre();
+        Event event1 = new Event();
+        event1.setTitle("evento um");
+        Event event2 = new Event();
+        event2.setTitle("evento dois");
+
+        User user = new User("João Silva", "js@gmail.com", "js", 0.1234, Role.EMPLOYEE);
+        StaffMember staff1 = new StaffMember(user);
+        User user2 = new User("António Pereira", "ap@gmail.com", "ap", 0.4321, Role.EMPLOYEE);
+        StaffMember staff2 = new StaffMember(user2);
+
+        UserRegister userRegister = new UserRegister();
+        userRegister.addUser(user);
+        userRegister.addUser(user2);
+        centre.setUserRegister(userRegister);
+        List<Keyword> keys = new ArrayList<>();
+        Keyword k = new Keyword("keywords");
+        keys.add(k);
+
+        Review rev1 = new Review("rev1", 5, 5, 5, 5, Decision.ACCEPTED, staff1);
+        rev1.setAreaAdequacy(5);
+        Review rev2 = new Review("rev2", 5, 5, 5, 5, Decision.ACCEPTED, staff2);
+        rev2.setAreaAdequacy(5);
+        List<Review> revList = new ArrayList<>();
+        revList.add(rev1);
+        revList.add(rev2);
+
+        List<Review> revList2 = new ArrayList<>();
+        revList2.add(rev2);
+
+        Application app1 = new Application("app1", keys, revList);
+        Application app12 = new Application("app12", keys, revList2);
+
+        List<Application> appList = new ArrayList<>();
+        appList.add(app1);
+        appList.add(app12);
+
+        ApplicationRegister appRegister = new ApplicationRegister(appList);
+        event1.setApplicationRegister(appRegister);
+
+        //Event2
+        Review rev3 = new Review("rev3", 0, 0, 0, 0, Decision.ACCEPTED, staff1);
+        rev3.setAreaAdequacy(0);
+        Review rev4 = new Review("rev4", 0, 0, 0, 0, Decision.ACCEPTED, staff2);
+        rev4.setAreaAdequacy(0);
+        List<Review> revList3 = new ArrayList<>();
+        revList.add(rev3);
+        revList.add(rev4);
+
+        List<Review> revList4 = new ArrayList<>();
+        revList2.add(rev4);
+
+        Application app2 = new Application("app2", keys, revList3);
+        Application app22 = new Application("app22", keys, revList4);
+
+        List<Application> appList2 = new ArrayList<>();
+        appList2.add(app2);
+        appList2.add(app22);
+
+        ApplicationRegister appRegister2 = new ApplicationRegister(appList2);
+        event2.setApplicationRegister(appRegister2);
+
+        //Adds ao centro
+        List<Event> eventList = new ArrayList<>();
+        eventList.add(event1);
+        eventList.add(event2);
+
+        EventRegister eventRegister = new EventRegister(eventList);
+
+        centre.setEventRegister(eventRegister);
+        
+        MeanDeviationController instance = new MeanDeviationController(centre);
+        double expResult = 2.5;
+        double result = instance.calcMeanDev("js", "evento um");
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of findEvent method, of class MeanDeviationController.
+     */
+    @Test
+    public void testFindEvent() {
+        System.out.println("findEvent");
+        Event evento1 = new Event();
+        evento1.setTitle("evento um");
+        ExhibitionCentre centre = new ExhibitionCentre();
+        EventRegister eventReg = new EventRegister();
+        eventReg.addEvent(evento1);
+        centre.setEventRegister(eventReg);
+        
+        String title = "evento um";
+        MeanDeviationController instance = new MeanDeviationController(centre);
+        Event expResult = evento1;
+        Event result = instance.findEvent(title);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of eventExists method, of class MeanDeviationController.
+     */
+    @Test
+    public void testEventExists() {
+        System.out.println("eventExists");
+        Event evento1 = new Event();
+        evento1.setTitle("evento um");
+        ExhibitionCentre centre = new ExhibitionCentre();
+        EventRegister eventReg = new EventRegister();
+        eventReg.addEvent(evento1);
+        centre.setEventRegister(eventReg);
+        
+        String title = "evento um";
+        MeanDeviationController instance = new MeanDeviationController(centre);
+        boolean expResult = true;
+        boolean result = instance.eventExists(title);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getEvents method, of class MeanDeviationController.
+     */
+    @Test
+    public void testGetEvents() {
+        System.out.println("getEvents");
+        Event evento1 = new Event();
+        evento1.setTitle("evento um");
+        ExhibitionCentre centre = new ExhibitionCentre();
+        EventRegister eventReg = new EventRegister();
+        eventReg.addEvent(evento1);
+        centre.setEventRegister(eventReg);
+        
+        MeanDeviationController instance = new MeanDeviationController(centre);
+        List<Event> expResult = new ArrayList<>();
+        expResult.add(evento1);
+        List<Event> result = instance.getEvents();
+        assertEquals(expResult, result);
     }
 
 }

@@ -50,6 +50,12 @@ public class MainMenu implements Serializable{
                     new CalculateCableUI(centre);
                     break;
                 case 3:
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
                     new InitialMenuUI(centre);
                     break;
                 case 4:
@@ -118,6 +124,12 @@ public class MainMenu implements Serializable{
                     /*TO DO*/
                 break;
                 case 11:
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
                     new InitialMenuUI(centre);
                 break;
                 case 12:
@@ -129,12 +141,7 @@ public class MainMenu implements Serializable{
                     }
                 break;  
                 default:
-                    try{
-                        Utils.export(centre);
-                    }catch(ParserConfigurationException |SAXException| IOException e){
-                        UtilsUI.printLine(e.toString());
-                        
-                    }                    
+                   
                     new MainMenu(centre);
                 break;
             }
@@ -143,7 +150,7 @@ public class MainMenu implements Serializable{
        UtilsUI.printLine("                         1.CREATE EVENT                      ");
        UtilsUI.printLine("                   2.SHOW EVENT'S ACCEPTANCE RATE            ");
        UtilsUI.printLine("                  3.SHOW STAFF MEMBER MEAN RATING            ");
-       UtilsUI.printLine("4.SHOW MEAN DEVIATION BETWEEN STAFF MEMBERS' AVERAGE RATINGS AND EVENTS MEAN RATINGS");
+       UtilsUI.printLine("4.SHOW MEAN DEVIATION BETWEEN STAFF MEMBER'S AVERAGE RATING AND EVENT'S MEAN RATING");
        UtilsUI.printLine("                            5.LOGOUT                         ");/*frequencias*/
        UtilsUI.printLine("                             6.EXIT                          ");/*frequencias*/
 
@@ -154,15 +161,22 @@ public class MainMenu implements Serializable{
                     new CreateEventUI(centre);    
                 break; 
                 case 2:
-                    /*TO DO*/
+                    new EventAcceptanceRateUI(centre);
                 break;    
                 case 3:
                     new MeanRatingUI(centre);
                 break; 
                 case 4:
-                    /*TO DO*/
+                    new MeanDeviationUI(centre);
                 break; 
+
                 case 5:
+                   try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
                     new InitialMenuUI(centre);
                 break;    
                 case 6:
@@ -174,12 +188,7 @@ public class MainMenu implements Serializable{
                     }
                 break;               
                 default:
-                   try{
-                        Utils.export(centre);
-                    }catch(ParserConfigurationException |SAXException| IOException e){
-                        UtilsUI.printLine(e.toString());
-                        
-                    }
+
                     new MainMenu(centre);
                 break;    
             }         
@@ -198,6 +207,12 @@ public class MainMenu implements Serializable{
                     new UpdateOrWithdrawApplicationUI(centre);
                 break; 
                 case 3:
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
                     new InitialMenuUI(centre);
 
                     break;
@@ -210,12 +225,7 @@ public class MainMenu implements Serializable{
                     }
                   break;
                 default:
-                    try{
-                        Utils.export(centre);
-                    }catch(ParserConfigurationException |SAXException| IOException e){
-                        UtilsUI.printLine(e.toString());
-                        
-                    }
+
                     new MainMenu(centre);
                 break;
             } 
@@ -231,7 +241,13 @@ public class MainMenu implements Serializable{
                     new SubmitWorkshopSurveyUI(centre);
                 break; 
                 case 2:
-                  new InitialMenuUI(centre);
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
+                    new InitialMenuUI(centre);
 
                 break;
                 case 3:
@@ -243,12 +259,7 @@ public class MainMenu implements Serializable{
                     }
                 break;
                 default:
-                    try{
-                        Utils.export(centre);
-                    }catch(ParserConfigurationException |SAXException| IOException e){
-                        UtilsUI.printLine(e.toString());
-                        
-                    }
+
                     new MainMenu(centre);
                 break;    
             }     
