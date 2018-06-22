@@ -17,6 +17,7 @@ import lapr.project.model.Keyword;
 import lapr.project.model.Review;
 import lapr.project.model.Role;
 import lapr.project.model.StaffMember;
+import lapr.project.model.StaffRegister;
 import lapr.project.model.User;
 import lapr.project.model.UserRegister;
 import static org.junit.Assert.*;
@@ -29,11 +30,11 @@ import org.junit.jupiter.api.Test;
 public class MeanRatingControllerTest {
 
     /**
-     * Test of getEmployeeList method, of class MeanRatingController.
+     * Test of getStaffList method, of class MeanRatingController.
      */
     @Test
-    public void testGetEmployeeList() {
-        System.out.println("getEmployeeList");
+    public void testGetStaffList() {
+        System.out.println("getStaffList");
         ExhibitionCentre centre = new ExhibitionCentre();
         User user1 = new User("José", "j@gmail.com", "jose", 0.1234, Role.EMPLOYEE);
         User user2 = new User("Luís", "l@gmail.com", "luis", 0.4321, Role.PARTICIPANT);
@@ -41,10 +42,28 @@ public class MeanRatingControllerTest {
         userRegister.addUser(user1);
         userRegister.addUser(user2);
         centre.setUserRegister(userRegister);
+        Event event1 = new Event();
+        Application app1 = new Application();
+        StaffMember staff1 = new StaffMember(user1);
+        Review rev1 = new Review("rev1", 5, 5, 5, 5, Decision.DECLINED, staff1);
+        List<Review> revList = new ArrayList<>();
+        revList.add(rev1);
+        app1.setListReview(revList);
+        ApplicationRegister appReg = new ApplicationRegister();
+        appReg.addApplication(app1);
+        event1.setApplicationRegister(appReg);
+        EventRegister eventRegister = new EventRegister();
+        eventRegister.addEvent(event1);
+        centre.setEventRegister(eventRegister);
+        StaffRegister staffRegister = new StaffRegister();
+        staffRegister.addStaffMember(staff1);
+        event1.setStaffRegister(staffRegister);
+        
         MeanRatingController instance = new MeanRatingController(centre);
         List<User> expResult = new ArrayList<>();
         expResult.add(user1);
-        List<User> result = instance.getEmployeeList();
+        System.out.println(instance.getStaffList().toString());
+        List<User> result = instance.getStaffList();
         assertEquals(expResult, result);
     }
 
@@ -156,11 +175,11 @@ public class MeanRatingControllerTest {
     }
 
     /**
-     * Test of employeeExists method, of class MeanRatingController.
+     * Test of staffExists method, of class MeanRatingController.
      */
     @Test
-    public void testEmployeeExists() {
-        System.out.println("employeeExists");
+    public void testStaffExists() {
+        System.out.println("staffExists");
         ExhibitionCentre centre = new ExhibitionCentre();
 
         User user = new User("João Silva", "js@gmail.com", "js", 0.1234, Role.EMPLOYEE);
@@ -170,13 +189,21 @@ public class MeanRatingControllerTest {
         userRegister.addUser(user);
         userRegister.addUser(user2);
         centre.setUserRegister(userRegister);
+        Event event1 = new Event();
+        StaffMember staff1 = new StaffMember(user);
+        StaffRegister staffRegister = new StaffRegister();
+        staffRegister.addStaffMember(staff1);
+        event1.setStaffRegister(staffRegister);
+        EventRegister eventRegister = new EventRegister();
+        eventRegister.addEvent(event1);
+        centre.setEventRegister(eventRegister);
 
         String username = "js";
         MeanRatingController instance = new MeanRatingController(centre);
         boolean expResult = true;
-        boolean result = instance.employeeExists(username);
+        boolean result = instance.staffExists(username);
         assertEquals(expResult, result);
-        assertEquals(false, instance.employeeExists("a"));
+        assertEquals(false, instance.staffExists("a"));
     }
 
 }

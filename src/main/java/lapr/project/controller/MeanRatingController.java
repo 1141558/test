@@ -5,10 +5,8 @@
 */
 package lapr.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import lapr.project.model.ExhibitionCentre;
-import lapr.project.model.Role;
 import lapr.project.model.User;
 import lapr.project.utils.StaffRating;
 
@@ -26,12 +24,8 @@ public class MeanRatingController {
         this.rating = new StaffRating(exhibitionCentre);
     }
     
-    public List<User> getEmployeeList() {
-        List<User> employeeList = new ArrayList<>();
-        exhibitionCentre.getUserRegister().getUserList().stream().filter((u) -> (u.getRole().equals(Role.EMPLOYEE))).forEachOrdered((u) -> {
-            employeeList.add(u);
-        });
-        return employeeList;
+    public List<User> getStaffList() {
+        return exhibitionCentre.getAllStaffMembers();
     }
     
     public double calcMeanRating(String username) {
@@ -49,8 +43,8 @@ public class MeanRatingController {
         return null;
     }
     
-    public boolean employeeExists(String username) {
-        if (getEmployeeList().stream().anyMatch((u) -> (u.getUsername().equals(username)))) {
+    public boolean staffExists(String username) {
+        if (getStaffList().stream().anyMatch((u) -> (u.getUsername().equals(username)))) {
             return true;
         }
         return false;

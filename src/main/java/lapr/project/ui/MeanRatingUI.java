@@ -29,25 +29,25 @@ public class MeanRatingUI {
         UtilsUI.printLine((char) 27 + "[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + (char) 27 + "[0m");
 
         //Apresentar employees
-        UtilsUI.printLine("EMPLOYEES:");
-        List<User> employees = controller.getEmployeeList();
+        UtilsUI.printLine("STAFF MEMBERS:");
+        List<User> employees = controller.getStaffList();
         for (User u : employees) {
             UtilsUI.printLine("username: "+u.getUsername()+" -- Name: "+u.getName());
         }
 
         //Seleccionar employee
-        UtilsUI.printLine("SELECT EMPLOYEE USERNAME ('Q' TO QUIT)");
+        UtilsUI.printLine("SELECT STAFF MEMBER USERNAME ('Q' TO QUIT)");
         selection = UtilsUI.readLineFromConsole("USERNAME: ");
 
-        while (!controller.employeeExists(selection) && (!"Q".equalsIgnoreCase(selection))) {
-            UtilsUI.printError("EMPLOYEE NOT FOUND!\nPLEASE TRY AGAIN");
-            UtilsUI.printLine("EMPLOYEES:");
+        while (!controller.staffExists(selection) && (!"Q".equalsIgnoreCase(selection))) {
+            UtilsUI.printError("STAFF MEMBER NOT FOUND!\nPLEASE TRY AGAIN");
+            UtilsUI.printLine("STAFF MEMBER:");
             for (User u : employees) {
             UtilsUI.printLine("username: "+u.getUsername()+" -- Name: "+u.getName());
             }
 
             //Seleccionar employee
-            UtilsUI.printLine("SELECT EMPLOYEE USERNAME ('Q' TO QUIT)");
+            UtilsUI.printLine("SELECT STAFF MEMBER USERNAME ('Q' TO QUIT)");
             selection = UtilsUI.readLineFromConsole("USERNAME: ");
         }
         
@@ -57,7 +57,7 @@ public class MeanRatingUI {
             //Employee seleccionado e encontrado
             //Calcular
             double mean = controller.calcMeanRating(selection);
-            UtilsUI.printLine("EMPLOYEE: " + controller.findUser(selection).getName() + String.format("  -->  MEAN RATING: %.2f",mean));
+            UtilsUI.printLine("STAFF MEMBER: " + controller.findUser(selection).getName() + String.format("  -->  MEAN RATING: %.2f",mean));
         }
         
         
