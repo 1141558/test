@@ -131,7 +131,7 @@ public class StaffRating {
 
         for (Application app : event.getApplicationRegister().getApplicationList()) {
             for (Review rev : app.getListReview()) {
-                double rmean = rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation();
+                double rmean = (double) rev.getStaffTopicKnowledge() + rev.getEventAdequacy() + rev.getInviteAdequacy() + rev.getAreaAdequacy() + rev.getRecommendation();
                 rmean = rmean / 5;
                 rsum += rmean;
                 rcount++;

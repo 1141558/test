@@ -103,6 +103,24 @@ public class StaffRatingTest {
         assertEquals(2.5, rating.meanRating(user), 0.0);
 
     }
+    
+    /**
+     * Test of meanRating method, of class StaffRating.
+     */
+    @Test
+    public void testMeanRatingZero() {
+        System.out.println("meanRating");
+        ExhibitionCentre centre = new ExhibitionCentre();
+        Event event1 = new Event();
+        Event event2 = new Event();
+        EventRegister eventRegister = new EventRegister();
+        eventRegister.addEvent(event1);
+        eventRegister.addEvent(event2);
+        centre.setEventRegister(eventRegister);
+        User user = new User("José", "j@gmail.com", "jose", 0.1234, Role.EMPLOYEE);
+        StaffRating rating = new StaffRating(centre);
+        assertEquals(0, rating.meanRating(user),0.0);
+    }
 
     /**
      * Test of meanDeviation method, of class StaffRating.
@@ -179,6 +197,24 @@ public class StaffRatingTest {
         //Fim dos dados
         StaffRating rating = new StaffRating(centre);
         assertEquals(2.5, rating.meanDeviation(user, event1), 0.0);
+    }
+    
+    /**
+     * Test of meanDeviation method, of class StaffRating.
+     */
+    @Test
+    public void testMeanDeviationZero() {
+        System.out.println("meanDeviation");
+        ExhibitionCentre centre = new ExhibitionCentre();
+        Event event1 = new Event();
+        Event event2 = new Event();
+        EventRegister eventRegister = new EventRegister();
+        eventRegister.addEvent(event1);
+        eventRegister.addEvent(event2);
+        centre.setEventRegister(eventRegister);
+        User user = new User("José", "j@gmail.com", "jose", 0.1234, Role.EMPLOYEE);
+        StaffRating rating = new StaffRating(centre);
+        assertEquals(0, rating.meanDeviation(user,event1),0.0);
     }
 
     /**
