@@ -10,6 +10,7 @@ import java.util.List;
 import lapr.project.model.Application;
 import lapr.project.model.ApplicationState;
 import lapr.project.model.Event;
+import lapr.project.model.EventState;
 import lapr.project.model.ExhibitionCentre;
 import lapr.project.model.Keyword;
 import lapr.project.model.Workshop;
@@ -33,10 +34,9 @@ public class SubmitApplicationToEventController {
     public List<Event> getEventsReadyForApplications() {
         List<Event> list = new ArrayList<>();
         for (Event e : centre.getEventRegister().getEventList()) {
-            /*DESCOMENTAR DEPOIS*/
-            //if(e.getEventState().equals(EventState.OPEN_APPLICATION)){
+            if(e.getEventState().equals(EventState.OPEN_APPLICATION)){
             list.add(e);
-            //}
+            }
         }
         return list;
     }

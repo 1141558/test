@@ -58,8 +58,10 @@ public class StartSubmissionPeriodUI {
         if(controller.changeStateEventToSubmission(event_selected-1)){
             UtilsUI.printConfirmation("SUBMISSION PERIOD OPEN");
             controller.registerLog();
+            new MainMenu(exhibitionCentre);
         }else
             UtilsUI.printError("IT WAS NOT POSSIBLE TO OPEN SUBMISSIN PERIOD");
+            new MainMenu(exhibitionCentre);
     
     }
 }

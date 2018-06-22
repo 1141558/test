@@ -50,6 +50,12 @@ public class MainMenu implements Serializable{
                     new CalculateCableUI(centre);
                     break;
                 case 3:
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
                     new InitialMenuUI(centre);
                     break;
                 case 4:
@@ -135,12 +141,7 @@ public class MainMenu implements Serializable{
                     }
                 break;  
                 default:
-                    try{
-                        Utils.export(centre);
-                    }catch(ParserConfigurationException |SAXException| IOException e){
-                        UtilsUI.printLine(e.toString());
-                        
-                    }                    
+                   
                     new MainMenu(centre);
                 break;
             }
@@ -168,7 +169,14 @@ public class MainMenu implements Serializable{
                 case 4:
                     /*TO DO*/
                 break; 
+
                 case 5:
+                   try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
                     new InitialMenuUI(centre);
                 break;    
                 case 6:
@@ -180,12 +188,7 @@ public class MainMenu implements Serializable{
                     }
                 break;               
                 default:
-                   try{
-                        Utils.export(centre);
-                    }catch(ParserConfigurationException |SAXException| IOException e){
-                        UtilsUI.printLine(e.toString());
-                        
-                    }
+
                     new MainMenu(centre);
                 break;    
             }         
@@ -204,6 +207,12 @@ public class MainMenu implements Serializable{
                     new UpdateOrWithdrawApplicationUI(centre);
                 break; 
                 case 3:
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
                     new InitialMenuUI(centre);
 
                     break;
@@ -216,12 +225,7 @@ public class MainMenu implements Serializable{
                     }
                   break;
                 default:
-                    try{
-                        Utils.export(centre);
-                    }catch(ParserConfigurationException |SAXException| IOException e){
-                        UtilsUI.printLine(e.toString());
-                        
-                    }
+
                     new MainMenu(centre);
                 break;
             } 
@@ -237,7 +241,13 @@ public class MainMenu implements Serializable{
                     new SubmitWorkshopSurveyUI(centre);
                 break; 
                 case 2:
-                  new InitialMenuUI(centre);
+                    try{
+                        Utils.export(centre);
+                    }catch(ParserConfigurationException |SAXException| IOException e){
+                        UtilsUI.printLine(e.toString());
+                        
+                    }
+                    new InitialMenuUI(centre);
 
                 break;
                 case 3:
@@ -249,12 +259,7 @@ public class MainMenu implements Serializable{
                     }
                 break;
                 default:
-                    try{
-                        Utils.export(centre);
-                    }catch(ParserConfigurationException |SAXException| IOException e){
-                        UtilsUI.printLine(e.toString());
-                        
-                    }
+
                     new MainMenu(centre);
                 break;    
             }     

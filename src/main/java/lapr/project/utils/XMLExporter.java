@@ -88,6 +88,8 @@ public class XMLExporter {
             Element exhibitionEl = document.createElement("event");
             Element titleEl = document.createElement("title");
             titleEl.setTextContent(e.getTitle());
+            Element stateEl = document.createElement("state");
+            stateEl.setTextContent(e.getEventState().name());
             Element nrRoomsEl = document.createElement("numberRooms");
             nrRoomsEl.setTextContent(String.valueOf(e.getRooms()));
             if(!isEmpty(e.getPlace())){
@@ -96,7 +98,7 @@ public class XMLExporter {
                 exhibitionEl.appendChild(placeEl);
 
             }
-
+            exhibitionEl.appendChild(stateEl);
             Element standsEl = document.createElement("stands");
             e.getStandRegister().getStandList().stream().map((Stand s) -> {
                 Element standEl = document.createElement("stand");
@@ -204,6 +206,8 @@ public class XMLExporter {
                 }else if(a.getState().equals(ApplicationState.REJECTED)){
                     aceptedEl.setTextContent("false");
                 }
+                Element stateaceptEl = document.createElement("state");
+                stateaceptEl.setTextContent(a.getState().name());
                 Element invitesEl = document.createElement("invitesQuantity");
                 invitesEl.setTextContent(String.valueOf(a.getNumberInvites()));
                 Element topicsEl = document.createElement("topics");
@@ -270,6 +274,7 @@ public class XMLExporter {
                 applicationEl.appendChild(topicsEl);
                 applicationEl.appendChild(elementReviews);
                 applicationEl.appendChild(aceptedEl);
+                applicationEl.appendChild(stateaceptEl);
                 applicationSetEl.appendChild(applicationEl);
             }
             if(e.getStartDate()!=null){

@@ -114,7 +114,6 @@ public class XMLDecoder {
 
         try {
             Event e = new Event();  
-        
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = dbf.newDocumentBuilder();
             Document doc;
@@ -153,8 +152,22 @@ public class XMLDecoder {
             }                        
             e.setRooms(nrRooms);
             e.setTitle(title);
-
-
+            NodeList state = docElement.getElementsByTagName("state");
+            Node s1 = state.item(0);
+            Element el = (Element) s1;
+            if(el!=null){
+               String st =  docElement.getElementsByTagName("state").item(0).getTextContent();
+               switch(st){
+                   case "CREATED":
+                       e.setEventState(EventState.CREATED);
+                   case "READY_FOR_APPLICATION":   
+                    e.setEventState(EventState.READY_FOR_APPLICATION);
+                       
+               }
+               e.setEventState(EventState.CREATED);
+            }else{
+                e.setEventState(EventState.READY_FOR_APPLICATION);
+            }
             StandRegister sr= buildStandRegister(docElement);
             OrganiserRegister or= buildOrganiserRegister(docElement, centre);
             e.setOrganisersRegister(or);
@@ -163,7 +176,7 @@ public class XMLDecoder {
             e.setStaffRegister(stffr);
             ApplicationRegister  ar= buildApplicationRegister(docElement, e);
             e.setApplicationRegister(ar);
-            e.setEventState(EventState.CREATED);
+
             return e;
             
         } catch (ParserConfigurationException | IOException | SAXException e) {
