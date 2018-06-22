@@ -34,7 +34,7 @@ public class EventRegisterTest {
         //Assert
         Assert.assertEquals(result, expectedResult);
     }
-   
+ 
     @Test
     public void userOrganiserTrueTest() {
         

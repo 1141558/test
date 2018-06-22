@@ -29,7 +29,7 @@ public class AssignStaffMemberController {
     private UserRegister usersRegister;
     private Event event;
     
-    DummyData dummy;
+    private DummyData dummy;
     
     public AssignStaffMemberController(ExhibitionCentre centre) {
         this.exhibitionCentre = centre;

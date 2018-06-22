@@ -1,13 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package lapr.project.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import lapr.project.controller.DummyData;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
@@ -18,22 +19,23 @@ import org.junit.jupiter.api.Test;
  * @author andre
  */
 public class StaffRegisterTest {
-    DummyData data;
     
-    ExhibitionCentre centre = new ExhibitionCentre();
+   private DummyData data;
     
-    ExhibitionCentre exhibitionCentre;
+    private ExhibitionCentre centre = new ExhibitionCentre();
     
-    User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123, Role.ATENDEE);
-    User user2 = new User("jose", "mail2@hotmail.com", "jo", 123 , Role.ATENDEE);
-    User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123 , Role.ATENDEE);
-    User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123 , Role.ATENDEE);
-    User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123, Role.ATENDEE);
-    User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);    
-    User user7 = new User("Andre", "mailu3", "andr", 133 , Role.ATENDEE);
-    User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.EMPLOYEE);   
-    User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133, Role.ATENDEE);
-    User user10 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123, Role.ATENDEE);
+   private  ExhibitionCentre exhibitionCentre;
+    
+   private User user1 = new User("manuel", "mjdg111@hotmail.com", "garnel", 123, Role.ATENDEE);
+    private User user2 = new User("jose", "mail2@hotmail.com", "jo", 123, Role.ATENDEE);
+  private   User user3 = new User("sandra", "sandra@hotmail.com", "antunex", 123, Role.ATENDEE);
+   private  User user4 = new User("staffElement1_manuel", "mjdg111@hotmail.com", "garnel23", 123, Role.ATENDEE);
+   private  User user5 = new User("staffElment2_jose", "Jose@hotmail.com", "Jose1234", 123, Role.ATENDEE);
+   private  User user6 = new User("O2", "mail2@hotmail.com", "orga2", 123, Role.ATENDEE);
+   private  User user7 = new User("Andre", "mailu3", "andr", 133, Role.ATENDEE);
+   private User user8 = new User("Luisa", "Luisa@hotmail.com", "mar", 123, Role.EMPLOYEE);
+   private User user9 = new User("Joaquim", "mailgdfgdgfdgu3", "jq", 133, Role.ATENDEE);
+    private User user10 = new User("Margarida", "magdfgfdriamail@hotmail.com", "marg", 123, Role.ATENDEE);
     
     Organiser org1;
     Organiser org2;
@@ -45,7 +47,6 @@ public class StaffRegisterTest {
     
     List<Organiser> organiserList4 = new ArrayList<>();
     
-  
     StaffRegister staffRegister4 = new StaffRegister();
     
     List<StaffMember> staffMemberListEvent4 = new ArrayList<>();
@@ -64,7 +65,6 @@ public class StaffRegisterTest {
     
     //*****************************************************************************************
     //************************Criar registo de utilizadores***********************************
-
     /**
      *
      */
@@ -79,17 +79,16 @@ public class StaffRegisterTest {
         usersCentre.add(user4);
         usersCentre.add(user5);
         usersCentre.add(user6);
-    
+        
         usersCentre.add(user7);
         usersCentre.add(user8);
-        usersCentre.add(user9);       
+        usersCentre.add(user9);
         usersCentre.add(user10);
         
         userRegister.setUserList(usersCentre);
         
-       
         return userRegister;
-
+        
     }
     
     public StaffRegisterTest() {
@@ -97,32 +96,30 @@ public class StaffRegisterTest {
         
         /*
         Event 4
-
+        
         */
-
         org1 = new Organiser();
         org1.setOrganiser(user1);
         org2 = new Organiser();
         org2.setOrganiser(user2);
-
-
+        
         organiserList4.add(org2);
         organiserList4.add(org1);
-
+        
         organiserRegister4.setOrganiserList(organiserList4);
-
+        
         StaffMember staff41 = new StaffMember();
         StaffMember staff42 = new StaffMember();
-
+        
         staff41.setUser(user4);
         staff42.setUser(user5);
         staffMemberListEvent4.add(staff41);
         staffMemberListEvent4.add(staff42);
-
+        
         staffRegister4.add(staffMemberListEvent4);
-
+        
         this.event4 = new Event(organiserRegister4);
-
+        
         this.event4.setTitle("EVENTO 4");
         event4.setEventState(EventState.CREATED);
         event4.addOrganiserRegister(organiserRegister4);
@@ -135,7 +132,7 @@ public class StaffRegisterTest {
         UserRegister userRegister = new UserRegister();
         userRegister = createUsers();
         
-       this.exhibitionCentre = new ExhibitionCentre(eventRegister, userRegister);
+        this.exhibitionCentre = new ExhibitionCentre(eventRegister, userRegister);
     }
     
     /**
@@ -150,8 +147,8 @@ public class StaffRegisterTest {
         boolean result = instance.addStaffMember(sm);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-    }    
-
+    }
+    
     /**
      * Test of addStaffMember method, of class StaffRegister.
      */
@@ -179,7 +176,7 @@ public class StaffRegisterTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
-
+    
     /**
      * Test of isExist method, of class StaffRegister.
      */
@@ -205,7 +202,7 @@ public class StaffRegisterTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
-
+    
     /**
      * Test of getStaffMemberByUsername method, of class StaffRegister.
      */
@@ -231,7 +228,7 @@ public class StaffRegisterTest {
         StaffMember result = instance.getStaffMemberByUsername(username);
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of isEmpty method, of class StaffRegister.
      */
@@ -256,7 +253,7 @@ public class StaffRegisterTest {
         boolean result = instance.isEmpty();
         assertEquals(expResult, result);
     }
-
+    
     /**
      * Test of sizeStaffList method, of class StaffRegister.
      */
@@ -282,8 +279,7 @@ public class StaffRegisterTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
-
-
+    
     /**
      * Test of equals method, of class StaffRegister.
      */
@@ -325,8 +321,7 @@ public class StaffRegisterTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
-
-
+    
     /**
      * Test of add method, of class StaffRegister.
      */
@@ -337,7 +332,7 @@ public class StaffRegisterTest {
         StaffRegister instance = new StaffRegister();
         instance.add(staffMemberListEvent1);
     }
-
+    
     /**
      * Test of getStaffList method, of class StaffRegister.
      */
@@ -349,7 +344,7 @@ public class StaffRegisterTest {
         List<StaffMember> result = instance.getStaffList();
         assertEquals(expResult, result);
     }
-
+    
 //    /**
 //     * Test of createStaffMember method, of class StaffRegister.
 //     */
@@ -361,7 +356,6 @@ public class StaffRegisterTest {
 //        StaffMember result = instance.createStaffMember();
 //        assertEquals(expResult, result);
 //    }
-    
     /**
      * Test of setStaffList method, of class StaffRegister.
      */
@@ -385,53 +379,63 @@ public class StaffRegisterTest {
     }
     
     /**
-     *Test of hashCode method, of class StaffRegister.
+     * Test of hashCode method, of class StaffRegister.
      */
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
         StaffRegister instance = new StaffRegister(staffMemberListEvent4);
         int expResult = instance.hashCode();
-
-
-        System.out.println("hash" +instance.hashCode() );
         
-
+        System.out.println("hash" + instance.hashCode());
+        
         int result = instance.hashCode();
         assertEquals(expResult, result);
     }
-       /**
+    
+    /**
      * Test of createStaffMember method, of class StaffRegister.
      */
     @Test
     public void testCreateStaffMember() {
         System.out.println("createStaffMember");
-         User user = new User("Name name", "email@server.com", "user", 0.1234);
+        User user = new User("Name name", "email@server.com", "user", 0.1234);
         StaffMember expResult = new StaffMember(user);
-         List<StaffMember> staffList = new ArrayList<>();
-         staffList.add(expResult);
-         StaffRegister instance = new StaffRegister();
-        System.out.println("s"+instance.getStaffList());
-       
-       instance.createStaffMember();
+        List<StaffMember> staffList = new ArrayList<>();
+        staffList.add(expResult);
+        StaffRegister instance = new StaffRegister();
+        System.out.println("s" + instance.getStaffList());
+        
+        instance.createStaffMember();
         Assert.assertNotNull(instance.createStaffMember());
     }
-
-
-
-      @Test
+    
+    @Test
     public void testHashCodeTwo() {
         System.out.println("hashCode");
         StaffRegister instance = new StaffRegister(staffMemberListEvent4);
         int expResult = instance.hashCode();
-        System.out.println("hash" +instance.hashCode() );
+        System.out.println("hash" + instance.hashCode());
         int result = instance.hashCode();
         assertEquals(expResult, result);
         int hash = 0;
-       hash = 37 * hash + instance.hashCode();
-          System.out.println("hasss"+ hash);
-          assertEquals(hash, instance.hashCode());
+        hash = 37 * hash + instance.hashCode();
+        System.out.println("hasss" + hash);
+        assertEquals(hash, instance.hashCode());
         
     }
-
+    
+    @Test
+    public void testHashCodeThree() {
+        System.out.println("hashCode");
+        StaffRegister instance = new StaffRegister(staffMemberListEvent4);
+        System.out.println("hash" + instance.hashCode());
+        int result = instance.hashCode();
+        
+        int expectResult = 5;
+        expectResult = 37 * expectResult + Objects.hashCode(staffMemberListEvent4);
+        
+        assertEquals(expectResult, result);
+    }
+    
 }
