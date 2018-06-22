@@ -43,7 +43,16 @@ public class UtilsUI {
      public static void printLine(String message){
          System.out.println(message);
     }      
-    
+     public static int isNumber(String num){
+         int ret=0;
+         try{
+         ret= Integer.parseInt(num);
+         }catch(NumberFormatException e){
+             printError("INVALID CHARACTER. PLEASE TRY AGAIN.");
+             
+         }
+         return ret;
+     }  
      
     public static void showUsersExhibitionCentre(ExhibitionCentre exhibitionCentre) {
        List<User> users = new ArrayList<>();
