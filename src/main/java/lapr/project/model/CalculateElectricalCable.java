@@ -95,7 +95,7 @@ public class CalculateElectricalCable {
      * @param tree Minimum path tree previously generated
      * @return Return the length
      */
-    public static double cableLength(ArrayList<StandConnection> tree) {
+    public static double cableLength(List<StandConnection> tree) {
         double length = 0.0;
 
         for (StandConnection list : tree) {
