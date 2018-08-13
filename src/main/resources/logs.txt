@@ -650,3 +650,21 @@ Date: Fri Jun 22 20:33:16 BST 2018 -> An anonymous user took a survey about work
 Date: Fri Jun 22 20:33:17 BST 2018 -> null
 Date: Fri Jun 22 20:33:27 BST 2018 -> null
 Date: Fri Jun 22 20:34:22 BST 2018 -> null
+Date: Fri Jun 22 20:53:15 BST 2018 -> garnel consulted accepted applications of 'null';
+Date: Fri Jun 22 20:53:16 BST 2018 ->  logged in;
+Date: Fri Jun 22 20:53:16 BST 2018 -> An anonymous user took a survey about workshops
+Date: Fri Jun 22 20:53:19 BST 2018 -> null
+Date: Fri Jun 22 20:55:24 BST 2018 -> garnel consulted accepted applications of 'null';
+Date: Fri Jun 22 20:55:24 BST 2018 ->  logged in;
+Date: Fri Jun 22 20:55:24 BST 2018 -> An anonymous user took a survey about workshops
+Date: Fri Jun 22 20:55:27 BST 2018 -> null
+Date: Fri Jun 22 20:56:23 BST 2018 -> garnel consulted accepted applications of 'null';
+Date: Fri Jun 22 20:56:23 BST 2018 ->  logged in;
+Date: Fri Jun 22 20:56:23 BST 2018 -> An anonymous user took a survey about workshops
+Date: Fri Jun 22 20:56:26 BST 2018 -> null
+Date: Fri Jun 22 20:58:33 BST 2018 -> garnel consulted accepted applications of 'null';
+Date: Fri Jun 22 20:58:33 BST 2018 ->  logged in;
+Date: Fri Jun 22 20:58:34 BST 2018 -> An anonymous user took a survey about workshops
+Date: Fri Jun 22 20:58:37 BST 2018 -> null
+Date: Fri Jun 22 20:59:32 BST 2018 -> null
+Date: Fri Jun 22 21:03:42 BST 2018 -> null
