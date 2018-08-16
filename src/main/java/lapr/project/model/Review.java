@@ -75,14 +75,14 @@ public class Review implements Serializable{
     }
 
     /**
-     * @param eventAdequacy the eventAdequacy to set
+     * @param eventAdequacy the eventAdequacy to set;
      */
     public void setEventAdequacy(int eventAdequacy) {
         this.eventAdequacy = eventAdequacy;
     }
 
     /**
-     * @return the inviteAdequacy
+     * @return the inviteAdequacy;
      */
     public int getInviteAdequacy() {
         return inviteAdequacy;
