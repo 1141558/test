@@ -70,6 +70,7 @@ public class Review implements Serializable{
     /**
      * @return the eventAdequacy
      */
+    
     public int getEventAdequacy() {
         return eventAdequacy;
     }

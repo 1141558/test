@@ -13,8 +13,8 @@
         <event>
             <place>place1</place>
             <state>CREATED</state>
-            <startDate>2018-06-22</startDate>
-            <endDate>2018-06-22</endDate>
+            <startDate>2018-08-16</startDate>
+            <endDate>2018-08-16</endDate>
             <title>event1</title>
             <numberRooms>5</numberRooms>
             <stands>
@@ -35,7 +35,7 @@
                         <name>name</name>
                         <username>user1</username>
                         <email>email@gmail.com</email>
-                        <password/>
+                        <password>0.1058807373046875</password>
                     </user>
                 </staff>
             </StaffSet>
