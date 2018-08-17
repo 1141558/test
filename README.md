@@ -1,6 +1,6 @@
 # README #
 
-This is the repository used as a template for student repositories in LAPR2, 2017-2018 Edition.
+This is the repository used as a template for student repositories in LAPR2, 2017-2018 Edition....
 
 ## What is this repository for? ##
 
